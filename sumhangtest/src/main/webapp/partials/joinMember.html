@@ -1,0 +1,56 @@
+<div class="joinMember view">
+    <div class="container">
+        <header>
+            <h3>joinMember view</h3>
+        </header>
+        <form data-ng-submit="addMemberRequest()">
+	        <label>ID</label>
+	        <input type="text" data-ng-model="id">
+	        <label>Name</label>
+	        <input type="text" data-ng-model="name">
+	        <label>Password</label>
+	        <input type="password" data-ng-model="password">
+	        <label>Confirm Password</label>
+	        <input type="password">
+	        <label>Nick</label>
+	        <input type="text" data-ng-model="nick">
+	        <label>Birth</label>
+	        <input type="text" data-ng-model="birth">
+			<fieldset data-role="controlgroup">
+			<label>Gender</label>
+				<label for="male">
+				<input type="radio" name="gender" id="male" value="male" data-ng-model="gender">
+				Male</label>
+				<label for="female">
+				<input type="radio" name="gender" id="female" value="female" data-ng-model="gender">
+				Female</label>	
+			</fieldset>
+	        <label>Photo</label>
+	        <input type="file" data-ng-model="photo">
+	        
+	        <fieldset data-role="controlgroup">
+	        <label>Push Msg Acceptance</label>
+				<label for="accpetmsg">
+				<input type="radio" name="pushmsg" id="accpetmsg" value="yes" data-ng-model="pushmsg">
+				Accept</label>
+				<label for="denymsg">
+				<input type="radio" name="pushmsg" id="denymsg" value="no" data-ng-model="pushmsg">	
+				Deny</label>
+			</fieldset>
+			
+	        <fieldset data-role="controlgroup">
+	        <label>Invite Msg Acceptance</label>
+				<label for="accpetInvite">
+				<input type="radio" name="invitemsg" id="accpetivt" value="yes" data-ng-model="invitemsg">
+				Accept</label>
+				<label for="denyInvite">
+				<input type="radio" name="invitemsg" id="denyivt" value="no" data-ng-model="invitemsg">	
+				Deny</label>
+			</fieldset>
+	        <br>
+	        <br>
+	        <input type="submit" class="btn btn-primary" value="Sign up" />
+	        <a class="btn" href="#/login">Login</a>
+    	</form>
+    </div>
+</div>

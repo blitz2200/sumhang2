@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="userControlMapper">
+    <select id="R01" parameterType="java.util.HashMap"
+        resultType="java.util.HashMap">
+        select *
+        from USER
+    </select>
+
+    <insert id="C01" parameterType="java.util.HashMap">
+        insert into test
+        (name, age, gender)
+        values
+        ( #{name}, #{age}, #{gender} )
+    </insert>
+</mapper>
