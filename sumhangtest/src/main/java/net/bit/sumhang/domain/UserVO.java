@@ -10,7 +10,7 @@ public class UserVO {
 	private String photo;
 	private String push;
 	private String invite;
-	private String signout;
+	private String signOut;
 	public String getId() {
 		return id;
 	}
@@ -65,12 +65,13 @@ public class UserVO {
 	public void setInvite(String invite) {
 		this.invite = invite;
 	}
-	public String getSignout() {
-		return signout;
-	}
-	public void setSignout(String signout) {
-		this.signout = signout;
-	}
+
+public String getSignOut() {
+	return signOut;
+}
+public void setSignOut(String signOut) {
+	this.signOut = signOut;
+}
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -83,7 +84,7 @@ public class UserVO {
 				+", photo:"+photo
 				+", push:"+push
 				+", invite:"+invite
-				+", signout:"+signout);
+				+", signOut:"+signOut);
 	}
 	
 	

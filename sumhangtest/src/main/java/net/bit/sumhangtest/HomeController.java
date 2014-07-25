@@ -1,5 +1,8 @@
 package net.bit.sumhangtest;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import net.bit.sumhang.domain.UserVO;
@@ -16,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+
 
 /**
  * Handles requests for the application home page.
@@ -38,12 +44,22 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/addMember")
-	public @ResponseBody UserVO addMember(@RequestBody UserVO user){
-		System.out.println("addMember method invoked...");
+	@RequestMapping(value = "/addMember", method = RequestMethod.POST)
+	public @ResponseBody UserVO addMember(@RequestBody String user){
+		System.out.println("[server]addMember method invoked...");
 		System.out.println(user);
 		
-		return user;
+		Gson gson = new Gson();
+		UserVO dbUser = gson.fromJson(user, UserVO.class);
+		
+		System.out.println("dbUser"+dbUser);
+		
+		sqlSession.insert("userControlMapper.addMember",dbUser);		
+				
+		//produces="text/plain;charset=UTF-8"	한글깨질때 쓸거
+		
+		
+		return dbUser;
 	}
 	
 	@RequestMapping(value = "/test")
