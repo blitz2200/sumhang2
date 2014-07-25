@@ -18,8 +18,18 @@
       /views
 
   #######################################################################*/
+$(function () {
 
-var app = angular.module('sumhangApp', []);
+	//css 로딩하기
+	loadCSS = function (href) {
+	var cssLink = $("<link rel='stylesheet' type='text/css' href='" + href + "'>");
+	$("head").append(cssLink);
+	};
+	loadCSS("resources/css/sumhangManagementStyles.css");
+});
+
+
+var app = angular.module('sumhangApp', ['ngRoute']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
