@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="userControlMapper">
+
+	<resultMap id="userSelectMap" type="user">
+  		<result property="id" column="ID" jdbcType="VARCHAR" />
+  		<result property="name" column="NAME" jdbcType="VARCHAR" />
+  		<result property="password" column="PASSWD" jdbcType="VARCHAR" />
+  		<result property="nick" column="NICK" jdbcType="VARCHAR" />
+  		<result property="birth" column="BIRTH" jdbcType="DATE" />
+  		<result property="gender" column="GENDER" jdbcType="VARCHAR" /> 
+  		<result property="photo" column="USER_PHOTO" jdbcType="VARCHAR" />
+  		<result property="push" column="PUSH" jdbcType="VARCHAR" />
+  		<result property="invite" column="INVITE" jdbcType="VARCHAR" /> 	
+  		<result property="signout" column="SIGNOUT" jdbcType="VARCHAR" /> 
+  	</resultMap>
+
+
+
+    <select id="R01" parameterType="java.util.HashMap"
+        resultType="java.util.HashMap">
+        select *
+        from USER
+    </select>
+
+    <insert id="C01" parameterType="java.util.HashMap">
+        insert into user
+        (name, age, gender)
+        values
+        ( #{name}, #{age}, #{gender} )
+    </insert>
+    
+    <insert id="addMember" parameterType="user">
+		INSERT 											
+		INTO USER(ID,NAME,PASSWD,NICK,BIRTH,GENDER,USER_PHOTO,PUSH,INVITE,SIGNOUT)
+		VALUES ( 	#{id},
+					#{name},
+					#{password},
+					#{nick},
+					#{birth:DATE},
+					#{gender},
+					#{photo},
+					#{push},
+					#{invite},				
+					#{signOut} )	
+	</insert>
+</mapper>

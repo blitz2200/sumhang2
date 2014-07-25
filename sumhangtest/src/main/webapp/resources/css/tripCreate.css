@@ -1,0 +1,30 @@
+ 
+/*제주고딕*/
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+/*.JejuGothic { font-family: 'Jeju Gothic', serif;  }*/
+
+/*나눔펜글씨*/
+ @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+/*font-family: 'Nanum Pen Script', cursive;*/
+
+
+div.container{
+
+	font-family: 'Jeju Gothic', serif;
+}
+
+header h3{
+
+	font-family: 'Nanum Pen Script', cursive;
+	font-size:60px;
+}
+
+header.mainTitle{
+
+	background: url('../img/18.jpg');
+	background-size: cover;
+	width:800px;
+	height:100%;
+	text-align:center;
+	padding:auto;
+}

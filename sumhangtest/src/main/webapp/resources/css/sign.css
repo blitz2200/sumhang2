@@ -1,8 +1,23 @@
 
+
 .main{
-	position:relative;	 
-	background-image: url("./resources/img/TK.jpg");
+	position:relative;
+	 
+	background-image: url('../img/TK.jpg');
 	background-size: cover;
+	
+	 
+	 
+	
+	
 }
 
 
+ 
+
+.form-signin-heading{
+	text-align:center;	
+	
+	
+	
+}
