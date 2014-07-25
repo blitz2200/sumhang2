@@ -1,0 +1,77 @@
+body{
+	position:relative;
+ 	padding-top: 20px;
+ 	padding-bottom: 50px;
+}
+
+/* 배경사진 */
+.main:after {
+	content:'';	
+	position:absolute;
+	top:0;
+	left:0;
+	
+	width:1000px;
+	height:800px;
+	background-image: url("../resources/img/TK.jpg");
+	background-size: cover;
+	opacity:0.5;
+	
+	
+}
+.main{	
+	positon:relative;
+	width: 80%;
+	margin: auto;
+} 
+
+/* 제목 */
+h1{
+	text-align: center;
+	color: #33ffcc;
+}
+
+/* 폼관련 */
+.form-horizontal{
+	opacity:1;
+	
+}
+/* .form-horizontal:after{
+	opacity:0;
+} */
+.form-group .visible{
+	opacity:1;
+	z-index:10;
+}
+
+
+/* signin 버튼 */
+.form-group #signinbtn{
+padding: 5px 5px;
+font-size: 15px;
+line-height: 1.33;
+border-radius: 6px;
+width:120%;
+opacity:1;
+z-index:10;
+
+}
+
+/* 아이디 찾기 링크 */
+.form-group .find{
+	margin-left: 80px;
+}
+
+.form-group #findid{
+	margin-right: 30px;
+}
+
+/* social button */
+.social{|
+	padding-top: 10px;
+	text-align: center;	
+}
+
+.social button{
+	margin-right: 15px;
+}

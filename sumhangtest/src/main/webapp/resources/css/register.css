@@ -1,0 +1,60 @@
+body{
+	position:relative;
+ 	padding-top: 30px;
+ 	padding-bottom: 50px;
+} 
+
+.main{
+	background-image: url("../resources/img/TK.jpg");
+	background-size: cover;
+	opacity: .8;
+	width: 80%;
+	margin: auto;
+
+} 
+
+/* 폼관련 */
+.form-horizontal{
+		margin: auto;
+		background-color: #ccccff;
+
+		-webkit-border-radius: 6;
+   		  -moz-border-radius: 6;
+          	border-radius: 6;
+}
+
+/* 제목 */
+h1{
+	text-align: center;
+	color: #3333ff;
+}
+
+/* 라벨 */
+.form-group label{
+	margin-left: 5px;
+}
+
+/* input 상자 */
+.form-group input{
+	border-color: #3366ff;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+/* 성별 체크박스 */
+.form-group .optionsRadios{
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+/* 사진업로드 */
+.form-group #exampleInputFile{
+	margin-top: 10px;
+}
+
+/* 가입버튼 */
+.form-group #registerbtn{
+	margin-left: 20px;
+	margin-top: 20px;
+	width:80%;
+}
