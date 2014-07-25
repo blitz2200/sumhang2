@@ -3,53 +3,53 @@
         <header>
             <h3>joinMember view</h3>
         </header>
-        <form data-ng-submit="addMemberRequest()">
+        <form data-ng-submit="addMemberRequest()" data-ng-model="newMember">
 	        <label>ID</label>
-	        <input type="text" data-ng-model="id">
+	        <input type="text" data-ng-model="newMember.id">
 	        <label>Name</label>
-	        <input type="text" data-ng-model="name">
+	        <input type="text" data-ng-model="newMember.name">
 	        <label>Password</label>
-	        <input type="password" data-ng-model="password">
+	        <input type="password" data-ng-model="newMember.password">
 	        <label>Confirm Password</label>
 	        <input type="password">
 	        <label>Nick</label>
-	        <input type="text" data-ng-model="nick">
+	        <input type="text" data-ng-model="newMember.nick">
 	        <label>Birth</label>
-	        <input type="text" data-ng-model="birth">
+	        <input type="text" data-ng-model="newMember.birth">
 			<fieldset data-role="controlgroup">
 			<label>Gender</label>
 				<label for="male">
-				<input type="radio" name="gender" id="male" value="male" data-ng-model="gender">
+				<input type="radio" name="gender" id="male" value="male" data-ng-model="newMember.gender">
 				Male</label>
 				<label for="female">
-				<input type="radio" name="gender" id="female" value="female" data-ng-model="gender">
+				<input type="radio" name="gender" id="female" value="female" data-ng-model="newMember.gender">
 				Female</label>	
 			</fieldset>
 	        <label>Photo</label>
-	        <input type="file" data-ng-model="photo">
+	        <input type="file" data-ng-model="newMember.photo">
 	        
 	        <fieldset data-role="controlgroup">
 	        <label>Push Msg Acceptance</label>
 				<label for="accpetmsg">
-				<input type="radio" name="pushmsg" id="accpetmsg" value="yes" data-ng-model="pushmsg">
+				<input type="radio" name="pushmsg" id="accpetmsg" value="yes" data-ng-model="newMember.push">
 				Accept</label>
 				<label for="denymsg">
-				<input type="radio" name="pushmsg" id="denymsg" value="no" data-ng-model="pushmsg">	
+				<input type="radio" name="pushmsg" id="denymsg" value="no" data-ng-model="newMember.push">	
 				Deny</label>
 			</fieldset>
 			
 	        <fieldset data-role="controlgroup">
 	        <label>Invite Msg Acceptance</label>
 				<label for="accpetInvite">
-				<input type="radio" name="invitemsg" id="accpetivt" value="yes" data-ng-model="invitemsg">
+				<input type="radio" name="invitemsg" id="accpetivt" value="yes" data-ng-model="newMember.invite">
 				Accept</label>
 				<label for="denyInvite">
-				<input type="radio" name="invitemsg" id="denyivt" value="no" data-ng-model="invitemsg">	
+				<input type="radio" name="invitemsg" id="denyivt" value="no" data-ng-model="newMember.invite">	
 				Deny</label>
 			</fieldset>
 	        <br>
 	        <br>
-	        <input type="submit" class="btn btn-primary" value="Sign up" />
+	        <input type="submit" class="btn btn-primary" value="회원가입" />
 	        <a class="btn" href="#/login">Login</a>
     	</form>
     </div>
