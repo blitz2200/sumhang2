@@ -1,15 +1,4 @@
-﻿/*#######################################################################
-  
-  Dan Wahlin
-  http://twitter.com/DanWahlin
-  http://weblogs.asp.net/dwahlin
-  http://pluralsight.com/training/Authors/Details/dan-wahlin
-
-  Normally like the break AngularJS controllers into separate files.
-  Kept them together here since they're small and it's easier to look through them.
-  example. 
-
-  #######################################################################*/
+﻿
 app.controller('LoginController', ['$scope', 'sumhangFactory', 
                                      function ($scope, sumhangFactory) {
     
@@ -66,20 +55,24 @@ app.controller('LeftSideController', function ($scope, sumhangService) {
 });
 
 app.controller('AddTripController', ['$scope', 'sumhangFactory', 
-                                   function ($scope, sumhangFactory) {
+                                   function ($scope, addTripFactory) {
 
-
-  /*$scope.addTrip = function () {
-      var title = $scope.newTrip.title;
-      var dest = $scope.newTrip.dest;
-      var start = $scope.newTrip.start;
-      var end = $scope.newTrip.end;
-      var recruitNum = $scope.newTrip.recruitNum;
-      var desc = $scope.newTrip.desc;
-      sumhangService.insertTrip(title, dest, start, end, recruitNum, desc);
-      init();
-      location.hash = '/main';
-  };*/
+    $scope.addTripRequest = function () {
+    	alert("여행참가테스트...");
+    	alert($scope.newTrip.title);
+    	addTrip($scope.newTrip);
+    	
+    };
+    
+    function addTrip(newTrip){
+    	addTripFactory.addTrip(newTrip)
+    	.success(function(){
+    		alert(newTrip);
+    	}).error(function (error){
+    		
+    	});
+    }
+    
 }]);
 
 app.controller('MainController', function ($scope, sumhangService) {
