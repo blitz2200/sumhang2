@@ -4,7 +4,7 @@ body{
  	padding-bottom: 50px;
 }
 
-/* ¹è°æ»çÁø */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 .main:after {
 	content:'';	
 	position:absolute;
@@ -13,8 +13,8 @@ body{
 	
 	width:1000px;
 	height:800px;
-	background-image: url("../resources/img/TK.jpg");
-	background-size: cover;
+	/*background-image: url("../images/TK.jpg");
+	background-size: cover;*/
 	opacity:0.5;
 	
 	
@@ -25,13 +25,13 @@ body{
 	margin: auto;
 } 
 
-/* Á¦¸ñ */
+/* ï¿½ï¿½ï¿½ï¿½ */
 h1{
 	text-align: center;
-	color: #33ffcc;
+	
 }
 
-/* Æû°ü·Ã */
+/* ï¿½ï¿½ï¿½ï¿½ */
 .form-horizontal{
 	opacity:1;
 	
@@ -45,7 +45,7 @@ h1{
 }
 
 
-/* signin ¹öÆ° */
+/* signin ï¿½ï¿½Æ° */
 .form-group #signinbtn{
 padding: 5px 5px;
 font-size: 15px;
@@ -57,13 +57,13 @@ z-index:10;
 
 }
 
-/* ¾ÆÀÌµð Ã£±â ¸µÅ© */
+/* ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½Å© */
 .form-group .find{
-	margin-left: 80px;
+	margin-left: 14%;
 }
 
 .form-group #findid{
-	margin-right: 30px;
+	/*margin-right: 30px;*/
 }
 
 /* social button */
