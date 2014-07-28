@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 여행 게시판  -->
+<mapper namespace="tripControlMapper">
+		
+  	<resultMap id="travelSelectMap" type="trip">
+  		<result property="travel" column="TRAVEL" jdbcType="VARCHAR" />
+  		<result property="title" column="TITLE" jdbcType="VARCHAR" />
+  		<result property="travelDescription" column="TRAVEL_DESCRIPTION" jdbcType="VARCHAR" />
+  		<result property="travelStart" column="TRAVEL_START" jdbcType="DATE" />
+  		<result property="travelEnd" column="TRAVEL_END" jdbcType="DATE" />
+  		<result property="travelPho" column="TRAVEL_PHO" jdbcType="VARCHAR" /> 
+  		<result property="travelUserCount" column="TRAVEL_USER_COUNT" jdbcType="NUMERIC" />
+  		<result property="travelTag" column="TRAVEL_TAG" jdbcType="VARCHAR" />
+  	</resultMap>
+  	
+  	<insert id="addTrip" parameterType="trip">
+			INSERT 											
+			INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,TRAVEL_END,TRAVEL_PHO,TRAVEL_USER_COUNT,TRAVEL_TAG)
+			VALUES ( 	#{travel},
+						#{title},
+						#{travelDescription},
+						#{travelStart:DATE},
+						#{travelEnd:DATE},
+						#{travelPho},
+						#{travelUserCount},
+						#{travelTag} )
+	</insert>
+	
+	<select id="tripList" resultMap="travelSelectMap">
+		select TRAVEL, TITLE, TRAVEL_USER_COUNT,TRAVEL_START,TRAVEL_END from
+		TBOARD
+	</select>
+	
+	
+</mapper>

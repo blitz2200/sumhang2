@@ -3,16 +3,16 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 
+
 <configuration>
 
 	<typeAliases>
 		<typeAlias alias="user" type="net.bit.sumhang.domain.UserVO"/>
+		<typeAlias alias="trip" type="net.bit.sumhang.domain.TripVO"/>
 	</typeAliases>
 
-
-
-
     <mappers>
-        <mapper resource="/mybatis/Mapper.xml" />
+        <mapper resource="/mybatis/UserMapper.xml"/>
+        <mapper resource="/mybatis/TripMapper.xml"/>
     </mappers>
 </configuration>
