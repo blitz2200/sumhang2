@@ -30,9 +30,12 @@ app.controller('JoinMemberController', ['$scope', 'sumhangFactory',
                                         function ($scope, sumhangFactory) {
 	
 	
-
-
+/*
+	 $scope.complete = function(content) {
+	      console.log(content); // process content
+	    }*/
     $scope.addMemberRequest = function () {
+    	
     	alert("addMemberRequest event detected...");
     	alert($scope.newMember.id);
     	addMember($scope.newMember);
