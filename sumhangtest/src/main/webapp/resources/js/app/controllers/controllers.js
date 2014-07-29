@@ -1,4 +1,13 @@
-﻿
+﻿app.controller('IntroController', function ($scope, sumhangService) {
+
+    init();
+
+    function init() {
+    	
+    }
+    //you need to describe event handler below... 
+});
+
 app.controller('LoginController', ['$scope', 'sumhangFactory', 
                                      function ($scope, sumhangFactory) {
     
@@ -25,9 +34,6 @@ app.controller('JoinMemberController', ['$scope', 'sumhangFactory',
 
     $scope.addMemberRequest = function () {
     	alert("addMemberRequest event detected...");
-    	
-    	
-//        sumhangService.insertMember("yihyosang", "yi hyo sang", "1234", "little tree", "1980/12/23", "male", "C:\picture.jpg", "yes", "yes");
     	alert($scope.newMember.id);
     	addMember($scope.newMember);
     	
@@ -54,7 +60,7 @@ app.controller('LeftSideController', function ($scope, sumhangService) {
     //you need to describe event handler below... 
 });
 
-app.controller('AddTripController', ['$scope', 'sumhangFactory', 
+app.controller('AddTripController', ['$scope', 'addTripFactory', 
                                    function ($scope, addTripFactory) {
 
     $scope.addTripRequest = function () {

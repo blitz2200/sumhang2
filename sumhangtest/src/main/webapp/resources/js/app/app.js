@@ -1,24 +1,4 @@
-﻿/// <reference path="../Scripts/angular-1.1.4.js" />
-
-/*#######################################################################
-  
-  Dan Wahlin
-  http://twitter.com/DanWahlin
-  http://weblogs.asp.net/dwahlin
-  http://pluralsight.com/training/Authors/Details/dan-wahlin
-
-  Normally like to break AngularJS apps into the following folder structure
-  at a minimum:
-
-  /app
-      /controllers      
-      /directives
-      /services
-      /partials
-      /views
-
-  #######################################################################*/
-$(function () {
+﻿$(function () {
 
 	//css 로딩하기
 	loadCSS = function (href) {
@@ -34,32 +14,38 @@ var app = angular.module('sumhangApp', ['ngRoute']);
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
     $routeProvider
-        .when('/addtrip',
+    	.when('/intro',    			
             {
-                controller: 'AddTripController',
-                templateUrl: 'partials/addTrip.html'
+                controller: 'IntroController',
+                templateUrl: 'partials/intro.html'
             })
-        .when('/joinmember',
-            {
-                controller: 'JoinMemberController',
-                templateUrl: 'partials/joinMember.html'
-            })    
-        .when('/leftside',
-            {
-                controller: 'LeftSideController',
-                templateUrl: 'partials/leftSide.html'
-            })
-        .when('/login',
+    	.when('/login',    			
             {
                 controller: 'LoginController',
                 templateUrl: 'partials/login.html'
             })
+        .when('/addTrip',
+            {
+                controller: 'AddTripController',
+                templateUrl: 'partials/addTrip.html'
+            })
+        .when('/joinMember',
+            {
+                controller: 'JoinMemberController',
+                templateUrl: 'partials/joinMember.html'
+            })    
+        .when('/leftSide',
+            {
+                controller: 'LeftSideController',
+                templateUrl: 'partials/leftSide.html'
+            })
+       
         .when('/main',
             {
                 controller: 'MainController',
                 templateUrl: 'partials/main.html'
             })
-        .when('/modifymember',
+        .when('/modifyMember',
             {
                 controller: 'ModifyMemberController',
                 templateUrl: 'partials/modifyMember.html'
@@ -89,6 +75,6 @@ app.config(function ($routeProvider) {
                 controller: 'VersionInfoController',
                 templateUrl: 'partials/versionInfo.html'
             })
-        .otherwise({ redirectTo: '/login' });
+        .otherwise({ redirectTo: '/intro' });
 });
 
