@@ -1,103 +1,95 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-
- <!-- Custom styles for this template -->
-  <link href="resources/css/register.css" type="text/css" rel="stylesheet">
- <!-- Bootstrap core CSS -->
-    <link href="resources/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-
+<div class="login view">
+    <div class="container">
+ 
 <!-- page name -->
-	<div class="page-header">
-  		<h1>회원가입</h1>
-	</div>
-	
-<!-- body  -->
-   <body class="main">
+		<div class="page-header">
+  			<h1>회원가입</h1>
+		</div>
   	
-    <form class="form-horizontal" role="form" data-ng-submit="addMemberRequest()" data-ng-model="newMember">
-		  <div class="form-group">
-		    	<label for="inputEmail3" class="col-xs-2 control-label">이메일</label>
-		   	<div class="col-xs-8">
-		      	<input type="email" class="form-control" id="inputEmail3" placeholder="Email" data-ng-model="newMember.email">
-		   	</div>
-		  </div>
-		  
-		  <div class="form-group">
-		    	<label for="inputPassword3" class="col-xs-2 control-label" >비밀번호</label>
-		    <div class="col-xs-8">
-		      	<input type="password" class="form-control" id="inputPassword3" placeholder="Password" data-ng-model="newMember.password">
-		    </div>
-		  </div>		 		
-		  
-		    <div class="form-group">
-		    	<label for="inputPassword3" class="col-xs-2 control-label">비밀번호 확인</label>
-		    <div class="col-xs-8">
-		      	<input type="password" class="form-control" id="inputPassword3" placeholder="Password" data-ng-model="newMember.password">
-		    </div>
-		  </div>
-		  
-		    <div class="form-group">
-		    	<label for="inputNickname" class="col-xs-2 control-label">닉네임</label>
-		    <div class="col-xs-8">
-		      	<input type="text" class="form-control" id="nickname" placeholder="Nickname" data-ng-model="newMember.nick">
-		    </div>
-		  </div>
-		  
-		   <div class="form-group">
-		    	<label for="inputName" class="col-xs-2 control-label">이름</label>
-		    <div class="col-xs-8">
-		      	<input type="text" class="form-control" id="name" placeholder="name" data-ng-model="newMember.name">
-		    </div>
-		  </div>
-		  
-		  <div class="form-group">
-		    	<label for="checkGender" class="col-xs-2 control-label">성별</label>
-		    <div class="col-xs-8">
-		      	<input type="radio" class="optionsRadios" value="man" checked data-ng-model="newMember.gender">
-   			남
-   			<input type="radio" class="optionsRadios" value="woman" data-ng-model="newMember.gender">
-   			여
-		    </div>
-		  </div>
-		  	  
-		  <div class="form-group">
-		    	<label for="exampleInputFile" class="col-xs-2 control-label">프로필 사진</label>
-		    	<div class="col-xs-8">
-		    		<input type="file" id="exampleInputFile" data-ng-model="newMember.photo">
-		   				 <!-- <p class="help-block">프로필 사진</p> -->
-		  		</div>
-		  </div>
-		  
-		   <div class="form-group">
-		    	<label for="checkPushmessage" class="col-xs-2 control-label">푸쉬메시지</label>
-		    <div class="col-xs-8">
-		      	<input type="radio" class="optionsRadios" value="agree" checked data-ng-model="newMember.push">
-   			수락
-   			<input type="radio" class="optionsRadios" value="disagree" data-ng-model="newMember.push">
-   			거절
-		    </div>
-		  </div>
-		  
-		   <div class="form-group">
-		    	<label for="invitePushmessage" class="col-xs-2 control-label">초대메시지</label>
-		    <div class="col-xs-8">
-		      	<input type="radio" class="optionsRadios" value="agree" checked data-ng-model="newMember.invite">
-   			수락
-   			<input type="radio" class="optionsRadios" value="disagree" data-ng-model="newMember.invite">
-   			거절
-		    </div>
-		  </div>
-  
-  
-		  <div class="form-group">
-		    	<div class="col-sm-offset-2 col-sm-10">
-		      		<button type="submit" class="btn btn-info btn-xs-5" id="registerbtn">가입하기</button>
-		    	</div>
-		  </div>
-		  
-</form>
-    
+	    <form class="form-horizontal" role="form" data-ng-submit="addMemberRequest()" 
+	    	  data-ng-upload="complete(content)" enctype="multipart/form-data" data-ng-model="newMember">
+			  <div class="form-group">
+			    	<label for="inputEmail3" class="col-xs-2 control-label">이메일</label>
+			   	<div class="col-xs-8">
+			      	<input type="email" class="form-control" id="inputEmail3" placeholder="Email" data-ng-model="newMember.email">
+			   	</div>
+			  </div>
+			  
+			  <div class="form-group">
+			    	<label for="inputPassword3" class="col-xs-2 control-label" >비밀번호</label>
+			    <div class="col-xs-8">
+			      	<input type="password" class="form-control" id="inputPassword3" placeholder="Password" data-ng-model="newMember.password">
+			    </div>
+			  </div>		 		
+			  
+			    <div class="form-group">
+			    	<label for="inputPassword3" class="col-xs-2 control-label">비밀번호 확인</label>
+			    <div class="col-xs-8">
+			      	<input type="password" class="form-control" id="inputPassword3" placeholder="Password" data-ng-model="newMember.password">
+			    </div>
+			  </div>
+			  
+			    <div class="form-group">
+			    	<label for="inputNickname" class="col-xs-2 control-label">닉네임</label>
+			    <div class="col-xs-8">
+			      	<input type="text" class="form-control" id="nickname" placeholder="Nickname" data-ng-model="newMember.nick">
+			    </div>
+			  </div>
+			  
+			   <div class="form-group">
+			    	<label for="inputName" class="col-xs-2 control-label">이름</label>
+			    <div class="col-xs-8">
+			      	<input type="text" class="form-control" id="name" placeholder="name" data-ng-model="newMember.name">
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    	<label for="checkGender" class="col-xs-2 control-label">성별</label>
+			    <div class="col-xs-8">
+			      	<input type="radio" class="optionsRadios" value="man" checked data-ng-model="newMember.gender">
+	   			남
+	   			<input type="radio" class="optionsRadios" value="woman" data-ng-model="newMember.gender">
+	   			여
+			    </div>
+			  </div>
+			  	  
+			  <div class="form-group">
+			    	<label for="exampleInputFile" class="col-xs-2 control-label">프로필 사진</label>
+			    	<div class="col-xs-8">
+			    		<input type="file" id="exampleInputFile" data-ng-model="newMember.photo">
+			   				 <!-- <p class="help-block">프로필 사진</p> -->
+			  		</div>
+			  </div>
+			  
+			   <div class="form-group">
+			    	<label for="checkPushmessage" class="col-xs-2 control-label">푸쉬메시지</label>
+			    <div class="col-xs-8">
+			      	<input type="radio" class="optionsRadios" value="agree" checked data-ng-model="newMember.push">
+	   			수락
+	   			<input type="radio" class="optionsRadios" value="disagree" data-ng-model="newMember.push">
+	   			거절
+			    </div>
+			  </div>
+			  
+			   <div class="form-group">
+			    	<label for="invitePushmessage" class="col-xs-2 control-label">초대메시지</label>
+			    <div class="col-xs-8">
+			      	<input type="radio" class="optionsRadios" value="agree" checked data-ng-model="newMember.invite">
+	   			수락
+	   			<input type="radio" class="optionsRadios" value="disagree" data-ng-model="newMember.invite">
+	   			거절
+			    </div>
+			  </div>
+	  
+	  
+			  <div class="form-group">
+			    	<div class="col-sm-offset-2 col-sm-10">
+			      		<button type="submit" class="btn btn-info btn-xs-5" id="registerbtn">가입하기</button>
+			    	</div>
+			  </div>
+			  
+			</form>
+ 	 </div>
+</div>
     
 	
