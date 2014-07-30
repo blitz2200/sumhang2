@@ -31,62 +31,64 @@ import com.google.gson.Gson;
 public class UserController {
 	@Autowired
     private SqlSession sqlSession;
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 
 	
-	@RequestMapping(value = "/addMember", method = RequestMethod.POST)
+	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public @ResponseBody String addMember(@RequestBody String user){
-			System.out.println("넘어온데이타는?"+user);
+			System.out.println("넘어온 유저 데이타는?"+user);
 			UserVO addUser;
 			Gson gson = new Gson();
 			addUser=gson.fromJson(user, UserVO.class);
-			System.out.println("디비에 넣을 데이타는?"+addUser);
+			System.out.println("디비에 넣을 유저 데이타는?"+addUser);
 			sqlSession.insert("userControlMapper.addMember", addUser);
 	
 		return user;
 	}
-/*	
-	@RequestMapping(value = "/addMember", method = RequestMethod.POST)
-	public @ResponseBody String addMember(@RequestBody String user,
-			@RequestParam("memberFile") MultipartFile file){
+	
+	@RequestMapping(value = "/addFile", method = RequestMethod.POST)
+	public @ResponseBody String addMember(@RequestBody MultipartFile file){
+		System.out.println("넘어온 파일 데이타는?"+file);
 			
-		UUID randomUUID = UUID.randomUUID();
+		//UUID randomUUID = UUID.randomUUID();
 			if(!file.isEmpty()){
 				try{
 					byte[] bytes=file.getBytes();
+					
 					String userPhotoFile=file.getOriginalFilename();
-					System.out.println(userPhotoFile);//업로드 파일이름
+					System.out.println("업로드 파일이름 : "+userPhotoFile);//업로드 파일이름
 					String rootPath = System.getProperty("catalina.home"); 
-					System.out.println(rootPath);//톰캣홈
-					File dir = new File(rootPath + randomUUID+File.separator + userPhotoFile);
+					System.out.println("톰캣홈 : "+rootPath);//톰캣홈
+					File dir = new File(rootPath + File.separator + "userPhotoFiles");
 					if(!dir.exists())
 						dir.mkdir();
+					System.out.println("dir absoulutepath :" +dir.getAbsolutePath());
 					
 					File serverFile = new File(dir.getAbsolutePath() + File.separator + userPhotoFile);
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 					stream.write(bytes);
 					stream.close();
-					logger.info("Server File Location="+serverFile.getAbsolutePath());
-					System.out.println("Your succesas fully file="+userPhotoFile);
+					
+					System.out.println("파일 업로드 성공="+userPhotoFile);
 				}catch (Exception e){
-					System.out.println("You failed to upload = >" + e.getMessage());
+					System.out.println("파일 업로드 실패  = >" + e.getMessage());
 				}
 			}else{
-					System.out.println("You failed to upload because the file was empty.");
+					System.out.println("파일 업로드실패 파일이 없습니다.");
 			}
-			UserVO addUser;
+			/*UserVO addUser;
 			Gson gson = new Gson();
 			addUser=gson.fromJson(user, UserVO.class);
 			
-			sqlSession.insert("userControlMapper.addMember", addUser);
+			sqlSession.insert("userControlMapper.addMember", addUser);*/
 		
 			//return user;
 			
 			//파일저장
 			//String name=addUser.getName();
 			
-		return user;
-	}*/
+		return "";
+	}
 	
 
 	/*
