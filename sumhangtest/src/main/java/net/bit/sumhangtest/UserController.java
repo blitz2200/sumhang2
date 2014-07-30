@@ -24,46 +24,58 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class UserController {
+	
 	@Autowired
     private SqlSession sqlSession;
 	
-
-	
+	//회원가입
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public @ResponseBody String addMember(@RequestBody String user){
+	public @ResponseBody String addUser(@RequestBody String user){
+		
 			System.out.println("넘어온 유저 데이타는?"+user);
+			//유저객체 생성
 			UserVO addUser;
+			
+			//JSON형식 GSON사용하여 스트링으로 바꾸기 
 			Gson gson = new Gson();
 			addUser=gson.fromJson(user, UserVO.class);
-			System.out.println("디비에 넣을 유저 데이타는?"+addUser);
+			
+			//DB에 자료 넣기
+			System.out.println("디비에 넣을 유저 데이타는?"+addUser);			
 			sqlSession.insert("userControlMapper.addMember", addUser);
-	
+		
 		return user;
 	}
 	
+	//회원가입 파일저장
 	@RequestMapping(value = "/addFile", method = RequestMethod.POST)
-	public @ResponseBody String addMember(@RequestBody MultipartFile file){
+	public @ResponseBody String addFile(@RequestBody MultipartFile file){
 		System.out.println("넘어온 파일 데이타는?"+file);
-			
-		//UUID randomUUID = UUID.randomUUID();
-			if(!file.isEmpty()){
+		
+			if(!file.isEmpty()){ //파일 유효성 체크
 				try{
-					byte[] bytes=file.getBytes();
+					// 바이트에 넘어온 파일 저장
+					byte[] bytes=file.getBytes(); 
 					
+					//업로드 파일이름 변수에저장
 					String userPhotoFile=file.getOriginalFilename();
-					System.out.println("업로드 파일이름 : "+userPhotoFile);//업로드 파일이름
+					System.out.println("업로드 파일이름 : "+userPhotoFile);
+					
+					//저장할 파일 폴더 스트링에 저장 (톰캣홈으로 설정)
 					String rootPath = System.getProperty("catalina.home"); 
-					System.out.println("톰캣홈 : "+rootPath);//톰캣홈
+					System.out.println("톰캣홈 : "+rootPath);
+					
+					//파일 저장 풀경로 만들기 톰캣홈/파일이름
 					File dir = new File(rootPath + File.separator + "userPhotoFiles");
+					//디렉토리가 없다면 디렉토리 생성
 					if(!dir.exists())
 						dir.mkdir();
+					
 					System.out.println("dir absoulutepath :" +dir.getAbsolutePath());
 					
+					//서버에 파일 저장 
 					File serverFile = new File(dir.getAbsolutePath() + File.separator + userPhotoFile);
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 					stream.write(bytes);
@@ -76,47 +88,10 @@ public class UserController {
 			}else{
 					System.out.println("파일 업로드실패 파일이 없습니다.");
 			}
-			/*UserVO addUser;
-			Gson gson = new Gson();
-			addUser=gson.fromJson(user, UserVO.class);
-			
-			sqlSession.insert("userControlMapper.addMember", addUser);*/
-		
-			//return user;
-			
-			//파일저장
-			//String name=addUser.getName();
-			
+	
 		return "";
 	}
 	
 
-	/*
-	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-	public @ResponseBody String uploadFileHandler(@RequestParam("name") String name, 
-			@RequestParam("file") MultipartFile file) {
-		
-		if(!file.isEmpty()){
-			try{
-				byte[] bytes=file.getBytes();
-				
-				String rootPath = System.getProperty("catalina.home");
-				File dir = new File(rootPath + File.separator + "tmpFiles");
-				if(!dir.exists())
-					dir.mkdir();
-				
-				File serverFile = new File(dir.getAbsolutePath() + File.separator + name);
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
-				logger.info("Server File Location="+serverFile.getAbsolutePath());
-				return "Your succesas fully file="+name;
-			}catch (Exception e){
-				return "You failed to upload" + name + " = >" + e.getMessage();
-			}
-		}else{
-			return "You failed to upload"+name+"because the file was empty.";
-		}
-	}*/
 	
 }
