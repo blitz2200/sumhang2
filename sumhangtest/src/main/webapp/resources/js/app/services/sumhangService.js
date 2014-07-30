@@ -4,8 +4,7 @@ app.service('sumhangService', ['$http',function ($http) {
     
     this.addFile = function(file,uploadUrl){
     	var fd = new FormData();
-    	fd.append('file',file);
-    	    	
+    	fd.append('file',file);    	    	
     	$http({
     	 method:'POST',
     	 url : uploadUrl,
