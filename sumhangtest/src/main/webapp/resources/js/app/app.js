@@ -9,7 +9,7 @@
 });
 
 
-var app = angular.module('sumhangApp', ['ngRoute','ngUpload']);
+var app = angular.module('sumhangApp', ['ngRoute']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
