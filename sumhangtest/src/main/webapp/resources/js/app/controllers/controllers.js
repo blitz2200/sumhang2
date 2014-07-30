@@ -29,43 +29,36 @@ app.controller('LoginController', ['$scope', 'sumhangFactory',
 app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($scope, sumhangService) {
 	$scope.addMemberRequest = function(){
 		
+		alert("회원가입 시작");
+		
 		var user =$scope.newMember;
 		var uploadUrl="addFile.ajax";
 		var userUrl="addUser.ajax"
-		var file=$scope.file;
-		alert("회원가입 시작");
-    	alert('회원이메일:'+$scope.newMember.id);
-		alert('업로드 파일은 :' + JSON.stringify(file));
-		
-		sumhangService.addUser(user,userUrl);
-		sumhangService.addFile(file,uploadUrl);	
-		
-	}
+		var file=$scope.file;		
 	
-/*
-	 $scope.complete = function(content) {
-	      console.log(content); // process content
-	 }*/
-    /*$scope.addMemberRequest = function () {
-    	var file=$scope.file;
-    	alert("회원가입 시작");
-    	alert($scope.newMember.id);
-    	alert('업로드 파일은 ?' + JSON.stringify(file))
-    	var uploadUrl="addMember.ajax"
-    	addMember($scope.newMember,file);
-    	
-    };
+    	alert('회원가입 내용  :'+JSON.stringify(user));
+		alert('업로드 파일은 :' + JSON.stringify(file.name));
+		
+		//파일객체에서 이름을 빼서 userFile에 저장후 substr함수로 따음표 잘라내기
+		var userFile= JSON.stringify(file.name)
+					  .substr(1,JSON.stringify(file.name).length-2);
+		alert('유저파일은? :'+userFile)
+		
+		//회원가입 객체에 파일이름 추가 
+		user.photo=userFile;	
+		
+		alert("사진 파일 추가후 업로드"+JSON.stringify(user));
+		
+		
+		//유저객체 서비스에 전송
+		sumhangService.addUser(user,userUrl);
+		
+		//파일객체 서비스에 전송
+		sumhangService.addFile(file,uploadUrl);	
+	}
     
-    function addMember(newMember){
-    	sumhangFactory.addMember(newMember,file)
-    	.success(function(){
-    		alert(newMember);
-    	}).error(function (error){
-    		
-    	});
-    }*/
-    
-}]);
+}]); 
+//회원가입 controller 끝
 
 app.controller('LeftSideController', function ($scope, sumhangService) {
 
