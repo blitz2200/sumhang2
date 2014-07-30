@@ -26,30 +26,44 @@ app.controller('LoginController', ['$scope', 'sumhangFactory',
     };
 }]);
 
-app.controller('JoinMemberController', ['$scope', 'sumhangFactory', 
-                                        function ($scope, sumhangFactory) {
-	
+app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($scope, sumhangService) {
+	$scope.addMemberRequest = function(){
+		
+		var user =$scope.newMember;
+		var uploadUrl="addFile.ajax";
+		var userUrl="addUser.ajax"
+		var file=$scope.file;
+		alert("회원가입 시작");
+    	alert('회원이메일:'+$scope.newMember.id);
+		alert('업로드 파일은 :' + JSON.stringify(file));
+		
+		sumhangService.addUser(user,userUrl);
+		sumhangService.addFile(file,uploadUrl);	
+		
+	}
 	
 /*
 	 $scope.complete = function(content) {
 	      console.log(content); // process content
-	    }*/
-    $scope.addMemberRequest = function () {
-    	
-    	alert("addMemberRequest event detected...");
+	 }*/
+    /*$scope.addMemberRequest = function () {
+    	var file=$scope.file;
+    	alert("회원가입 시작");
     	alert($scope.newMember.id);
-    	addMember($scope.newMember);
+    	alert('업로드 파일은 ?' + JSON.stringify(file))
+    	var uploadUrl="addMember.ajax"
+    	addMember($scope.newMember,file);
     	
     };
     
     function addMember(newMember){
-    	sumhangFactory.addMember(newMember)
+    	sumhangFactory.addMember(newMember,file)
     	.success(function(){
     		alert(newMember);
     	}).error(function (error){
     		
     	});
-    }
+    }*/
     
 }]);
 
