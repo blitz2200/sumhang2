@@ -10,9 +10,15 @@ public class TripVO {
 	private String travelPho;
 	private int travelUserCount;
 	private String travelTag;
+	private int likenum;
 	
-	
-	
+	public int getLikenum() {
+		return likenum;
+	}
+
+	public void setLikenum(int likenum) {
+		this.likenum = likenum;
+	}
 	public String getTravelTag() {
 		return travelTag;
 	}
