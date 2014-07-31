@@ -1,30 +1,60 @@
-﻿app.controller('IntroController', function ($scope, sumhangService) {
+﻿app.controller('IntroController', ['$scope', 'sumhangFactory', 
+                                   function ($scope, sumhangFactory) {
+	
+	function loginCheck(){
+		sumhangFactory.loginCheck()
+		.success(function(data){ 
+			
+			console.log(data.isLogged);
+			if(data.isLogged){
+				location.hash = "main";
+			}else{
+				location.hash = "login";
+			}
+			
+		}).error(function (error){
+		
+		});
+	}
+	
+	$scope.loginCheck = function () {
+		console.log('logincheck invoked....');
+		loginCheck();
+	}
+	
+	
 
-    init();
-
-    function init() {
-    	
-    }
-    //you need to describe event handler below... 
-});
-
+	
+}]);
 
 app.controller('LoginController', ['$scope', 'sumhangFactory', 
                                      function ($scope, sumhangFactory) {
     
-
-    $scope.loginRequest = function () {        
-        alert('로그인 시작')
-        location.hash='/main';     
-    };
     
-    
-    function loginRequest(){
-
+    function loginRequest(loginInfo){
+    	sumhangFactory.loginRequest(loginInfo)
+    	.success(function(data){
+    		
+    		console.log(data);
+			if(data == ""){
+				location.hash = "login";
+			}else if(data.role == "noMember"){
+				location.hash = "login";
+			}else{
+				location.hash = "main";
+			}
+    		
+    	}).error(function (error){
+    		
+    	});
     }
 
+    $scope.loginRequest = function () {
+    	console.log('loginInfo :' + $scope.loginInfo);
+        loginRequest($scope.loginInfo);
+        
+    };
 }]);
-
 
 app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($scope, sumhangService) {
 	$scope.addMemberRequest = function(){
@@ -116,16 +146,16 @@ app.controller('MainController',['$scope','mainFactory', function ($scope, mainF
     main();
 
     function main() {
-    	alert('메인 컨트롤러 시작');
+    	console.log('메인 컨트롤러 시작');
     	
     	mainFactory.listMain()
     	.success(function(data){
-    		alert('로그인 성공 넘어온 데이타는 ?:'+ data);
+    		console.log('로그인 성공 넘어온 데이타는 ?:'+ data);
     		//메인 객체와 디비에서 넘어온 객체 연결 
     		$scope.trips=data;
-    		alert("메인에 넘길데이타 :" +$scope.trips);		
+    		console.log("메인에 넘길데이타 :" +$scope.trips);		
     	}).error(function (error){
-    		alert('로그인 실패');
+    		console.log('로그인 실패');
     	});
     }
     //you need to describe event handler below... 
