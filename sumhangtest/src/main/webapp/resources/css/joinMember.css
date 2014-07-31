@@ -1,0 +1,53 @@
+/*fonts*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+/* container */
+.container{
+	background: url('images/travel.jpg');
+	border-radius: 8px;
+	background-size: contain;
+	opacity: 0.8;
+} 
+
+/*form*/
+.form-horizontal{
+		margin: auto;
+	  	font-family: 'Nanum Gothic Coding', monospace;
+}
+
+/* page title */
+h1{
+	text-align: center;
+	color: white;
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+
+/*form label */
+.form-group label{
+	margin-left: 10px;
+}
+
+/*form input */
+.form-group input{
+	border-color: #3366ff;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+/*form radio */
+.form-group .optionsRadios{
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+/* form inputfile */
+.form-group #exampleInputFile{
+	margin-top: 10px;
+}
+
+/* registe button*/
+.form-group #registerbtn{
+	margin-left: 20px;
+	margin-top: 20px;
+	width:80%;
+}
