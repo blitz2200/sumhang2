@@ -99,10 +99,10 @@ angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
 			'method' : 'GET'    		
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
-			alert('메인 팩토리 성공'+data);
+			console.log('메인 팩토리 성공'+data);
 			
 		}).error(function(){
-			alert('메인 자료받아오기 실패');
+			console.log('메인 자료받아오기 실패');
 		})
 	};
 	//컨트롤러에 작업 완료후 객체 넘겨주기 

@@ -5,7 +5,7 @@
 	var cssLink = $("<link rel='stylesheet' type='text/css' href='" + href + "'>");
 	$("head").append(cssLink);
 	};
-	loadCSS("resources/css/sumhangManagementStyles.css");
+	loadCSS("");
 });
 
 

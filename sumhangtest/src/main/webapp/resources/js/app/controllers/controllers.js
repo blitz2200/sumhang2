@@ -128,16 +128,16 @@ app.controller('MainController',['$scope','mainFactory', function ($scope, mainF
     main();
 
     function main() {
-    	alert('메인 컨트롤러 시작');
+    	console.log('메인 컨트롤러 시작');
     	
     	mainFactory.listMain()
     	.success(function(data){
-    		alert('로그인 성공 넘어온 데이타는 ?:'+ data);
+    		console.log('로그인 성공 넘어온 데이타는 ?:'+ data);
     		//메인 객체와 디비에서 넘어온 객체 연결 
     		$scope.trips=data;
-    		alert("메인에 넘길데이타 :" +$scope.trips);		
+    		console.log("메인에 넘길데이타 :" +$scope.trips);		
     	}).error(function (error){
-    		alert('로그인 실패');
+    		console.log('로그인 실패');
     	});
     }
     //you need to describe event handler below... 
