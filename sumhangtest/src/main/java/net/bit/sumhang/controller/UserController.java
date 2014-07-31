@@ -3,22 +3,20 @@ package net.bit.sumhang.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.http.HttpSession;
 
-import javax.servlet.http.HttpServletRequest;
-
+import net.bit.sumhang.auth.UserAuth;
+import net.bit.sumhang.auth.UserAuthService;
 import net.bit.sumhang.domain.UserVO;
 
 import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,10 +25,57 @@ import com.google.gson.Gson;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
-    private SqlSession sqlSession;
-	
+	private SqlSession sqlSession;
+	private UserVO userVO;	
+	@Autowired
+	private UserAuthService userAuthService;
+
+	// 세션체크
+	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+	public @ResponseBody UserAuth loginCheck(HttpSession session, @RequestBody String loginInfo) {
+		
+		
+		
+		if(session.getAttribute("user") == null){
+			return null;
+		}else{
+			UserAuth userAuth= new UserAuth();
+			userAuth.setIsLogged(true);
+			System.out.println("uservo"+userVO);
+			return userAuth;
+		}		
+	}
+
+	// 회원가입
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public @ResponseBody UserVO loginRequest(HttpSession session, @RequestBody String loginInfo) {
+		
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		//JSON형식 GSON사용하여 스트링으로 바꾸기 
+		Gson gson = new Gson();
+		map = gson.fromJson(loginInfo, Map.class);		
+		
+		
+		userVO = userAuthService.authentication(map);
+		
+		if(userVO != null) {
+			if(userVO.getRole() != "noMember"){
+				session.setAttribute("user", userVO);
+				System.out.println("session에있는 user"+session.getAttribute("user"));
+			}
+			return userVO;
+		}else {
+			return null;
+		}
+		
+
+	}
+
 	//회원가입
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	public @ResponseBody String addUser(@RequestBody String user){
