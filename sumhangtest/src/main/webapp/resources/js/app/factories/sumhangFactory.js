@@ -1,21 +1,51 @@
 ﻿
 
 
-angular.module('sumhangApp')
+﻿angular.module('sumhangApp')
     .factory('sumhangFactory', ['$http', function($http) {
     	
     var urlBase = '';
     var sumhangFactory = {};
     
-    sumhangFactory.loginRequest = function () {
-    	
-    };
     
-   /* sumhangFactory.addMember = function (newMember,file) {    	
+    sumhangFactory.loginCheck = function () {    	
+    	return $http({
+    			'url' : 'loginCheck.ajax',
+    			'method' : 'POST',
+    			'headers': {'Content-Type' : 'application/json'}	
+    		}).success(function (data) {
+    			console.log('$http 성공');
+    			console.log(data);
+    		}).error(function () {
+    			
+    		});;
+    }
+    
+    
+    
+    
+    
+    sumhangFactory.loginRequest = function (loginInfo) {    	
+    	return $http({
+    			'url' : 'login.ajax',
+    			'method' : 'POST',
+    			'headers': {'Content-Type' : 'application/json'},
+	        	'data' : {'username': loginInfo.id ,
+	        			'password' : loginInfo.password }    		
+    		}).success(function (data) {
+    			console.log('loginRequest $http 성공');
+    			console.log(data);
+    			
+    		}).error(function () {
+    			
+    		});;
+    }
+    
+    sumhangFactory.addMember = function (newMember) {    	
     	return $http({
 	        	'url' : 'addMember.ajax',
 	        	'method' : 'POST',
-	        	'headers': {'Content-Type' : 'multipart/form-data'},
+	        	'headers': {'Content-Type' : 'application/json'},
 	        	'data' : newMember
     		}).success(function (data) {
     			alert(data.name);
@@ -23,7 +53,7 @@ angular.module('sumhangApp')
     		}).error(function (data) {
     			alert('fail');
     		});
-    };*/
+    };
     			
     			
     
@@ -31,7 +61,7 @@ angular.module('sumhangApp')
 }]);
 
 
-/*angular.module('sumhangApp')
+angular.module('sumhangApp')
 .factory('addTripFactory', ['$http', function($http) {
 	
 	var urlBase = '';
@@ -54,11 +84,10 @@ angular.module('sumhangApp')
 			}).error(function (data) {
 				alert('fail');
 			});
-	};*/
+	};
 				    
-/*	return addTripFactory;
-}]);*/
-
+	return addTripFactory;
+}]);
 
 //메인 리스트 팩토리 
 angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
@@ -73,10 +102,10 @@ angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
 			'method' : 'GET'    		
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
-			alert('메인 팩토리 성공'+data);
+			console.log('메인 팩토리 성공'+data);
 			
 		}).error(function(){
-			alert('메인 자료받아오기 실패');
+			console.log('메인 자료받아오기 실패');
 		})
 	};
 	//컨트롤러에 작업 완료후 객체 넘겨주기 
