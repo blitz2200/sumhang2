@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		<result property="travelPho" column="TRAVEL_PHO" jdbcType="VARCHAR" /> 
   		<result property="travelUserCount" column="TRAVEL_USER_COUNT" jdbcType="NUMERIC" />
   		<result property="travelTag" column="TRAVEL_TAG" jdbcType="VARCHAR" />
+  		<result property="likenum" column="likenum" jdbcType="NUMERIC"/>
   	</resultMap>
   	
   	<insert id="addTrip" parameterType="trip">
@@ -31,10 +32,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						#{travelTag} )
 	</insert>
 	
-	<select id="tripList" resultMap="travelSelectMap">
-		select TRAVEL, TITLE, TRAVEL_USER_COUNT,TRAVEL_START,TRAVEL_END from
-		TBOARD
+	<select id="selectTrip" resultMap="travelSelectMap">
+	
+		select b.TBOARD_NO, b.title, b.travel
+		, b.travel_start, b.travel_end
+		, b.travel_user_count, b.travel_pho
+		, u.user_photo , c.likenum
+		, n.participants_num
+		from TBOARD b left join 
+		(
+			select
+			TBOARD_NO,
+			USER_PHOTO,
+			row_num
+			from
+			(
+				select *,
+				@num := if(@first_column = TBOARD_NO, @num:= @num + 1, 1) as row_num,
+				@first_column:=TBOARD_NO as c
+				from tripParticipantsPhotoView order by TBOARD_NO, USER_PHOTO
+			) as t
+			,
+			(
+				select @first_column:='',@num:=0
+			) as r
+			having row_num<![CDATA[<=]]>3  
+		) u on( b.TBOARD_NO = u.TBOARD_NO)
+		left join participantsNumPerTripView n on (b.TBOARD_NO = n.TBOARD_NO)
+		left join tripLikeNumView c on (b.TBOARD_NO = c.TBOARD_NO)
+	
+
 	</select>
+	
 	
 	
 </mapper>
