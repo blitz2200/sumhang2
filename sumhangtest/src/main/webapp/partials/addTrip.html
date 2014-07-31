@@ -4,12 +4,12 @@
 			<h1> </h1>
 		</div>
 	
-		<form data-ng-submit="addTripRequest()" method="post"  class="form-horizontal"role="form">
+		<form data-ng-submit="addTripRequest()" class="form-horizontal">
 			<!-- 여행제목-->
 			<div class="form-group">
 				<label for="title" class="col-xs-4 control-label">여행제목</label>
 				<div class="col-xs-7" id="test">
-					<input type="text" class="form-control visible" id="title" ata-ng-model="newTrip.title"
+					<input type="text" class="form-control visible" id="title" data-ng-model="newTrip.title"
 						placeholder="제목을 입력하세요">
 				</div>
 			</div>
@@ -58,7 +58,7 @@
 			<div class="form-group photo">
 				<label for="pho" class="col-xs-4 control-label">사 진 </label>
 				<div class="col-xs-7">
-					<input type="file" class="custom-file-input" data-ng-model="newTrip.travelPho">
+					<input type="file" class="custom-file-input" data-file-model="tripfile" >
 				</div>
 			</div>
 	
