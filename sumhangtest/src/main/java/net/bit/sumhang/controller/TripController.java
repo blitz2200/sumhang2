@@ -2,6 +2,9 @@ package net.bit.sumhang.controller;
 
 
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import net.bit.sumhang.domain.TripVO;
@@ -13,9 +16,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
@@ -27,20 +34,72 @@ public class TripController {
 	@Autowired
     private SqlSession sqlSession;
 	
+	
+	//여행 등록
 	@RequestMapping(value = "/addTrip", method = RequestMethod.POST)
 	public @ResponseBody String addTrip(@RequestBody String trip){
-			System.out.println("찍히냐? ");
-			System.out.println(trip);
+			
+			System.out.println("넘어온 여행 데이타는?"+trip);
 		
+			//여행 객체 생성
 			TripVO addTrip;
+			
+			//JSON형식 GSON사용하여 스트링으로 바꾸기 
 			Gson gson = new Gson();
 			addTrip=gson.fromJson(trip, TripVO.class);
 			
+			//DB에 자료 넣기
+			System.out.println("디비에 넣을 여행 데이타는?"+addTrip);			
 			sqlSession.insert("tripControlMapper.addTrip", addTrip);
 			
 		return trip;
-	}
+	}	
 	
+	//여행 등록 파일 저장
+	@RequestMapping(value = "/addTripFile", method = RequestMethod.POST)
+	public @ResponseBody String addTripFile(@RequestPart MultipartFile tripfile){
+		
+		System.out.println("넘어온 파일 데이타는?"+tripfile);
+			
+		//파일 유효성 체크	
+		if(!tripfile.isEmpty()){
+				try{
+					//바이트에 넘어온 파일 저장
+					byte[] bytes=tripfile.getBytes();
+					
+					//업로드 파일 이름 변수에 저장
+					String tripPhotoFile=tripfile.getOriginalFilename();
+					System.out.println("업로드 파일 이름:"+ tripPhotoFile);
+					
+					//저장할 파일 폴더 스트링에 저장 (톰캣홈으로 설정)
+					String rootPath = System.getProperty("catalina.home"); 
+					System.out.println(rootPath);//톰캣홈
+					
+					//파일 저장 풀경로 만들기 톰캣홈/파일이름
+					File dir = new File(rootPath + File.separator + "tripPhotoFile");
+					//디렉토리가 없다면 디렉토리 생성
+					if(!dir.exists())
+						dir.mkdir();
+					
+					System.out.println("dir absoulutepath :" +dir.getAbsolutePath());
+					
+					//서버에 파일 저장
+					File serverFile = new File(dir.getAbsolutePath() + File.separator + tripPhotoFile);
+					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+					stream.write(bytes);
+					stream.close();
+					
+					System.out.println("여행게시판사진성공="+tripPhotoFile);
+				}catch (Exception e){
+					System.out.println("업로드 실패 = >" + e.getMessage());
+				}
+			}else{
+					System.out.println("파일 업로드 실패! 파일이 없습니다.");
+			}
+					
+		return "";
+	}
+
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public @ResponseBody List<TripVO> selectTrip(){
 			System.out.println("메인 리스트 시작...");
@@ -48,44 +107,5 @@ public class TripController {
 			System.out.println(sqlSession.selectList("tripControlMapper.selectTrip"));
 			return sqlSession.selectList("tripControlMapper.selectTrip");
 	}
-	
-	/*@RequestMapping(value = "/addTrip", method = RequestMethod.POST)
-	public @ResponseBody String addTrip(@RequestBody String trip,
-			@RequestParam("file") MultipartFile file){
-			
-		UUID randomUUID = UUID.randomUUID();
-			if(!file.isEmpty()){
-				try{
-					byte[] bytes=file.getBytes();
-					String tripPhotoFile=file.getOriginalFilename();
-					System.out.println(tripPhotoFile);//업로드 파일이름
-					String rootPath = System.getProperty("catalina.home"); 
-					System.out.println(rootPath);//톰캣홈
-					File dir = new File(rootPath + randomUUID+File.separator + tripPhotoFile);
-					if(!dir.exists())
-						dir.mkdir();
-					
-					File serverFile = new File(dir.getAbsolutePath() + File.separator + tripPhotoFile);
-					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-					stream.write(bytes);
-					stream.close();
-					logger.info("여행게시판사진 ="+serverFile.getAbsolutePath());
-					System.out.println("여행게시판사진성공="+tripPhotoFile);
-				}catch (Exception e){
-					System.out.println("업로드실패 = >" + e.getMessage());
-				}
-			}else{
-					System.out.println("파일이 없습니다.");
-			}
-			TripVO addTrip;
-			Gson gson = new Gson();
-			addTrip=gson.fromJson(trip, TripVO.class);
-			
-			sqlSession.insert("tripControlMapper.addTrip", addTrip);
-		
-			
-		return trip;
-	}*/
-
 	
 }
