@@ -1,60 +1,30 @@
-﻿app.controller('IntroController', ['$scope', 'sumhangFactory', 
-                                   function ($scope, sumhangFactory) {
-	
-	function loginCheck(){
-		sumhangFactory.loginCheck()
-		.success(function(data){ 
-			
-			console.log(data.isLogged);
-			if(data.isLogged){
-				location.hash = "main";
-			}else{
-				location.hash = "login";
-			}
-			
-		}).error(function (error){
-		
-		});
-	}
-	
-	$scope.loginCheck = function () {
-		console.log('logincheck invoked....');
-		loginCheck();
-	}
-	
-	
+﻿app.controller('IntroController', function ($scope, sumhangService) {
 
-	
-}]);
+    init();
+
+    function init() {
+    	
+    }
+    //you need to describe event handler below... 
+});
+
 
 app.controller('LoginController', ['$scope', 'sumhangFactory', 
                                      function ($scope, sumhangFactory) {
     
+
+    $scope.loginRequest = function () {        
+        alert('로그인 시작')
+        location.hash='/main';     
+    };
     
-    function loginRequest(loginInfo){
-    	sumhangFactory.loginRequest(loginInfo)
-    	.success(function(data){
-    		
-    		console.log(data);
-			if(data == ""){
-				location.hash = "login";
-			}else if(data.role == "noMember"){
-				location.hash = "login";
-			}else{
-				location.hash = "main";
-			}
-    		
-    	}).error(function (error){
-    		
-    	});
+    
+    function loginRequest(){
+
     }
 
-    $scope.loginRequest = function () {
-    	console.log('loginInfo :' + $scope.loginInfo);
-        loginRequest($scope.loginInfo);
-        
-    };
 }]);
+
 
 app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($scope, sumhangService) {
 	$scope.addMemberRequest = function(){
@@ -85,10 +55,13 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($s
 		
 		//파일객체 서비스에 전송
 		sumhangService.addFile(file,uploadUrl);	
+		
+        location.hash='/login';  
 	}
     
 }]); 
 //회원가입 controller 끝
+
 
 app.controller('LeftSideController', function ($scope, sumhangService) {
 
@@ -100,26 +73,41 @@ app.controller('LeftSideController', function ($scope, sumhangService) {
     //you need to describe event handler below... 
 });
 
-app.controller('AddTripController', ['$scope', 'addTripFactory', 
-                                   function ($scope, addTripFactory) {
+
+/*AddTrip Controller 시작*/
+app.controller('AddTripController', ['$scope',  'sumhangService', function ($scope, sumhangService) {
 
     $scope.addTripRequest = function () {
-    	alert("여행참가테스트...");
-    	alert($scope.newTrip.title);
-    	addTrip($scope.newTrip);
     	
-    };
-    
-    function addTrip(newTrip){
-    	addTripFactory.addTrip(newTrip)
-    	.success(function(){
-    		alert(newTrip);
-    	}).error(function (error){
-    		
-    	});
-    }
-    
+    	alert("여행참가신청 시작...");
+    	
+    	var trip =$scope.newTrip;
+		var uploadtripUrl="addTripFile.ajax";
+		var tripUrl="addTrip.ajax"
+		var tripfile=$scope.tripfile;		
+    	
+		alert('여행 등록 내용  :'+JSON.stringify(trip));
+		
+			alert('업로드 파일은 :' + JSON.stringify(tripfile.name));
+    	
+			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
+			var tripFile= JSON.stringify(tripfile.name)
+						  .substr(1,JSON.stringify(tripfile.name).length-2);
+			alert('여행파일은? :'+tripFile)
+			
+			//여행등록 객체에 파일이름 추가 
+			trip.travelPho=tripFile;	
+			
+			alert("사진 파일 추가후 업로드"+JSON.stringify(trip));
+			
+			//여행객체 서비스에 전송
+			sumhangService.addTrip(trip,tripUrl);
+			
+			//파일객체 서비스에 전송
+			sumhangService.addTripFile(tripfile,uploadtripUrl);	
+		}
 }]);
+
 
 app.controller('MainController',['$scope','mainFactory', function ($scope, mainFactory) {
 
@@ -128,16 +116,16 @@ app.controller('MainController',['$scope','mainFactory', function ($scope, mainF
     main();
 
     function main() {
-    	console.log('메인 컨트롤러 시작');
+    	alert('메인 컨트롤러 시작');
     	
     	mainFactory.listMain()
     	.success(function(data){
-    		console.log('로그인 성공 넘어온 데이타는 ?:'+ data);
+    		alert('로그인 성공 넘어온 데이타는 ?:'+ data);
     		//메인 객체와 디비에서 넘어온 객체 연결 
     		$scope.trips=data;
-    		console.log("메인에 넘길데이타 :" +$scope.trips);		
+    		alert("메인에 넘길데이타 :" +$scope.trips);		
     	}).error(function (error){
-    		console.log('로그인 실패');
+    		alert('로그인 실패');
     	});
     }
     //you need to describe event handler below... 
