@@ -1,6 +1,6 @@
-﻿body {
+﻿/* body {
     padding: 65px;
-}
+} */
 
 .view {
     left: 60px;
@@ -90,7 +90,7 @@ footer {
 
 
 
-//////////////////////// MainPage Css
+/*   MainPage Css */
 @font-face {
     font-family:'NEXONFOOTBALLGOTHICB';
     src:url('../font/NEXONFOOTBALLGOTHICB.TTF');
@@ -251,7 +251,7 @@ li .visible{
     font-family:'NEXONFOOTBALLGOTHICB', sans-serif;
     color: #a80000;
 }
-//////////////////////////////End of MainPage Css
+ 
 
 
 

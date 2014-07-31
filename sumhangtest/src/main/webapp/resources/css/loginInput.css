@@ -1,77 +1,98 @@
-body{
-	position:relative;
- 	padding-top: 20px;
- 	padding-bottom: 50px;
+
+
+/*제주고딕*/
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+/*.JejuGothic { font-family: 'Jeju Gothic', serif;  }*/
+
+/*나눔펜글씨*/
+ @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+/*font-family: 'Nanum Pen Script', cursive;*/
+
+
+ 
+
+div.login.view.ng-scope{
+  background: url('images/16.jpg')  no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-/* ������ */
-.main:after {
-	content:'';	
-	position:absolute;
-	top:0;
-	left:0;
+div.container.login{
 	
-	width:1000px;
-	height:800px;
-	/*background-image: url("../images/TK.jpg");
-	background-size: cover;*/
-	opacity:0.5;
+	height:600px;
+}
+
+
+
+
+
+div.titleArea{
 	
+	text-align:center;
+	margin-top:10%;
+	margin-bottom:10%;
+}
+
+p.titleTop{
+	
+	font-family: 'Jeju Gothic', serif;
+	font-size:20px;
+	color:white;
+	text-align: left;
+}
+
+p.titleName{
+	
+	margin-top:0;
+	color:white;
+	 font-family: 'Jeju Gothic', serif;
+	font-size:70px;	
+	font-weight:700;
 	
 }
-.main{	
-	positon:relative;
-	width: 80%;
-	margin: auto;
-} 
 
-/* ���� */
-h1{
+ .title{
+	
+	margin-top:20%;
+	margin-left:auto;
+	margin-right:auto;	
 	text-align: center;
+	border: thick solid white;
+	border-radius: 20px;
+	color:white;
+	width:50%;
+	 font-family: 'Jeju Gothic', serif;
+	font-size:50px;
+	font-weight: 700;
 	
 }
 
-/* ���� */
-.form-horizontal{
-	opacity:1;
+
+
+section.banner2{
 	
-}
-/* .form-horizontal:after{
-	opacity:0;
-} */
-.form-group .visible{
-	opacity:1;
-	z-index:10;
-}
-
-
-/* signin ��ư */
-.form-group #signinbtn{
-padding: 5px 5px;
-font-size: 15px;
-line-height: 1.33;
-border-radius: 6px;
-width:120%;
-opacity:1;
-z-index:10;
-
+ 	width:50%;
+ 	margin-left:auto;
+ 	margin-right:auto;
+	
+	
+	
+	 
 }
 
-/* ���̵� ã�� ��ũ */
-.form-group .find{
-	margin-left: 14%;
-}
 
-.form-group #findid{
-	/*margin-right: 30px;*/
-}
 
-/* social button */
-.social{|
-	padding-top: 10px;
-	text-align: center;	
-}
+/* button */
 
-.social button{
-	margin-right: 15px;
+button.btn.btn-lg.btn-primary.btn-block{
+	
+ 
+	 font-size:20px;
+	 width:50%;
+	 margin:auto;
+ 
+	
+	
 }

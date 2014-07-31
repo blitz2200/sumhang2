@@ -1,8 +1,8 @@
-body{
+/* body{
 	position:relative;
  	padding-top: 30px;
  	padding-bottom: 50px;
-} 
+}  */
 
 .main{
 	background-image: url("../resources/img/TK.jpg");
@@ -13,7 +13,7 @@ body{
 
 } 
 
-/* Æû°ü·Ã */
+/* ï¿½ï¿½ï¿½ï¿½ */
 .form-horizontal{
 		margin: auto;
 		background-color: #ccccff;
@@ -23,36 +23,36 @@ body{
           	border-radius: 6;
 }
 
-/* Á¦¸ñ */
+/* ï¿½ï¿½ï¿½ï¿½ */
 h1{
 	text-align: center;
 	color: #3333ff;
 }
 
-/* ¶óº§ */
+/* ï¿½ï¿½ */
 .form-group label{
 	margin-left: 5px;
 }
 
-/* input »óÀÚ */
+/* input ï¿½ï¿½ï¿½ï¿½ */
 .form-group input{
 	border-color: #3366ff;
 	margin-left: 15px;
 	margin-top: 10px;
 }
 
-/* ¼ºº° Ã¼Å©¹Ú½º */
+/* ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ú½ï¿½ */
 .form-group .optionsRadios{
 	margin-left: 15px;
 	margin-top: 10px;
 }
 
-/* »çÁø¾÷·Îµå */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½ */
 .form-group #exampleInputFile{
 	margin-top: 10px;
 }
 
-/* °¡ÀÔ¹öÆ° */
+/* ï¿½ï¿½ï¿½Ô¹ï¿½Æ° */
 .form-group #registerbtn{
 	margin-left: 20px;
 	margin-top: 20px;
