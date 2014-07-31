@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		<result property="photo" column="USER_PHOTO" jdbcType="VARCHAR" />
   		<result property="push" column="PUSH" jdbcType="VARCHAR" />
   		<result property="invite" column="INVITE" jdbcType="VARCHAR" /> 	
-  		<result property="signout" column="SIGNOUT" jdbcType="VARCHAR" /> 
+  		<result property="signOut" column="SIGNOUT" jdbcType="VARCHAR" /> 
   	</resultMap>
 
     
@@ -33,6 +33,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{invite},				
 					#{signOut} )	
 	</insert>
+	
+	<select id="getUser" parameterType="String" resultMap="userSelectMap">
+		Select
+		ID, NAME, PASSWD, NICK, BIRTH, GENDER, USER_PHOTO, PUSH, INVITE, SIGNOUT
+		from USER
+		where ID=#{id}
+	</select>
 	
 	
 </mapper>
