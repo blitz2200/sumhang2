@@ -11,6 +11,9 @@ public class UserVO {
 	private String push;
 	private String invite;
 	private String signOut;
+	private String role;
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -66,12 +69,21 @@ public class UserVO {
 		this.invite = invite;
 	}
 
-public String getSignOut() {
-	return signOut;
-}
-public void setSignOut(String signOut) {
-	this.signOut = signOut;
-}
+	public String getSignOut() {
+		return signOut;
+	}
+
+	public void setSignOut(String signOut) {
+		this.signOut = signOut;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
