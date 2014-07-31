@@ -1,18 +1,21 @@
-﻿angular.module('sumhangApp')
+﻿
+
+
+angular.module('sumhangApp')
     .factory('sumhangFactory', ['$http', function($http) {
     	
     var urlBase = '';
     var sumhangFactory = {};
     
     sumhangFactory.loginRequest = function () {
-    	return $http.post(urlBase+'/login');
+    	
     };
     
-    sumhangFactory.addMember = function (newMember) {    	
+   /* sumhangFactory.addMember = function (newMember,file) {    	
     	return $http({
 	        	'url' : 'addMember.ajax',
 	        	'method' : 'POST',
-	        	'headers': {'Content-Type' : 'application/json'},
+	        	'headers': {'Content-Type' : 'multipart/form-data'},
 	        	'data' : newMember
     		}).success(function (data) {
     			alert(data.name);
@@ -20,7 +23,7 @@
     		}).error(function (data) {
     			alert('fail');
     		});
-    };
+    };*/
     			
     			
     
@@ -55,3 +58,24 @@ angular.module('sumhangApp')
 				    
 	return addTripFactory;
 }]);
+
+angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
+	
+	var mainFactory = {};
+	
+	mainFactory.listMain = function(){
+	
+		return $http({
+			'url' :"main.ajax",
+			'method' : 'GET'    		
+		}).success(function(data){
+			alert('메인 팩토리 성공'+data);
+			
+		}).error(function(){
+			alert('메인 자료받아오기 실패');
+		})
+	};
+	
+	return mainFactory;
+
+}])
