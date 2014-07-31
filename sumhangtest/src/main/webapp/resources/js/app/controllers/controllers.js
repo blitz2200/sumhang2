@@ -1,5 +1,5 @@
-﻿app.controller('IntroController', ['$scope', 'sumhangFactory', 
-                                   function ($scope, sumhangFactory) {
+﻿app.controller('IntroController', ['$scope','$location', 'sumhangFactory', 
+                                   function ($scope,$location, sumhangFactory) {
 	
 	function loginCheck(){
 		sumhangFactory.loginCheck()
@@ -7,9 +7,9 @@
 			
 			console.log(data.isLogged);
 			if(data.isLogged){
-				location.hash = "main";
+				$location.path('/main');
 			}else{
-				location.hash = "login";
+				$location.path('/login');
 			}
 			
 		}).error(function (error){
@@ -27,8 +27,8 @@
 	
 }]);
 
-app.controller('LoginController', ['$scope', 'sumhangFactory', 
-                                     function ($scope, sumhangFactory) {
+app.controller('LoginController', ['$scope', '$location','sumhangFactory', 
+                                     function ($scope, $location, sumhangFactory) {
     
     
     function loginRequest(loginInfo){
@@ -37,11 +37,11 @@ app.controller('LoginController', ['$scope', 'sumhangFactory',
     		
     		console.log(data);
 			if(data == ""){
-				location.hash = "login";
+				$location.path('/login');
 			}else if(data.role == "noMember"){
-				location.hash = "login";
+				$location.path('/login');
 			}else{
-				location.hash = "main";
+				$location.path('/main');
 			}
     		
     	}).error(function (error){
