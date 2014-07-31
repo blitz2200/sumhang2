@@ -1,27 +1,59 @@
-﻿app.controller('IntroController', function ($scope, sumhangService) {
+﻿app.controller('IntroController', ['$scope', 'sumhangFactory', 
+                                   function ($scope, sumhangFactory) {
+	
+	function loginCheck(){
+		sumhangFactory.loginCheck()
+		.success(function(data){ 
+			
+			console.log(data.isLogged);
+			if(data.isLogged){
+				location.hash = "main";
+			}else{
+				location.hash = "login";
+			}
+			
+		}).error(function (error){
+		
+		});
+	}
+	
+	$scope.loginCheck = function () {
+		console.log('logincheck invoked....');
+		loginCheck();
+	}
+	
+	
 
-    init();
-
-    function init() {
-    	
-    }
-    //you need to describe event handler below... 
-});
+	
+}]);
 
 app.controller('LoginController', ['$scope', 'sumhangFactory', 
                                      function ($scope, sumhangFactory) {
     
-
-    $scope.loginRequest = function () {        
-        alert('로그인 시작')
-        location.hash='/main';     
-    };
     
-    
-    function loginRequest(){
-
+    function loginRequest(loginInfo){
+    	sumhangFactory.loginRequest(loginInfo)
+    	.success(function(data){
+    		
+    		console.log(data);
+			if(data == ""){
+				location.hash = "login";
+			}else if(data.role == "noMember"){
+				location.hash = "login";
+			}else{
+				location.hash = "main";
+			}
+    		
+    	}).error(function (error){
+    		
+    	});
     }
 
+    $scope.loginRequest = function () {
+    	console.log('loginInfo :' + $scope.loginInfo);
+        loginRequest($scope.loginInfo);
+        
+    };
 }]);
 
 app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($scope, sumhangService) {
@@ -89,27 +121,15 @@ app.controller('AddTripController', ['$scope', 'addTripFactory',
     
 }]);
 
-app.controller('MainController',['$scope','mainFactory', function ($scope, mainFactory) {
+app.controller('MainController', function ($scope, sumhangService) {
 
-	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
-	//메인 html파일과 연결 시킴 
-    main();
+    init();
 
-    function main() {
-    	alert('메인 컨트롤러 시작');
+    function init() {
     	
-    	mainFactory.listMain()
-    	.success(function(data){
-    		alert('로그인 성공 넘어온 데이타는 ?:'+ data);
-    		//메인 객체와 디비에서 넘어온 객체 연결 
-    		$scope.trips=data;
-    		alert("메인에 넘길데이타 :" +$scope.trips);		
-    	}).error(function (error){
-    		alert('로그인 실패');
-    	});
     }
     //you need to describe event handler below... 
-}]);
+});
 
 app.controller('ModifyMemberController', function ($scope, sumhangService) {
 
