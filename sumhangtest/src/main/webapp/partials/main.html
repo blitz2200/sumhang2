@@ -1,36 +1,43 @@
-	<div id="mainPage">
-		<div>
-			<h1>SUM행</h1>
-			<a href="#conf" data-icon="gear" data-iconpos="notext">conf</a>
-			<!--좌측 패널아이콘-->
-			<a href="#travelStatus" data-icon="bars" data-iconpos="notext">travelStatus</a>
-			<!--우측 패널 아이콘-->
+
+<div id="mainPage">
+	<div>
+		<h1>SUM행</h1>
+		<a href="#conf" data-icon="gear" data-iconpos="notext">conf</a>
+		<!--좌측 패널아이콘-->
+		<a  class="large button" pageslide="right" ps-speed="0.5" href="#rightPanel">Open Demo</a>
+
+		<!--우측 패널 아이콘-->
+	</div>
+	<a href="#/addTrip">여행모집</a>
+	<div id="my-wrapper" data-ng-model="triplist">
+
+		<div id="listview1">
+			<ul>
+
+				<li data-ng-repeat="trip in trips"><a href="#"> <img
+						src="resources/images/CANADA.jpg" class="imgMain visible">
+						<h1 class="visible">{{trip.travel}}</h1>
+						<div class="icons">
+							<img data-ng-src="resources/images/favorite.png"
+								class="favoImg visible" /> <span class="favoriteCount visible">{{trip.likenum}}</span>
+							<img src="resources/images/group2.png" class="groupImg visible" />
+							<span class="groupCount visible">{{trip.travelUserCount}}</span>
+						</div>
+						<p class="travelPhrase visible">{{trip.title}}</p>
+						<p class="travelPeriod visible">{{trip.travelStart}}~{{trip.travelEnd}}</p>
+						<img src="resources/images/sman1.png" class="faceThumb_3 visible">
+						<img src="resources/images/swoman4.png"
+						class="faceThumb_4 visible"> <img
+						src="resources/images/swoman1.png" class="faceThumb_5 visible">
+				</a></li>
+			</ul>
+
 		</div>
-		<a href="#/addTrip">여행모집</a>
-			<div id="my-wrapper" data-ng-model="triplist">
-	
-				<div id="listview1">
-				 	<ul >
-				 	
-				 		<li data-ng-repeat="trip in trips"><a href="#">
-				 			<img src="resources/images/CANADA.jpg" class="imgMain visible">
-				 			<h1 class="visible">{{trip.TRAVEL}}</h1>
-				 			<div class="icons">
-				 				<img data-ng-src="resources/images/favorite.png" class="favoImg visible"/>
-				 				<span class="favoriteCount visible">11</span>
-				 				<img src="resources/images/group2.png" class="groupImg visible"/>
-				 				<span class="groupCount visible">{{trip.TRAVEL_USER_COUNT}}</span>
-				 			</div>
-				 			<p class="travelPhrase visible">{{trip.TITLE}}</p>
-				 			<p class="travelPeriod visible">{{trip.TRAVEL_START}}~{{trip.TRAVEL_END}}</p>
-				 			<img src="resources/images/sman1.png" class="faceThumb_3 visible">
-				 			<img src="resources/images/swoman4.png" class="faceThumb_4 visible">
-				 			<img src="resources/images/swoman1.png" class="faceThumb_5 visible">
-				 		</a> </li>						
-					</ul>
-	
-			</div>
+		<div id="rightPanel">
+			<p>some random content...</p>
+			<a id="rightPanel-close" href="#">Click to close</a>
 		</div>
 	</div>
-	
+</div>
+
 
