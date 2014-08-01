@@ -2,8 +2,7 @@
     .factory('sumhangFactory', ['$http', function($http) {
     	
     var urlBase = '';
-    var sumhangFactory = {};
-    
+    var sumhangFactory = {};   
     
     sumhangFactory.loginCheck = function () {    	
     	return $http({
@@ -15,13 +14,9 @@
     			console.log(data);
     		}).error(function () {
     			
-    		});;
+    		});
     }
-    
-    
-    
-    
-    
+        
     sumhangFactory.loginRequest = function (loginInfo) {    	
     	return $http({
     			'url' : 'login.ajax',
@@ -37,8 +32,10 @@
     			
     		});;
     }
+    return sumhangFactory;
+}]);
     
-    sumhangFactory.addMember = function (newMember) {    	
+  /*  sumhangFactory.addMember = function (newMember) {    	
     	return $http({
 	        	'url' : 'addMember.ajax',
 	        	'method' : 'POST',
@@ -46,18 +43,14 @@
 	        	'data' : newMember
     		}).success(function (data) {
     			alert(data.name);
-    			location.hash = '/login';
+    			
     		}).error(function (data) {
     			alert('fail');
     		});
-    };
-    			
-    			
-    
-    return sumhangFactory;
-}]);
+    };*/
+    		
 
-
+/*
 angular.module('sumhangApp')
 .factory('addTripFactory', ['$http', function($http) {
 	
@@ -84,7 +77,7 @@ angular.module('sumhangApp')
 	};
 				    
 	return addTripFactory;
-}]);
+}]);*/
 
 //메인 리스트 팩토리 
 angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
