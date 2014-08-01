@@ -30,7 +30,7 @@
     			
     		}).error(function () {
     			
-    		});;
+    		});
     }
     return sumhangFactory;
 }]);
