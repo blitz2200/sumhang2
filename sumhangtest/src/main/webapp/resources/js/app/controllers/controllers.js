@@ -27,8 +27,8 @@
 	
 }]);
 
-app.controller('LoginController', ['$scope', '$location','sumhangFactory', 
-                                     function ($scope, $location, sumhangFactory) {
+app.controller('LoginController', ['$scope','sumhangFactory', 
+                                     function ($scope, sumhangFactory) {
     
     
     function loginRequest(loginInfo){
