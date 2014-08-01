@@ -1,6 +1,3 @@
-﻿
-
-
 ﻿angular.module('sumhangApp')
     .factory('sumhangFactory', ['$http', function($http) {
     	
