@@ -1,5 +1,5 @@
-﻿app.controller('IntroController', ['$scope','$location', 'sumhangFactory', 
-                                   function ($scope,$location, sumhangFactory) {
+﻿app.controller('IntroController', ['$scope','sumhangFactory', 
+                                   function ($scope, sumhangFactory) {
 	
 	function loginCheck(){
 		sumhangFactory.loginCheck()
@@ -7,9 +7,9 @@
 			
 			console.log(data.isLogged);
 			if(data.isLogged){
-				$location.path('/main');
+				$scope.location.path('/main');
 			}else{
-				$location.path('/login');
+				$scope.location.path('/login');
 			}
 			
 		}).error(function (error){
@@ -37,11 +37,11 @@ app.controller('LoginController', ['$scope', '$location','sumhangFactory',
     		
     		console.log(data);
 			if(data == ""){
-				$location.path('/login');
+				$scope.location.path('/login');
 			}else if(data.role == "noMember"){
-				$location.path('/login');
+				$scope.location.path('/login');
 			}else{
-				$location.path('/main');
+				$scope.location.path('/main');
 			}
     		
     	}).error(function (error){
@@ -86,7 +86,7 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($s
 		//파일객체 서비스에 전송
 		sumhangService.addFile(file,uploadUrl);	
 		
-        location.hash='/login';  
+		$scope.location.path('/login');  
 	}
     
 }]); 
@@ -139,13 +139,16 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 }]);
 
 
-app.controller('MainController',['$scope','mainFactory', function ($scope, mainFactory) {
+app.controller('MainController',['$scope','$route','mainFactory', function ($scope,$route, mainFactory) {
 
 	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
 	//메인 html파일과 연결 시킴 
-    main();
+	
+	//main();
+	$scope.checked;//This will be binded using the ps-open attribute
+	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
 
-    function main() {
+   /*function main() {
     	console.log('메인 컨트롤러 시작');
     	
     	mainFactory.listMain()
@@ -157,9 +160,11 @@ app.controller('MainController',['$scope','mainFactory', function ($scope, mainF
     	}).error(function (error){
     		console.log('로그인 실패');
     	});
-    }
+    }*/
     //you need to describe event handler below... 
 }]);
+
+
 
 app.controller('ModifyMemberController', function ($scope, sumhangService) {
 
