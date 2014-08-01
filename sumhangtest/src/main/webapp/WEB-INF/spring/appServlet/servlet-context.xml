@@ -72,8 +72,7 @@
     </beans:property>
   	</beans:bean>
 
-	<context:component-scan base-package="net.bit.sumhangtest" />
-	
+	<context:component-scan base-package="net.bit.sumhang" />
 	
 	
 </beans:beans>
