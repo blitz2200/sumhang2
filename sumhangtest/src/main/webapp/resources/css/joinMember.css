@@ -3,7 +3,7 @@
 
 /* container */
 .container-joinMemberview{
-	background: url('resources/images/travel.jpg');
+	background: url('../images/travel.jpg');
 	border-radius: 8px;
 	background-size: contain;
 	opacity: 0.9;
