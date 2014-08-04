@@ -1,13 +1,13 @@
-﻿/*$(function () {
-
+﻿$(function () {
+	
 	//css 로딩하기
 	loadCSS = function (href) {
 	var cssLink = $("<link rel='stylesheet' type='text/css' href='" + href + "'>");
 	$("head").append(cssLink);
 	};
-	loadCSS("");
+	loadCSS("resources/css/main.css");
 });
-*/
+
 
 var app = angular.module('sumhangApp', ['ngRoute']);
 
@@ -95,5 +95,21 @@ app.config(function ($routeProvider) {
 
 app.run(function($rootScope, $location){
 	$rootScope.location = $location;
+});
+
+app.directive('jqueryMobileTpl', function () {
+    return {
+        link: function (scope, elm, attr) {
+            //elm.trigger('create');
+        }
+    };
+});
+app.directive('repeatDone', function () {
+    return function (scope, element, attrs) {
+        // When the last element is rendered
+        if (scope.$last) { 
+            element.parent().parent().trigger('create');
+        }
+    }
 });
 
