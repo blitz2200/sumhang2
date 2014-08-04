@@ -64,6 +64,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
-	
+	<select id ="selectTripTimeLine" parameterType="user" resultMap="travelSelectMap">
+		select t.travel,t.title,t.travel,t.travel_start,t.travel_end
+			from TBOARD t, USER u
+		where u.USER_NO=t.TBOARD_NO and u.id=#{id}
+		
+	</select>	
 	
 </mapper>

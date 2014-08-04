@@ -186,15 +186,17 @@ app.controller('SettingsController', function ($scope, sumhangService) {
     //you need to describe event handler below... 
 });
 
-app.controller('TimeLineController', function ($scope, sumhangService) {
+app.controller('TimeLineController', ['$scope','$route','timeLineFactory',
+                                      function ($scope, $route, timeLineFactory) {
 
-    init();
-
-    function init() {
-    	
-    }
-    //you need to describe event handler below... 
-});
+	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
+	//메인 html파일과 연결 시킴 
+	
+	//main();
+	$scope.checked;//This will be binded using the ps-open attribute
+	$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
+	
+}]);
 
 app.controller('TripDetailController', function ($scope, sumhangService) {
 
