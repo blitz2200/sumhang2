@@ -1,43 +1,74 @@
+<!-- 메인 페이지  -->
+	<div id="mainPage">
 
-<div id="mainPage">
-	<div>
-		<h1>SUM행</h1>
-		<a href="#conf" data-icon="gear" data-iconpos="notext">conf</a>
-		<!--좌측 패널아이콘-->
-		<a  class="large button" pageslide="right" ps-speed="0.5" href="#rightPanel">Open Demo</a>
+<h1>SUM행</h1>
 
-		<!--우측 패널 아이콘-->
+<!-- 좌측 페이지 슬라이드 -->
+<a pageslide="left" href="#target" ps-speed="0.5" data-icon="gear"
+	data-iconpos="notext">conf</a>
+<!-- 셋팅 닫기 아이콘  -->
+<div id="target">
+	<img src="resources/images/x-mark-3-24.png" id="target-close" href="#">
+	</br>
+
+	<!-- settings icons -->
+	<div class=systemSettings1>
+		<img src="resources/images/checked-user-48.png" id="userInfo">
+		<!-- userInfo -->
+		<img src="resources/images/handshake-48.png" id="acceptance" href="#">
+		</br>
+		<!-- acceptance -->
 	</div>
-	<a href="#/addTrip">여행모집</a>
-	<div id="my-wrapper" data-ng-model="triplist">
 
-		<div id="listview1">
-			<ul>
+	<div class=systemSettings2>
+		<img src="resources/images/info-2-48.png" id="sysinfo">
+		<!-- info -->
+		<img src="resources/images/settings-7-48.png" id="settings">
+		<!-- settings -->
+	</div>
 
-				<li data-ng-repeat="trip in trips"><a href="#"> <img
-						src="resources/images/CANADA.jpg" class="imgMain visible">
-						<h1 class="visible">{{trip.travel}}</h1>
-						<div class="icons">
-							<img data-ng-src="resources/images/favorite.png"
-								class="favoImg visible" /> <span class="favoriteCount visible">{{trip.likenum}}</span>
-							<img src="resources/images/group2.png" class="groupImg visible" />
-							<span class="groupCount visible">{{trip.travelUserCount}}</span>
-						</div>
-						<p class="travelPhrase visible">{{trip.title}}</p>
-						<p class="travelPeriod visible">{{trip.travelStart}}~{{trip.travelEnd}}</p>
-						<img src="resources/images/sman1.png" class="faceThumb_3 visible">
-						<img src="resources/images/swoman4.png"
-						class="faceThumb_4 visible"> <img
-						src="resources/images/swoman1.png" class="faceThumb_5 visible">
-				</a></li>
-			</ul>
+	<div class=systemSettings2>
+		<button type="submit" class="btn btn-primary btn-xs-5"
+			id="logoutBtn">Logout</button>
+		<!-- logout -->
+	</div>
+</div>
+<!--좌측 패널아이콘 끝-->
 
-		</div>
-		<div id="rightPanel">
+<a href="#travelStatus" data-icon="bars" data-iconpos="notext">travelStatus</a>
+<a  class="large button" pageslide="right" ps-speed="0.5" href="#rightPanel">Open Demo</a>
+<!--우측 패널 아이콘-->
+
+<a href="#/addTrip">여행모집</a>
+<div id="my-wrapper" data-ng-model="triplist">
+
+	<div id="listview1">
+		<ul>
+
+			<li data-ng-repeat="trip in trips"><a href="#"> <img src="resources/images/CANADA.jpg" class="imgMain visible">
+					<h1 class="visible">{{trip.travel}}</h1>
+					<div class="icons">
+						<img data-ng-src="resources/images/favorite.png"
+							class="favoImg visible" /> <span class="favoriteCount visible">{{trip.likenum}}</span>
+						<img src="resources/images/group2.png" class="groupImg visible" />
+						<span class="groupCount visible">{{trip.travel_user_count}}</span>
+					</div>
+					<p class="travelPhrase visible">{{trip.title}}</p>
+					<p class="travelPeriod visible">{{trip.travelStart}}~{{trip.travelEnd}}</p>
+					<img src="resources/images/sman1.png" class="faceThumb_3 visible">
+					<img src="resources/images/swoman4.png" class="faceThumb_4 visible">
+					<img src="resources/images/swoman1.png" class="faceThumb_5 visible">
+			</a></li>
+		</ul>
+
+	</div>
+	
+	<div id="rightPanel">
 			<p>some random content...</p>
 			<a id="rightPanel-close" href="#">Click to close</a>
-		</div>
 	</div>
+		
+</div>
 </div>
 
 
