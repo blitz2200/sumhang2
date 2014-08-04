@@ -24,11 +24,7 @@ public class UserAuthService{
 		
 		userVO = sqlSession.selectOne("userControlMapper.getUser",(String)loginInfo.get("username"));
 		
-		if(sqlSession.selectOne("userControlMapper.getUser",(String)loginInfo.get("username")) == null){
-			userVO = new UserVO();
-			userVO.setRole("noMember");
-			return userVO;
-		}else if(loginInfo.get("password").equals(userVO.getPassword())){
+		if(loginInfo.get("password").equals(userVO.getPassword())){
 			
 			return userVO;	
 

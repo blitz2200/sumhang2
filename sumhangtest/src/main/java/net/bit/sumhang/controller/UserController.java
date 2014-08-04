@@ -48,7 +48,7 @@ public class UserController {
 		}		
 	}
 
-	// 회원가입
+	// 로그인
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public @ResponseBody UserVO loginRequest(HttpSession session, @RequestBody String loginInfo) {
@@ -64,10 +64,10 @@ public class UserController {
 		userVO = userAuthService.authentication(map);
 		
 		if(userVO != null) {
-			if(userVO.getRole() != "noMember"){
-				session.setAttribute("user", userVO);
-				System.out.println("session에있는 user"+session.getAttribute("user"));
-			}
+			
+			session.setAttribute("user", userVO);
+			System.out.println("session에있는 user"+session.getAttribute("user"));
+			
 			return userVO;
 		}else {
 			return null;
