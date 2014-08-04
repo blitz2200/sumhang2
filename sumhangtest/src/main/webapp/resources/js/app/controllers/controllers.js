@@ -32,6 +32,8 @@ app.controller('LoginController', ['$scope','sumhangFactory',
     
     
     function loginRequest(loginInfo){
+    	
+    		
     	sumhangFactory.loginRequest(loginInfo)
     	.success(function(data){
     		
@@ -45,12 +47,16 @@ app.controller('LoginController', ['$scope','sumhangFactory',
     	}).error(function (error){
     		
     	});
+    	    	
     }
 
     $scope.loginRequest = function () {
+    	$scope.submitted = true;
+    	if( $scope.loginForm.username.$valid && $scope.loginForm.password.$valid){
     	console.log('loginInfo :' + $scope.loginInfo);
         loginRequest($scope.loginInfo);
-        
+    	}
+    	
     };
 }]);
 
