@@ -38,8 +38,6 @@ app.controller('LoginController', ['$scope','sumhangFactory',
     		console.log(data);
 			if(data == ""){
 				$scope.location.path('/login');
-			}else if(data.role == "noMember"){
-				$scope.location.path('/login');
 			}else{
 				$scope.location.path('/main');
 			}
