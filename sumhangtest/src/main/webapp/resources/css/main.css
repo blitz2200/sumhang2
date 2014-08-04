@@ -1,0 +1,37 @@
+/*나눔고딕토딩 폰트*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+/* left slide	 */
+.ng-pageslide {
+	background: #eee;
+	opacity: 0.9;
+}
+
+/*  close icon  */
+#target-close {
+	float: right;
+}
+
+/*   settings icons 1st   */
+.systemSettings1 {
+	margin-top: 30%;
+	text-align: center;
+}
+
+/*    icons margin 1st     */
+#sysinfo {
+	margin-right: 20%;
+}
+
+/*   settings icons 2nd   */
+.systemSettings2 {
+	margin-top: 20%;
+	text-align: center;
+}
+
+/*    icons margin 2st     */
+#userInfo {
+	margin-right: 20%;
+}
+</style>
+
