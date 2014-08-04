@@ -6,8 +6,10 @@
      <title>Sumhang App</title>
      
       <!-- 외부 벤더 라이브러리  --> 
+      
      <link rel="stylesheet" href="resources/lib/jquery-ui.min.css" />
-     <link rel="stylesheet" href="resources/lib/bootstrap.min.css" />      
+     <link rel="stylesheet" href="resources/lib/bootstrap.min.css" />
+     <link rel="stylesheet" href="resources/lib/jquery.mobile-1.4.3.min.css" />   
       <!--  crossfade.js  -->   
       <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css"/> -->
       
@@ -31,7 +33,13 @@
 	<link rel="stylesheet" href="resources/css/addTrip.css"/> 
 	
 	<!-- maincss -->
-	<link rel="stylesheet" href="resources/css/main.css"/> 
+	<!-- <link rel="stylesheet" href="resources/css/main.css"/> -->
+
+<style>
+.ng-pageslide {
+	background: #eee;
+}
+</style>
 </head>
 
 
@@ -42,6 +50,8 @@
 	<!-- Vendor Lib-->
 	<script src="resources/lib/jquery-1.11.1.min.js"></script>
 	<script src="resources/lib/jquery-ui.min.js"></script>
+	<script src="resources/lib/jqm-config.js"></script>
+	<script src="resources/lib/jquery.mobile-1.4.3.js"></script>	
 	<script src="resources/lib/angular.js"></script>
 	<script src="resources/lib/angular-route.js"></script>
 	
@@ -60,5 +70,6 @@
     <script src="resources/js/app/factories/sumhangFactory.js"></script>
     <script src="resources/js/app/services/sumhangService.js"></script>
     <script src="resources/js/app/directives/animatedView.js"></script>
+    <script src="resources/js/app/directives/angular-pageslide-directive.js"></script>
 </body>
 </html>
