@@ -43,7 +43,7 @@ body {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 
-  background: url('images/20.jpg');
+  background: url('../images/20.jpg');
   background-size: cover;
   color:white;
   height:440px;
