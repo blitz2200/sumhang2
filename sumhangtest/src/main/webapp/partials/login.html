@@ -1,7 +1,7 @@
 <div class="login view">
     <div class="container">
 
-      <form data-ng-submit="loginRequest()" class="form-signin" data-ng-model="loginInfo">
+      <form name="loginForm" data-ng-submit="loginRequest()" class="form-signin" data-ng-model="loginInfo" novalidate>
       
       	<section class="js-section">	    
             <div class="banner js-example-1" data-crossfade-start="resources/image/01.jpg" data-crossfade-end="resources/image/01-blur.jpg">
@@ -9,10 +9,20 @@
             </div>         
         </section>
         
-        <input type="text" class="form-control" placeholder="Email address" autofocus data-ng-model="loginInfo.id">
-        <input type="password" class="form-control" placeholder="Password" data-ng-model="loginInfo.password">
-        <label class="checkbox">
-        	<input type="checkbox" value="remember-me"> Remember me</label>
+        <div class="form-group" data-ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine && submitted}">
+        <label>Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Email address" data-ng-model="loginInfo.id" required>
+        <p data-ng-show="loginForm.username.$invalid && submitted" class="help-block">Enter a username.</p>
+  		</div>
+  		
+  		<div class="form-group" data-ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine && submitted}">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Password" data-ng-model="loginInfo.password" required>
+        <p data-ng-show="loginForm.password.$invalid && submitted" class="help-block">Enter a password.</p>
+    	</div>
+    	<label class="checkbox"><input type="checkbox" value="remember-me"> Remember me</label>
+  		
+       
         	
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
          
