@@ -1,11 +1,66 @@
-<div class="login view">
+ 
+ 
+  
+
+
+  <div class="login view">
     <div class="container">
 
       <form name="loginForm" data-ng-submit="loginRequest()" class="form-signin" data-ng-model="loginInfo" novalidate>
-      
-      	<section class="js-section">	    
+      	  <img id="image" src="resources/images/redCheck.png" class="image help-block"  data-ng-show="loginForm.username.$invalid && submitted"/>
+        <img id="image1" src="resources/images/redCheck.png" class="image help-block" data-ng-show="loginForm.password.$invalid && submitted"  />
+        <p id="text">
+        글로벌 NO.1 여행앱
+        </p>
+        <div id="box" class="clearfix">
+            <p id="text1">
+            SUM행
+            </p>
+        </div>
+        <div id="box1" class="clearfix">
+             <button id="input" type="submit">Sign in</button> 
+        </div>
+        
+       <div   data-ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine && submitted}">
+        <p id="text2">
+        Username
+        </p>
+        <label id="formgroup">
+            <p id="text3">
+            &nbsp;
+            </p>
+            <input id="textinput" type="text" name="username"  placeholder="Email address" data-ng-model="loginInfo.id" required></input>
+        </label>
+       </div>
+        
+        <div  data-ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine && submitted}">
+        <p id="text4">
+        Passowrd
+        </p>
+        <label id="formgroup1">
+            <p id="text5">
+            &nbsp;
+            </p>
+            <input id="textinput1" type="password" name="password" placeholder="Password" data-ng-model="loginInfo.password" required></input>
+        </label>
+        </div>
+        
+        <label id="formgroup2">
+            <input id="input1" type="checkbox" value="remember-me"></input>
+            <p id="text6">
+            Remeber me
+           
+            </p>
+        </label>
+        
+        
+         
+      	<!-- <section class="js-section">	    
             <div class="banner js-example-1" data-crossfade-start="resources/image/01.jpg" data-crossfade-end="resources/image/01-blur.jpg">
             	<h1 class="js-parallax">SUM행</h1>
+            	<br/>
+            	<br/>
+            	<br/>
             </div>         
         </section>
         
@@ -24,13 +79,13 @@
   		
        
         	
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button> -->
          
       </form>
 
-    </div> <!-- /container -->
-</div><!-- login view -->
-<!-- 
+    </div>  
+</div> 
+
 <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -41,4 +96,5 @@
 	ga('send', 'pageview');
 
 </script>
- -->
+
+ 
