@@ -7,6 +7,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpSession;
+
 import net.bit.sumhang.domain.TripVO;
 import net.bit.sumhang.domain.UserVO;
 
@@ -57,7 +61,7 @@ public class TripController {
 	
 	//여행 등록 파일 저장
 	@RequestMapping(value = "/addTripFile", method = RequestMethod.POST)
-	public @ResponseBody String addTripFile(@RequestPart MultipartFile tripfile){
+	public @ResponseBody String addTripFile(HttpServletRequest req, @RequestPart MultipartFile tripfile){
 		
 		System.out.println("넘어온 파일 데이타는?"+tripfile);
 			
@@ -71,21 +75,23 @@ public class TripController {
 					String tripPhotoFile=tripfile.getOriginalFilename();
 					System.out.println("업로드 파일 이름:"+ tripPhotoFile);
 					
-					//저장할 파일 폴더 스트링에 저장 (톰캣홈으로 설정)
-					String rootPath = System.getProperty("catalina.home"); 
-					System.out.println(rootPath);//톰캣홈
+					//저장할 파일 폴더 스트링에 저장 (서블릿 콘텍스트 홈으로 설정)
+					String rootPath = new HttpServletRequestWrapper(req).getRealPath("/");
+					System.out.println("서블렛 콘텍스트 홈 :"+rootPath);//서블렛 콘텍스트홈
 					
-					//파일 저장 풀경로 만들기 톰캣홈/파일이름
-					File dir = new File(rootPath + File.separator + "tripPhotoFile");
+					//파일 저장 풀경로 만들기 
+					File dir = new File(rootPath + File.separator +"resources"+File.separator
+					+"images"+File.separator+"tripPhotoFile");
 					//디렉토리가 없다면 디렉토리 생성
 					if(!dir.exists())
 						dir.mkdir();
 					
-					System.out.println("dir absoulutepath :" +dir.getAbsolutePath());
+					System.out.println("사진 업로드 절대경로 :" +dir.getAbsolutePath());
 					
 					//서버에 파일 저장
 					File serverFile = new File(dir.getAbsolutePath() + File.separator + tripPhotoFile);
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+					
 					stream.write(bytes);
 					stream.close();
 					
