@@ -108,7 +108,7 @@ li {
 
 /* left slide	 */
 .ng-pageslide {
-	background: red;
+	background: #eee;
 	opacity: 0.9;
 }
 
@@ -188,7 +188,9 @@ li .visible{
     color: #a80000;
 }
 
+
 /* rightPanel */
+/* 방장 사진 */
 #hostUserPic{
     float: left;
     width: auto;
@@ -196,10 +198,9 @@ li .visible{
     height: auto;
     margin-left: 22.394678%;
     margin-top: 44px;
-    clear: none;
-    color: rgb(0, 0, 0);
 }
 
+/* 방장 이름 */
 #hostUserName {
     float: left;
     font-size: 1em;
@@ -208,8 +209,71 @@ li .visible{
     text-align: left;
     font-weight: normal;
     line-height: 1em;
-    margin-left: 3.748614%;
-    margin-top: 53px;
-    clear: none;
+    margin-left: 2%;
+    margin-top: 60px;
     min-height: 28px;
+}
+
+/* 참여 목록 */
+#attandingView .form-control{
+	margin-top: 20px;
+	float: left;
+    height: auto;
+    padding: 5px;
+    font-size: 1em;
+    display: block;
+    width: 80%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+/* 확정자 게시판 */
+#groupMeeting{
+	 float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: 0%;
+    clear: none;
+    color: rgb(0, 0, 0);	
+    margin-top: 20px;
+}
+
+/* 강퇴&초대 버튼 */
+.tripActionBtn{
+	text-align: center;
+	margin-top: 100px;
+}
+
+/* 강퇴버튼 */
+.tripActionBtn #kickOutBtn{
+	margin-right: 10px;
+}
+
+/* 디데이 알림 달력사진 */
+#dDayAlert{
+	 float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: 15%;
+    margin-top: 44px;
+}
+
+/* 디데이 알림 문구 */
+#dDayCal{
+  	float: left;
+    font-size: 1m;
+    width: auto;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    margin-left: 5%;
+    margin-top: 48px;
+    min-height: 28px;
+}
+
+#rightPanel-close{
+	float: right;
 }

@@ -69,84 +69,45 @@
 		</div>
 	
 	<!-- rightPanel	 -->
+	<!-- 나가기 버튼 -->
 		<div id="rightPanel">
+			<img src="resources/images/x-mark-3-24.png" id="rightPanel-close" href="#">
+				<br />
 		<!-- 방장 사진, 아이디 -->
 			<div id="hostUser">
 				<img src="resources/images/moderator-48.png" id="hostUserPic">
 				<p id="hostUserName"> 안졸리나졸리나 </p>
 			</div>
 		
-		<!-- 참여 중인 방 표시 -->		
-		  <!-- 참여중인 여행 목록 -->
+<!-- 참여 중인 방 표시 -->		
+	<!-- 참여중인 여행 목록 -->
 		 <div id="attandingView">
 			<select class="form-control"  id="attandingTrips">
 				  <option>3:3홍콩</option>
 				  <option>2:2제주도</option>
 				  <option>2:2 설악산</option>
 			</select>
-		  <!-- 
-		  <div class="dropdown" id="attandingTrips">
-		   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-		    참여중인 여행
-		    <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		    <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="#main">2:2 제주도 여행</a></li>
-		    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:3 발리 여행</a></li>
-		    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">홍콩 여름 휴가</a></li>
-		  </ul> -->
-		    <img src="resources/images/google-groups-256.png" id="groupMeeting" href="#">
+<!-- 모임 게시판 가기 -->
+		    <span class="groupBoard"><img src="resources/images/google-groups-32.png" id="groupMeeting" href="#"></span>
 		</div>
 		
+<!-- 여행일정 -->
 		<div class="tripPeriod">
-			<p>일정 &nbsp 2014/09/04~2014/09/09</p>
+			<p>2014/09/04~2014/09/09</p>
 		</div>
 		
-	<div id="content">
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-        <li class="active"><a href="#red" data-toggle="tab">Red</a></li>
-        <li><a href="#orange" data-toggle="tab">Orange</a></li>
-        <li><a href="#yellow" data-toggle="tab">Yellow</a></li>
-        <li><a href="#green" data-toggle="tab">Green</a></li>
-        <li><a href="#blue" data-toggle="tab">Blue</a></li>
-    </ul>
-    <div id="my-tab-content" class="tab-content">
-        <div class="tab-pane active" id="red">
-            <h1>Red</h1>
-            <p>red red red red red red</p>
-        </div>
-        <div class="tab-pane" id="orange">
-            <h1>Orange</h1>
-            <p>orange orange orange orange orange</p>
-        </div>
-        <div class="tab-pane" id="yellow">
-            <h1>Yellow</h1>
-            <p>yellow yellow yellow yellow yellow</p>
-        </div>
-        <div class="tab-pane" id="green">
-            <h1>Green</h1>
-            <p>green green green green green</p>
-        </div>
-        <div class="tab-pane" id="blue">
-            <h1>Blue</h1>
-            <p>blue blue blue blue blue</p>
-        </div>
-    </div>
-</div>
- 
 
-
-			
-	<!-- 		<p>some random content...</p>
-			<a id="rightPanel-close" href="#">Click to close</a> -->
-			
-
-	</div>
-	<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $('#tabs').tab();
-    });
-</script>    
-</div>
-
+<!-- 강퇴&초대 버튼 -->
+	<div class="tripActionBtn">
+	  <button class="btn btn-xs btn-primary"  type="submit" id="kickOutBtn">여행에서 제외시키기</button>
+	   <button class="btn btn-xs btn-primary" type="submit" id="inviteBtn">초대</button>
+   </div>      
    
+  <!--  디데이 -->
+   <div id="dDay">
+   		<img src="resources/images/calander-32.png" id="dDayAlert" href="#">
+   		<p id="dDayCal">여행까지 ?일 남았습니다.</p>
+   </div>
+ 
+</div>
+
