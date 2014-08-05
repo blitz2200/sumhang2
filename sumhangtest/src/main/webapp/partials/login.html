@@ -1,15 +1,11 @@
  
- 
-  
-
-
-  <div class="login view">
-    <div class="container">
+ <div class="login view  primaryContainer clearfix" id="primaryContainer">
+     <div class="container">
 
       <form name="loginForm" data-ng-submit="loginRequest()" class="form-signin" data-ng-model="loginInfo" novalidate>
-      	  <img id="image" src="resources/images/redCheck.png" class="image help-block"  data-ng-show="loginForm.username.$invalid && submitted"/>
+      	 <img id="image" src="resources/images/redCheck.png" class="image help-block"  data-ng-show="loginForm.username.$invalid && submitted"/>
         <img id="image1" src="resources/images/redCheck.png" class="image help-block" data-ng-show="loginForm.password.$invalid && submitted"  />
-        <p id="text">
+       <p id="text">
         글로벌 NO.1 여행앱
         </p>
         <div id="box" class="clearfix">
@@ -29,6 +25,7 @@
             <p id="text3">
             &nbsp;
             </p>
+         
             <input id="textinput" type="text" name="username"  placeholder="Email address" data-ng-model="loginInfo.id" required></input>
         </label>
        </div>
@@ -51,7 +48,7 @@
             Remeber me
            
             </p>
-        </label>
+        </label>  
         
         
          
@@ -81,20 +78,10 @@
         	
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button> -->
          
-      </form>
+<!--       </form>
 
-    </div>  
+    </div>   -->
 </div> 
 
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
-	ga('create', 'UA-10512170-10', 'mikefowler.me');
-	ga('send', 'pageview');
-
-</script>
-
+ 
  
