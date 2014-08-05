@@ -20,7 +20,7 @@
 	<beans:bean id="multipartResolver"
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
           <!-- 파일 최대 크기 제한 -->
-        <beans:property name="maxUploadSize" value="100000" />
+        <beans:property name="maxUploadSize" value="80000000" />
  
     </beans:bean>
 
