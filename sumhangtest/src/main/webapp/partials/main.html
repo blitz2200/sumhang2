@@ -1,15 +1,46 @@
-
 <div id="mainPage">
-	<div>
-		<h1>SUM행</h1>
-		<a href="#conf" data-icon="gear" data-iconpos="notext">conf</a>
-		<!--좌측 패널아이콘-->
-		<a class="large button" pageslide="right" ps-speed="0.5"
-			href="#rightPanel">Open Demo</a>
 
-		<!--우측 패널 아이콘-->
+	<!-- 제목 -->
+	<h1>SUM행</h1>
+
+	<!-- 좌측 페이지 슬라이드 -->
+		<a pageslide="left" href="#target" ps-speed="0.5" 
+			ps-auto-close="true">conf</a>
+				
+	<!-- 셋팅 닫기 아이콘  -->
+			<div id="target">
+				<img src="resources/images/x-mark-3-24.png" id="target-close" href="#">
+				<br />
+
+	<!-- settings icons -->
+			<div class=systemSettings1>
+				<img src="resources/images/checked-user-48.png" id="userInfo">
+				<!-- userInfo -->
+				<img src="resources/images/handshake-48.png" id="acceptance" href="#">
+				<br/>
+				<!-- acceptance -->
+			</div>
+
+			<div class=systemSettings2>
+				<img src="resources/images/info-2-48.png" id="sysinfo">
+				<!-- info -->
+				<img src="resources/images/settings-7-48.png" id="settings">
+				<!-- settings -->
+			</div>
+
+		<div class=systemSettings2>
+			<button type="submit" class="btn btn-primary btn-xs-5" id="logoutBtn">Logout</button>
+			<!-- logout -->
+		</div>
 	</div>
-	<a href="#/addTrip">여행모집</a>
+	<!--좌측 패널아이콘 끝-->
+	
+	<!--우측 패널 아이콘-->
+	<a class="large button" pageslide="right" ps-speed="0.5"
+			href="#rightPanel" ps-auto-close="true">Open Demo</a>
+	<!--우측 패널 아이콘 끝-->
+	
+	<a href="#addTrip">여행모집</a>
 	<div id="my-wrapper" data-ng-model="triplist">
 
 		<div id="listview1">
@@ -17,8 +48,9 @@
 				data-filter="true" repeat-done=""
 				data-filter-placeholder="검색어를 입력하세요" jquery-mobile-tpl>
 
-				<li class="list1" data-ng-repeat="trip in trips" repeat-done=""><a href="#">
-						<img src="resources/images/CANADA.jpg" class="imgMain visible">
+				<li class="list1" data-ng-repeat="trip in trips" repeat-done=""><a
+					href="#"> <img src="resources/images/CANADA.jpg"
+						class="imgMain visible">
 						<h1 class="visible">{{trip.travel}}</h1>
 						<div class="icons">
 							<img data-ng-src="resources/images/favorite.png"
@@ -34,13 +66,87 @@
 						src="resources/images/swoman1.png" class="faceThumb_5 visible">
 				</a></li>
 			</ul>
-
 		</div>
+	
+	<!-- rightPanel	 -->
 		<div id="rightPanel">
-			<p>some random content...</p>
-			<a id="rightPanel-close" href="#">Click to close</a>
+		<!-- 방장 사진, 아이디 -->
+			<div id="hostUser">
+				<img src="resources/images/moderator-48.png" id="hostUserPic">
+				<p id="hostUserName"> 안졸리나졸리나 </p>
+			</div>
+		
+		<!-- 참여 중인 방 표시 -->		
+		  <!-- 참여중인 여행 목록 -->
+		 <div id="attandingView">
+			<select class="form-control"  id="attandingTrips">
+				  <option>3:3홍콩</option>
+				  <option>2:2제주도</option>
+				  <option>2:2 설악산</option>
+			</select>
+		  <!-- 
+		  <div class="dropdown" id="attandingTrips">
+		   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+		    참여중인 여행
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		    <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="#main">2:2 제주도 여행</a></li>
+		    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:3 발리 여행</a></li>
+		    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">홍콩 여름 휴가</a></li>
+		  </ul> -->
+		    <img src="resources/images/google-groups-256.png" id="groupMeeting" href="#">
 		</div>
+		
+		<div class="tripPeriod">
+			<p>일정 &nbsp 2014/09/04~2014/09/09</p>
+		</div>
+		
+	<div id="content">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a href="#red" data-toggle="tab">Red</a></li>
+        <li><a href="#orange" data-toggle="tab">Orange</a></li>
+        <li><a href="#yellow" data-toggle="tab">Yellow</a></li>
+        <li><a href="#green" data-toggle="tab">Green</a></li>
+        <li><a href="#blue" data-toggle="tab">Blue</a></li>
+    </ul>
+    <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane active" id="red">
+            <h1>Red</h1>
+            <p>red red red red red red</p>
+        </div>
+        <div class="tab-pane" id="orange">
+            <h1>Orange</h1>
+            <p>orange orange orange orange orange</p>
+        </div>
+        <div class="tab-pane" id="yellow">
+            <h1>Yellow</h1>
+            <p>yellow yellow yellow yellow yellow</p>
+        </div>
+        <div class="tab-pane" id="green">
+            <h1>Green</h1>
+            <p>green green green green green</p>
+        </div>
+        <div class="tab-pane" id="blue">
+            <h1>Blue</h1>
+            <p>blue blue blue blue blue</p>
+        </div>
+    </div>
+</div>
+ 
+
+
+			
+	<!-- 		<p>some random content...</p>
+			<a id="rightPanel-close" href="#">Click to close</a> -->
+			
+
 	</div>
+	<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script>    
 </div>
 
-
+   
