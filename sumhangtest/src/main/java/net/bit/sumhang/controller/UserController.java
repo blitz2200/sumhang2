@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
 import net.bit.sumhang.auth.UserAuth;
@@ -97,7 +100,7 @@ public class UserController {
 	
 	//회원가입 파일저장
 	@RequestMapping(value = "/addFile", method = RequestMethod.POST)
-	public @ResponseBody String addFile(@RequestPart MultipartFile file){
+	public @ResponseBody String addFile(HttpServletRequest req,@RequestPart MultipartFile file){
 		System.out.println("넘어온 파일 데이타는?"+file);
 		
 			if(!file.isEmpty()){ //파일 유효성 체크
@@ -109,17 +112,18 @@ public class UserController {
 					String userPhotoFile=file.getOriginalFilename();
 					System.out.println("업로드 파일이름 : "+userPhotoFile);
 					
-					//저장할 파일 폴더 스트링에 저장 (톰캣홈으로 설정)
-					String rootPath = System.getProperty("catalina.home"); 
-					System.out.println("톰캣홈 : "+rootPath);
+					//저장할 파일 폴더 스트링에 저장 (서블렛 컨텍스트 홈으로 설정)
+					String rootPath = new HttpServletRequestWrapper(req).getRealPath("/");
+					System.out.println("서블렛 컨텍스트홈 : "+rootPath);
 					
-					//파일 저장 풀경로 만들기 톰캣홈/파일이름
-					File dir = new File(rootPath + File.separator + "userPhotoFiles");
+					//파일 저장 풀경로 만들기 
+					File dir = new File(rootPath +File.separator +"resources"+File.separator
+							+"images"+ File.separator + "userPhotoFiles");
 					//디렉토리가 없다면 디렉토리 생성
 					if(!dir.exists())
 						dir.mkdir();
 					
-					System.out.println("dir absoulutepath :" +dir.getAbsolutePath());
+					System.out.println("사진 업로드 절대경로 :" +dir.getAbsolutePath());
 					
 					//서버에 파일 저장 
 					File serverFile = new File(dir.getAbsolutePath() + File.separator + userPhotoFile);
