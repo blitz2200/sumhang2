@@ -3,11 +3,6 @@
     src:url('../fonts/NEXONFOOTBALLGOTHICB.TTF');
 }
 
-@font-face {
-    font-family:'NEXONFOOTBALLGOTHICL';
-    src:url('../fonts/NEXONFOOTBALLGOTHICL.TTF');
-}
-
 .ui-header .ui-title {
     background-color: #68a0ea;
     width: 100%;
@@ -110,6 +105,40 @@ li {
     opacity: 1;
 }
 
+
+/* left slide	 */
+.ng-pageslide {
+	background: red;
+	opacity: 0.9;
+}
+
+/*  close icon  */
+#target-close {
+	float: right;
+}
+
+/*   settings icons 1st   */
+.systemSettings1 {
+	margin-top: 30%;
+	text-align: center;
+}
+
+/*    icons margin 1st     */
+#sysinfo {
+	margin-right: 20%;
+}
+
+/*   settings icons 2nd   */
+.systemSettings2 {
+	margin-top: 20%;
+	text-align: center;
+}
+
+/*    icons margin 2st     */
+#userInfo {
+	margin-right: 20%;
+}
+
 li:after {
     opacity: 0;
 }
@@ -159,6 +188,28 @@ li .visible{
     color: #a80000;
 }
 
+/* rightPanel */
+#hostUserPic{
+    float: left;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: 22.394678%;
+    margin-top: 44px;
+    clear: none;
+    color: rgb(0, 0, 0);
+}
 
-
-
+#hostUserName {
+    float: left;
+    font-size: 1em;
+    width: 50.01%;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    margin-left: 3.748614%;
+    margin-top: 53px;
+    clear: none;
+    min-height: 28px;
+}
