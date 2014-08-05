@@ -1,7 +1,33 @@
 <div class="timeLine view">
-    <div class="container">
-        <header>
-            <h3>timeLine view</h3>
-        </header>
-    </div>
+    <div class="container-timeline">
+		<div class="travel-timeline">
+			<div class="row">
+				<div class="col-xs-2"><span>여행지</span></div>
+				<div class="col-xs-3"><span>{{timeLine.travel}}</span></div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">여행 제목</div>
+				<div class="col-xs-3">{{timeLine.title}}</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2">일 정</div>
+				<div class="col-xs-3">{{timeLine.travelStart}}~{{timeLine.travelEnd}}</div>
+			</div>
+		</div>
+		<div class="replylist-timeline">
+			<div class="row">
+				<div class="col-xs-1"><img id="img-reply-src" src="fboy.png"></div>
+				<div class="col-xs-1">유저1</div>
+				<div class="col-xs-4">하하하하 잼있겠군요 빨리 여행갔으면 좋겠어요 다들 보고 싶어요 </div>
+			</div>	
+		</div>
+		
+		<div class="reply-timeline">
+			<div class="row">
+				<textarea class="form-control" rows="7"></textarea>					
+			</div>
+			<div class="row">
+				<button type="button" class="btn btn-success btn-timeline">글 전송</button>
+			</div>
+	</div>
 </div>
