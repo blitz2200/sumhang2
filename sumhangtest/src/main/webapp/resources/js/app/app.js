@@ -9,7 +9,7 @@
 });
 
 
-var app = angular.module('sumhangApp', ['ngRoute']);
+var app = angular.module('sumhangApp', ['ngRoute','pageslide-directive']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
