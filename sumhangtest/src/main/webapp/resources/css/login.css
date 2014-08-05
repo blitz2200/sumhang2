@@ -1,4 +1,4 @@
-div.ui-page.ui-page-theme-a.ui-page-active{
+/* div.ui-page.ui-page-theme-a.ui-page-active{
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -11,8 +11,26 @@ div.ui-page.ui-page-theme-a.ui-page-active{
     position: relative;
     background-position: 0% 0%;
     background-repeat: no-repeat no-repeat;
-}
-#formgroup {
+} */
+
+ 
+div.primaryContainer.login {
+    height: 1263px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    width: auto;
+    background-image:url("../images/16.jpg");
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: relative;
+    background-position: 0% 0%;
+    background-repeat: no-repeat no-repeat;
+    z-index:100;
+}  
+ 
+  #formgroup {
     float: left;
     height: 61px;
     display: block;
@@ -287,5 +305,4 @@ div.ui-page.ui-page-theme-a.ui-page-active{
     left: 70.997328%;
     z-index: 5;
     display: block;
-}
-
+} 
