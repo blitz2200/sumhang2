@@ -11,19 +11,16 @@ public class TripVO {
 	private int travelUserCount;
 	private String travelTag;
 	private int likenum;
+	private int travelNo;
 	
-	public int getLikenum() {
-		return likenum;
-	}
-
-	public void setLikenum(int likenum) {
-		this.likenum = likenum;
-	}
-	public String getTravelTag() {
-		return travelTag;
-	}
-	public void setTravelTag(String travelTag) {
-		this.travelTag = travelTag;
+	@Override
+	public String toString() {
+		return "TripVO [travel=" + travel + ", title=" + title
+				+ ", travelDescription=" + travelDescription + ", travelStart="
+				+ travelStart + ", travelEnd=" + travelEnd + ", travelPho="
+				+ travelPho + ", travelUserCount=" + travelUserCount
+				+ ", travelTag=" + travelTag + ", likenum=" + likenum
+				+ ", travelNo=" + travelNo + "]";
 	}
 	public String getTravel() {
 		return travel;
@@ -67,15 +64,25 @@ public class TripVO {
 	public void setTravelUserCount(int travelUserCount) {
 		this.travelUserCount = travelUserCount;
 	}
-
-	@Override
-	public String toString() {
-		return "TripVO [travel=" + travel + ", title=" + title
-				+ ", travelDescription=" + travelDescription + ", travelStart="
-				+ travelStart + ", travelEnd=" + travelEnd + ", travelPho="
-				+ travelPho + ", travelUserCount=" + travelUserCount
-				+ ", travelTag=" + travelTag + "]";
+	public String getTravelTag() {
+		return travelTag;
 	}
+	public void setTravelTag(String travelTag) {
+		this.travelTag = travelTag;
+	}
+	public int getLikenum() {
+		return likenum;
+	}
+	public void setLikenum(int likenum) {
+		this.likenum = likenum;
+	}
+	public int getTravelNo() {
+		return travelNo;
+	}
+	public void setTravelNo(int travelNo) {
+		this.travelNo = travelNo;
+	}
+	
 	
 	
 }
