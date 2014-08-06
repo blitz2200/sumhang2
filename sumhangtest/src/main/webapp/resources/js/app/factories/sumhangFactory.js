@@ -83,3 +83,28 @@ angular.module('sumhangApp')
 	return timeLineFactory;
 
 }])
+
+angular.module('sumhangApp')
+.factory('tripDetailFactory',['$http', function($http){
+	
+	var tripDetailFactory = {};
+	
+	tripDetailFactory.tripDetail = function(travelNo){
+		//메인 리스트 ajax로 요청
+		alert('팩토리에 넘어온 travelNo:'+travelNo)
+		return $http({
+			'url' :"tripDetail.ajax",
+			'method' : 'POST',
+			'data' : {'travelNo':travelNo}
+		}).success(function(data){
+			//db에서 자료 가져오기 성공하면 찍어보기 
+			console.log('여행 세부 게시판 가져오기 성공'+data);
+			
+		}).error(function(){
+			console.log('여행 세부 게시판 받아오기 실패');
+		})
+	};
+	//컨트롤러에 작업 완료후 객체 넘겨주기 
+	return tripDetailFactory;
+
+}])
