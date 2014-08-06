@@ -20,11 +20,7 @@
 	$scope.loginCheck = function () {
 		console.log('logincheck invoked....');
 		loginCheck();
-	}
-	
-	
-
-	
+	}	
 }]);
 
 app.controller('LoginController', ['$scope','sumhangFactory', 
@@ -149,8 +145,11 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	//메인 html파일과 연결 시킴 
 	
 	//main();
+	
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
+
+	
 
    /*function main() {
     	console.log('메인 컨트롤러 시작');
@@ -197,23 +196,76 @@ app.controller('TimeLineController', ['$scope','$route','timeLineFactory',
 	//메인 html파일과 연결 시킴 
 	
 	//main();
+	console.log('timeLine 시작');
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
 	
 }]);
 
-app.controller('TripDetailController', function ($scope, sumhangService) {
-
-    init();
-
-    function init() {
+//여행 세부 게시판 시작
+//main페이지에서 tboard_no를 a링크에 넣어서 보냄  
+//app.js파일에  when주소뒤에 :스코프이름 으로 넘긴걸 받음 
+//콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
+app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFactory',
+                                        function ($scope,$routeParams ,tripDetailFactory) {
+	
+	
+	//넘어온 tboard_no값  변수에 저장
+	var travelNo=$routeParams.travelNo;
+	
+	
+	//tripDetail함수에 변수값 전달후 실행
+	tripDetail(travelNo);
+	
+	
+	
+	function tripDetail(travelNo){
+		console.log('tripDetail 시작');			
+		console.log('넘어온 tboardNo는:'+travelNo);		
+		
+		tripDetailFactory.tripDetail(travelNo)
+		.success(function(data){    		
+    		console.log('디비에서 꺼내온 main detail 출력용 data:'+data);
+			$scope.trip=data;
+			console.log("HTML예 출력할 데이타 :" +$scope.trip);
+    		
+    	}).error(function (error){
+    		console.log('실패');
+    		
+    	});
+		
+	}
+	
+/*	*function main() {
+    	console.log('메인 컨트롤러 시작');
     	
-    }
-    //you need to describe event handler below... 
-});
+    	mainFactory.listMain()
+    	.success(function(data){
+    		console.log('로그인 성공 넘어온 데이타는 ?:'+ data);
+    		//메인 객체와 디비에서 넘어온 객체 연결 
+    		$scope.trips=data;
+    		console.log("메인에 넘길데이타 :" +$scope.trips);		
+    	}).error(function (error){
+    		console.log('로그인 실패');
+    	});
+    }*/
+    
+}]);
+	
+
+
+/*app.controller('TripDetailController', ['$scope','$route','tripDetailFactory',
+                                        function ($scope, $route,tripDetailFactory) {
+	console.log('tripDetail 시작');
+	
+	var tboardNo=$scope.tboardNo;
+    $scope.checked;
+    $scope.tripDetail = $route.current.locals.tripDetail;
+    
+}]);*/
 
 app.controller('TripManagerController', function ($scope, sumhangService) {
-
+ 
     init();
 
     function init() {
