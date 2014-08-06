@@ -75,10 +75,10 @@ app.config(function ($routeProvider) {
                 	}
                 }
             })
-        .when('/tripdetail',
+        .when('/tripDetail/:travelNo',
             {
                 controller: 'TripDetailController',
-                templateUrl: 'partials/tripDetail.html'
+                templateUrl: 'partials/tripDetail.html',
             })
         .when('/tripmanager',
             {
