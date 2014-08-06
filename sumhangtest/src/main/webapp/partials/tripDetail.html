@@ -1,7 +1,31 @@
-<div class="tripDetail view">
-    <div class="container">
-        <header>
-            <h3>tripDetail view</h3>
-        </header>
-    </div>
-</div>
+<header class="header-tripDetail">
+			SUMHANG
+		</header>
+
+		<div class="tripDetail view">
+			<div class="row">
+				<div class="col-xs-3">{{trip.travel}}</div>
+				<div class="col-xs-4"><img src="">썸행짱</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-5">{{trip.title}} </div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3">{{trip.travelStart}}~{{trip.travelEnd}}</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					{{trip.travelDescription}}
+				</div>
+			</div>
+			<button type="button" class="btn btn-warning">참가신청</button>
+			<div class="row">
+				<div class="col-xs-2">철수</div>
+				<div class="col-xs-5">참가 신청 합니다 ^_^</div>
+			</div> 
+			<div class="row">
+			<input type="text"class="col-xs-5" placeholder= "덧글을 입력하세요">
+			<button type="button" class="btn btn-info">입력 </button>
+
+			</div>
+		</div>	
