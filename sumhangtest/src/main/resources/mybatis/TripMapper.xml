@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		<result property="travelUserCount" column="TRAVEL_USER_COUNT" jdbcType="NUMERIC" />
   		<result property="travelTag" column="TRAVEL_TAG" jdbcType="VARCHAR" />
   		<result property="likenum" column="likenum" jdbcType="NUMERIC"/>
+  		<result property="travelNo" column="TBOARD_NO" jdbcType="NUMERIC"/>
   	</resultMap>
   	
   	<insert id="addTrip" parameterType="trip">
@@ -70,5 +71,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where u.USER_NO=t.TBOARD_NO and u.id=#{id}
 		
 	</select>	
+	
+	<select id="tripDetail" parameterType="trip" resultMap="travelSelectMap">
+	select t.travel, t.TBOARD_NO, u.USER_NO, u.user_photo, u.nick,
+		 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
+		 t.TRAVEL_PHO	 
+		 from TBOARD t, USER u
+	where u.USER_NO=t.TBOARD_NO and t.TBOARD_no =#{travelNo}
+	</select>
 	
 </mapper>
