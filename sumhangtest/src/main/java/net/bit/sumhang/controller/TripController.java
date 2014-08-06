@@ -114,4 +114,19 @@ public class TripController {
 			return sqlSession.selectList("tripControlMapper.selectTrip");
 	}
 	
+	@RequestMapping(value="/tripDetail", method=RequestMethod.POST)
+	public @ResponseBody TripVO tripDetail(@RequestBody  String travel_No){
+		
+		TripVO tripVO;
+		System.out.println("tripDetail 시작");
+		System.out.println("넘어온 travelNo:  "+ travel_No);
+		Gson gson = new Gson();
+		tripVO=gson.fromJson(travel_No, TripVO.class);
+		System.out.println(tripVO);
+		
+		
+		System.out.println(sqlSession.selectOne("tripControlMapper.tripDetail",tripVO));
+		return sqlSession.selectOne("tripControlMapper.tripDetail",tripVO);
+	}
+	
 }
