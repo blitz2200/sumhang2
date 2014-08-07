@@ -149,7 +149,11 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
 
-	
+	$scope.logout=function(){
+		mainFactory.logout().success(function (){
+			$scope.location.path('/login');
+		});
+	}
 
    /*function main() {
     	console.log('메인 컨트롤러 시작');
@@ -211,13 +215,10 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	
 	
 	//넘어온 tboard_no값  변수에 저장
-	var travelNo=$routeParams.travelNo;
-	
+	var travelNo=$routeParams.travelNo;	
 	
 	//tripDetail함수에 변수값 전달후 실행
 	tripDetail(travelNo);
-	
-	
 	
 	function tripDetail(travelNo){
 		console.log('tripDetail 시작');			

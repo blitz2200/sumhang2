@@ -32,8 +32,11 @@
     			
     		});
     }
+   
     return sumhangFactory;
 }]);
+
+
 
 
 //메인 리스트 팩토리 
@@ -56,6 +59,13 @@ angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
 		})
 	};
 	//컨트롤러에 작업 완료후 객체 넘겨주기 
+	
+    /*로그아웃*/
+    mainFactory.logout=function(){
+    	return $http.post('logout.ajax').success(function() {
+    		console.log('logout $http 성공');
+    	});
+    }
 	return mainFactory;
 
 }])

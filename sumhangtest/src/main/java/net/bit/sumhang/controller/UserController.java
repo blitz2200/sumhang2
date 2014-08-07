@@ -98,6 +98,15 @@ public class UserController {
 		return user;
 	}
 	
+	/*로그아웃*/
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public @ResponseBody String logout(HttpSession session){
+		session.removeAttribute("user");
+		
+		return "logoutSuccess";
+	}
+	
+	
 	//회원가입 파일저장
 	@RequestMapping(value = "/addFile", method = RequestMethod.POST)
 	public @ResponseBody String addFile(HttpServletRequest req,@RequestPart MultipartFile file){
@@ -140,8 +149,5 @@ public class UserController {
 			}
 	
 		return "";
-	}
-	
-
-	
+	}	
 }
