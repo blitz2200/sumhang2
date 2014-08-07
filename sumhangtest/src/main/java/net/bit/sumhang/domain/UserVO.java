@@ -12,8 +12,17 @@ public class UserVO {
 	private String invite;
 	private String signOut;
 	private String role;
+	private int userNo;
 	
 	
+	
+	
+	public int getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
 	public String getId() {
 		return id;
 	}
