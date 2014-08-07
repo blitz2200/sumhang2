@@ -32,11 +32,8 @@
     			
     		});
     }
-   
     return sumhangFactory;
 }]);
-
-
 
 
 //메인 리스트 팩토리 
@@ -59,8 +56,7 @@ angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
 		})
 	};
 	//컨트롤러에 작업 완료후 객체 넘겨주기 
-	
-    /*로그아웃*/
+	    /*로그아웃*/
     mainFactory.logout=function(){
     	return $http.post('logout.ajax').success(function() {
     		console.log('logout $http 성공');
@@ -101,7 +97,7 @@ angular.module('sumhangApp')
 	
 	tripDetailFactory.tripDetail = function(travelNo){
 		//메인 리스트 ajax로 요청
-		alert('팩토리에 넘어온 travelNo:'+travelNo)
+		console.log('팩토리에 넘어온 travelNo:'+travelNo);
 		return $http({
 			'url' :"tripDetail.ajax",
 			'method' : 'POST',
@@ -114,7 +110,31 @@ angular.module('sumhangApp')
 			console.log('여행 세부 게시판 받아오기 실패');
 		})
 	};
+	
+	
+	//리플 시작
+	
+	tripDetailFactory.tripDetailReply=function(tripDetailReply,travelNo){
+		console.log('팩토리에 넘어온 메인상세 리플: '+tripDetailReply);
+		console.log('팩토리에 넘어온 메인상세 방번호: '+travelNo);
+		return $http({
+			'url' :"tripDetailReply.ajax",
+			'method' : 'POST',
+			'data' : {'travelNo':travelNo,
+					  'tripDetailReply':tripDetailReply 	
+					 }
+		
+		}).success(function(){
+			console.log('여행 상세 게시판 리플 입력 성공');
+		}).error(function(){
+			console.log('여행 상세 게시판 리플 입력 실패');
+		})
+		
+	};
 	//컨트롤러에 작업 완료후 객체 넘겨주기 
 	return tripDetailFactory;
+	
+	
+	
 
 }])
