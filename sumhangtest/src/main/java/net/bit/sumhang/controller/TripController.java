@@ -37,20 +37,29 @@ import com.google.gson.Gson;
 public class TripController {
 	@Autowired
     private SqlSession sqlSession;
-	
+	private UserVO userVO;	
 	
 	//여행 등록
 	@RequestMapping(value = "/addTrip", method = RequestMethod.POST)
-	public @ResponseBody String addTrip(@RequestBody String trip){
+	public @ResponseBody String addTrip(HttpSession session, @RequestBody String trip){
 			
-			System.out.println("넘어온 여행 데이타는?"+trip);
+		System.out.println("여행 등록 시작");	
+		System.out.println("넘어온 여행 데이타는?"+trip);
 		
+			if(session.getAttribute("user")!=null){
+				System.out.println("찍히나?");
+				userVO=(UserVO)session.getAttribute("user");
+				System.out.println("userVO임:"+userVO);
+				System.out.println("userVO임:"+userVO.getUserNo());
+			}	
+			
 			//여행 객체 생성
 			TripVO addTrip;
 			
 			//JSON형식 GSON사용하여 스트링으로 바꾸기 
 			Gson gson = new Gson();
 			addTrip=gson.fromJson(trip, TripVO.class);
+			addTrip.setUserNo(userVO.getUserNo());
 			
 			//DB에 자료 넣기
 			System.out.println("디비에 넣을 여행 데이타는?"+addTrip);			

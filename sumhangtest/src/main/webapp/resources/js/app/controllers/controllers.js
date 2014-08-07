@@ -135,6 +135,8 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 			
 			//파일객체 서비스에 전송
 			sumhangService.addTripFile(tripfile,uploadtripUrl);	
+			
+			$scope.location.path('/main');  
 		}
 }]);
 
@@ -149,6 +151,7 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
 
+	/*로그아웃*/
 	$scope.logout=function(){
 		mainFactory.logout().success(function (){
 			$scope.location.path('/login');

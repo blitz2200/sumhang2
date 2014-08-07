@@ -12,7 +12,9 @@ public class TripVO {
 	private String travelTag;
 	private int likenum;
 	private int travelNo;
+	private int userNo;
 	
+
 	@Override
 	public String toString() {
 		return "TripVO [travel=" + travel + ", title=" + title
@@ -20,7 +22,14 @@ public class TripVO {
 				+ travelStart + ", travelEnd=" + travelEnd + ", travelPho="
 				+ travelPho + ", travelUserCount=" + travelUserCount
 				+ ", travelTag=" + travelTag + ", likenum=" + likenum
-				+ ", travelNo=" + travelNo + "]";
+				+ ", travelNo=" + travelNo + userNo+"]";
+	}
+	
+	public int getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 	public String getTravel() {
 		return travel;

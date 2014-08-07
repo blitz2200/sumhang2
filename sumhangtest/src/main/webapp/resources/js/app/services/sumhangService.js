@@ -26,7 +26,7 @@ app.service('sumhangService', ['$http',function ($http) {
     		method:'POST',
     		url : userUrl,
     		data : user,
-    		headers : {'Content-Type':'application/jason'},    		
+    		headers : {'Content-Type':'application/json charset=utf-8'},    		
     	}).success(function(){
     		alert("회원가입 성공")
     	}).error(function(){
@@ -59,11 +59,12 @@ app.service('sumhangService', ['$http',function ($http) {
     		method:'POST',
     		url : tripUrl,
     		data : trip,
-    		headers : {'Content-Type':'application/jason'},    		
+    		headers : {'Content-Type':'application/json; charset=utf-8'},    		
     	}).success(function(){
     		alert("여행 파일업로드 성공")
     	}).error(function(){
     		alert("여행 파일업로드 실패")
     	})
     };
+  
 }]);	//여행 파일 업로드 끝
