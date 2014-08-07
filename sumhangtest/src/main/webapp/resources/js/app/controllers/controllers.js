@@ -151,13 +151,18 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
 
-	/*로그아웃*/
+	$scope.goTripDetail=function(travelNo){
+		var temp="/tripDetail/"+travelNo;
+		$scope.location.path(temp);
+	}
+	
+		/*로그아웃*/
 	$scope.logout=function(){
 		mainFactory.logout().success(function (){
 			$scope.location.path('/login');
 		});
 	}
-
+	
    /*function main() {
     	console.log('메인 컨트롤러 시작');
     	
@@ -217,8 +222,10 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
                                         function ($scope,$routeParams ,tripDetailFactory) {
 	
 	
-	//넘어온 tboard_no값  변수에 저장
+	//넘어온 tboard_no,tripDetailReply값  변수에 저장
+	
 	var travelNo=$routeParams.travelNo;	
+	
 	
 	//tripDetail함수에 변수값 전달후 실행
 	tripDetail(travelNo);
@@ -237,36 +244,37 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
     		console.log('실패');
     		
     	});
-		
 	}
 	
-/*	*function main() {
-    	console.log('메인 컨트롤러 시작');
-    	
-    	mainFactory.listMain()
-    	.success(function(data){
-    		console.log('로그인 성공 넘어온 데이타는 ?:'+ data);
-    		//메인 객체와 디비에서 넘어온 객체 연결 
-    		$scope.trips=data;
-    		console.log("메인에 넘길데이타 :" +$scope.trips);		
-    	}).error(function (error){
-    		console.log('로그인 실패');
-    	});
-    }*/
-    
+	
+	
+	//tripDetail 답변 게시판 시작
+	
+	$scope.goTripDetailReply=function(){
+		alert('trpDetail 리플 입력 함수 시작 1111');
+		tripDetailReply();
+	}
+	
+	
+	
+	function tripDetailReply(){
+		alert('trpDetail 리플 입력 함수 시작');
+		var tripDetailData=$scope.tripDetailReply;
+	
+		
+		
+		alert('받아온 tripDetailReply 값은: '+tripDetailData);
+		alert('받아온 travelNo 값은: '+travelNo);
+		tripDetailFactory.tripDetailReply(tripDetailData,travelNo)
+		.success(function(){
+			console.log('메인상세 리플 입력완료')
+		}).error(function(error){
+			console.log('메인상세 리플 입력 실패')
+		})
+	}
 }]);
-	
 
 
-/*app.controller('TripDetailController', ['$scope','$route','tripDetailFactory',
-                                        function ($scope, $route,tripDetailFactory) {
-	console.log('tripDetail 시작');
-	
-	var tboardNo=$scope.tboardNo;
-    $scope.checked;
-    $scope.tripDetail = $route.current.locals.tripDetail;
-    
-}]);*/
 
 app.controller('TripManagerController', function ($scope, sumhangService) {
  
