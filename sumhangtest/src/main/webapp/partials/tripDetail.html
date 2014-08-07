@@ -1,4 +1,40 @@
-<header class="header-tripDetail">
+<header class="header-tripDetail"> SUMHANG </header>
+
+<div class="tripDetail view">
+	<div class="row row0">
+		<img class="mainImg" src="resources/images/11.png">
+	</div>
+
+	<div class="row row1">
+		<div class="col-xs-6 travel">
+			여 행 지 :{{trip.travel}}
+			<p>{{trip.title}}</p>
+			<<img class="cal" src="resources/images/cal.png"> <span>
+				{{trip.travelStart}}~ {{trip.travelEnd}} </span>
+		</div>
+		<div class="col-xs-5">
+			<img class="userPho" src="resources/images/7.png"> <span class="username">썸
+				행 짱</span>
+		</div>
+	</div>
+
+	<div class="row desc">
+		<div class="col-xs-12">{{trip.travelDescription}}</div>
+	</div>
+	<div class="row addBtn">
+		<button type="button" class="addTrip">참가신청</button>
+	</div>
+	<div class="row reply">
+		<div class="col-xs-2">철수</div>
+		<div class="col-xs-5">참가 신청 합니다 ^_^</div>
+	</div>
+	<div class="row">
+		<input type="text" class="col-xs-5 textbox" placeholder="덧글을 입력하세요">
+		<button type="button" class="btn btn-primary replybtn">입력</button>
+
+	</div>
+</div>
+<!-- <header class="header-tripDetail">
 			SUMHANG
 		</header>
 
@@ -28,4 +64,4 @@
 			<button type="button" class="btn btn-info">입력 </button>
 
 			</div>
-		</div>	
+		</div>	 -->
