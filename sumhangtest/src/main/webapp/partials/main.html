@@ -46,11 +46,11 @@
 			<ul data-theme="none" data-role="listview" data-inset="true"
 				data-filter="true" data-filter-placeholder="검색어를 입력하세요">
 
-				<li class="list1" data-ng-repeat="trip in trips" data-repeat-done="">
+				<li class="list1" data-ng-repeat="trip in trips" data-repeat-done="" ng-click="goTripDetail(trip.travelNo)">
 					<img
 					data-ng-src="resources/images/tripPhotoFile/{{trip.travelPho}}"
 					class="imgMain visible">
-				<h1 class="visible"><a ng-href="#/tripDetail/{{trip.travelNo}}">{{trip.travel}}</a></h1>
+				<h1 class="visible">{{trip.travel}}</h1>
 					<div class="icons">
 						<img data-ng-src="resources/images/favorite.png"
 							class="favoImg visible" /> <span class="favoriteCount visible">{{trip.likenum}}</span>
