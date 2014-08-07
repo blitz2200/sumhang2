@@ -1,4 +1,4 @@
-<div id="mainPage">
+ <div id="mainPage">
 
 	<!-- 제목 -->
 	<h1>SUM행</h1>
@@ -50,7 +50,7 @@
 					<img
 					data-ng-src="resources/images/tripPhotoFile/{{trip.travelPho}}"
 					class="imgMain visible">
-					<h1 class="visible">{{trip.travel}}</h1>
+				<h1 class="visible"><a ng-href="#/tripDetail/{{trip.travelNo}}">{{trip.travel}}</a></h1>
 					<div class="icons">
 						<img data-ng-src="resources/images/favorite.png"
 							class="favoImg visible" /> <span class="favoriteCount visible">{{trip.likenum}}</span>
@@ -62,6 +62,7 @@
 					<img src="resources/images/sman1.png" class="faceThumb_3 visible">
 					<img src="resources/images/swoman4.png" class="faceThumb_4 visible">
 					<img src="resources/images/swoman1.png" class="faceThumb_5 visible">
+				
 				</li>
 			</ul>
 		</div>
