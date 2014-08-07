@@ -38,7 +38,7 @@ public class TripController {
 	@Autowired
     private SqlSession sqlSession;
 	private UserVO userVO;	
-	
+
 	//여행 등록
 	@RequestMapping(value = "/addTrip", method = RequestMethod.POST)
 	public @ResponseBody String addTrip(HttpSession session, @RequestBody String trip){
@@ -114,7 +114,8 @@ public class TripController {
 					
 		return "";
 	}
-
+	
+	//메인 리스트 게시판 시작
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public @ResponseBody List<TripVO> selectTrip(){
 			System.out.println("메인 리스트 시작...");
@@ -123,6 +124,7 @@ public class TripController {
 			return sqlSession.selectList("tripControlMapper.selectTrip");
 	}
 	
+	//메인 게시판 상세보기 시작
 	@RequestMapping(value="/tripDetail", method=RequestMethod.POST)
 	public @ResponseBody TripVO tripDetail(@RequestBody  String travel_No){
 		
@@ -136,6 +138,13 @@ public class TripController {
 		
 		System.out.println(sqlSession.selectOne("tripControlMapper.tripDetail",tripVO));
 		return sqlSession.selectOne("tripControlMapper.tripDetail",tripVO);
+	}
+	
+	//메인 상세 게시판 리플 달기 시작
+	@RequestMapping(value="/tripDetailReply", method=RequestMethod.POST)
+	public void tripDetailReply(@RequestBody String tripDetailReply){
+		System.out.println("tripDetailReply 시작");
+		System.out.println("넘어온 tripDetailReply:  "  + tripDetailReply);
 	}
 	
 }
