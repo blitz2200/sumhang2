@@ -1,15 +1,105 @@
- <div id="mainPage">
-
+<div id="mainPage">
+	<div id="header">
 	<!-- 제목 -->
-	<h1>SUM행</h1>
+	<div id="imageWrapper">
+	<img id="leftSideIcon" src="resources/images/leftSide.png" data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
+			data-ps-auto-close="true">
+	
+	
+		
+		<!-- 왼쪽패널 -->
+	
+			
+		
 
-	<!-- 좌측 페이지 슬라이드 -->
-	<a pageslide="left" href="#target" ps-speed="0.5" ps-auto-close="true">conf</a>
+		
+		<img id="rightSideIcon" src="resources/images/rightSide.png" data-pageslide="right" data-ps-speed="0.5"
+			href="#rightPanel" data-ps-auto-close="true">
+			</div>
+	
 
+	
+	
+	<div id="my-wrapper" data-ng-model="triplist">
+</div>
+		<div id="listview1">
+			<ul data-theme="none" data-role="listview" data-inset="true"
+				data-filter="true" data-filter-placeholder="검색어를 입력하세요">
+
+				<li class="list1" data-ng-repeat="trip in trips" data-repeat-done=""
+					data-ng-click="goTripDetail(trip.travelNo)"><img
+					data-ng-src="resources/images/tripPhotoFile/{{trip.travelPho}}"
+					class="imgMain visible">
+					<h1 class="visible">
+						<a data-ng-href="#/tripDetail/{{trip.travelNo}}">{{trip.travel}}</a>
+					</h1>
+					<div class="icons">
+						<img data-ng-src="resources/images/favorite.png"
+							class="favoImg visible" /> <span class="favoriteCount visible">{{trip.likenum}}</span>
+						<img src="resources/images/group2.png" class="groupImg visible" />
+						<span class="groupCount visible">{{trip.travelUserCount}}</span>
+					</div>
+					<p class="travelPhrase visible">{{trip.title}}</p>
+					<p class="travelPeriod visible">{{trip.travelStart}}~{{trip.travelEnd}}</p>
+					<img src="resources/images/sman1.png" class="faceThumb_3 visible">
+					<img src="resources/images/swoman4.png" class="faceThumb_4 visible">
+					<img src="resources/images/swoman1.png" class="faceThumb_5 visible">
+
+				</li>
+			</ul>
+		</div>
+	</div>
+<a href="#addTrip">여행모집</a> <a href="#/timeLine">타임라인</a>
+
+
+	<!-- 오른쪽패널	 -->
+	<div id="rightPanel">
+		<img src="resources/images/x-mark-3-24.png" id="rightPanel-close"
+			href="#"> <br />
+		<!-- 방장 사진, 아이디 -->
+		<div id="hostUser">
+			<img src="resources/images/moderator-48.png" id="hostUserPic">
+			<p id="hostUserName">안졸리나졸리나</p>
+		</div>
+
+		<!-- 참여 중인 방 표시 -->
+		<!-- 참여중인 여행 목록 -->
+		<div id="attandingView">
+			<select class="form-control" id="attandingTrips">
+				<option>3:3홍콩</option>
+				<option>2:2제주도</option>
+				<option>2:2 설악산</option>
+			</select>
+			<!-- 모임 게시판 가기 -->
+			<span class="groupBoard"><img
+				src="resources/images/google-groups-32.png" id="groupMeeting"
+				href="#"></span>
+		</div>
+
+		<!-- 여행일정 -->
+		<div class="tripPeriod">
+			<p>2014/09/04~2014/09/09</p>
+		</div>
+
+
+		<!-- 강퇴&초대 버튼 -->
+		<div class="tripActionBtn">
+			<button class="btn btn-xs btn-primary" type="submit" id="kickOutBtn">여행에서
+				제외시키기</button>
+			<button class="btn btn-xs btn-primary" type="submit" id="inviteBtn">초대</button>
+		</div>
+
+		<!--  디데이 -->
+		<div id="dDay">
+			<img src="resources/images/calander-32.png" id="dDayAlert" href="#">
+			<p id="dDayCal">여행까지 ?일 남았습니다.</p>
+		</div>
+
+	</div>
 	<!-- 셋팅 닫기 아이콘  -->
-	<div id="target">
-		<img src="resources/images/x-mark-3-24.png" id="target-close" href="#">
-		<br />
+	<div id="leftPanel">
+		<img src="resources/images/x-mark-3-24.png" id="leftPanel-close"
+			href="#"> <br />
 
 		<!-- settings icons -->
 		<div class=systemSettings1>
@@ -28,87 +118,20 @@
 		</div>
 
 		<div class=systemSettings2>
-			<button class="btn btn-primary btn-xs-5" data-ng-click="logout()" id="logoutBtn">Logout</button>
+			<button class="btn btn-primary btn-xs-5" data-ng-click="logout()"
+				id="logoutBtn">Logout</button>
 			<!-- logout -->
 		</div>
 	</div>
 	<!--좌측 패널아이콘 끝-->
 
-	<!--우측 패널 아이콘-->
-	<a class="large button" pageslide="right" ps-speed="0.5"
-		href="#rightPanel" ps-auto-close="true">Open Demo</a>
-	<!--우측 패널 아이콘 끝-->
-
-	<a href="#addTrip">여행모집</a> <a href="#/timeLine">타임라인</a>
-	<div id="my-wrapper" data-ng-model="triplist">
-
-		<div id="listview1">
-			<ul data-theme="none" data-role="listview" data-inset="true"
-				data-filter="true" data-filter-placeholder="검색어를 입력하세요">
-
-				<li class="list1" data-ng-repeat="trip in trips" data-repeat-done="" ng-click="goTripDetail(trip.travelNo)">
-					<img
-					data-ng-src="resources/images/tripPhotoFile/{{trip.travelPho}}"
-					class="imgMain visible">
-				<h1 class="visible">{{trip.travel}}</h1>
-					<div class="icons">
-						<img data-ng-src="resources/images/favorite.png"
-							class="favoImg visible" /> <span class="favoriteCount visible">{{trip.likenum}}</span>
-						<img src="resources/images/group2.png" class="groupImg visible" />
-						<span class="groupCount visible">{{trip.travelUserCount}}</span>
-					</div>
-					<p class="travelPhrase visible">{{trip.title}}</p>
-					<p class="travelPeriod visible">{{trip.travelStart}}~{{trip.travelEnd}}</p>
-					<img src="resources/images/sman1.png" class="faceThumb_3 visible">
-					<img src="resources/images/swoman4.png" class="faceThumb_4 visible">
-					<img src="resources/images/swoman1.png" class="faceThumb_5 visible">
-				
-				</li>
-			</ul>
-		</div>
-	</div>
-		<!-- rightPanel	 -->
-		<!-- 나가기 버튼 -->
-		<div id="rightPanel">
-			<img src="resources/images/x-mark-3-24.png" id="rightPanel-close"
-				href="#"> <br />
-			<!-- 방장 사진, 아이디 -->
-			<div id="hostUser">
-				<img src="resources/images/moderator-48.png" id="hostUserPic">
-				<p id="hostUserName">안졸리나졸리나</p>
-			</div>
-
-			<!-- 참여 중인 방 표시 -->
-			<!-- 참여중인 여행 목록 -->
-			<div id="attandingView">
-				<select class="form-control" id="attandingTrips">
-					<option>3:3홍콩</option>
-					<option>2:2제주도</option>
-					<option>2:2 설악산</option>
-				</select>
-				<!-- 모임 게시판 가기 -->
-				<span class="groupBoard"><img
-					src="resources/images/google-groups-32.png" id="groupMeeting"
-					href="#"></span>
-			</div>
-
-			<!-- 여행일정 -->
-			<div class="tripPeriod">
-				<p>2014/09/04~2014/09/09</p>
-			</div>
 
 
-			<!-- 강퇴&초대 버튼 -->
-			<div class="tripActionBtn">
-				<button class="btn btn-xs btn-primary" type="submit" id="kickOutBtn">여행에서
-					제외시키기</button>
-				<button class="btn btn-xs btn-primary" type="submit" id="inviteBtn">초대</button>
-			</div>
 
-			<!--  디데이 -->
-			<div id="dDay">
-				<img src="resources/images/calander-32.png" id="dDayAlert" href="#">
-				<p id="dDayCal">여행까지 ?일 남았습니다.</p>
-			</div>
 
-		</div>
+
+
+
+
+
+</div>

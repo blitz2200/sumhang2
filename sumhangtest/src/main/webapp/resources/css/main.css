@@ -1,119 +1,172 @@
-@font-face {
-    font-family:'NEXONFOOTBALLGOTHICB';
-    src:url('../fonts/NEXONFOOTBALLGOTHICB.TTF');
-}
 
-.ui-header .ui-title {
-    background-color: #68a0ea;
-    width: 100%;
-    margin-left: 0;
+#mainPage #header {
+	background:#ffbb33;
 
 }
 
-#mainPage .ui-listview h1 {
-    font-family: NEXONFOOTBALLGOTHICB,sans-serif;
-    font-size: 20px;
-    margin-left: 0;
-    padding-left: 0;
+#leftSideIcon {
+	float:left;
+	
+
+}
+#imageWrapper{
+	height:60;
+	
+}
+
+#rightSideIcon {
+	float:right;
+}
+
+ /* #mainPage #header .title{
+	text-align:center;
+	vertical-align:center;
+	font-size:40px;
+	width:150px;
+	float:left;
+} 
+
+#mainPage #leftSideIcon{
+	float:left;
+	display:inline-block;
+}
+#mainPage #rightSideIcon{
+	float:right;
+	display:inline-block;
+}
+
+
+
+#mainPage .ui-listview h1 {    
+    font-size: 13px;
+    margin:0;
     float : left;
     position : absolute;
-    color: #000000;
-    margin-top:-3px;
+    width:30px;
+
 }
+#mainPage #header img{
+	display:block;
+}
+
 
 #mainPage .ui-listview li {
     box-shadow: 0 0 9px #FFFFFF;
+    height:90px;
 }
 
 #mainPage .ui-listview .travelPhrase {
     float : left;
     position : absolute;
     margin-top:30px;
-    color:#000000;
-    font-family:'NEXONFOOTBALLGOTHICL',sans-serif;
 }
 
 #mainPage .ui-listview .travelPeriod {
     float : left;
     position:absolute;
     margin-top:47px;
-    color:#000000;
-    font-family:'NEXONFOOTBALLGOTHICL' ,sans-serif;
+    width:75px;
 }
 
-.faceThumb_3 {
+
+
+
+#mainPage .faceThumb_3 {
+    float : left;
+    margin-top : 30px;
+    margin-left:80px ;
+    position :absolute;
+    border-radius: 50% 50% 50% 50%;
+}
+
+#mainPage .faceThumb_4 {
+    float : left;
+    margin-top : 30px;
+    margin-left:120px ;
+    position :absolute;
+    border-radius: 50% 50% 50% 50%;
+}
+#mainPage .faceThumb_5 {
     float : left;
     margin-top : 30px;
     margin-left:160px ;
     position :absolute;
     border-radius: 50% 50% 50% 50%;
 }
-
-.faceThumb_4 {
+#mainPage .faceThumb_6 {
     float : left;
     margin-top : 30px;
     margin-left:200px ;
     position :absolute;
     border-radius: 50% 50% 50% 50%;
 }
-.faceThumb_5 {
-    float : left;
-    margin-top : 30px;
-    margin-left:240px ;
-    position :absolute;
-    border-radius: 50% 50% 50% 50%;
-}
-.faceThumb_6 {
-    float : left;
-    margin-top : 30px;
-    margin-left:300px ;
-    position :absolute;
-    border-radius: 50% 50% 50% 50%;
-}
 
 
 
-#my-wrapper{
-    position:relative;
-}
-ul {
-    position: relative;
-}
 
-ul:after{
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
 
-    width: 1263px;
-    height:858px;
-    opacity:0.7;
-    background:url('../images/HK.jpg');
-    background-size: cover;
-}
-
-#my-wrapper form{
+#mainPage #my-wrapper form{
     position:fixed;
-    top:35px;
-    left:15px;
-    width :100%;
+    margin :0 10% 0 5%;
+    top:45px;
+    width:90%;
     z-index:100;
 }
 
-li {
-    opacity: 1;
+#mainPage .groupImg {
+    float: right;
+    margin-left: 40%;
+    padding-bottom: 50px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+}
+
+#mainPage .favoImg {
+    float: right;
+    margin-left: 47%;
+    position: absolute;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+}
+
+#mainPage .groupCount{
+    float: right;
+    margin-left: 43%;
+    padding-top: 0;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    font-family:'NEXONFOOTBALLGOTHICB', sans-serif;
+    color: #7ac54a;
+}
+
+#mainPage .favoriteCount{
+    float: right;
+    margin-left: 50%;
+    padding-top: 0;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    font-family:'NEXONFOOTBALLGOTHICB', sans-serif;
+    color: #a80000;
 }
 
 
-/* left slide	 */
+
+*/
+
+
+
+/* left slide */	
 .ng-pageslide {
 	background: #eee;
 	opacity: 0.9;
 }
 
 /*  close icon  */
-#target-close {
+#leftPanel-close {
 	float: right;
 }
 
@@ -128,7 +181,7 @@ li {
 	margin-right: 20%;
 }
 
-/*   settings icons 2nd   */
+/*   settings icons 2nd  */ 
 .systemSettings2 {
 	margin-top: 20%;
 	text-align: center;
@@ -139,58 +192,9 @@ li {
 	margin-right: 20%;
 }
 
-li:after {
-    opacity: 0;
-}
 
-li .visible{
-    opacity:1;
-    z-index: 10;
-}
-
-.groupImg {
-    float: right;
-    margin-left: 40%;
-    padding-bottom: 50px;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-}
-
-.favoImg {
-    float: right;
-    margin-left: 47%;
-    position: absolute;
-    padding: 0;
-    width: 16px;
-    height: 16px;
-}
-
-.groupCount{
-    float: right;
-    margin-left: 43%;
-    padding-top: 0;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    font-family:'NEXONFOOTBALLGOTHICB', sans-serif;
-    color: #7ac54a;
-}
-
-.favoriteCount{
-    float: right;
-    margin-left: 50%;
-    padding-top: 0;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    font-family:'NEXONFOOTBALLGOTHICB', sans-serif;
-    color: #a80000;
-}
-
-
-/* rightPanel */
-/* 방장 사진 */
+/*  rightPanel */
+/* 방장 사진 */ 
 #hostUserPic{
     float: left;
     width: auto;
@@ -234,7 +238,7 @@ li .visible{
   font-family:'NEXONFOOTBALLGOTHICB';
 }
 
-/* 확정자 게시판 이미지*/
+/* 확정자 게시판 이미지 */
 #groupMeeting{
 	 float: left;
     width: auto;
@@ -287,3 +291,4 @@ li .visible{
 #rightPanel-close{
 	float: left;
 }
+ 
