@@ -31,7 +31,7 @@
 	height: 80px;
 	width: 80px;
 	margin-top: 0.5em;
-	margin-left: 5em;
+	margin-left: 1.5em;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -41,7 +41,7 @@
 }
 
 .tripDetail .username {
-	margin-left: 5.5em;
+	margin-left: 3.1em;
 }
 
 .tripDetail .mainImg {
@@ -135,7 +135,7 @@
 	font-size: 15px;
 }
 
-.tripDetaip .addBtn {
-	border-top: 3px solid;
-	width: 430px;
+.tripDetail .reply{
+	margin-top:50px;
+	margin-bottom:30px;
 }
