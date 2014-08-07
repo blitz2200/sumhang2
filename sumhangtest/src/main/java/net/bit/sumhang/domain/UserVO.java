@@ -92,21 +92,15 @@ public class UserVO {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return ("id:"+id
-				+", name:"+name
-				+", password:"+password
-				+", nick:"+nick
-				+", birth:"+birth
-				+", gender:"+gender
-				+", photo:"+photo
-				+", push:"+push
-				+", invite:"+invite
-				+", signOut:"+signOut);
+		return "UserVO [id=" + id + ", name=" + name + ", password=" + password
+				+ ", nick=" + nick + ", birth=" + birth + ", gender=" + gender
+				+ ", photo=" + photo + ", push=" + push + ", invite=" + invite
+				+ ", signOut=" + signOut + ", role=" + role + ", userNo="
+				+ userNo + "]";
 	}
 	
+
 	
 }
