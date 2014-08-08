@@ -4,14 +4,19 @@
 	height: 50px;
 	color: white;
 	font-size: 2em;
-	vertical-align: center;
+	z-index:999;
 	padding-top: 8px;
+	position:fixed;
+	width:100%;
 }
 
+
 .tripDetail {
+	padding-top:50px;
 	width: 480px;
 	padding-left: 8%;
-	line-height: 2em;
+	line-height: 2.5em;
+	padding-bottom:40px;
 }
 
 .tripDetail .title {
@@ -55,15 +60,7 @@
 	-webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 }
 
-.tripDetail  .textbox {
-	height: 35px;
-	width: 280px;
-	background-color: transparent;
-	border-style: solid;
-	border-width: 0px 0px 1px 0px;
-	border-color: darkred;
-	outline: 0;
-}
+
 
 .tripDetail .addTrip {
 	margin-left: 300px;
@@ -124,10 +121,6 @@
 	margin-right: 5px;
 }
 
-.tripDetail .replybtn {
-	margin-left: 55px;
-}
-
 .tripDetail .desc {
 	border-top: 1px solid;
 	border-color: skyblue;
@@ -135,7 +128,62 @@
 	font-size: 15px;
 }
 
+/* li */
 .tripDetail .reply{
-	margin-top:50px;
-	margin-bottom:30px;
+	margin-top:20px;
+	margin-bottom:20px;
+	font-size:15px;
+	
+	
+}
+.tripDetail ul{ 
+	list-style-type:none;
+	padding:0;
+}
+
+
+.tripDetail ul img{
+	height:40px;
+	width:40px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 6px 6px 6px -1px rgba(59, 75, 45, 0.64);
+	-moz-box-shadow: 6px 6px 6px -1px rgba(59, 75, 45, 0.64);
+	box-shadow: 6px 6px 6px -1px rgba(59, 75, 45, 0.64);
+
+
+}
+
+.tripDetail .reNick{
+	margin-left:20px;
+	width:20%;
+}
+
+
+.wraper-footer-tripDetail .replybtn {
+	margin-left: 30px;
+} 
+
+
+
+ .wraper-footer-tripDetail input{
+	height: 35px;
+	width: 280px;
+	background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: darkred;
+	outline: 0;
+	margin-left:50px;
+} 
+
+
+/* 리플 입력 게시판 하단 고정시키기 */
+.wraper-footer-tripDetail{
+	height:50px;
+	position:fixed;
+	bottom:0;
+	width:100%;
+	z-index:999;
 }
