@@ -3,7 +3,7 @@
 
 /* 페이지 가로 크기 */
 #mainPage .container-mainPage{
-	width: 100%;
+	width: 80%;
 	margin: auto;
 	border-width: 6px;
 	border-style: solid;
@@ -61,7 +61,7 @@
 
 /* 여행사진 */
 #tripPictures #tripPcture{
-	height: 100px;
+	height: 120px;
 	border-radius: 8px;
 	width:100%;
 }
