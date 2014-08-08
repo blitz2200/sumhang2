@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		<result property="travelTag" column="TRAVEL_TAG" jdbcType="VARCHAR" />
   		<result property="likenum" column="likenum" jdbcType="NUMERIC"/>
   		<result property="travelNo" column="TBOARD_NO" jdbcType="NUMERIC"/>
+
   	</resultMap>
   	
   	<insert id="addTrip" parameterType="trip">
@@ -66,18 +67,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id ="selectTripTimeLine" parameterType="user" resultMap="travelSelectMap">
-		select t.travel,t.title,t.travel,t.travel_start,t.travel_end
+		select t.travel,t.title,t.travel,t.travel_start,t.travel_end,t.user_no
 			from TBOARD t, USER u
-		where u.USER_NO=t.TBOARD_NO and u.id=#{id}
+		where u.USER_NO=t.USER_NO and u.id=#{id} limit 1;
 		
 	</select>	
 	
-	<select id="tripDetail" parameterType="trip" resultMap="travelSelectMap">
-	select t.travel, t.TBOARD_NO, u.USER_NO, u.user_photo, u.nick,
-		 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
-		 t.TRAVEL_PHO	 
-		 from TBOARD t, USER u
-	where u.USER_NO=t.TBOARD_NO and t.TBOARD_no =#{travelNo}
+	<select id="tripDetail" parameterType="trip" resultType="map">
+		select t.travel, t.TBOARD_NO, u.USER_NO, u.user_photo, u.nick,t.title,
+			 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
+			 t.TRAVEL_PHO	 
+			 from TBOARD t, USER u
+		where u.USER_NO=t.TBOARD_NO and t.TBOARD_no =#{travelNo}
+	</select>
+	
+	<insert id="tripReply" parameterType="trip">
+		insert into TBOARD_RE(tboard_no,user_no,tboard_re_description)
+			value (#{travelNo},#{userNo},#{tripDetailReply})
+	</insert>
+	
+	
+	<select id="selectTripDetailReply" parameterType="int" resultType="map">
+		select u.nick, tr.TBOARD_RE_DESCRIPTION, 
+			   tr.user_no, u.user_photo
+		from USER u, TBOARD t, TBOARD_RE tr 	
+		where  u.USER_NO=tr.USER_NO and t.TBOARD_NO=tr.TBOARD_NO and tr.TBOARD_NO=#{travelNo}
 	</select>
 	
 </mapper>

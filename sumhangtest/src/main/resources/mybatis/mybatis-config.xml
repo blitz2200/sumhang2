@@ -9,10 +9,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias alias="user" type="net.bit.sumhang.domain.UserVO"/>
 		<typeAlias alias="trip" type="net.bit.sumhang.domain.TripVO"/>
+		<typeAlias alias="map" type="java.util.Map"/>
+		<typeAlias alias="list" type="java.util.List"/>
 	</typeAliases>
 
     <mappers>
         <mapper resource="/mybatis/UserMapper.xml"/>
         <mapper resource="/mybatis/TripMapper.xml"/>
+        
     </mappers>
 </configuration>
