@@ -1,161 +1,172 @@
+/*fonts*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
-#mainPage #header {
+/* 페이지 가로 크기 */
+#mainPage .container-mainPage{
+	width: 100%;
+	margin: auto;
+	border-width: 6px;
+	border-style: solid;
+	border-color: #e6bb46;
+	border-radius: 8px;
+}
+
+/* 서치바디자인 */
+.ui-filterable .ui-input-search{
+	font-family: 'Nanum Gothic Coding', monospace;
+	color: white;
+	border-width:2px;
+ 	border-style:dotted;
+	margin-bottom: -7px;
+	text-align: center;
+	color: white;
+}
+
+/* 서치바 검색 글자 색 */
+.listviewMainPage .ui-filterable .ui-input-search input{
+	color:white;
+}
+
+/* 헤더 색깔 */
+#mainPage #header{
 	background:#ffbb33;
-
 }
 
+/* 헤더 왼쪽 아이콘 */
 #leftSideIcon {
-	float:left;
-	
-
-}
-#imageWrapper{
-	height:60;
-	
+	margin-left: 10px;
+	margin-top: 5px;
+	width: 30px;
+	height: 30px;
 }
 
+/* 헤더 오른쪽 아이콘 */
 #rightSideIcon {
 	float:right;
+	margin-right: 10px;
+	margin-top: 3px;
+	width: 30px;
+	height: 30px;
 }
 
- /* #mainPage #header .title{
-	text-align:center;
-	vertical-align:center;
-	font-size:40px;
-	width:150px;
-	float:left;
-} 
-
-#mainPage #leftSideIcon{
-	float:left;
-	display:inline-block;
-}
-#mainPage #rightSideIcon{
-	float:right;
-	display:inline-block;
+/* 제목 */
+#mainPageTitle{
+	font-family: 'Nanum Gothic Coding', monospace;
+	position: absolute;
+	top: 5px;
+	left: 40%;
+	font-size: 30px;
+	color: white;
 }
 
-
-
-#mainPage .ui-listview h1 {    
-    font-size: 13px;
-    margin:0;
-    float : left;
-    position : absolute;
-    width:30px;
-
-}
-#mainPage #header img{
-	display:block;
+/* 여행사진 */
+#tripPictures #tripPcture{
+	height: 100px;
+	border-radius: 8px;
+	width:100%;
 }
 
-
-#mainPage .ui-listview li {
-    box-shadow: 0 0 9px #FFFFFF;
-    height:90px;
+/* 여행지  위치*/
+#tripDestinationTag .visible {
+	width: 100%;
+	text-align: left;
+	margin-left: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-#mainPage .ui-listview .travelPhrase {
-    float : left;
-    position : absolute;
-    margin-top:30px;
+#tripDestinationTag .visible #tripDestination{
+	color:orange;
 }
 
-#mainPage .ui-listview .travelPeriod {
-    float : left;
-    position:absolute;
-    margin-top:47px;
-    width:75px;
+/* 여행제목 */
+#tripTitleTag #tripTitle{
+	font-family: 'Nanum Gothic Coding', monospace;
+	text-align: left;
+	color: black;
+	font-size: 8px;
+	margin-left: 5px;
+	margin-bottom: -4px;
 }
 
-
-
-
-#mainPage .faceThumb_3 {
-    float : left;
-    margin-top : 30px;
-    margin-left:80px ;
-    position :absolute;
-    border-radius: 50% 50% 50% 50%;
+/* 여행기간 */
+#tripPeriodTag #tripPeriod{
+	font-family: 'Nanum Gothic Coding', monospace;
+	text-align: left;
+	color: black;
+	font-size: 8px;	
+	margin-left: 5px;
 }
 
-#mainPage .faceThumb_4 {
-    float : left;
-    margin-top : 30px;
-    margin-left:120px ;
-    position :absolute;
-    border-radius: 50% 50% 50% 50%;
-}
-#mainPage .faceThumb_5 {
-    float : left;
-    margin-top : 30px;
-    margin-left:160px ;
-    position :absolute;
-    border-radius: 50% 50% 50% 50%;
-}
-#mainPage .faceThumb_6 {
-    float : left;
-    margin-top : 30px;
-    margin-left:200px ;
-    position :absolute;
-    border-radius: 50% 50% 50% 50%;
+/* 아이콘 카운트 위치 */
+#mainIcons #participants{
+	height:22px;
+	float: right;
+	background-color: #e9e9e9;	
+	border-radius: 6px;
+	padding-left: 2px;
+
 }
 
-
-
-
-
-#mainPage #my-wrapper form{
-    position:fixed;
-    margin :0 10% 0 5%;
-    top:45px;
-    width:90%;
-    z-index:100;
+/* 참가자, 아이콘 위치 */
+.iconsBack #mainIcons{
+	/* background-color: #e9e9e9; */
+	background-color:#f6f6f6;
+	border-radius: 8px;
+	margin-top: 5px;
 }
 
-#mainPage .groupImg {
-    float: right;
-    margin-left: 40%;
-    padding-bottom: 50px;
-    position: absolute;
-    width: 16px;
-    height: 16px;
+/* 리스트뷰간 공백 */
+#listviewMainPage #eachListview{
+	padding:0;
+	margin-top:15px;
+	margin-left:15px;
+	margin-right:15px;
+	border-radius: 8px;
 }
 
-#mainPage .favoImg {
-    float: right;
-    margin-left: 47%;
-    position: absolute;
-    padding: 0;
-    width: 16px;
-    height: 16px;
+/* 아이콘이미지 */
+.iconsBack .icons img{
+	width:20px;
+	height:20px;
+	border-radius: 8px;
+
+	margin-top: 2px;
 }
 
-#mainPage .groupCount{
-    float: right;
-    margin-left: 43%;
-    padding-top: 0;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    font-family:'NEXONFOOTBALLGOTHICB', sans-serif;
-    color: #7ac54a;
+/* 얼굴이미지  1*/
+.iconsBack .icons #face1{
+	border-radius: 8px;
+	margin-left: 3px;
+
+	margin-top: 2px;
 }
 
-#mainPage .favoriteCount{
-    float: right;
-    margin-left: 50%;
-    padding-top: 0;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    font-family:'NEXONFOOTBALLGOTHICB', sans-serif;
-    color: #a80000;
+/* 좋아요 숫자 */
+#participants #mainLikeNum{
+	margin-right: 5px;
 }
 
+/* 아이콘 크기 */
+.iconsBack .icons #participants img{
+	width:13px;
+	height:13px;
+	background-color: #e9e9e9; 
 
+}
 
-*/
+/* 모집인원 숫자 */
+.iconsBack #participants #mainTripMember{
+	font-size: 10px;	
+	margin-top: 0;
+	margin-right: 5px;
+}
+
+/* 좋아요 숫자 */
+.iconsBack #participants #mainLikeNum{
+	font-size: 10px;	
+	margin-top: 0;
+}
 
 
 
@@ -206,7 +217,7 @@
 
 /* 방장 이름 */
 #hostUserName {
-	font-family:'NEXONFOOTBALLGOTHICB';
+	font-family: 'Nanum Gothic Coding', monospace;
     float: left;
     font-size: 1em;
     width: 50.01%;
@@ -221,7 +232,7 @@
 
 /* 참여 목록 */
 #attandingView .form-control{
-	font-family:'NEXONFOOTBALLGOTHICB';
+	font-family: 'Nanum Gothic Coding', monospace;
 	margin-top: 20px;
 	float: left;
     height: auto;
@@ -234,8 +245,9 @@
 }
 
 /* 여행기간 */
-.tripPeriod #tripPeriod{
-  font-family:'NEXONFOOTBALLGOTHICB';
+#rightPanel .tripPeriod{
+ font-family: 'Nanum Gothic Coding', monospace;
+  text-align: center;
 }
 
 /* 확정자 게시판 이미지 */
@@ -252,13 +264,14 @@
 
 /* 강퇴&초대 버튼 */
 .tripActionBtn{
+	font-family: 'Nanum Gothic Coding', monospace;
 	text-align: center;
 	margin-top: 100px;
-	font-family:'NEXONFOOTBALLGOTHICB';
 }
 
 /* 강퇴버튼 */
 .tripActionBtn #kickOutBtn{
+	font-family: 'Nanum Gothic Coding', monospace;
 	margin-right: 10px;
 }
 
@@ -274,7 +287,7 @@
 
 /* 디데이 알림 문구 */
 #dDayCal{
-	font-family:'NEXONFOOTBALLGOTHICB';
+	font-family: 'Nanum Gothic Coding', monospace;
   	float: left;
     font-size: 1m;
     width: auto;
@@ -283,7 +296,7 @@
     font-weight: normal;
     line-height: 1em;
     margin-left: 5%;
-    margin-top: 48px;
+    margin-top: 53px;
     min-height: 28px;
 }
 
