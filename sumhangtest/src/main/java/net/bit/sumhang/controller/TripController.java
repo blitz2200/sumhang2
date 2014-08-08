@@ -5,7 +5,9 @@ package net.bit.sumhang.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -124,27 +126,9 @@ public class TripController {
 			return sqlSession.selectList("tripControlMapper.selectTrip");
 	}
 	
-	//메인 게시판 상세보기 시작
-	@RequestMapping(value="/tripDetail", method=RequestMethod.POST)
-	public @ResponseBody TripVO tripDetail(@RequestBody  String travel_No){
-		
-		TripVO tripVO;
-		System.out.println("tripDetail 시작");
-		System.out.println("넘어온 travelNo:  "+ travel_No);
-		Gson gson = new Gson();
-		tripVO=gson.fromJson(travel_No, TripVO.class);
-		System.out.println(tripVO);
-		
-		
-		System.out.println(sqlSession.selectOne("tripControlMapper.tripDetail",tripVO));
-		return sqlSession.selectOne("tripControlMapper.tripDetail",tripVO);
-	}
 	
-	//메인 상세 게시판 리플 달기 시작
-	@RequestMapping(value="/tripDetailReply", method=RequestMethod.POST)
-	public void tripDetailReply(@RequestBody String tripDetailReply){
-		System.out.println("tripDetailReply 시작");
-		System.out.println("넘어온 tripDetailReply:  "  + tripDetailReply);
-	}
+	
+	
+	
 	
 }
