@@ -3,53 +3,41 @@
      <div class="container">
 
       <form name="loginForm" data-ng-submit="loginRequest()" class="form-signin" data-ng-model="loginInfo" novalidate>
-      	 <img id="image" src="resources/images/redCheck.png" class="image help-block"  data-ng-show="loginForm.password.$invalid && submitted"/>
-        <img id="image1" src="resources/images/redCheck.png" class="image help-block" data-ng-show="loginForm.username.$invalid && submitted"  />
-       <p id="text">
-        글로벌 NO.1 여행앱
-        </p>
+    
+        <img id="image" src="img/16.jpg" class="image" />
         <div id="box" class="clearfix">
-            <p id="text1">
-            SUM행
+            <p id="text">
+            UserID
             </p>
-        </div>
-        <div id="box1" class="clearfix">
-             <button id="input" type="submit">Sign in</button> 
-        </div>
-        
-       <div   data-ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine && submitted}">
-        <p id="text2">
-        Username
-        </p>
-        <label id="formgroup">
+            <label id="formgroup">
+                <p id="text1">
+                <br />
+                </p>
+                <input id="textinput" type="text" value="UserID"></input>
+            </label>
+            <p id="text2">
+            SUMHANG
+            </p>
             <p id="text3">
-            &nbsp;
+            Password
             </p>
-         
-            <input id="textinput" type="text" name="username"  placeholder="Email address" data-ng-model="loginInfo.id" required></input>
-        </label>
-       </div>
-        
-        <div  data-ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine && submitted}">
-        <p id="text4">
-        Passowrd
-        </p>
-        <label id="formgroup1">
-            <p id="text5">
-            &nbsp;
-            </p>
-            <input id="textinput1" type="password" name="password" placeholder="Password" data-ng-model="loginInfo.password" required></input>
-        </label>
+            <label id="formgroup1">
+                <p id="text4">
+                <br />
+                </p>
+                <input id="textinput1" type="text" value="Password"></input>
+            </label>
+            <img id="image1" src="img/CHECKRED1.png" class="image" />
+            <img id="image2" src="img/CHECKRED1.png" class="image" />
+            <label id="formgroup2">
+                <input id="input1" type="checkbox"></input>
+                <p id="text5">
+                Remeber Me
+                </p>
+            </label>
+            <input id="input2" type="button" value="Log In"></input>
+            <input id="input3" type="button" value="Sign IN"></input>
         </div>
-        
-        <label id="formgroup2">
-            <input id="input1" type="checkbox" value="remember-me"></input>
-            <p id="text6">
-            Remeber me
-           
-            </p>
-        </label>  
-        
         
          
       	<!-- <section class="js-section">	    

@@ -1,62 +1,87 @@
-/* div.ui-page.ui-page-theme-a.ui-page-active{
+.primaryContainer {
     height: auto;
     margin-left: auto;
     margin-right: auto;
     min-height: 100%;
     width: 100%;
-    background-image:url('../images/16.jpg');
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
     position: relative;
-    background-position: 0% 0%;
-    background-repeat: no-repeat no-repeat;
-} */
-
- 
-div.primaryContainer.login {
-    height: 1263px;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 100%;
-    width: auto;
-    background-image:url("../images/16.jpg");
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
-    position: relative;
-    background-position: 0% 0%;
-    background-repeat: no-repeat no-repeat;
-    z-index:100;
-}  
- 
-  #formgroup {
-    float: left;
-    height: 61px;
-    display: block;
-    text-align: left;
-    clear: none;
-    width: 31.880163%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    position: fixed;
-    top: 364px;
-    left: 37.34208%;
-    z-index: 5;
+    border-top-right-radius: 3px;
 }
 
-#textinput {
+#image {
+    float: left;
+    width: 86.531147%;
+    max-width: 100%;
+    height: auto;
+    clear: none;
+    color: rgb(0, 0, 0);
+    position: fixed;
+    top: 235px;
+    left: 7.28053%;
+    z-index: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#box {
+    float: left;
+    height: 166.765625px;
+    clear: none;
+    width: 86.584821%;
+    position: fixed;
+    top: 7.764462%;
+    left: 7.339308%;
+    bottom: auto;
+    right: 0%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: rgb(255, 187, 51);
+}
+
+#text2 {
+    float: left;
+    font-size: 3.5em;
+    width: 24.121622%;
+    height: auto;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1em;
+    clear: both;
+    min-height: 0px;
+    font-family: 'Gill Sans MT Ext Condensed Bold';
+    color: rgb(255, 255, 255);
+    margin-left: 4.193343%;
+    margin-top: 10.875px;
+    margin-right: 0%;
+    text-shadow: rgb(0, 0, 0) -2px 3px 3px;
+}
+
+#formgroup1 {
+    float: left;
+    height: auto;
+    display: block;
+    text-align: left;
+    margin-left: 8.0625px;
+    margin-top: 0px;
+    clear: none;
+    width: 35.305168%;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+#textinput1 {
     float: none;
     height: auto;
-    padding: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
     font-size: 1em;
     display: block;
     width: 100%;
 }
 
-#text3 {
+#text4 {
     float: none;
     font-size: 1em;
     width: auto;
@@ -64,8 +89,83 @@ div.primaryContainer.login {
     text-align: left;
     font-weight: normal;
     line-height: 1em;
-    padding: 0.2em 0em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 0em;
+    padding-right: 0em;
     display: block;
+}
+
+#text {
+    float: left;
+    font-size: 1em;
+    width: 16.963108%;
+    height: auto;
+    text-align: center;
+    font-weight: 900;
+    line-height: 1em;
+    margin-left: 34.727545%;
+    margin-top: 27.375px;
+    clear: none;
+    min-height: 0px;
+    color: rgb(255, 255, 255);
+}
+
+#text3 {
+    float: left;
+    font-size: 1em;
+    width: 16.963108%;
+    height: auto;
+    text-align: center;
+    font-weight: 900;
+    line-height: 1em;
+    margin-left: 6.506943%;
+    margin-top: 29.03125px;
+    clear: none;
+    min-height: 0px;
+    display: block;
+    margin-right: 0%;
+    color: rgb(255, 255, 255);
+}
+
+#formgroup {
+    float: left;
+    height: auto;
+    display: block;
+    text-align: left;
+    margin-left: 1.988731%;
+    margin-top: 0px;
+    clear: none;
+    width: 34.957463%;
+    margin-right: 0%;
+    margin-bottom: 0px;
+}
+
+#text1 {
+    float: none;
+    font-size: 1em;
+    width: auto;
+    height: auto;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 0em;
+    padding-right: 0em;
+    display: block;
+}
+
+#textinput {
+    float: none;
+    height: auto;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    font-size: 1em;
+    display: block;
+    width: 100%;
 }
 
 #formgroup2 {
@@ -73,152 +173,23 @@ div.primaryContainer.login {
     height: auto;
     display: block;
     text-align: left;
+    margin-left: -35.561047%;
+    margin-top: 64.875px;
     clear: none;
     width: auto;
     min-height: auto;
-    position: fixed;
-    top: 473px;
-    left: 37.364857%;
-    right: 50.001518%;
-    z-index: 5;
 }
 
 #input1 {
     float: none;
     height: auto;
-    padding: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
     font-size: 1em;
     display: inline-block;
     width: auto;
-}
-
-#text6 {
-    float: none;
-    font-size: 1em;
-    width: auto;
-    height: auto;
-    text-align: left;
-    font-weight: 600;
-    line-height: 1em;
-    padding: 0em 0.5em;
-    display: inline-block;
-    color: rgb(255, 255, 255);
-    font-family: arial;
-}
-
-#box1 {
-    float: left;
-    height: 293px;
-    clear: none;
-    width: 65.611334%;
-    opacity: 0.61;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    position: fixed;
-    top: 306px;
-    left: 17.870809%;
-    display: block;
-    z-index: 0;
-    background-image:-webkit-linear-gradient(270deg, white 0%, rgb(255, 255, 255) 100%);
-    background-image: linear-gradient(180deg, white 0%, rgb(255, 255, 255) 100%);
-    background-attachment: scroll;
-    -webkit-background-size: auto;
-    background-size: auto;
-    -webkit-box-shadow: rgb(0, 0, 0) -9px 12px 3px 0px;
-    box-shadow: rgb(0, 0, 0) -9px 12px 3px 0px;
-    background-position: 0% 0%;
-    background-repeat: repeat repeat;
-}
-
-#input {
-    float: left;
-    height: 42px;
-    font-size: 1em;
-    clear: none;
-    width: 10.884354%;
-    border-top-left-radius: 11px;
-    border-top-right-radius: 11px;
-    border-bottom-right-radius: 11px;
-    border-bottom-left-radius: 11px;
-    font-weight: 700;
-    font-family: arial;
-    border-color: rgb(44, 71, 203);
-    background-color: rgb(44, 71, 203);
-    color: rgb(255, 255, 255);
-    position: fixed;
-    top: 515.375px;
-    left: 47.647898%;
-    z-index: 5;
-}
-
-#text {
-    float: left;
-    font-size: 3em;
-    width: 53.644315%;
-    height: auto;
-    text-align: center;
-    font-weight: 700;
-    line-height: 1em;
-    clear: none;
-    min-height: 76px;
-    font-family: 나눔바른고딕;
-    color: rgb(255, 255, 255);
-    display: block;
-    position: fixed;
-    top: 54px;
-    left: 22.778486%;
-}
-
-#box {
-    float: left;
-    height: 155px;
-    clear: none;
-    width: 50.827563%;
-    border: 10px solid rgb(255, 255, 255);
-    border-top-left-radius: 100px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    display: block;
-    position: fixed;
-    top: 115px;
-    left: 24.372874%;
-    -webkit-box-shadow: rgb(0, 0, 0) -5px 6px 3px 0px;
-    box-shadow: rgb(0, 0, 0) -5px 6px 3px 0px;
-}
-
-#text1 {
-    float: left;
-    font-size: 8em;
-    width: auto;
-    height: auto;
-    text-align: justify;
-    font-weight: 900;
-    line-height: 1em;
-    margin-left: 13.684976%;
-    margin-top: 12px;
-    clear: none;
-    min-height: 165px;
-    margin-right: 0%;
-    font-family: arial;
-    color: rgb(255, 255, 255);
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-#formgroup1 {
-    float: left;
-    height: 66px;
-    display: block;
-    text-align: left;
-    clear: none;
-    width: 31.880163%;
-    position: fixed;
-    top: 415px;
-    left: 37.408892%;
-    z-index: 5;
 }
 
 #text5 {
@@ -229,80 +200,95 @@ div.primaryContainer.login {
     text-align: left;
     font-weight: normal;
     line-height: 1em;
-    padding: 0.2em 0em;
-    display: block;
+    padding-top: 0em;
+    padding-bottom: 0em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    display: inline-block;
 }
 
-#textinput1 {
-    float: none;
-    height: auto;
-    padding: 0px;
-    font-size: 1em;
-    display: block;
-    width: 100%;
-}
-
-#text2 {
+#input2 {
     float: left;
+    height: 26px;
     font-size: 1em;
-    width: 15.06165%;
-    height: auto;
-    text-align: left;
+    margin-left: 40.798982%;
+    margin-top: 6px;
+    clear: both;
+    width: 23.857335%;
+    background-color: rgb(255, 255, 255);
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    color: rgb(0, 0, 0);
     font-weight: 600;
-    line-height: 1em;
-    clear: none;
-    min-height: 75px;
-    color: rgb(255, 255, 255);
-    font-family: arial;
-    display: block;
-    position: fixed;
-    top: 386.375px;
-    left: 28.023263%;
-    z-index: 5;
 }
 
-#text4 {
+#input3 {
     float: left;
+    height: 26px;
     font-size: 1em;
-    width: 10.68999%;
-    height: auto;
-    text-align: left;
-    font-weight: 600;
-    line-height: 1em;
+    margin-left: 4.672582%;
+    margin-top: 6px;
     clear: none;
-    min-height: 83px;
-    color: rgb(255, 255, 255);
-    font-family: arial;
+    width: 21.813171%;
     display: block;
-    position: fixed;
-    top: 440.375px;
-    left: 28.384657%;
-    z-index: 5;
+    margin-right: 0%;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+#input {
+    float: left;
+    height: 26px;
+    font-size: 1em;
+    margin-left: 45.124897%;
+    margin-top: 6px;
+    clear: none;
+    width: 22.728207%;
+    display: block;
+}
+
+#image2 {
+    float: left;
+    width: auto;
+    height: auto;
+    clear: none;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    top: 71.75px;
+    left: 90.448912%;
+    display: block;
+    max-width: 4.40301%;
 }
 
 #image1 {
     float: left;
     width: auto;
-    max-width: 2.462949%;
+    max-width: 4.783259%;
     height: auto;
     clear: none;
     color: rgb(0, 0, 0);
-    position: fixed;
-    top: 382.375px;
-    left: 70.997328%;
-    z-index: 5;
+    position: absolute;
+    top: 22.375px;
+    left: 90.072021%;
+    display: block;
 }
 
-#image {
-    float: left;
-    width: auto;
-    max-width: 2.462949%;
-    height: auto;
-    clear: none;
-    color: rgb(0, 0, 0);
-    position: fixed;
-    top: 435.375px;
-    left: 70.997328%;
-    z-index: 5;
-    display: block;
-} 
