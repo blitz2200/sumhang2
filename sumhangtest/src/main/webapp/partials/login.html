@@ -3,53 +3,75 @@
      <div class="container">
 
       <form name="loginForm" data-ng-submit="loginRequest()" class="form-signin" data-ng-model="loginInfo" novalidate>
-    
-        <img id="image" src="img/16.jpg" class="image" />
+   		
+        <img id="image" src="resources/images/16.jpg" class="image" />
+        
         <div id="box" class="clearfix">
+        	 
+          	<div  data-ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine && submitted}">
             <p id="text">
             UserID
             </p>
-            <label id="formgroup">
-                <p id="text1">
-                <br />
-                </p>
-                <input id="textinput" type="text" value="UserID"></input>
+            <label id="formgroup" >
+                  </br>             
+           
+                <input id="IdInput" class="form-control" type="text"  name="username" placeholder="UserID"  data-ng-model="loginInfo.id" required></input>
+               
             </label>
-            <p id="text2">
-            SUMHANG
-            </p>
+            </div>
+            
+           
+            <!-- SUMHANG --><img class="logo" src="resources/images/logo-1.png">
+            
+            
+            
+            <div     data-ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine && submitted}">
             <p id="text3">
             Password
             </p>
             <label id="formgroup1">
-                <p id="text4">
-                <br />
-                </p>
-                <input id="textinput1" type="text" value="Password"></input>
+          		<br/>
+                <input id="PasswordInput"  class="form-control" type="password" name="password"   placeholder="Password" data-ng-model="loginInfo.password" required></input>
             </label>
-            <img id="image1" src="img/CHECKRED1.png" class="image" />
-            <img id="image2" src="img/CHECKRED1.png" class="image" />
+            </div>
+          	
+ 		  	<img id="image1" src="resources/images/CHECKRED1.png" class="image help-block"  data-ng-show="loginForm.username.$invalid && submitted"  />
+            <img id="image2" src="resources/images/CHECKRED1.png" class="image help-block"   data-ng-show="loginForm.password.$invalid && submitted"  />   
+          
+          
+          
             <label id="formgroup2">
-                <input id="input1" type="checkbox"></input>
+                <input id="input1" type="checkbox"  value="remember-me"></input>
                 <p id="text5">
                 Remeber Me
                 </p>
             </label>
-            <input id="input2" type="button" value="Log In"></input>
-            <input id="input3" type="button" value="Sign IN"></input>
-        </div>
+            
+            	
+            	
+ 
+            
+              <button id="LogIn" type="submit"><p id="Log">Log In</p></button>
+			  <a id="SignIn" href="#/joinMember">Sign Up</a> 
+ 
+      </div>
+      </form>
+      </div>
+ </div>
+ 
+       
         
          
-      	<!-- <section class="js-section">	    
+<!--       	 <section class="js-section">	    
             <div class="banner js-example-1" data-crossfade-start="resources/image/01.jpg" data-crossfade-end="resources/image/01-blur.jpg">
             	<h1 class="js-parallax">SUM행</h1>
             	<br/>
             	<br/>
             	<br/>
             </div>         
-        </section>
+        </section> -->
         
-        <div class="form-group" data-ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine && submitted}">
+<!--         <div class="form-group" data-ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine && submitted}">
         <label>Username</label>
         <input type="text" name="username" class="form-control" placeholder="Email address" data-ng-model="loginInfo.id" required>
         <p data-ng-show="loginForm.username.$invalid && submitted" class="help-block">Enter a username.</p>
@@ -64,12 +86,12 @@
   		
        
         	
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button> -->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>  
          
-<!--       </form>
+       </form>
 
-    </div>   -->
-</div> 
-
- 
+    </div> 
+    </div>
+    
+  -->
  

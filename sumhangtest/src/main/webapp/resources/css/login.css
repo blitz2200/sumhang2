@@ -40,18 +40,20 @@
 
 #text2 {
     float: left;
-    font-size: 3.5em;
+    
     width: 24.121622%;
     height: auto;
     text-align: center;
-    font-weight: 400;
-    line-height: 1em;
+   	top:10px;
+  
     clear: both;
     min-height: 0px;
     font-family: 'Gill Sans MT Ext Condensed Bold';
     color: rgb(255, 255, 255);
     margin-left: 4.193343%;
-    margin-top: 10.875px;
+  
+    margin-bottom:20px;
+    padding-bottom:20px;
     margin-right: 0%;
     text-shadow: rgb(0, 0, 0) -2px 3px 3px;
 }
@@ -69,9 +71,9 @@
     margin-bottom: 0px;
 }
 
-#textinput1 {
+#PasswordInput{
     float: none;
-    height: auto;
+    height: 30px;`
     padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
@@ -79,6 +81,7 @@
     font-size: 1em;
     display: block;
     width: 100%;
+    margin-left:7px;
 }
 
 #text4 {
@@ -156,9 +159,9 @@
     display: block;
 }
 
-#textinput {
+#IdInput {
     float: none;
-    height: auto;
+     height: 30px;
     padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
@@ -207,7 +210,7 @@
     display: inline-block;
 }
 
-#input2 {
+#LogIn {
     float: left;
     height: 26px;
     font-size: 1em;
@@ -220,28 +223,33 @@
     border-right-style: none;
     border-bottom-style: none;
     border-left-style: none;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     color: rgb(0, 0, 0);
     font-weight: 600;
+       height:30px;
+        border: 1px gray solid;
+       box-shadow:5px 5px  ;
 }
 
-#input3 {
+#SignIn{
     float: left;
     height: 26px;
     font-size: 1em;
+    text-align:center;
     margin-left: 4.672582%;
     margin-top: 6px;
     clear: none;
     width: 21.813171%;
+    height:30px;
     display: block;
     margin-right: 0%;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 2px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     font-weight: 600;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
@@ -253,6 +261,9 @@
     border-right-width: 0px;
     border-bottom-width: 0px;
     border-left-width: 0px;
+    border: 1px gray solid;
+     box-shadow:5px 5px  ;
+    
 }
 
 #input {
@@ -268,21 +279,21 @@
 
 #image2 {
     float: left;
-    width: auto;
+    width: 30px;
     height: auto;
     clear: none;
     color: rgb(0, 0, 0);
     position: absolute;
     top: 71.75px;
-    left: 90.448912%;
+   left: 90.072021%;
     display: block;
-    max-width: 4.40301%;
+    max-width: 3%;
 }
 
 #image1 {
     float: left;
-    width: auto;
-    max-width: 4.783259%;
+    width: 30px;
+    max-width: 3%;
     height: auto;
     clear: none;
     color: rgb(0, 0, 0);
@@ -291,4 +302,16 @@
     left: 90.072021%;
     display: block;
 }
+p#Log{
+	  font-weight: 700;
+}
+p#Sign{
+	  font-weight: 700;
+	  
+}
 
+img.logo{
+	float:left;
+	width:30%;
+	 
+}
