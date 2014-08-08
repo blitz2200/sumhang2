@@ -109,35 +109,64 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 
     $scope.addTripRequest = function () {
     	
+    	$scope.submitted = true;
+    	
+    	
+    	
+    	if( $scope.addTripForm.tripTitleInput.$valid && $scope.addTripForm.tripDestinationInput.$valid
+    		&& $scope.addTripForm.datepicker3.$valid && $scope.addTripForm.datepicker4.$valid
+    		&& $scope.addTripForm.tripNumberInputAddTrip.$valid ){
+    	
+ 
+    	
+    	
     	alert("여행참가신청 시작...");
     	
     	var trip =$scope.newTrip;
 		var uploadtripUrl="addTripFile.ajax";
 		var tripUrl="addTrip.ajax"
 		var tripfile=$scope.tripfile;		
-    	
-		alert('여행 등록 내용  :'+JSON.stringify(trip));
+		
+	
+		
+		
+		if (typeof $scope.tripfile == 'undifined') {
+			
+			
 		
 			alert('업로드 파일은 :' + JSON.stringify(tripfile.name));
     	
 			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
 			var tripFile= JSON.stringify(tripfile.name)
-						  .substr(1,JSON.stringify(tripfile.name).length-2);
-			alert('여행파일은? :'+tripFile)
+					  .substr(1,JSON.stringify(tripfile.name).length-2);
+			lert('여행파일은? :'+tripFile)
 			
 			//여행등록 객체에 파일이름 추가 
 			trip.travelPho=tripFile;	
 			
 			alert("사진 파일 추가후 업로드"+JSON.stringify(trip));
 			
-			//여행객체 서비스에 전송
-			sumhangService.addTrip(trip,tripUrl);
+			
 			
 			//파일객체 서비스에 전송
-			sumhangService.addTripFile(tripfile,uploadtripUrl);	
+		
+			sumhangService.addTripFile(tripfile,uploadtripUrl);
 			
-			$scope.location.path('/main');  
+		}else{
+			trip.travelPho='1.png';
+			alert("디폴트파일이름"+JSON.stringify(trip.travelPho));
+			
 		}
+		
+		alert('여행 등록 내용  :'+JSON.stringify(trip));
+		//여행객체 서비스에 전송
+		sumhangService.addTrip(trip,tripUrl);
+		$scope.location.path('/main');  
+		}else{
+			alert('양식을 입력하세요');
+		}
+    	
+    }
 }]);
 
 
@@ -150,6 +179,10 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
+	
+	$scope.goTimeLine=function (){
+		$scope.location.path('/timeLine');
+	}
 
 	$scope.goTripDetail=function(travelNo){
 		var temp="/tripDetail/"+travelNo;
