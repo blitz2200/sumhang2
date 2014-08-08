@@ -59,25 +59,25 @@ app.controller('LoginController', ['$scope','sumhangFactory',
 app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($scope, sumhangService) {
 	$scope.addMemberRequest = function(){
 		
-		alert("회원가입 시작");
+		console.log("회원가입 시작");
 		
 		var user =$scope.newMember;
 		var uploadUrl="addFile.ajax";
 		var userUrl="addUser.ajax"
 		var file=$scope.file;		
 	
-    	alert('회원가입 내용  :'+JSON.stringify(user));
-		alert('업로드 파일은 :' + JSON.stringify(file.name));
+		console.log('회원가입 내용  :'+JSON.stringify(user));
+		console.log('업로드 파일은 :' + JSON.stringify(file.name));
 		
 		//파일객체에서 이름을 빼서 userFile에 저장후 substr함수로 따음표 잘라내기
 		var userFile= JSON.stringify(file.name)
 					  .substr(1,JSON.stringify(file.name).length-2);
-		alert('유저파일은? :'+userFile)
+		console.log('유저파일은? :'+userFile)
 		
 		//회원가입 객체에 파일이름 추가 
 		user.photo=userFile;	
 		
-		alert("사진 파일 추가후 업로드"+JSON.stringify(user));
+		console.log("사진 파일 추가후 업로드"+JSON.stringify(user));
 		
 		
 		//유저객체 서비스에 전송
@@ -108,7 +108,6 @@ app.controller('LeftSideController', function ($scope, sumhangService) {
 app.controller('AddTripController', ['$scope',  'sumhangService', function ($scope, sumhangService) {
 
     $scope.addTripRequest = function () {
-    	
     	$scope.submitted = true;
     	
     	
@@ -117,38 +116,28 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
     		&& $scope.addTripForm.datepicker3.$valid && $scope.addTripForm.datepicker4.$valid
     		&& $scope.addTripForm.tripNumberInputAddTrip.$valid ){
     	
- 
     	
-    	
-    	alert("여행참가신청 시작...");
+    	console.log("여행참가신청 시작...");
     	
     	var trip =$scope.newTrip;
 		var uploadtripUrl="addTripFile.ajax";
 		var tripUrl="addTrip.ajax"
 		var tripfile=$scope.tripfile;		
-		
-	
-		
-		
-		if (typeof $scope.tripfile == 'undifined') {
-			
-			
-		
-			alert('업로드 파일은 :' + JSON.stringify(tripfile.name));
+    	
+			if (typeof $scope.tripfile == 'undifined') {
+		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
     	
 			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
 			var tripFile= JSON.stringify(tripfile.name)
-					  .substr(1,JSON.stringify(tripfile.name).length-2);
-			lert('여행파일은? :'+tripFile)
+						  .substr(1,JSON.stringify(tripfile.name).length-2);
+			console.log('여행파일은? :'+tripFile)
 			
 			//여행등록 객체에 파일이름 추가 
 			trip.travelPho=tripFile;	
 			
-			alert("사진 파일 추가후 업로드"+JSON.stringify(trip));
-			
-			
-			
-			//파일객체 서비스에 전송
+			console.log("사진 파일 추가후 업로드"+JSON.stringify(trip));
+				
+				//파일객체 서비스에 전송
 		
 			sumhangService.addTripFile(tripfile,uploadtripUrl);
 			
@@ -179,11 +168,11 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
-	
+
 	$scope.goTimeLine=function (){
 		$scope.location.path('/timeLine');
 	}
-
+	
 	$scope.goTripDetail=function(travelNo){
 		var temp="/tripDetail/"+travelNo;
 		$scope.location.path(temp);
@@ -262,21 +251,38 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	
 	//tripDetail함수에 변수값 전달후 실행
 	tripDetail(travelNo);
+	//tripDetailReply 함수 실행 
+	tripDetailListReply(travelNo);
 	
+	//tripDetail 페이지 시작 
 	function tripDetail(travelNo){
 		console.log('tripDetail 시작');			
 		console.log('넘어온 tboardNo는:'+travelNo);		
 		
 		tripDetailFactory.tripDetail(travelNo)
 		.success(function(data){    		
-    		console.log('디비에서 꺼내온 main detail 출력용 data:'+data);
+    		console.log('디비에서 꺼내온 main detail 출력용 data:'+JSON.stringify(data));
 			$scope.trip=data;
-			console.log("HTML예 출력할 데이타 :" +$scope.trip);
+			console.log("HTML예 출력할 데이타 :" +JSON.stringify($scope.trip));
     		
     	}).error(function (error){
     		console.log('실패');
     		
     	});
+	}//tripDetail 끝
+	
+	
+	//리플 리스트 시작
+	function tripDetailListReply(travelNo){
+		console.log('tripDetailReply 시작')
+		tripDetailFactory.tripDetailListReply(travelNo)
+		.success(function(data){
+			console.log('디비에서 꺼내온 main detail reply data:'+JSON.stringify(data));
+			$scope.replys=data;
+			console.log('html에 출력할 리플라이 데이타 '+JSON.stringify($scope.replys));
+		}).error(function(error){
+			console.log('tripDetailReply 콘트롤러 실패');
+		})
 	}
 	
 	
@@ -284,23 +290,21 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	//tripDetail 답변 게시판 시작
 	
 	$scope.goTripDetailReply=function(){
-		alert('trpDetail 리플 입력 함수 시작 1111');
 		tripDetailReply();
 	}
 	
 	
 	
 	function tripDetailReply(){
-		alert('trpDetail 리플 입력 함수 시작');
+		console.log('trpDetail 리플 입력 함수 시작');
 		var tripDetailData=$scope.tripDetailReply;
-	
-		
-		
-		alert('받아온 tripDetailReply 값은: '+tripDetailData);
-		alert('받아온 travelNo 값은: '+travelNo);
+			
+		console.log('받아온 tripDetailReply 값은: '+tripDetailData);
+		console.log('받아온 travelNo 값은: '+travelNo);
 		tripDetailFactory.tripDetailReply(tripDetailData,travelNo)
 		.success(function(){
 			console.log('메인상세 리플 입력완료')
+			tripDetailListReply(travelNo);
 		}).error(function(error){
 			console.log('메인상세 리플 입력 실패')
 		})
