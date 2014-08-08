@@ -1,6 +1,5 @@
 package net.bit.sumhang.domain;
 
-
 public class TripVO {
 	private String travel;
 	private String title;
@@ -13,24 +12,10 @@ public class TripVO {
 	private int likenum;
 	private int travelNo;
 	private int userNo;
+	private String tripDetailReply;
 	
-
-	@Override
-	public String toString() {
-		return "TripVO [travel=" + travel + ", title=" + title
-				+ ", travelDescription=" + travelDescription + ", travelStart="
-				+ travelStart + ", travelEnd=" + travelEnd + ", travelPho="
-				+ travelPho + ", travelUserCount=" + travelUserCount
-				+ ", travelTag=" + travelTag + ", likenum=" + likenum
-				+ ", travelNo=" + travelNo + userNo+"]";
-	}
 	
-	public int getUserNo() {
-		return userNo;
-	}
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
+	
 	public String getTravel() {
 		return travel;
 	}
@@ -91,7 +76,30 @@ public class TripVO {
 	public void setTravelNo(int travelNo) {
 		this.travelNo = travelNo;
 	}
+	public int getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
+	public String getTripDetailReply() {
+		return tripDetailReply;
+	}
+	public void setTripDetailReply(String tripDetailReply) {
+		this.tripDetailReply = tripDetailReply;
+	}
+	@Override
+	public String toString() {
+		return "TripVO [travel=" + travel + ", title=" + title
+				+ ", travelDescription=" + travelDescription + ", travelStart="
+				+ travelStart + ", travelEnd=" + travelEnd + ", travelPho="
+				+ travelPho + ", travelUserCount=" + travelUserCount
+				+ ", travelTag=" + travelTag + ", likenum=" + likenum
+				+ ", travelNo=" + travelNo + ", userNo=" + userNo
+				+ ", tripDetailReply=" + tripDetailReply + "]";
+	}
 	
 	
-	
+
+
 }
