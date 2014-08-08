@@ -79,7 +79,7 @@ angular.module('sumhangApp')
 			'method' : 'GET'    		
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
-			console.log('타임 라인 가져오기 성공'+data);
+			console.log('타임 라인 가져오기 성공'+JSON.stringify(data));
 			
 		}).error(function(){
 			console.log('타임 라인 받아오기 실패');
@@ -104,15 +104,28 @@ angular.module('sumhangApp')
 			'data' : {'travelNo':travelNo}
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
-			console.log('여행 세부 게시판 가져오기 성공'+data);
-			
+			console.log('여행 세부 게시판 가져오기 성공'+JSON.stringify(data));			
 		}).error(function(){
 			console.log('여행 세부 게시판 받아오기 실패');
 		})
 	};
 	
 	
-	//리플 시작
+	//리플 출력 시작
+	tripDetailFactory.tripDetailListReply=function(travelNo){
+		console.log('tripDetailFactory 시작 넘어온 travelNo확인 : ' + travelNo);
+		return $http({
+			'url' :"tripDetailListReply.ajax",
+			'method': 'POST',
+			'data' : {'travelNo':travelNo}
+		}).success(function(data){
+			console.log('여행 세부 게시판 리플 가져오기 성공'+JSON.stringify(data));
+		}).error(function(){
+			console.log('여행 세부 게시판 리플 가져오기 실패');
+		})
+	}
+	
+	//리플 입력 시작
 	
 	tripDetailFactory.tripDetailReply=function(tripDetailReply,travelNo){
 		console.log('팩토리에 넘어온 메인상세 리플: '+tripDetailReply);
@@ -124,8 +137,8 @@ angular.module('sumhangApp')
 					  'tripDetailReply':tripDetailReply 	
 					 }
 		
-		}).success(function(){
-			console.log('여행 상세 게시판 리플 입력 성공');
+		}).success(function(data){
+			console.log('여행 상세 게시판 리플 입력 성공??   '+data);
 		}).error(function(){
 			console.log('여행 상세 게시판 리플 입력 실패');
 		})
@@ -133,8 +146,4 @@ angular.module('sumhangApp')
 	};
 	//컨트롤러에 작업 완료후 객체 넘겨주기 
 	return tripDetailFactory;
-	
-	
-	
-
 }])
