@@ -88,7 +88,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>	
 	
-	<select id="tripDetail" parameterType="trip" resultType="map">
+	<select id="tripDetail" parameterType="trip" resultType="Map">
 		select t.travel, t.TBOARD_NO, u.USER_NO, u.user_photo, u.nick,t.title,
 			 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
 			 t.TRAVEL_PHO	 
@@ -102,7 +102,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	
-	<select id="selectTripDetailReply" parameterType="int" resultType="map">
+	<select id="selectTripDetailReply" parameterType="int" resultType="Map">
 		select u.nick, tr.TBOARD_RE_DESCRIPTION, 
 			   tr.user_no, u.user_photo
 		from USER u, TBOARD t, TBOARD_RE tr 	
