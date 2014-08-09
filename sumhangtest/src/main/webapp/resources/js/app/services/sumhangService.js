@@ -61,9 +61,9 @@ app.service('sumhangService', ['$http',function ($http) {
     		data : trip,
     		headers : {'Content-Type':'application/json; charset=utf-8'},    		
     	}).success(function(){
-    		alert("여행 파일업로드 성공")
+    		alert("여행 정보 입력 성공")
     	}).error(function(){
-    		alert("여행 파일업로드 실패")
+    		alert("여행 정보 입력 실패")
     	})
     };
   
