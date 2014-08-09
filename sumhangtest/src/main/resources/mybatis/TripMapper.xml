@@ -18,12 +18,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		<result property="travelTag" column="TRAVEL_TAG" jdbcType="VARCHAR" />
   		<result property="likenum" column="likenum" jdbcType="NUMERIC"/>
   		<result property="travelNo" column="TBOARD_NO" jdbcType="NUMERIC"/>
-
   	</resultMap>
   	
-  	<insert id="addTrip" parameterType="trip">
+  	<insert id="addTrip" parameterType="java.util.Map" useGeneratedKeys="true">
+  	
 			INSERT 											
-			INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,TRAVEL_END,TRAVEL_PHO,TRAVEL_USER_COUNT,TRAVEL_TAG)
+			INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,TRAVEL_END,TRAVEL_PHO,TRAVEL_USER_COUNT,TRAVEL_TAG,USER_NO)
 			VALUES ( 	#{travel},
 						#{title},
 						#{travelDescription},
@@ -31,7 +31,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						#{travelEnd:DATE},
 						#{travelPho},
 						#{travelUserCount},
-						#{travelTag} )
+						#{travelTag},
+						#{userNo}
+						 )
+						
+	<selectKey keyProperty="travelNo" resultType="String">
+ 	   SELECT LAST_INSERT_ID()
+ 	</selectKey>
+	</insert>
+	
+	<insert id="addUserStatus" parameterType="userStatus">
+			INSERT 											
+			INTO USER_STATUS(TBOARD_NO, USER_NO, STATUS)
+			VALUES ( 	#{tboardNo:NUMERIC},
+						#{userNo:NUMERIC},
+						#{status:NUMERIC}
+						)
 	</insert>
 	
 	<select id="selectTrip" resultMap="travelSelectMap">
