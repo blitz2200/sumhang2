@@ -5,7 +5,6 @@ package net.bit.sumhang.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
 import net.bit.sumhang.domain.TripVO;
+import net.bit.sumhang.domain.UserStatusVO;
 import net.bit.sumhang.domain.UserVO;
 
 import org.apache.ibatis.session.SqlSession;
@@ -42,6 +42,7 @@ public class TripController {
 	private UserVO userVO;	
 
 	//여행 등록
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/addTrip", method = RequestMethod.POST)
 	public @ResponseBody String addTrip(HttpSession session, @RequestBody String trip){
 			
@@ -56,16 +57,34 @@ public class TripController {
 			}	
 			
 			//여행 객체 생성
-			TripVO addTrip;
+			Map<String,String> map;
 			
 			//JSON형식 GSON사용하여 스트링으로 바꾸기 
 			Gson gson = new Gson();
-			addTrip=gson.fromJson(trip, TripVO.class);
-			addTrip.setUserNo(userVO.getUserNo());
+			map=gson.fromJson(trip, Map.class);
+			map.put("userNo",String.valueOf(userVO.getUserNo()));
+			UserStatusVO userStatusVO = new UserStatusVO();
+			
+			
 			
 			//DB에 자료 넣기
-			System.out.println("디비에 넣을 여행 데이타는?"+addTrip);			
-			sqlSession.insert("tripControlMapper.addTrip", addTrip);
+			System.out.println("디비에 넣을 여행 데이타는?"+map);		
+			
+			sqlSession.insert("tripControlMapper.addTrip", map);
+			
+		
+			
+			System.out.println("returnValue"+map);
+			userStatusVO.setTboardNo(Integer.parseInt(map.get("travelNo")));
+			userStatusVO.setUserNo(Integer.parseInt(map.get("userNo")));
+			userStatusVO.setStatus(1);
+			
+			
+			System.out.println("userstatusVO"+userStatusVO);
+			
+			
+			sqlSession.insert("tripControlMapper.addUserStatus", userStatusVO );
+			
 			
 		return trip;
 	}	
@@ -126,9 +145,5 @@ public class TripController {
 			return sqlSession.selectList("tripControlMapper.selectTrip");
 	}
 	
-	
-	
-	
-	
-	
+
 }
