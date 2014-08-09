@@ -1,103 +1,127 @@
 <div class="addTrip view">
 	<div class="container-addTripview">
-	
-	<!-- TITLE -->
-	<div class="page-header-addTripview">
-		<h1 id="title-addTrip"> SUMHANG</h1>
-	</div>
-	
-		<form id="addTripForm" name="addTripForm" data-ng-submit="addTripRequest()" class="form-horizontal" data-ng-model="newTrip" novalidate>
-	<!-- 여행제목-->
-			<div class="form-group " data-ng-class="{ 'has-error' : addTripForm.tripTitleInput.$invalid && submitted}">
-				<label for="tripTitle" class="col-xs-3 control-label" id="tripTitleLabel">여행제목</label>	
+
+		<!-- TITLE -->
+		<div class="page-header-addTripview">
+			<h1 id="title-addTrip">SUMHANG</h1>
+		</div>
+
+		<form id="addTripForm" name="addTripForm"
+			data-ng-submit="addTripRequest()" class="form-horizontal"
+			data-ng-model="newTrip" novalidate>
+			<!-- 여행제목-->
+			<div class="form-group "
+				data-ng-class="{ 'has-error' : addTripForm.tripTitleInput.$invalid && submitted}">
+				<label for="tripTitle" class="col-xs-3 control-label"
+					id="tripTitleLabel">여행제목</label>
 				<div class="col-xs-7" id="tripTitleText">
-					<input type="text" class="form-control" id="tripTitleInput" name="tripTitleInput" data-ng-model="newTrip.title"
-					placeholder="제목을 입력하세요" required>	
+					<input type="text" class="form-control" id="tripTitleInput"
+						name="tripTitleInput" data-ng-model="newTrip.title"
+						placeholder="제목을 입력하세요" required>
 				</div>
 			</div>
-			
-		<!--여행지-->
-			<div class="form-group" data-ng-class="{ 'has-error' : addTripForm.tripDestinationInput.$invalid && submitted}">
-				<label for="tripDestination" class="col-xs-3 control-label" id="destination">여행지</label>
+
+			<!--여행지-->
+			<div class="form-group"
+				data-ng-class="{ 'has-error' : addTripForm.tripDestinationInput.$invalid && submitted}">
+				<label for="tripDestination" class="col-xs-3 control-label"
+					id="destination">여행지</label>
 				<div class="col-xs-6" id="tripDestinationText">
-					<input type="text" class="form-control" id="tripDestinationInput" name="tripDestinationInput" placeholder="ex)홍콩, 제주도"  data-ng-model="newTrip.travel" required>
+					<input type="text" class="form-control" id="tripDestinationInput"
+						name="tripDestinationInput" placeholder="ex)홍콩, 제주도"
+						data-ng-model="newTrip.travel" required>
 				</div>
 			</div>
-	
-		<!-- 여행기간 -->
-			<div class="form-group" data-ng-class="{ 'has-error' : (addTripForm.datepicker3.$invalid || addTripForm.datepicker4.$invalid ) && submitted}">
-		<!-- 출발일 -->
-				<label for="datepicker2" class="col-xs-3 control-label" id="tripperiodLabel">여행기간</label>
+
+			<!-- 여행기간 -->
+			<div class="form-group"
+				data-ng-class="{ 'has-error' : (addTripForm.datepicker3.$invalid || addTripForm.datepicker4.$invalid ) && submitted}">
+				<!-- 출발일 -->
+				<label for="datepicker2" class="col-xs-3 control-label"
+					id="tripperiodLabel">여행기간</label>
 				<div class="col-xs-3" id="tripStartdate" name="sta">
-					<input type="text" class="form-control" id="datepicker3" name="datepicker3" data-ng-model="newTrip.travelStart"
+					<input type="text" class="form-control" id="datepicker3"
+						name="datepicker3" data-ng-model="newTrip.travelStart"
 						placeholder="출발" required>
 				</div>
-		
-		<!-- 도착일 -->
+
+				<!-- 도착일 -->
 				<div class="col-xs-3" id="tripEnddate">
-					<input type="text" class="form-control" id="datepicker4" name="datepicker4" data-ng-model="newTrip.travelEnd"
+					<input type="text" class="form-control" id="datepicker4"
+						name="datepicker4" data-ng-model="newTrip.travelEnd"
 						placeholder="도착" required>
 				</div>
 			</div>
-	
-		<!-- 모집인원 -->
-			<div class="form-group" data-ng-class="{ 'has-error' : addTripForm.tripNumberInputAddTrip.$invalid && submitted}">
-				<label for="tripNumber" class="col-xs-3 control-label" id="tripNumberLabel-addTrip">모집인원</label>
+
+			<!-- 모집인원 -->
+			<div class="form-group"
+				data-ng-class="{ 'has-error' : addTripForm.tripNumberInputAddTrip.$invalid && submitted}">
+				<label for="tripNumber" class="col-xs-3 control-label"
+					id="tripNumberLabel-addTrip">모집인원</label>
 				<div class="col-xs-4">
 					<input type="number" class="form-control" min="1" max="20"
-						id="tripNumberInput-addTrip" name="tripNumberInputAddTrip" placeholder="명" data-ng-model="newTrip.travelUserCount" value="{{defaultNumber}}" required>
+						id="tripNumberInput-addTrip" name="tripNumberInputAddTrip"
+						placeholder="명" data-ng-model="newTrip.travelUserCount"
+						value="{{defaultNumber}}" required>
 				</div>
 			</div>
-	
-		<!-- 세부내용 -->
+
+			<!-- 세부내용 -->
 			<div class="form-group">
-				<label for="tripContext" class="col-xs-3 control-label" id="tripContextLabel">세부내용</label>
+				<label for="tripContext" class="col-xs-3 control-label"
+					id="tripContextLabel">세부내용</label>
 				<div class="col-xs-7">
-					<textarea class="form-control" rows="3" id="tripContextText" data-ng-model="newTrip.travelDescription"></textarea>
+					<textarea class="form-control" rows="3" id="tripContextText"
+						data-ng-model="newTrip.travelDescription"></textarea>
 				</div>
 			</div>
-	
-		<!-- 여행태그 -->
+
+			<!-- 여행태그 -->
 			<div class="form-group">
-				<label for="tripTag" class="col-xs-3 control-label" id="tripTagLabel">T A G </label>
+				<label for="tripTag" class="col-xs-3 control-label"
+					id="tripTagLabel">T A G </label>
 				<div class="col-xs-7">
-					<input type="text" class="form-control" id="tripTagInput" placeholder="ex)30대" data-ng-model="newTrip.travelTag">
+					<input type="text" class="form-control" id="tripTagInput"
+						placeholder="ex)30대" data-ng-model="newTrip.travelTag">
 				</div>
 			</div>
-	
-		<!-- 사진 올리기 -->
+
+			<!-- 사진 올리기 -->
 			<div class="form-group photo">
 				<label for="pho" class="col-xs-3 control-label">사 진 </label>
 				<div class="col-xs-7">
-					<input type="file" class="custom-file-input"  id="tripFileUpdate" data-file-model="tripfile" >
+					<input type="file" class="custom-file-input" id="tripFileUpdate"
+						data-file-model="tripfile">
 				</div>
 			</div>
-	
-	<!-- 여행올리기 -->
+
+			<!-- 여행올리기 -->
 			<div class="form-group">
 				<div class="col-xs-offset-2">
-					<button type="submit" class="btn btn-warning btn-xs btn-block"   id="updateTrip">여행 올리기</button>
+					<button type="submit" class="btn btn-warning btn-xs btn-block"
+						id="updateTrip">여행 올리기</button>
 				</div>
 			</div>
-			
+
 		</form>
+	</div>
 </div>
 
 <!-- datepicker -->
-	<script>
-        $(function() {
-            $( "#datepicker3" ).datepicker({
-                dateFormat: 'yy-mm-dd'
-            });
-        });
-        
-        $(function() {
-            $( "#datepicker4" ).datepicker({
-                dateFormat: 'yy-mm-dd'
-            });
-        });
-        
-        $(function() {
-        	
-        });
-    </script>
+<script>
+	$(function() {
+		$("#datepicker3").datepicker({
+			dateFormat : 'yy-mm-dd'
+		});
+	});
+
+	$(function() {
+		$("#datepicker4").datepicker({
+			dateFormat : 'yy-mm-dd'
+		});
+	});
+
+	$(function() {
+
+	});
+</script>
