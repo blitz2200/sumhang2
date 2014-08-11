@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="user" type="net.bit.sumhang.domain.UserVO"/>
 		<typeAlias alias="trip" type="net.bit.sumhang.domain.TripVO"/>
 		<typeAlias alias="userStatus" type="net.bit.sumhang.domain.UserStatusVO"/>
+		<typeAlias alias="timeLineVO" type="net.bit.sumhang.domain.TimeLineVO"/>
 	</typeAliases>
 
     <mappers>
