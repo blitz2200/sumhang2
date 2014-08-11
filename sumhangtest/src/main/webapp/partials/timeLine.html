@@ -1,17 +1,17 @@
 <div class="timeLine view">
     <div class="container-timeline">
-		<div class="travel-timeline">
+		<div class="travel-timeline" data-ng-model="timeLine">
 			<div class="row">
 				<div class="col-xs-2"><span>여행지</span></div>
-				<div class="col-xs-3"><span>{{timeLine.travel}}</span></div>
+				<div class="col-xs-3"><span>{{timeLine.TRAVEL}}</span></div>
 			</div>
 			<div class="row">
 				<div class="col-xs-2">여행 제목</div>
-				<div class="col-xs-3">{{timeLine.title}}</div>
+				<div class="col-xs-3">{{timeLine.TITLE}}</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-2">일 정</div>
-				<div class="col-xs-3">{{timeLine.travelStart}}~{{timeLine.travelEnd}}</div>
+				<div class="col-xs-3">{{timeLine.TRAVEL_START}}~{{timeLine.TRAVEL_END}}</div>
 			</div>
 		</div>
 		<div class="replylist-timeline">
