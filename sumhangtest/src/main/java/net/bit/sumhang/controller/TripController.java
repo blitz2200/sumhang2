@@ -137,7 +137,7 @@ public class TripController {
 	}
 	
 	//메인 리스트 게시판 시작
-	@RequestMapping(value="/main", method=RequestMethod.GET)
+	@RequestMapping(value="/main", method=RequestMethod.POST)
 	public @ResponseBody List<TripVO> selectTrip(){
 			System.out.println("메인 리스트 시작...");
 			
@@ -145,5 +145,31 @@ public class TripController {
 			return sqlSession.selectList("tripControlMapper.selectTrip");
 	}
 	
+	//getUserTrip
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value="/getUserTrip", method=RequestMethod.GET)
+	public @ResponseBody List<Map> getUserTrip(HttpSession session){
+			System.out.println("getUserTrip invoked...");
+			
+			UserVO userVO = (UserVO)session.getAttribute("user");
+			int sessionUserNo=userVO.getUserNo();
+			
+			System.out.println("getusertrip : "+ sqlSession.selectList("tripControlMapper.getUserTrip", sessionUserNo));
+			
+			return sqlSession.selectList("tripControlMapper.getUserTrip", sessionUserNo);
+	}
+	
+	//getTripUsers
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value="/getTripUsers", method=RequestMethod.POST)
+	public @ResponseBody List<Map> getTripUsers(HttpSession session, @RequestBody String travelNo){
+			System.out.println("getTripUsers invoked...");
+			
+
+			System.out.println("travelNo : "+ travelNo);
+			
+			return sqlSession.selectList("tripControlMapper.getTripUsers", travelNo);
+	}
+
 
 }
