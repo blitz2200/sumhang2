@@ -17,6 +17,40 @@ angular.module('sumhangApp')
 			console.log('여행 세부 게시판 받아오기 실패');
 		})
 	};
+	
+	//메인 상세보기 삭제 시작
+	tripDetailFactory.deleteTripDetail=function(travelNo){
+		console.log('팩토리 메인 상세보기 삭제 시작')
+		alert('팩토리 메인 상세보기 삭제  넘어온 travelNo확인 : ' + travelNo);
+		return $http({
+			'url' :"deleteTripDetail.ajax",
+			'method': 'POST',
+			'data' : {'travelNo':travelNo}
+		}).success(function(){
+			console.log('팩토리 메인상세보기 게시판 삭제 성공')
+		}).error(function(){
+			console.log('팩토리 메인상세보기 게시판 삭제 실패')
+		})
+	}
+	
+	//메인 상세보기 수정 시작
+	tripDetailFactory.editTripDetail=function(trip,travelNo){
+		trip.travelNo=travelNo;
+		alert('팩토리 메인 상세보기 수정 시작')
+		alert('팩토리 메인 상세보기 수정  넘어온 trip 객체 ====='+JSON.stringify(trip));
+				
+		return $http({
+			'url':"editTripDetail.ajax",
+			'method' : 'POST',
+			'data'   :	trip
+		}).success(function(){
+			alert('팩토리 메인상세보기 게시판 수정 성공')
+		}).error(function(){
+			alert('팩토리 메인상세보기 게시판 수정 실패')
+		})
+	}
+	
+	
 	var suser;
 	
 	//리플 출력 시작
