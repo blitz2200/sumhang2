@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
+import net.bit.sumhang.domain.TimeLineVO;
 import net.bit.sumhang.domain.TripVO;
 import net.bit.sumhang.domain.UserStatusVO;
 import net.bit.sumhang.domain.UserVO;
@@ -49,41 +50,49 @@ public class TripController {
 		System.out.println("여행 등록 시작");	
 		System.out.println("넘어온 여행 데이타는?"+trip);
 		
-			if(session.getAttribute("user")!=null){
-				System.out.println("찍히나?");
+			//session에서 UserVO가져오기
+			if(session.getAttribute("user")!=null){				
 				userVO=(UserVO)session.getAttribute("user");
-				System.out.println("userVO임:"+userVO);
-				System.out.println("userVO임:"+userVO.getUserNo());
+				System.out.println("userVO임:"+userVO);			
 			}	
 			
-			//여행 객체 생성
-			Map<String,String> map;
-			
-			//JSON형식 GSON사용하여 스트링으로 바꾸기 
+			Map<String,String> map;			
 			Gson gson = new Gson();
+			UserStatusVO userStatusVO = new UserStatusVO();
+			TimeLineVO timeLineVO = new TimeLineVO();
+			
+			
 			map=gson.fromJson(trip, Map.class);
 			map.put("userNo",String.valueOf(userVO.getUserNo()));
-			UserStatusVO userStatusVO = new UserStatusVO();
 			
-			
-			
-			//DB에 자료 넣기
-			System.out.println("디비에 넣을 여행 데이타는?"+map);		
-			
+			//tboard DB에 자료 넣기
+			System.out.println("디비에 넣을 여행 데이타는?"+map);			
 			sqlSession.insert("tripControlMapper.addTrip", map);
 			
-		
 			
+		
+			//tboard DB에 자료 넣고 자동증가값리턴받아 맵에 다시 저장받아서 userStatusVO에 setting
 			System.out.println("returnValue"+map);
 			userStatusVO.setTboardNo(Integer.parseInt(map.get("travelNo")));
 			userStatusVO.setUserNo(Integer.parseInt(map.get("userNo")));
 			userStatusVO.setStatus(1);
 			
+			//timeLineVO에 값 setting
+			timeLineVO.setTboardNo(Integer.parseInt(map.get("travelNo")));
+			timeLineVO.setUserNo(userVO.getUserNo());
+			timeLineVO.setTimeLinePhoto(map.get("travelPho"));
+			timeLineVO.setTimeLineDesc(map.get("travelDescription"));
 			
-			System.out.println("userstatusVO"+userStatusVO);
-			
-			
+			//userStatusVO DB에 insert
 			sqlSession.insert("tripControlMapper.addUserStatus", userStatusVO );
+			
+			//timeLine DB에 insert
+			sqlSession.insert("tripControlMapper.addTimeLine", timeLineVO );
+			
+
+			
+			
+			
 			
 			
 		return trip;
@@ -141,8 +150,8 @@ public class TripController {
 	public @ResponseBody List<TripVO> selectTrip(){
 			System.out.println("메인 리스트 시작...");
 			
-			System.out.println(sqlSession.selectList("tripControlMapper.selectTrip"));
-			return sqlSession.selectList("tripControlMapper.selectTrip");
+			System.out.println(sqlSession.selectList("tripControlMapper.getTripList"));
+			return sqlSession.selectList("tripControlMapper.getTripList");
 	}
 	
 	//getUserTrip
