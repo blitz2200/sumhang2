@@ -1,11 +1,19 @@
  
- <div class="login view  primaryContainer clearfix" id="primaryContainer">
-     <div class="container">
+ <div class="login view">
+     <div class="container login">
 
       <form name="loginForm" data-ng-submit="loginRequest()" class="form-signin" data-ng-model="loginInfo" novalidate>
-   		
-        <img id="image" src="resources/images/16.jpg" class="image" />
-        
+   		 
+   		<div class="titleLogo">
+   			<br/>
+   			<br/>
+   			<img src="resources/images/logo-2.png">
+   			<br/>
+   			<br/>
+   		</div>
+       
+    
+      
         <div id="box" class="clearfix">
         	 
           	<div  data-ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine && submitted}">
@@ -13,85 +21,54 @@
             UserID
             </p>
             <label id="formgroup" >
-                  </br>             
+                      
            
-                <input id="IdInput" class="form-control" type="text"  name="username" placeholder="UserID"  data-ng-model="loginInfo.id" required></input>
+                <input id="idInput" class="form-control" type="text"  name="username" placeholder="UserID"  data-ng-model="loginInfo.id" required></input>
                
             </label>
             </div>
-            
-           
-            <!-- SUMHANG --><img class="logo" src="resources/images/logo-1.png">
-            
-            
-            
+         	<br/>
             <div     data-ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine && submitted}">
             <p id="text3">
             Password
-            </p>
-            <label id="formgroup1">
-          		<br/>
+            </p> 
+            <label id="formgroup1" class=""> 
+          		 
                 <input id="PasswordInput"  class="form-control" type="password" name="password"   placeholder="Password" data-ng-model="loginInfo.password" required></input>
             </label>
             </div>
-          	
- 		  	<img id="image1" src="resources/images/CHECKRED1.png" class="image help-block"  data-ng-show="loginForm.username.$invalid && submitted"  />
-            <img id="image2" src="resources/images/CHECKRED1.png" class="image help-block"   data-ng-show="loginForm.password.$invalid && submitted"  />   
+         
           
           
-          
-            <label id="formgroup2">
-                <input id="input1" type="checkbox"  value="remember-me"></input>
-                <p id="text5">
+            <div id="formgroup2">
+                <input id="input1"align="right"  type="checkbox"  value="remember-me">    
+                
+                <span id="text5">
                 Remeber Me
-                </p>
-            </label>
+                </span> 
+             
+                 
+            </div>
             
             	
             	
  
-            
-              <button id="LogIn" type="submit"><p id="Log">Log In</p></button>
-			  <a id="SignIn" href="#/joinMember">Sign Up</a> 
- 
+            <div class="Log"> 
+              <button id="LogIn"  class="btn" type="submit"><p id="Log">Log In</p></button>
+			  <span class="btn"> <a id="SignIn"   href="#/joinMember">Sign Up</a></span>   
+			 <br/>
+			  
+			 </div>
+			 
+			 <p class="titleImage">
+		 
+			 </p>
+ 			 
+ 				
       </div>
+          <img src="resources/images/16.jpg" class="titleImg">
       </form>
       </div>
  </div>
  
-       
-        
-         
-<!--       	 <section class="js-section">	    
-            <div class="banner js-example-1" data-crossfade-start="resources/image/01.jpg" data-crossfade-end="resources/image/01-blur.jpg">
-            	<h1 class="js-parallax">SUM행</h1>
-            	<br/>
-            	<br/>
-            	<br/>
-            </div>         
-        </section> -->
-        
-<!--         <div class="form-group" data-ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine && submitted}">
-        <label>Username</label>
-        <input type="text" name="username" class="form-control" placeholder="Email address" data-ng-model="loginInfo.id" required>
-        <p data-ng-show="loginForm.username.$invalid && submitted" class="help-block">Enter a username.</p>
-  		</div>
-  		
-  		<div class="form-group" data-ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine && submitted}">
-        <label>Password</label>
-        <input type="password" name="password" class="form-control" placeholder="Password" data-ng-model="loginInfo.password" required>
-        <p data-ng-show="loginForm.password.$invalid && submitted" class="help-block">Enter a password.</p>
-    	</div>
-    	<label class="checkbox"><input type="checkbox" value="remember-me"> Remember me</label>
-  		
-       
-        	
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>  
-         
-       </form>
-
-    </div> 
-    </div>
-    
-  -->
- 
+  
