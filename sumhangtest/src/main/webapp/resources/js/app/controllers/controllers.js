@@ -1,8 +1,8 @@
-﻿app.controller('IntroController', ['$scope','sumhangFactory', 
-                                   function ($scope, sumhangFactory) {
+﻿app.controller('IntroController', ['$scope','userFactory', 
+                                   function ($scope, userFactory) {
 	
 	function loginCheck(){
-		sumhangFactory.loginCheck()
+		userFactory.loginCheck()
 		.success(function(data){ 
 			
 			console.log(data.isLogged);
@@ -23,18 +23,19 @@
 	}	
 }]);
 
-app.controller('LoginController', ['$scope','sumhangFactory', 
-                                     function ($scope, sumhangFactory) {
+app.controller('LoginController', ['$scope','userFactory', 
+                                     function ($scope, userFactory) {
     
     
     function loginRequest(loginInfo){
     	
     		
-    	sumhangFactory.loginRequest(loginInfo)
+    	userFactory.loginRequest(loginInfo)
     	.success(function(data){
     		
     		console.log(data);
 			if(data == ""){
+				alert('아이디와 비밀번호를 확인해 주세요');
 				$scope.location.path('/login');
 			}else{
 				$scope.location.path('/main');
@@ -168,7 +169,22 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
+	$scope.userTrips = $route.current.locals.userTrips; //resolve에 있는 변수를 scope에 넘겨준다.
+	$scope.sessionUser = $route.current.locals.sessionUser; //resolve에 있는 변수를 scope에 넘겨준다
 
+	
+	$scope.getTripUsers = function (){
+		mainFactory.getTripUsers($scope.userTripSelected.TBOARD_NO)
+		.success(function(data){
+    		console.log('getTripUsers 성공 넘어온 데이타는 ?:'+ data);
+    		
+    		$scope.tripUsers=data;
+    		console.log("getTripUsers 메인에 넘길데이타 :" +$scope.tripUsers);		
+    	}).error(function (error){
+    		console.log('getTripUsers 실패');
+    	});
+	}
+	
 	$scope.goTimeLine=function (){
 		$scope.location.path('/timeLine');
 	}
