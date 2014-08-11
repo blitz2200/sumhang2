@@ -76,7 +76,6 @@ app.factory('mainFactory',['$http', function($http){
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
 			console.log('getUserTrip 성공'+JSON.stringify(data));
-			console.log('getUserTrip 성공'+JSON.stringify(data[0].TITLE));
 
 		}).error(function(){
 			console.log('메인 자료받아오기 실패');
@@ -117,12 +116,13 @@ app.factory('timeLineFactory',['$http', function($http){
 	
 	var timeLineFactory = {};
 	
-	timeLineFactory.listTimeLine = function(){
+	timeLineFactory.getTimeLine = function(travelNo){
 		//메인 리스트 ajax로 요청
 		return $http({
 			//timeLine.ajax로 서버에서  전송 스프링 컨트롤러에서 @Requestmapping timeLine찾아서 실행
 			'url' :"timeLine.ajax",
-			'method' : 'GET'    		
+			'method' : 'POST',
+			'data' : travelNo				
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
 			console.log('타임 라인 가져오기 성공'+JSON.stringify(data));
