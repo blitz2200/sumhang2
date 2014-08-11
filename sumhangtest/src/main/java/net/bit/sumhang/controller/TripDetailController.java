@@ -29,21 +29,76 @@ public class TripDetailController {
 		
 	//메인 게시판 상세보기 시작
 		@RequestMapping(value="/tripDetail", method=RequestMethod.POST)
-		public @ResponseBody Map<String,String> tripDetail( @RequestBody  String travelNo){
+		public @ResponseBody Map<String,String> tripDetail(HttpSession session, @RequestBody  String travelNo){
 			
 			TripVO tripVO;
+			System.out.println("==========================================");
+			System.out.println("==========================================");
+			System.out.println("==========================================");
 			System.out.println("tripDetail 시작");
 			System.out.println("넘어온  tripDetail travelNo:  "+ travelNo);
+			
+			
+			
+		    if(session.getAttribute("user")!=null){
+				userVO=(UserVO)session.getAttribute("user");
+				System.out.println("userVO 세션확인:"+userVO);
+				System.out.println("userVO userNo:"+userVO.getUserNo());
+			}
+			
 			Gson gson = new Gson();
 			tripVO=gson.fromJson(travelNo, TripVO.class);
 			System.out.println(tripVO);
 			Map <String,String> map = new HashMap<String,String>();
 			
 			System.out.println("메인게시판 세부내용"+sqlSession.selectOne("tripControlMapper.tripDetail",tripVO));
+			
 			map=sqlSession.selectOne("tripControlMapper.tripDetail",tripVO);
+			map.put("wuser_no",Integer.toString(userVO.getUserNo()));
 			System.out.println(map);
 			return map;
 		}
+		
+	//메인 상세보기 삭제 시작
+		@RequestMapping(value="deleteTripDetail", method=RequestMethod.POST)
+		public @ResponseBody String deleteTripDetail(@RequestBody String travelNo){
+			System.out.println("==========================================");
+			System.out.println("메인 상세보기 삭제 시작 ");
+			System.out.println("==========================================");
+			System.out.println(travelNo);
+			
+			TripVO tripVO;
+			
+			Gson gson = new Gson();
+			tripVO=gson.fromJson(travelNo,TripVO.class);
+			sqlSession.delete("tripControlMapper.deleteTripDetail", tripVO.getTravelNo());
+			
+			return "삭제 성공";
+		}
+		
+		
+		
+	//메인 상세보기  수정 시작 
+		@RequestMapping(value="editTripDetail", method=RequestMethod.POST)
+		public @ResponseBody String editTripDetail(@RequestBody String trip){
+			System.out.println("==========================================");
+			System.out.println("메인 상세보기 수정 시작 ");
+			System.out.println("==========================================");
+			System.out.println("메인 상세보기 수정할 내용" + trip);
+					
+			TripVO tripVO;			
+			
+			Gson gson = new Gson();
+			tripVO=gson.fromJson(trip, TripVO.class);			
+	
+			System.out.println("최종 수정확인용 방번호 : "+tripVO.getTravelNo());			
+			sqlSession.update("tripControlMapper.updateTripDetail", tripVO);
+			
+			return "수정 성공";
+		}
+		
+		
+		
 		
 		 
 	//메인  상세보기 리플 출력 시작 
@@ -51,7 +106,11 @@ public class TripDetailController {
 		@SuppressWarnings("rawtypes")
 		@RequestMapping(value="/tripDetailListReply", method=RequestMethod.POST)
 		public @ResponseBody List<Map> tripDetailListReply(HttpSession session, @RequestBody String travelNo){
+			System.out.println("==========================================");
 			System.out.println("tripDetailListReply 시작 넘어온 travelNo 확인  :   " +travelNo);
+			System.out.println("==========================================");
+			
+			
 			
 			TripVO tripVO;
 		    List <Map> list = new ArrayList<Map>();
@@ -87,7 +146,10 @@ public class TripDetailController {
 		//메인 상세 게시판 리플 달기 시작
 		@RequestMapping(value="/tripDetailReply", method=RequestMethod.POST)
 		public @ResponseBody String tripDetailReply(HttpSession session, @RequestBody String tripDetailReply){
+			System.out.println("==========================================");
 			System.out.println("tripDetailReply 시작");
+			System.out.println("==========================================");
+			
 			System.out.println("넘어온 tripDetailReply:  "  + tripDetailReply);
 			TripVO tripVO;
 			
@@ -109,7 +171,10 @@ public class TripDetailController {
 		//메인 상세 게시판 리플 삭제 시작
 		@RequestMapping(value="/delTripDetailRe", method=RequestMethod.POST)
 		public @ResponseBody String delTripDetailRe(@RequestBody String tripDetailReNo){
+			System.out.println("==========================================");
 			System.out.println("delTripDetailRe시작");
+			System.out.println("==========================================");
+			
 			System.out.println("넘어온 tripDetailReNo  :  "  + tripDetailReNo);
 			TripVO tripVO;
 			
@@ -124,6 +189,9 @@ public class TripDetailController {
 		//메인 상세 게시판 리플 수정 시작
 		@RequestMapping(value="/editTripDetailRe", method=RequestMethod.POST)
 		public@ResponseBody String editTripDetailRe(@RequestBody String editTripDetailReply){
+			System.out.println("==========================================");
+			System.out.println("==========================================");
+			System.out.println("==========================================");
 			System.out.println("editTripDetailRe 시작 ");
 			System.out.println("넘어온 메인상세페이지 수정넘버 수정내용"+editTripDetailReply);
 			TripVO tripVO;
