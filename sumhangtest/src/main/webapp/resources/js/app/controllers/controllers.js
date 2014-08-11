@@ -125,7 +125,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 		var tripUrl="addTrip.ajax"
 		var tripfile=$scope.tripfile;		
     	
-			if (typeof $scope.tripfile == 'undifined') {
+			if (typeof $scope.tripfile != 'undifined') {
 		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
     	
 			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
@@ -176,17 +176,19 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	$scope.getTripUsers = function (){
 		mainFactory.getTripUsers($scope.userTripSelected.TBOARD_NO)
 		.success(function(data){
-    		console.log('getTripUsers 성공 넘어온 데이타는 ?:'+ data);
+    		console.log('getTripUsers 성공 넘어온 데이타는 ?:'+ JSON.stringify(data));
     		
     		$scope.tripUsers=data;
-    		console.log("getTripUsers 메인에 넘길데이타 :" +$scope.tripUsers);		
+    		console.log("getTripUsers 메인에 넘길데이타 :" +JSON.stringify($scope.tripUsers));		
     	}).error(function (error){
     		console.log('getTripUsers 실패');
     	});
 	}
 	
-	$scope.goTimeLine=function (){
-		$scope.location.path('/timeLine');
+	$scope.goTimeLine=function (travelNo){
+		var temp="timeLine/"+travelNo;
+		console.log(temp);
+		$scope.location.path(temp);
 	}
 	
 	$scope.goTripDetail=function(travelNo){
@@ -239,16 +241,19 @@ app.controller('SettingsController', function ($scope, sumhangService) {
     //you need to describe event handler below... 
 });
 
-app.controller('TimeLineController', ['$scope','$route','timeLineFactory',
-                                      function ($scope, $route, timeLineFactory) {
+app.controller('TimeLineController', ['$scope', '$route','$routeParams','timeLineFactory',
+                                      function ($scope, $route, $routeParams, timeLineFactory) {
 
 	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
 	//메인 html파일과 연결 시킴 
 	
 	//main();
 	console.log('timeLine 시작');
+	var travelNo = $routeParams.travelNo;
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
+	console.log("travelNO:"+travelNo);
+	
 	
 }]);
 
