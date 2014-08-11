@@ -153,6 +153,7 @@ public class TripController {
 			
 			UserVO userVO = (UserVO)session.getAttribute("user");
 			int sessionUserNo=userVO.getUserNo();
+			System.out.println("sessionuserno"+sessionUserNo);
 			
 			System.out.println("getusertrip : "+ sqlSession.selectList("tripControlMapper.getUserTrip", sessionUserNo));
 			
