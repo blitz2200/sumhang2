@@ -104,9 +104,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectTripDetailReply" parameterType="int" resultType="Map">
 		select u.nick, tr.TBOARD_RE_DESCRIPTION, 
-			   tr.user_no, u.user_photo
+			   tr.user_no, u.user_photo,tr.TRAVEL_BOARD_REPLY_NO
 		from USER u, TBOARD t, TBOARD_RE tr 	
 		where  u.USER_NO=tr.USER_NO and t.TBOARD_NO=tr.TBOARD_NO and tr.TBOARD_NO=#{travelNo}
 	</select>
+	
+	<delete id="deleteTripDetailReply" parameterType="int">
+		delete from TBOARD_RE where travel_board_reply_no=#{tripDetailReNo}
+	</delete>
+	
+	<update id="updateTripDetailReply" parameterType='trip'>
+		update TBOARD_RE set tboard_re_description=#{tripDetailReply}
+	    where travel_board_reply_no=#{tripDetailReNo}
+	</update>
 	
 </mapper>
