@@ -74,17 +74,17 @@ app.config(function ($routeProvider) {
                 controller: 'SettingsController',
                 templateUrl: 'partials/settings.html'
             })
-        .when('/timeLine',
+        .when('/timeLine/:travelNo',
             {
                 controller: 'TimeLineController',
-                templateUrl: 'partials/timeLine.html',
-            	resolve: {//브라우저가 뿌려줄 데이터를 먼저 db에서 가져와 변수로 저장하고 변수에 저장된후에 값들과 함께 template에 뿌려준다.
+                templateUrl: 'partials/timeLine.html'
+            	/*resolve: {//브라우저가 뿌려줄 데이터를 먼저 db에서 가져와 변수로 저장하고 변수에 저장된후에 값들과 함께 template에 뿌려준다.
                 	timeLine :function(timeLineFactory){
                 		return timeLineFactory.listTimeLine().then(function (response){
                 			return response.data;
                 		});
                 	}
-                }
+                }*/
             })
         .when('/tripDetail/:travelNo',
             {
