@@ -13,9 +13,16 @@ public class TripVO {
 	private int travelNo;
 	private int userNo;
 	private String tripDetailReply;
+	private int tripDetailReNo;
 	
 	
 	
+	public int getTripDetailReNo() {
+		return tripDetailReNo;
+	}
+	public void setTripDetailReNo(int tripDetailReNo) {
+		this.tripDetailReNo = tripDetailReNo;
+	}
 	public String getTravel() {
 		return travel;
 	}
@@ -88,6 +95,7 @@ public class TripVO {
 	public void setTripDetailReply(String tripDetailReply) {
 		this.tripDetailReply = tripDetailReply;
 	}
+	
 	@Override
 	public String toString() {
 		return "TripVO [travel=" + travel + ", title=" + title
@@ -96,8 +104,10 @@ public class TripVO {
 				+ travelPho + ", travelUserCount=" + travelUserCount
 				+ ", travelTag=" + travelTag + ", likenum=" + likenum
 				+ ", travelNo=" + travelNo + ", userNo=" + userNo
-				+ ", tripDetailReply=" + tripDetailReply + "]";
+				+ ", tripDetailReply=" + tripDetailReply + ", tripDetailReNo="
+				+ tripDetailReNo + "]";
 	}
+
 	
 	
 
