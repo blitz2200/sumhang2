@@ -125,7 +125,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 		var tripUrl="addTrip.ajax"
 		var tripfile=$scope.tripfile;		
     	
-			if (typeof $scope.tripfile != 'undifined') {
+			if (typeof $scope.tripfile != 'undefined') {
 		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
     	
 			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
@@ -151,7 +151,9 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 		alert('여행 등록 내용  :'+JSON.stringify(trip));
 		//여행객체 서비스에 전송
 		sumhangService.addTrip(trip,tripUrl);
-		$scope.location.path('/main');  
+		
+		
+		$scope.location.path('/main'); 
 		}else{
 			alert('양식을 입력하세요');
 		}
@@ -244,15 +246,23 @@ app.controller('SettingsController', function ($scope, sumhangService) {
 app.controller('TimeLineController', ['$scope', '$route','$routeParams','timeLineFactory',
                                       function ($scope, $route, $routeParams, timeLineFactory) {
 
-	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
-	//메인 html파일과 연결 시킴 
 	
-	//main();
 	console.log('timeLine 시작');
-	var travelNo = $routeParams.travelNo;
-	$scope.checked;//This will be binded using the ps-open attribute
-	$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
+	var travelNo = $routeParams.travelNo;	
+	//$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
 	console.log("travelNO:"+travelNo);
+	getTimeLine(travelNo);
+	
+	function getTimeLine(travelNo) {
+		timeLineFactory.getTimeLine(travelNo)
+		.success(function(data){
+			$scope.timeLine = data;
+		}).error(function (error){
+    		console.log('getTimeLine 실패');
+    	});
+	}
+	
+	
 	
 	
 }]);
