@@ -49,6 +49,17 @@ app.config(function ($routeProvider) {
                 		return mainFactory.listMain().then(function (response){
                 			return response.data;
                 		});
+                	},
+                	sessionUser : function (userFactory){
+                		return userFactory.getSessionUser().then(function (response){ 
+                			console.log(response.data);
+                			return response.data;
+                		});
+                	},
+                	userTrips : function (mainFactory){
+                		return mainFactory.getUserTrip().then(function (response){                			
+                			return response.data;
+                		});
                 	}
                 }
                 	
