@@ -142,7 +142,7 @@
 }
 
 
-.tripDetail ul img{
+.tripDetail ul .reUser img{
 	height:40px;
 	width:40px;
 	-webkit-border-radius: 10px;
@@ -153,6 +153,20 @@
 	box-shadow: 6px 6px 6px -1px rgba(59, 75, 45, 0.64);
 
 
+}
+
+/* 휴지통 */
+.tripDetail ul .delete img{
+	height:30px;
+	width:30px;
+	
+}
+
+/* 수정 */
+.tripDetail ul .edit img{
+	height:28px;
+	width:28px;
+	margin-left:10px;
 }
 
 .tripDetail .reNick{
