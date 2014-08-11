@@ -48,21 +48,38 @@ public class TripDetailController {
 		 
 	//메인  상세보기 리플 출력 시작 
 	
+		@SuppressWarnings("rawtypes")
 		@RequestMapping(value="/tripDetailListReply", method=RequestMethod.POST)
-		public @ResponseBody List<String> tripDetailListReply( @RequestBody String travelNo){
+		public @ResponseBody List<Map> tripDetailListReply(HttpSession session, @RequestBody String travelNo){
 			System.out.println("tripDetailListReply 시작 넘어온 travelNo 확인  :   " +travelNo);
 			
 			TripVO tripVO;
-		    List <String> list = new ArrayList<String>();
+		    List <Map> list = new ArrayList<Map>();
 			//Map <String,String> map = new HashMap<String,String>();
+		    
+		    
+		    if(session.getAttribute("user")!=null){
+				userVO=(UserVO)session.getAttribute("user");
+				System.out.println("userVO 세션확인:"+userVO);
+				System.out.println("userVO userNo:"+userVO.getUserNo());
+			}	
+		    
+		    
 			Gson gson = new Gson();			
 			tripVO=gson.fromJson(travelNo, TripVO.class);
+			
+			
 			System.out.println("fromJson 후  메인상세보기게시판 리플 객체" + tripVO.getTravelNo());
 			System.out.println("메인상세보기 리스트 db에서 꺼내온값:" +
 					sqlSession.selectList("tripControlMapper.selectTripDetailReply",tripVO.getTravelNo()));
 						
 			list=sqlSession.selectList("tripControlMapper.selectTripDetailReply",tripVO.getTravelNo());
-			System.out.println(list);
+			
+			Map <String,String> map = new HashMap<String,String>();
+			map.put("suser_no",Integer.toString(userVO.getUserNo()));
+			list.add(map);
+			System.out.println("여행상세보기 게시판리턴할 최종리스트 :  "+list);
+			
 			return list;
 		}
 		
@@ -87,6 +104,36 @@ public class TripDetailController {
 			sqlSession.insert("tripControlMapper.tripReply",tripVO);
 			return "입력 완료";
 					
+		}
+		
+		//메인 상세 게시판 리플 삭제 시작
+		@RequestMapping(value="/delTripDetailRe", method=RequestMethod.POST)
+		public @ResponseBody String delTripDetailRe(@RequestBody String tripDetailReNo){
+			System.out.println("delTripDetailRe시작");
+			System.out.println("넘어온 tripDetailReNo  :  "  + tripDetailReNo);
+			TripVO tripVO;
+			
+			Gson gson = new Gson();
+			tripVO=gson.fromJson(tripDetailReNo, TripVO.class);
+			
+			sqlSession.delete("tripControlMapper.deleteTripDetailReply", tripVO.getTripDetailReNo());
+			
+			return "삭제 완료";			
+		}
+		
+		//메인 상세 게시판 리플 수정 시작
+		@RequestMapping(value="/editTripDetailRe", method=RequestMethod.POST)
+		public@ResponseBody String editTripDetailRe(@RequestBody String editTripDetailReply){
+			System.out.println("editTripDetailRe 시작 ");
+			System.out.println("넘어온 메인상세페이지 수정넘버 수정내용"+editTripDetailReply);
+			TripVO tripVO;
+			
+			Gson gson = new Gson();
+			tripVO=gson.fromJson(editTripDetailReply ,TripVO.class);
+			System.out.println("db에넣을 수정리플 tripVO:"+tripVO);
+			sqlSession.update("tripControlMapper.updateTripDetailReply", tripVO);
+			System.out.println(sqlSession.update("tripControlMapper.updateTripDetailReply", tripVO));	
+			return "수정 완료";
 		}
 		
 }
