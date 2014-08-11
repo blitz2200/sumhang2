@@ -106,6 +106,17 @@ public class UserController {
 		return "logoutSuccess";
 	}
 	
+	/*getSessionUser*/
+	@RequestMapping(value = "/getSessionUser", method = RequestMethod.POST)
+	public @ResponseBody UserVO getSessionUser(HttpSession session){
+		System.out.println("getSessionUser invoked...");
+		
+		UserVO userVO;
+		userVO = (UserVO)session.getAttribute("user");
+		System.out.println("sessionUser"+userVO);
+		return userVO;
+	}
+	
 	
 	//회원가입 파일저장
 	@RequestMapping(value = "/addFile", method = RequestMethod.POST)
