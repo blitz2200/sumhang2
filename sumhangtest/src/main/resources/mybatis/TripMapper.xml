@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserTrip" parameterType="int" resultType="Map">
 		SELECT t.TBOARD_NO, t.TITLE, t.TRAVEL_START, t.TRAVEL_END, us.STATUS
 		FROM TBOARD t, USER_STATUS us
-		WHERE t.TBOARD_NO = us.TBOARD_NO AND us.USER_NO  =  #{value}
+		WHERE t.TBOARD_NO = us.TBOARD_NO AND us.USER_NO = #{value}
 	
 	</select>
 	
