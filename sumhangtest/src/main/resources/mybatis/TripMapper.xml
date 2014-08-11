@@ -22,18 +22,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	
   	<insert id="addTrip" parameterType="java.util.Map" useGeneratedKeys="true">
   	
-			INSERT 											
-			INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,TRAVEL_END,TRAVEL_PHO,TRAVEL_USER_COUNT,TRAVEL_TAG,USER_NO)
-			VALUES ( 	#{travel},
-						#{title},
-						#{travelDescription},
-						#{travelStart:DATE},
-						#{travelEnd:DATE},
-						#{travelPho},
-						#{travelUserCount},
-						#{travelTag},
-						#{userNo}
-						 )
+		INSERT 											
+		INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,TRAVEL_END,TRAVEL_PHO,TRAVEL_USER_COUNT,TRAVEL_TAG,USER_NO)
+		VALUES ( 	#{travel},
+					#{title},
+					#{travelDescription},
+					#{travelStart:DATE},
+					#{travelEnd:DATE},
+					#{travelPho},
+					#{travelUserCount},
+					#{travelTag},
+					#{userNo}
+					 )
 						
 	<selectKey keyProperty="travelNo" resultType="String">
  	   SELECT LAST_INSERT_ID()
@@ -54,15 +54,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="addUserStatus" parameterType="userStatus">
-			INSERT 											
-			INTO USER_STATUS(TBOARD_NO, USER_NO, STATUS)
-			VALUES ( 	#{tboardNo:NUMERIC},
-						#{userNo:NUMERIC},
-						#{status:NUMERIC}
-						)
+		INSERT
+		INTO USER_STATUS(TBOARD_NO, USER_NO, STATUS)
+		VALUES ( 	#{tboardNo:NUMERIC},
+					#{userNo:NUMERIC},
+					#{status:NUMERIC}
+					)
 	</insert>
 	
-	<select id="selectTrip" resultMap="travelSelectMap">
+	<insert id="addTimeLine" parameterType="timeLineVO">
+		INSERT
+		INTO TIMELINE(TBOARD_NO, USER_NO, TIMELINE_PHO, TIMELINE_DESCRIPTION)
+		VALUES(	#{tboardNo:NUMERIC},
+				#{userNo:NUMERIC},
+				#{timeLinePhoto:VARCHAR},
+				#{timeLineDesc:VARCHAR}
+				)
+	</insert>
+	
+	<select id="getTimeLine" parameterType="String" resultType="Map">
+		SELECT tl.TIMELINE_NO, t.TBOARD_NO, t.TITLE, t.TRAVEL, t.TRAVEL_START, t.TRAVEL_END, t.TRAVEL_PHO, ucount.USERCOUNT
+		FROM TBOARD t, TIMELINE tl, (SELECT TBOARD_NO, COUNT(*) USERCOUNT
+										FROM USER_STATUS
+										GROUP BY TBOARD_NO ) ucount
+		WHERE t.TBOARD_NO = tl.TBOARD_NO AND ucount.TBOARD_NO = t.TBOARD_NO AND tl.TBOARD_NO = #{value}		 
+	</select>
+	
+	<select id="getTripList" resultMap="travelSelectMap">
+		SELECT TBOARD_NO, USER_NO, TITLE, TRAVEL, TRAVEL_START, TRAVEL_END, TRAVEL_USER_COUNT, TRAVEL_DESCRIPTION, TRAVEL_PHO, TRAVEL_TAG
+		FROM TBOARD;
+	
+
+	</select>
+	
+	<!-- <select id="selectTrip" resultMap="travelSelectMap">
 	
 		select b.TBOARD_NO, b.title, b.travel
 		, b.travel_start, b.travel_end
@@ -92,14 +117,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		left join tripLikeNumView c on (b.TBOARD_NO = c.TBOARD_NO)
 	
 
-	</select>
-	
-	<select id ="selectTripTimeLine" parameterType="user" resultMap="travelSelectMap">
-		select t.travel,t.title,t.travel,t.travel_start,t.travel_end,t.user_no
-			from TBOARD t, USER u
-		where u.USER_NO=t.USER_NO and u.id=#{id} limit 1;
-		
-	</select>	
+	</select> -->
 	
    <!-- 메인 상세보기 출력 -->
 	<select id="tripDetail" parameterType="trip" resultType="Map">
