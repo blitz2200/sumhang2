@@ -101,14 +101,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>	
 	
+   <!-- 메인 상세보기 출력 -->
 	<select id="tripDetail" parameterType="trip" resultType="Map">
-		select t.travel, t.TBOARD_NO, u.USER_NO, u.user_photo, u.nick,t.title,
+		select t.travel, t.TBOARD_NO, t.USER_NO, u.user_photo, u.nick,t.title,
 			 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
 			 t.TRAVEL_PHO	 
 			 from TBOARD t, USER u
 		where u.USER_NO=t.USER_NO and t.TBOARD_NO = #{travelNo}
 	</select>
 	
+   <!-- 메인 상세보기 수정 -->
+	<update id="updateTripDetail" parameterType='trip'>
+		update TBOARD set title=#{title}, travel=#{travel}, travel_start=#{travelStart}, 
+		travel_end=#{travelEnd}, travel_pho=#{travelPho}, travel_description=#{travelDescription}
+		where tboard_no=#{travelNo}
+	</update>
+	
+	
+   <!-- 메인 상세보기 삭제 시작 -->
+	<delete id="deleteTripDetail" parameterType="int">
+		delete from TBOARD where tboard_no=#{travelNo}
+	</delete>
+	
+	
+	<!-- 메인상세보기 리플  입력 시적 --> 
 	<insert id="tripReply" parameterType="trip">
 		insert into TBOARD_RE(tboard_no,user_no,tboard_re_description)
 			value (#{travelNo},#{userNo},#{tripDetailReply})
