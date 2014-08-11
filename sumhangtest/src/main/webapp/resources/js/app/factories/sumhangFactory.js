@@ -1,10 +1,10 @@
-﻿angular.module('sumhangApp')
-    .factory('sumhangFactory', ['$http', function($http) {
+﻿//유저 팩토리
+app.factory('userFactory', ['$http', function($http) {
     	
     var urlBase = '';
-    var sumhangFactory = {};   
+    var userFactory = {};   
     
-    sumhangFactory.loginCheck = function () {    	
+    userFactory.loginCheck = function () {    	
     	return $http({
     			'url' : 'loginCheck.ajax',
     			'method' : 'POST',
@@ -17,7 +17,7 @@
     		});
     }
         
-    sumhangFactory.loginRequest = function (loginInfo) {    	
+    userFactory.loginRequest = function (loginInfo) {    	
     	return $http({
     			'url' : 'login.ajax',
     			'method' : 'POST',
@@ -32,12 +32,25 @@
     			
     		});
     }
-    return sumhangFactory;
+    
+    userFactory.getSessionUser = function (){
+    	return $http({
+			'url' : 'getSessionUser.ajax',
+			'method' : 'POST',
+			'headers': {'Content-Type' : 'application/json'}        	   		
+		}).success(function (data) {
+			console.log('getSessionUser $http 성공');
+			console.log(data);			
+		}).error(function () {			
+		});
+    }
+    
+    return userFactory;
 }]);
 
 
-//메인 리스트 팩토리 
-angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
+//메인 팩토리 
+app.factory('mainFactory',['$http', function($http){
 	
 	var mainFactory = {};
 	
@@ -46,16 +59,49 @@ angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
 		return $http({
 			//main.ajax로 서버에서  전송 스프링 컨트롤러에서 @Requestmapping main찾아서 실행
 			'url' :"main.ajax",
-			'method' : 'GET'    		
+			'method' : 'POST'    		
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
 			console.log('메인 팩토리 성공'+data);
 			
 		}).error(function(){
 			console.log('메인 자료받아오기 실패');
-		})
+		});
 	};
-	//컨트롤러에 작업 완료후 객체 넘겨주기 
+	
+	mainFactory.getUserTrip = function(){
+		return $http({
+			'url' :"getUserTrip.ajax",
+			'method' : 'GET'
+		}).success(function(data){
+			//db에서 자료 가져오기 성공하면 찍어보기 
+			console.log('getUserTrip 성공'+JSON.stringify(data));
+			console.log('getUserTrip 성공'+JSON.stringify(data[0].TITLE));
+
+		}).error(function(){
+			console.log('메인 자료받아오기 실패');
+		});
+	};
+	
+	mainFactory.getTripUsers = function(travelNo){
+		console.log('travelno'+travelNo);
+		return $http({
+			'url' :"getTripUsers.ajax",
+			'method' : 'POST',
+			'data' : travelNo
+		}).success(function(data){
+			//db에서 자료 가져오기 성공하면 찍어보기 
+			console.log('getTripUsers 성공'+JSON.stringify(data));
+
+		}).error(function(){
+			console.log('메인 자료받아오기 실패');
+		});
+	}
+	
+	
+	
+	
+	
 	    /*로그아웃*/
     mainFactory.logout=function(){
     	return $http.post('logout.ajax').success(function() {
@@ -66,8 +112,8 @@ angular.module('sumhangApp').factory('mainFactory',['$http', function($http){
 
 }])
 
-angular.module('sumhangApp')
-.factory('timeLineFactory',['$http', function($http){
+// 타임라인 팩토리
+app.factory('timeLineFactory',['$http', function($http){
 	
 	var timeLineFactory = {};
 	
