@@ -3,34 +3,38 @@
 
 
 	<div class="tripDetail view">
-		<div class="row row0">
-			<img class="mainImg"
-				data-ng-src="resources/images/tripPhotoFile/{{trip.TRAVEL_PHO}}">
-		</div>
-
-		<div class="row row1">
-			<div class="col-xs-7 travel">
-				여 행 지 :{{trip.travel}}
-				<p>{{trip.title}}</p>
-				<img class="cal" src="resources/images/cal.png"> <span>
-					{{trip.travel_start}}~ {{trip.travel_end}} </span>
+		<div class="mainTripDetail" data-ng-show="mainTripDetail">
+			<div class="row row0">
+				<img class="mainImg"
+					data-ng-src="resources/images/tripPhotoFile/{{trip.TRAVEL_PHO}}">
 			</div>
-			<div class="col-xs-5">
-				<img class="userPho"
-					data-ng-src="resources/images/userPhotoFiles/{{trip.user_photo}}">
-				<p>
-					<span class="username">{{trip.nick}}</span>
-				</p>
+	
+			<div class="row row1">
+				<div class="col-xs-7 travel">
+					여 행 지 :{{trip.travel}}
+					<p>{{trip.title}}</p>
+					<img class="cal" src="resources/images/cal.png"> <span>
+						{{trip.travel_start}}~ {{trip.travel_end}} </span>
+				</div>
+				<div class="col-xs-5">
+					<img class="userPho"
+						data-ng-src="resources/images/userPhotoFiles/{{trip.user_photo}}">
+					<p>
+						<span class="username">{{trip.nick}}</span>
+					</p>
+				</div>
 			</div>
-		</div>
-
-		<div class="row desc">
-			<div class="col-xs-12">{{trip.TRAVEL_DESCRIPTION}}</div>
+	
+			<div class="row desc">
+				<div class="col-xs-12">{{trip.TRAVEL_DESCRIPTION}}</div>
+			</div>
 		</div>
 		<div class="row addBtn">
 			<button type="button" class="addTrip ">참가신청</button>
+			<button type="button" class="editTrip">수정</button>
+			<button type="button" class="deleteTrip">삭제</button>
 		</div>
-
+	
 		<!-- 리플 시작 -->
 
 		<ul>
@@ -42,22 +46,41 @@
 					<div class="col-xs-3 reNick">{{reply.nick}}</div>
 					
 					<div class="col-xs-5">{{reply.TBOARD_RE_DESCRIPTION}}</div>
+					
+					<div class="col-xs-1 delete" data-ng-show="{{reply.del}}">
+						<img data-ng-click="goDelTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
+						src="resources/images/icons/tripDetailDelete.png"/>					
+					</div>
+					<div class="col-xs-1 edit" data-ng-show="{{reply.del}}">
+						<img data-ng-click="goEditTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
+						src="resources/images/icons/tripDetailEdit.png"/>		
+					</div>				
 				</div>
 			</li>
 		</ul>
+		
 	</div>
 	
 <div class=wraper-footer-tripDetail>
-		<div class="row inputReply">
+		<div class="row inputReply" data-ng-show="inputRe">
 			<div class="col-xs-7">
 				<input type="text" class="textbox" placeholder="덧글을 입력하세요"
 					data-ng-model="tripDetailReply">
 			</div>
 			<div class="col-xs-3">
 				<button type="button" class="btn btn-warning replybtn"
-					data-ng-click="goTripDetailReply()">입력</button>
+					data-ng-click="goTripDetailReply()">댓글 입력</button>
+			</div>
+		</div>
+		
+		<div class="row inputReply" data-ng-show="editRe">
+			<div class="col-xs-7">
+				<input type="text" class="textbox" data-ng-model="tripDetailReEditDescription">
+			</div>
+			<div class="col-xs-3">
+				<button type="button" class="btn btn-danger replybtn"
+					data-ng-click="goTripDetailReplyEdit()">댓글 수정</button>
 			</div>
 		</div>
 </div>
-
 
