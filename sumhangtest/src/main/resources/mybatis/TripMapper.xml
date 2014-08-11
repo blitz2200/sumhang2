@@ -93,7 +93,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
 			 t.TRAVEL_PHO	 
 			 from TBOARD t, USER u
-		where u.USER_NO=t.TBOARD_NO and t.TBOARD_no =#{travelNo}
+		where u.USER_NO=t.USER_NO and t.TBOARD_no =#{travelNo}
 	</select>
 	
 	<insert id="tripReply" parameterType="trip">
@@ -104,7 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectTripDetailReply" parameterType="int" resultType="Map">
 		select u.nick, tr.TBOARD_RE_DESCRIPTION, 
-			   tr.user_no, u.user_photo,tr.TRAVEL_BOARD_REPLY_NO
+			   tr.user_no, u.user_photo, tr.TRAVEL_BOARD_REPLY_NO
 		from USER u, TBOARD t, TBOARD_RE tr 	
 		where  u.USER_NO=tr.USER_NO and t.TBOARD_NO=tr.TBOARD_NO and tr.TBOARD_NO=#{travelNo}
 	</select>
