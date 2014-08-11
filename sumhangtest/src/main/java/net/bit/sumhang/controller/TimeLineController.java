@@ -1,9 +1,8 @@
 package net.bit.sumhang.controller;
 
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
-import net.bit.sumhang.domain.TripVO;
-import net.bit.sumhang.domain.UserVO;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +17,14 @@ public class TimeLineController {
 
 		@Autowired
 		private SqlSession sqlSession;
-		private UserVO userVO;
-		
-		@RequestMapping(value="/timeLine", method = RequestMethod.GET)
-		public @ResponseBody TripVO getTimeLine(HttpSession session, @RequestBody String timeLine){
+		@RequestMapping(value="/timeLine", method = RequestMethod.POST)
+		public @ResponseBody Map<String,String> getTimeLine(HttpSession session, @RequestBody String travelNo){
 			
 			
 			System.out.println("타임라인 시작... ");
+			System.out.println("travelNo"+travelNo);
 			
-			if(session.getAttribute("user")!=null){
-				System.out.println("찍히나?");
-				userVO=(UserVO)session.getAttribute("user");
-				System.out.println(userVO);
-			}			
-			
-			
-			
-			System.out.println(sqlSession.selectOne("tripControlMapper.selectTripTimeLine",userVO.getId()));
-			return sqlSession.selectOne("tripControlMapper.selectTripTimeLine",userVO.getId());
+			System.out.println(sqlSession.selectOne("tripControlMapper.getTimeLine",travelNo));
+			return sqlSession.selectOne("tripControlMapper.getTimeLine",travelNo);
 		}
 }
