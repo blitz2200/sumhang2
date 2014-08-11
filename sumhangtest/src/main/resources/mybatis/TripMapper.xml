@@ -40,6 +40,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</selectKey>
 	</insert>
 	
+	<select id="getUserTrip" parameterType="int" resultType="Map">
+		SELECT t.TBOARD_NO, t.TITLE, t.TRAVEL_START, t.TRAVEL_END, us.STATUS
+		FROM TBOARD t, USER_STATUS us
+		WHERE t.TBOARD_NO = us.TBOARD_NO AND us.USER_NO = #{value}
+	
+	</select>
+	
+	<select id="getTripUsers" resultType="Map">
+		SELECT u.NICK, u.GENDER, u.USER_PHOTO, us.STATUS
+		FROM USER u,TBOARD t, USER_STATUS us
+		WHERE u.USER_NO = us.USER_NO AND t.TBOARD_NO = us.TBOARD_NO AND t.TBOARD_NO = #{travelNo}
+	</select>
+	
 	<insert id="addUserStatus" parameterType="userStatus">
 			INSERT 											
 			INTO USER_STATUS(TBOARD_NO, USER_NO, STATUS)
@@ -93,7 +106,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
 			 t.TRAVEL_PHO	 
 			 from TBOARD t, USER u
-		where u.USER_NO=t.USER_NO and t.TBOARD_no =#{travelNo}
+		where u.USER_NO=t.USER_NO and t.TBOARD_NO = #{travelNo}
 	</select>
 	
 	<insert id="tripReply" parameterType="trip">
