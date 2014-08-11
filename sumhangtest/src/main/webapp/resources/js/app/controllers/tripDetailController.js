@@ -3,8 +3,8 @@
 //main페이지에서 tboard_no를 a링크에 넣어서 보냄  
 //app.js파일에  when주소뒤에 :스코프이름 으로 넘긴걸 받음 
 //콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
-app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFactory',
-                                        function ($scope,$routeParams ,tripDetailFactory) {
+app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFactory','sumhangService',
+                                        function ($scope,$routeParams ,tripDetailFactory,sumhangService) {
 	
 	
 	//넘어온 tboard_no,tripDetailReply값  변수에 저장
@@ -25,6 +25,13 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 		
 		tripDetailFactory.tripDetail(travelNo)
 		.success(function(data){    		
+			if(data.USER_NO==data.wuser_no){
+				$scope.readUserBUtton=false;
+				$scope.writeUserButton=true;
+			}else{
+				$scope.readUserBUtton=true;
+				$scope.writeUserButton=false;
+			}
 			
 			console.log('디비에서 꺼내온 main detail 출력용 data:'+JSON.stringify(data));
     		
@@ -38,7 +45,101 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
     	});
 	}//tripDetail 끝
 	
+	
+	//수정하기 누르면 메인 리스트 출력한거 감추고 편집 화면 나오기
 	$scope.mainTripDetail=true;
+	//리스트 페이지 보이게	
+	$scope.editPage=false 
+	//에디트 페이지  안보이게
+	
+	
+	
+	//메인 상세보기 수정 시작	
+	$scope.goEditTripDetail=function(){
+		$scope.mainTripDetail=false;
+		$scope.editPage=true;
+		$scope.writeUserButton=false;	
+	}
+	
+	$scope.goEditTripRequest=function(){
+		editTripRequest(travelNo)
+	};
+	
+	function editTripRequest(travelNo){
+		
+		$scope.submitted = true;    	
+    	if( $scope.editTripForm.tripTitleInput.$valid && 
+    		$scope.editTripForm.tripDestinationInput.$valid	&& 
+    		$scope.editTripForm.datepicker3.$valid && 
+    		$scope.editTripForm.datepicker4.$valid ){
+        	alert("여행세부게시판수정 시작...");
+        	
+        	var trip =$scope.editTrip;
+    		var uploadtripUrl="addTripFile.ajax";
+    		var tripfile=$scope.tripfile;		
+        	alert ('수정할 여행세부게시판 내용: '+JSON.stringify(trip));
+        	
+    		if (typeof $scope.tripfile != 'undifined') {
+	    		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
+	        	
+	    			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
+	    			var tripFile= JSON.stringify(tripfile.name)
+	    						  .substr(1,JSON.stringify(tripfile.name).length-2);
+	    			console.log('여행파일은? :'+tripFile)
+	    			
+	    			//여행등록 객체에 파일이름 추가 
+	    			trip.travelPho=tripFile;	
+	    			
+	    			console.log("사진 파일 추가후 업로드"+JSON.stringify(trip));
+	    				
+	    				//파일객체 서비스에 전송
+	    		
+	    			sumhangService.addTripFile(tripfile,uploadtripUrl);
+	    			
+	    		}else{
+	    			trip.travelPho='1.png';
+	    			alert("디폴트파일이름"+JSON.stringify(trip.travelPho));
+	    			 
+	    		}
+	    		
+			alert('여행상세게시판 수정 내용  :'+JSON.stringify(trip));
+			//여행수정 객체 서비스에 전송
+			tripDetailFactory.editTripDetail(trip,travelNo)
+			.success(function(){
+				tripDetail(travelNo)
+	    		$scope.mainTripDetail=true;
+	    		$scope.editPage=false;
+	    		$scope.writeUserButton=true;
+			}).error(function(error){
+				console.log('tripDetailReply 콘트롤러 실패');
+			})
+    		
+    		//완료후 메인페이지 리스트 뿌려주기
+    			
+    		}else{
+    			alert('양식을 입력하세요');
+    		}		
+	}
+	
+	
+	//메인 상세보기 삭제 시작
+	$scope.goDeleteTripDetail=function(){
+		deleteTripDetail(travelNo);
+	}
+	
+	function deleteTripDetail(travelNo){
+		alert(travelNo)
+		
+		tripDetailFactory.deleteTripDetail(travelNo)
+		.success(function(data){
+			alert('콘트롤러 메인 게시판 상세보기 삭제 성공')
+			$scope.location.path('/main');
+		}).error(function(error){
+			alert('콘트롤러 메인 게시판 상세보기 삭제 실패')
+		})
+		
+	}
+	
 	
 	
 	//리플 리스트 시작
