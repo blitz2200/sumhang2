@@ -1,8 +1,8 @@
-﻿app.controller('IntroController', ['$scope','sumhangFactory', 
-                                   function ($scope, sumhangFactory) {
+﻿app.controller('IntroController', ['$scope','userFactory','globalFactory', 
+                                   function ($scope, userFactory,globalFactory) {
 	
 	function loginCheck(){
-		sumhangFactory.loginCheck()
+		userFactory.loginCheck(globalFactory.serverAdress)
 		.success(function(data){ 
 			
 			console.log(data.isLogged);
@@ -23,14 +23,14 @@
 	}	
 }]);
 
-app.controller('LoginController', ['$scope','sumhangFactory', 
-                                     function ($scope, sumhangFactory) {
+app.controller('LoginController', ['$scope','userFactory','globalFactory', 
+                                     function ($scope, userFactory,globalFactory) {
     
     
     function loginRequest(loginInfo){
     	
     		
-    	sumhangFactory.loginRequest(loginInfo)
+    	userFactory.loginRequest(globalFactory.serverAdress,loginInfo)
     	.success(function(data){
     		
     		console.log(data);
@@ -56,7 +56,8 @@ app.controller('LoginController', ['$scope','sumhangFactory',
     };
 }]);
 
-app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($scope, sumhangService) {
+app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactory', 
+                                        function ($scope, sumhangService,globalFactory) {
 	
 	 
 	
@@ -66,12 +67,13 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($s
 			if( $scope.joinMember.inputIdInput.$valid && $scope.joinMember.intputPassword3Input.$valid
 		    		&& $scope.joinMember.inputPassword1Input.$valid && $scope.joinMember.nicknameInput.$valid
 		    		&& $scope.joinMember.datepicker1.$valid ){
-		
+		 $scope.submitted = true;	 
+			if( $scope.joinMember.inputIdInput.$valid && $scope.joinMember.intputPassword3Input.$valid
+		    		&& $scope.joinMember.inputPassword1Input.$valid && $scope.joinMember.nicknameInput.$valid
+		    		&& $scope.joinMember.datepicker1.$valid ){
 		console.log("회원가입 시작");
 		
 		var user =$scope.newMember;
-		var uploadUrl="addFile.ajax";
-		var userUrl="addUser.ajax"
 		var file=$scope.file;		
 	
 		console.log('회원가입 내용  :'+JSON.stringify(user));
@@ -89,10 +91,10 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($s
 		
 		
 		//유저객체 서비스에 전송
-		sumhangService.addUser(user,userUrl);
+		sumhangService.addUser(sa,user);
 		
 		//파일객체 서비스에 전송
-		sumhangService.addFile(file,uploadUrl);	
+		sumhangService.addFile(sa,file);	
 		
 		$scope.location.path('/login'); 
 			}else{
@@ -118,8 +120,10 @@ app.controller('LeftSideController', function ($scope, sumhangService) {
 
 
 /*AddTrip Controller 시작*/
-app.controller('AddTripController', ['$scope',  'sumhangService', function ($scope, sumhangService) {
-
+app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory', 
+                                     function ($scope, sumhangService,globalFactory) {
+	
+	var sa=globalFactory.serverAdress;
     $scope.addTripRequest = function () {
     	$scope.submitted = true;
     	
@@ -132,9 +136,8 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
     	
     	console.log("여행참가신청 시작...");
     	
-    	var trip =$scope.newTrip;
-		var uploadtripUrl="addTripFile.ajax";
-		var tripUrl="addTrip.ajax"
+    	var trip =$scope.newTrip;		
+		
 		var tripfile=$scope.tripfile;		
     	
 			if (typeof $scope.tripfile == 'undifined') {
@@ -152,7 +155,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 				
 				//파일객체 서비스에 전송
 		
-			sumhangService.addTripFile(tripfile,uploadtripUrl);
+			sumhangService.addTripFile(sa,tripfile);
 			
 		}else{
 			trip.travelPho='1.png';
@@ -162,7 +165,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 		
 		alert('여행 등록 내용  :'+JSON.stringify(trip));
 		//여행객체 서비스에 전송
-		sumhangService.addTrip(trip,tripUrl);
+		sumhangService.addTrip(sa,trip);
 		$scope.location.path('/main');  
 		}else{
 			alert('양식을 입력하세요');
@@ -172,18 +175,30 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 }]);
 
 
-app.controller('MainController',['$scope','$route','mainFactory', function ($scope,$route, mainFactory) {
+app.controller('MainController',['$scope','$route','mainFactory','globalFactory',
+                                 function ($scope,$route, mainFactory,globalFactory) {
 
 	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
 	//메인 html파일과 연결 시킴 
 	
 	//main();
+	//서버 주소 설정
+	$scope.serverAdress=globalFactory.serverAdress;
 	
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
 
-	$scope.goTimeLine=function (){
-		$scope.location.path('/timeLine');
+	
+	$scope.getTripUsers = function (){
+		mainFactory.getTripUsers(globalFactory.serverAdress,$scope.userTripSelected.TBOARD_NO)
+		.success(function(data){
+    		console.log('getTripUsers 성공 넘어온 데이타는 ?:'+ JSON.stringify(data));
+    		
+    		$scope.tripUsers=data;
+    		console.log("getTripUsers 메인에 넘길데이타 :" +JSON.stringify($scope.tripUsers));		
+    	}).error(function (error){
+    		console.log('getTripUsers 실패');
+    	});
 	}
 	
 	$scope.goTripDetail=function(travelNo){
@@ -193,7 +208,7 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	
 		/*로그아웃*/
 	$scope.logout=function(){
-		mainFactory.logout().success(function (){
+		mainFactory.logout(globalFactory.serverAdress).success(function (){
 			$scope.location.path('/login');
 		});
 	}
@@ -236,16 +251,28 @@ app.controller('SettingsController', function ($scope, sumhangService) {
     //you need to describe event handler below... 
 });
 
-app.controller('TimeLineController', ['$scope','$route','timeLineFactory',
-                                      function ($scope, $route, timeLineFactory) {
+app.controller('TimeLineController', ['$scope', '$route','$routeParams','timeLineFactory','globalFactory',
+                                      function ($scope, $route, $routeParams, timeLineFactory,globalFactory) {
 
 	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
 	//메인 html파일과 연결 시킴 
 	
 	//main();
 	console.log('timeLine 시작');
-	$scope.checked;//This will be binded using the ps-open attribute
-	$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
+	var travelNo = $routeParams.travelNo;	
+	//$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
+	getTimeLine(travelNo);
+	
+	function getTimeLine(travelNo) {
+		timeLineFactory.getTimeLine(travelNo)
+		.success(function(data){
+			$scope.timeLine = data;
+		}).error(function (error){
+    		console.log('getTimeLine 실패');
+    	});
+	}
+	
+	
 	
 }]);
 
