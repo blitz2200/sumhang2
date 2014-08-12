@@ -59,7 +59,7 @@ public class TripController {
 			Map<String,String> map;			
 			Gson gson = new Gson();
 			UserStatusVO userStatusVO = new UserStatusVO();
-			TimeLineVO timeLineVO = new TimeLineVO();
+			//TimeLineVO timeLineVO = new TimeLineVO();
 			
 			
 			map=gson.fromJson(trip, Map.class);
@@ -78,16 +78,16 @@ public class TripController {
 			userStatusVO.setStatus(1);
 			
 			//timeLineVO에 값 setting
-			timeLineVO.setTboardNo(Integer.parseInt(map.get("travelNo")));
-			timeLineVO.setUserNo(userVO.getUserNo());
-			timeLineVO.setTimeLinePhoto(map.get("travelPho"));
-			timeLineVO.setTimeLineDesc(map.get("travelDescription"));
+			//timeLineVO.setTboardNo(Integer.parseInt(map.get("travelNo")));
+			//timeLineVO.setUserNo(userVO.getUserNo());
+			//timeLineVO.setTimeLinePhoto(map.get("travelPho"));
+			//timeLineVO.setTimeLineDesc(map.get("travelDescription"));
 			
 			//userStatusVO DB에 insert
 			sqlSession.insert("tripControlMapper.addUserStatus", userStatusVO );
 			
 			//timeLine DB에 insert
-			sqlSession.insert("tripControlMapper.addTimeLine", timeLineVO );
+			//sqlSession.insert("tripControlMapper.addTimeLine", timeLineVO );
 			
 
 			
