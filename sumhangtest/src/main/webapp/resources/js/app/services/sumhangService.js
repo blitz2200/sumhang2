@@ -3,12 +3,12 @@
 app.service('sumhangService', ['$http',function ($http) {
     
 	/*유저파일 업로드 시작*/
-    this.addFile = function(file,uploadUrl){
+    this.addFile = function(sa,file){
     	var fd = new FormData();
     	fd.append('file',file);    	    	
     	$http({
     	 method:'POST',
-    	 url : uploadUrl,
+    	 url : sa+"addFile.ajax",
     	 data : fd,
     	 transformRequest:angular.identify,
     	 headers:{'Content-Type':undefined}
@@ -21,10 +21,10 @@ app.service('sumhangService', ['$http',function ($http) {
     	});
     };
     
-    this.addUser = function(user,userUrl){
+    this.addUser = function(sa,user){
     	$http({
     		method:'POST',
-    		url : userUrl,
+    		url :sa+"addUser.ajax",
     		data : user,
     		headers : {'Content-Type':'application/json charset=utf-8'},    		
     	}).success(function(){
@@ -36,12 +36,12 @@ app.service('sumhangService', ['$http',function ($http) {
     
     
     /*여행 파일 업로드*/
-    this.addTripFile = function(tripfile,uploadUrl){
+    this.addTripFile = function(sa,tripfile){
     	var fd1 = new FormData();
     	fd1.append('tripfile',tripfile);    	    	
     	$http({
     	 method:'POST',
-    	 url : uploadUrl,
+    	 url : sa+"addTripFile.ajax",
     	 data : fd1,
     	 transformRequest:angular.identify,
     	 headers:{'Content-Type':undefined}
@@ -54,10 +54,10 @@ app.service('sumhangService', ['$http',function ($http) {
     	});
     };		
     
-    this.addTrip = function(trip,tripUrl){
+    this.addTrip = function(sa,trip){
     	$http({
     		method:'POST',
-    		url : tripUrl,
+    		url : sa+"addTrip.ajax",
     		data : trip,
     		headers : {'Content-Type':'application/json; charset=utf-8'},    		
     	}).success(function(){
