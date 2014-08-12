@@ -4,9 +4,10 @@ app.factory('userFactory', ['$http', function($http) {
     var urlBase = '';
     var userFactory = {};   
     
-    userFactory.loginCheck = function () {    	
+    userFactory.loginCheck = function (sa) {    	
+  
     	return $http({
-    			'url' : 'loginCheck.ajax',
+    			'url' : sa+'loginCheck.ajax',
     			'method' : 'POST',
     			'headers': {'Content-Type' : 'application/json'}	
     		}).success(function (data) {
@@ -17,9 +18,9 @@ app.factory('userFactory', ['$http', function($http) {
     		});
     }
         
-    userFactory.loginRequest = function (loginInfo) {    	
+    userFactory.loginRequest = function (sa,loginInfo) {    	
     	return $http({
-    			'url' : 'login.ajax',
+    			'url' :sa+ 'login.ajax',
     			'method' : 'POST',
     			'headers': {'Content-Type' : 'application/json'},
 	        	'data' : {'username': loginInfo.id ,
@@ -82,10 +83,11 @@ app.factory('mainFactory',['$http', function($http){
 		});
 	};
 	
-	mainFactory.getTripUsers = function(travelNo){
+	mainFactory.getTripUsers = function(sa,travelNo){
 		console.log('travelno'+travelNo);
+		alert(sa);
 		return $http({
-			'url' :"getTripUsers.ajax",
+			'url' :sa+"getTripUsers.ajax",
 			'method' : 'POST',
 			'data' : travelNo
 		}).success(function(data){
@@ -102,8 +104,8 @@ app.factory('mainFactory',['$http', function($http){
 	
 	
 	    /*로그아웃*/
-    mainFactory.logout=function(){
-    	return $http.post('logout.ajax').success(function() {
+    mainFactory.logout=function(sa){
+    	return $http.post(sa+'logout.ajax').success(function() {
     		console.log('logout $http 성공');
     	});
     }
