@@ -1,52 +1,82 @@
-/*fonts*/
+
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
-/* container */
-.container-joinMemberview{
-	background: url('../images/travel.jpg');
-	border-radius: 8px;
-	background-size: contain;
-	opacity: 0.9;
+/* font-family: 'Nanum Gothic Coding', monospace; */
+
+div.page-header{
+	background-color:rgb(255, 187, 51);
+	text-align:center;
+	margin:0;
+	padding:0;
+ 	height:50%;
+	 
+ 
+	 
+ 
+ 
+}
+div.form-group{
+ 	
+}
+form.joinMember{
+	padding-top:40px;
+	background-repeat: no-repeat;
+	
+}
+ 
+.imgTrip{
+	height:50%;
+}
+
+button#registerbtn.btn.btn-primary.btn-xs-5{
+	background-color:rgb(255, 187, 51);
+	color:white;
+	font-weight:600;
+	border-color:white;
 } 
 
-/*form*/
-.form-horizontal{
-		margin: auto;
-	  	font-family: 'Nanum Gothic Coding', monospace;
+div.joinTitle{
+	text-align:right;
+	margin-right:20%;
+	
+}
+span#titleName{
+	font-size:3em;
+	font-weight:700;
+	font-family: 'Nanum Gothic Coding', monospace; 
+	
 }
 
-/* page title */
-h1{
-	text-align: center;
-	color: #333333;
-	font-family: 'Nanum Gothic Coding', monospace;
+div.join1{
+	margin-top:2%;
+	margin-left:10%;
+	margin-right:10%;
+	margin-bottom:2%;
+	padding: 1.5%;
+	border-top-right-radius: 20px;
+	border-top-left-radius:20px;
+	background-color:rgb(255, 187, 51);
+	color:white;
+	 box-shadow: rgb(200, 200, 200) -13px 16px 3px 0px;
+	 background:
+	 
 }
 
-/*form label */
-.form-group label{
-	margin-left: 10px;
+div.join2{
+	background-color:rgb(255, 187, 51);
+	margin-left:10%;
+	margin-right:10%;
+		padding: 1.5%;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius:20px;
+	margin-bottom:2%;
+	box-shadow: rgb(200, 200, 200) -13px 16px 3px 0px;
+	color:white;
+ 
 }
 
-/*form input */
-.form-group input{
-	margin-left: 15px;
-	margin-top: 10px;
+img.joinLogo{
+	
+	height:10%;
 }
 
-/*form radio */
-.form-group .optionsRadios{
-	margin-left: 15px;
-	margin-top: 10px;
-}
-
-/* form inputfile */
-.form-group #exampleInputFile{
-	margin-top: 10px;
-}
-
-/* register button*/
-.form-group #registerbtn{
-	margin-left: 20px;
-	margin-top: 20px;
-	width:80%;
-}
