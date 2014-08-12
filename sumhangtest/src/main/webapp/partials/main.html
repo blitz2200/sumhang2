@@ -9,7 +9,7 @@
 			<div id="imageWrapper">
 
 				<!-- 왼쪽패널 -->
-				<img id="leftSideIcon" src="resources/images/leftSide.png"
+				<img id="leftSideIcon" src="{{serverAdress}}resources/images/leftSide.png"
 					data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
 					data-ps-auto-close="true">
 
@@ -17,7 +17,7 @@
 				<span id="mainPageTitle">SUM행</span>
 
 				<!-- 오른쪽패널 -->
-				<img id="rightSideIcon" src="resources/images/rightSide.png"
+				<img id="rightSideIcon" src="{{serverAdress}}resources/images/rightSide.png"
 					data-pageslide="right" data-ps-speed="0.5" href="#rightPanel"
 					data-ps-auto-close="true">
 			</div>
@@ -40,7 +40,7 @@
 						<!-- 여행사진 -->
 						<div id="tripPictures">
 							<img
-								data-ng-src="resources/images/tripPhotoFile/{{trip.travelPho}}"
+								data-ng-src="{{serverAdress}}resources/images/tripPhotoFile/{{trip.travelPho}}"
 								class="imgMain visible" id="tripPcture">
 						</div> <!-- 여행지 -->
 						<div id="tripDestinationTag">
@@ -57,19 +57,19 @@
 						</div> <!-- 참가자사진 -->
 						<div class="iconsBack">
 							<div class="icons" id="mainIcons">
-								<img src="resources/images/sman1.png"
+								<img src="{{serverAdress}}resources/images/sman1.png"
 									class="faceThumb_3 visible" id="face1"> <img
-									src="resources/images/swoman4.png" class="faceThumb_4 visible"
-									id="face2"> <img src="resources/images/swoman1.png"
+									src="{{serverAdress}}resources/images/swoman4.png" class="faceThumb_4 visible"
+									id="face2"> <img src="{{serverAdress}}resources/images/swoman1.png"
 									class="faceThumb_5 visible" id="face3">
 
 
 								<!-- 아이콘들 -->
 								<span id="participants"> <img
-									data-ng-src="resources/images/wishMember.png"
+									data-ng-src="{{serverAdress}}resources/images/wishMember.png"
 									class="groupImg visible" /> <!-- 모집인원아이콘 --> <span
 									class="groupCount visible" id="mainTripMember">{{trip.travelUserCount}}</span>
-									<!-- 모집인원 --> <img data-ng-src="resources/images/heart.png"
+									<!-- 모집인원 --> <img data-ng-src="{{serverAdress}}resources/images/heart.png"
 									class="favoImg visible" /> <!-- 좋아요 아이콘 --> <span
 									class="favoriteCount visible" id="mainLikeNum">{{trip.likenum}}</span>
 									<!-- 좋아요 카운트 -->
@@ -88,11 +88,11 @@
 		<!-- 오른쪽패널	 -->
 		<div id="rightPanel">
 			<!-- 패널 닫기 아이콘 -->
-			<img src="resources/images/x-mark-4-24.png" id="rightPanel-close"
+			<img src="{{serverAdress}}resources/images/x-mark-4-24.png" id="rightPanel-close"
 				href="#"> <br />
 			<!-- 방장 사진, 아이디 -->
 			<div id="hostUser">
-				<img src="resources/images/host.png" id="hostUserPic">
+				<img src="{{serverAdress}}resources/images/host.png" id="hostUserPic">
 				<p id="hostUserName">{{sessionUser.nick}}</p>
 			</div>
 
@@ -108,7 +108,7 @@
 
 				<!-- 모임 게시판 가기 -->
 				<span class="groupBoard"> <img
-					src="resources/images/groupBoard.png" id="groupMeeting"
+					src="{{serverAdress}}resources/images/groupBoard.png" id="groupMeeting"
 					data-ng-click="goTimeLine(userTripSelected.TBOARD_NO)">
 				</span>
 			</div>
@@ -132,29 +132,29 @@
 
 			<!--  디데이 -->
 			<div id="dDay">
-				<img src="resources/images/d-day.png" id="dDayAlert" href="#">
+				<img src="{{serverAdress}}resources/images/d-day.png" id="dDayAlert" href="#">
 				<p id="dDayCal">여행까지 ?일 남았습니다.</p>
 			</div>
 
 		</div>
 		<!-- 셋팅 닫기 아이콘  -->
 		<div id="leftPanel">
-			<img src="resources/images/x-mark-4-24.png" id="leftPanel-close"
+			<img src="{{serverAdress}}resources/images/x-mark-4-24.png" id="leftPanel-close"
 				href="#"> <br />
 
 			<!-- settings icons -->
 			<div class=systemSettings1>
-				<img src="resources/images/reviewer-48.png" id="userInfo">
+				<img src="{{serverAdress}}resources/images/reviewer-48.png" id="userInfo">
 				<!-- userInfo -->
-				<img src="resources/images/handshake.png" id="acceptance" href="#">
+				<img src="{{serverAdress}}resources/images/handshake.png" id="acceptance" href="#">
 				<br />
 				<!-- acceptance -->
 			</div>
 
 			<div class=systemSettings2>
-				<img src="resources/images/info.png" id="sysinfo">
+				<img src="{{serverAdress}}resources/images/info.png" id="sysinfo">
 				<!-- info -->
-				<img src="resources/images/settings.png" id="settings">
+				<img src="{{serverAdress}}resources/images/settings.png" id="settings">
 				<!-- settings -->
 			</div>
 
