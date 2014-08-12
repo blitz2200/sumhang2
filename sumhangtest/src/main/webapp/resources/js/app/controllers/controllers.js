@@ -1,8 +1,8 @@
-﻿app.controller('IntroController', ['$scope','userFactory', 
-                                   function ($scope, userFactory) {
+﻿app.controller('IntroController', ['$scope','sumhangFactory', 
+                                   function ($scope, sumhangFactory) {
 	
 	function loginCheck(){
-		userFactory.loginCheck()
+		sumhangFactory.loginCheck()
 		.success(function(data){ 
 			
 			console.log(data.isLogged);
@@ -23,19 +23,18 @@
 	}	
 }]);
 
-app.controller('LoginController', ['$scope','userFactory', 
-                                     function ($scope, userFactory) {
+app.controller('LoginController', ['$scope','sumhangFactory', 
+                                     function ($scope, sumhangFactory) {
     
     
     function loginRequest(loginInfo){
     	
     		
-    	userFactory.loginRequest(loginInfo)
+    	sumhangFactory.loginRequest(loginInfo)
     	.success(function(data){
     		
     		console.log(data);
 			if(data == ""){
-				alert('아이디와 비밀번호를 확인해 주세요');
 				$scope.location.path('/login');
 			}else{
 				$scope.location.path('/main');
@@ -58,7 +57,15 @@ app.controller('LoginController', ['$scope','userFactory',
 }]);
 
 app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($scope, sumhangService) {
-	$scope.addMemberRequest = function(){
+	
+	 
+	
+	
+	  $scope.addMemberRequest = function(){
+		  	 $scope.submitted = true;	 
+			if( $scope.joinMember.inputIdInput.$valid && $scope.joinMember.intputPassword3Input.$valid
+		    		&& $scope.joinMember.inputPassword1Input.$valid && $scope.joinMember.nicknameInput.$valid
+		    		&& $scope.joinMember.datepicker1.$valid ){
 		
 		console.log("회원가입 시작");
 		
@@ -87,7 +94,12 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService', function ($s
 		//파일객체 서비스에 전송
 		sumhangService.addFile(file,uploadUrl);	
 		
-		$scope.location.path('/login');  
+		$scope.location.path('/login'); 
+			}else{
+				alert('양식을 입력하세요');
+				
+			}
+				
 	}
     
 }]); 
@@ -125,7 +137,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 		var tripUrl="addTrip.ajax"
 		var tripfile=$scope.tripfile;		
     	
-			if (typeof $scope.tripfile != 'undefined') {
+			if (typeof $scope.tripfile == 'undifined') {
 		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
     	
 			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
@@ -151,9 +163,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService', function ($sco
 		alert('여행 등록 내용  :'+JSON.stringify(trip));
 		//여행객체 서비스에 전송
 		sumhangService.addTrip(trip,tripUrl);
-		
-		
-		$scope.location.path('/main'); 
+		$scope.location.path('/main');  
 		}else{
 			alert('양식을 입력하세요');
 		}
@@ -171,26 +181,9 @@ app.controller('MainController',['$scope','$route','mainFactory', function ($sco
 	
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
-	$scope.userTrips = $route.current.locals.userTrips; //resolve에 있는 변수를 scope에 넘겨준다.
-	$scope.sessionUser = $route.current.locals.sessionUser; //resolve에 있는 변수를 scope에 넘겨준다
 
-	
-	$scope.getTripUsers = function (){
-		mainFactory.getTripUsers($scope.userTripSelected.TBOARD_NO)
-		.success(function(data){
-    		console.log('getTripUsers 성공 넘어온 데이타는 ?:'+ JSON.stringify(data));
-    		
-    		$scope.tripUsers=data;
-    		console.log("getTripUsers 메인에 넘길데이타 :" +JSON.stringify($scope.tripUsers));		
-    	}).error(function (error){
-    		console.log('getTripUsers 실패');
-    	});
-	}
-	
-	$scope.goTimeLine=function (travelNo){
-		var temp="timeLine/"+travelNo;
-		console.log(temp);
-		$scope.location.path(temp);
+	$scope.goTimeLine=function (){
+		$scope.location.path('/timeLine');
 	}
 	
 	$scope.goTripDetail=function(travelNo){
@@ -243,30 +236,93 @@ app.controller('SettingsController', function ($scope, sumhangService) {
     //you need to describe event handler below... 
 });
 
-app.controller('TimeLineController', ['$scope', '$route','$routeParams','timeLineFactory',
-                                      function ($scope, $route, $routeParams, timeLineFactory) {
+app.controller('TimeLineController', ['$scope','$route','timeLineFactory',
+                                      function ($scope, $route, timeLineFactory) {
 
+	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
+	//메인 html파일과 연결 시킴 
 	
+	//main();
 	console.log('timeLine 시작');
-	var travelNo = $routeParams.travelNo;	
-	//$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
-	console.log("travelNO:"+travelNo);
-	getTimeLine(travelNo);
+	$scope.checked;//This will be binded using the ps-open attribute
+	$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
 	
-	function getTimeLine(travelNo) {
-		timeLineFactory.getTimeLine(travelNo)
-		.success(function(data){
-			$scope.timeLine = data;
-		}).error(function (error){
-    		console.log('getTimeLine 실패');
+}]);
+
+//여행 세부 게시판 시작
+//main페이지에서 tboard_no를 a링크에 넣어서 보냄  
+//app.js파일에  when주소뒤에 :스코프이름 으로 넘긴걸 받음 
+//콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
+app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFactory',
+                                        function ($scope,$routeParams ,tripDetailFactory) {
+	
+	
+	//넘어온 tboard_no,tripDetailReply값  변수에 저장
+	
+	var travelNo=$routeParams.travelNo;	
+	
+	
+	//tripDetail함수에 변수값 전달후 실행
+	tripDetail(travelNo);
+	//tripDetailReply 함수 실행 
+	tripDetailListReply(travelNo);
+	
+	//tripDetail 페이지 시작 
+	function tripDetail(travelNo){
+		console.log('tripDetail 시작');			
+		console.log('넘어온 tboardNo는:'+travelNo);		
+		
+		tripDetailFactory.tripDetail(travelNo)
+		.success(function(data){    		
+    		console.log('디비에서 꺼내온 main detail 출력용 data:'+JSON.stringify(data));
+			$scope.trip=data;
+			console.log("HTML예 출력할 데이타 :" +JSON.stringify($scope.trip));
+    		
+    	}).error(function (error){
+    		console.log('실패');
+    		
     	});
+	}//tripDetail 끝
+	
+	
+	//리플 리스트 시작
+	function tripDetailListReply(travelNo){
+		console.log('tripDetailReply 시작')
+		tripDetailFactory.tripDetailListReply(travelNo)
+		.success(function(data){
+			console.log('디비에서 꺼내온 main detail reply data:'+JSON.stringify(data));
+			$scope.replys=data;
+			console.log('html에 출력할 리플라이 데이타 '+JSON.stringify($scope.replys));
+		}).error(function(error){
+			console.log('tripDetailReply 콘트롤러 실패');
+		})
 	}
 	
 	
 	
+	//tripDetail 답변 게시판 시작
 	
+	$scope.goTripDetailReply=function(){
+		tripDetailReply();
+	}
+	
+	
+	
+	function tripDetailReply(){
+		console.log('trpDetail 리플 입력 함수 시작');
+		var tripDetailData=$scope.tripDetailReply;
+			
+		console.log('받아온 tripDetailReply 값은: '+tripDetailData);
+		console.log('받아온 travelNo 값은: '+travelNo);
+		tripDetailFactory.tripDetailReply(tripDetailData,travelNo)
+		.success(function(){
+			console.log('메인상세 리플 입력완료')
+			tripDetailListReply(travelNo);
+		}).error(function(error){
+			console.log('메인상세 리플 입력 실패')
+		})
+	}
 }]);
-
 
 
 
