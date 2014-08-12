@@ -102,7 +102,8 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactor
 				
 			}
 				
-	}
+		}
+	  }
     
 }]); 
 //회원가입 controller 끝
