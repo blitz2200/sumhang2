@@ -3,13 +3,19 @@
 //main페이지에서 tboard_no를 a링크에 넣어서 보냄  
 //app.js파일에  when주소뒤에 :스코프이름 으로 넘긴걸 받음 
 //콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
-app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFactory','sumhangService',
-                                        function ($scope,$routeParams ,tripDetailFactory,sumhangService) {
+app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFactory',
+                                        'sumhangService','globalFactory',
+                                        function ($scope,$routeParams ,tripDetailFactory,
+                                        		  sumhangService,globalFactory) {
 	
 	
 	//넘어온 tboard_no,tripDetailReply값  변수에 저장
 	
 	var travelNo=$routeParams.travelNo;	
+	
+	//서버 주소 설정
+	var sa=globalFactory.serverAdress;
+	$scope.serverAdress=sa;
 	
 	
 	//tripDetail함수에 변수값 전달후 실행
@@ -23,7 +29,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 		console.log('tripDetail 시작');			
 		console.log('넘어온 tboardNo는:'+travelNo);		
 		
-		tripDetailFactory.tripDetail(travelNo)
+		tripDetailFactory.tripDetail(sa,travelNo)
 		.success(function(data){    		
 			if(data.USER_NO==data.wuser_no){
 				$scope.readUserBUtton=false;
@@ -75,7 +81,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
         	alert("여행세부게시판수정 시작...");
         	
         	var trip =$scope.editTrip;
-    		var uploadtripUrl="addTripFile.ajax";
+    		
     		var tripfile=$scope.tripfile;		
         	alert ('수정할 여행세부게시판 내용: '+JSON.stringify(trip));
         	
@@ -94,7 +100,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	    				
 	    				//파일객체 서비스에 전송
 	    		
-	    			sumhangService.addTripFile(tripfile,uploadtripUrl);
+	    			sumhangService.addTripFile(sa,tripfile);
 	    			
 	    		}else{
 	    			trip.travelPho='1.png';
@@ -104,7 +110,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	    		
 			alert('여행상세게시판 수정 내용  :'+JSON.stringify(trip));
 			//여행수정 객체 서비스에 전송
-			tripDetailFactory.editTripDetail(trip,travelNo)
+			tripDetailFactory.editTripDetail(sa,trip,travelNo)
 			.success(function(){
 				tripDetail(travelNo)
 	    		$scope.mainTripDetail=true;
@@ -130,7 +136,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	function deleteTripDetail(travelNo){
 		alert(travelNo)
 		
-		tripDetailFactory.deleteTripDetail(travelNo)
+		tripDetailFactory.deleteTripDetail(sa,travelNo)
 		.success(function(data){
 			alert('콘트롤러 메인 게시판 상세보기 삭제 성공')
 			$scope.location.path('/main');
@@ -145,7 +151,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	//리플 리스트 시작
 	function tripDetailListReply(travelNo){
 		console.log('tripDetailReply 시작')
-		tripDetailFactory.tripDetailListReply(travelNo)
+		tripDetailFactory.tripDetailListReply(sa,travelNo)
 	
 		.success(function(data){
 			console.log('디비에서 꺼내온 main detail reply data:'+JSON.stringify(data));
@@ -173,7 +179,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 			
 		console.log('받아온 tripDetailReply 값은: '+tripDetailData);
 		console.log('받아온 travelNo 값은: '+travelNo);
-		tripDetailFactory.tripDetailReply(tripDetailData,travelNo)
+		tripDetailFactory.tripDetailReply(sa,tripDetailData,travelNo)
 		.success(function(){
 			console.log('메인상세 리플 입력완료')
 			tripDetailListReply(travelNo);
@@ -191,7 +197,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	function delTripDetailRe(tripDetailReNo){
 		console.log('delTripDetailRe 리플 삭제 함수 시작');
 		console.log('delTripDetailRe 리플 변수: '+tripDetailReNo)
-		tripDetailFactory.delTripDetailRe(tripDetailReNo)
+		tripDetailFactory.delTripDetailRe(sa,tripDetailReNo)
 		.success(function(data){
 			tripDetailListReply(travelNo);
 			console.log('컨트롤러 메인상세 리플 삭제 완료')
@@ -235,7 +241,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 			console.log('수정할 리플 번호'+tripDetailReNo);
 			var tripDetailReEditDescription=$scope.tripDetailReEditDescription
 			console.log('수정할 리플 내용' + tripDetailReEditDescription);
-			tripDetailFactory.tripDetailReplyEdit(tripDetailReNo,tripDetailReEditDescription)
+			tripDetailFactory.tripDetailReplyEdit(sa,tripDetailReNo,tripDetailReEditDescription)
 			.success(function(){
 				console.log('메인상세 리플 수정 콘트롤러 완료')
 				tripDetailListReply(travelNo);
