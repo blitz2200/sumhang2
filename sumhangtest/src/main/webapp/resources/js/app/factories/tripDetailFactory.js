@@ -3,11 +3,11 @@ angular.module('sumhangApp')
 	
 	var tripDetailFactory = {};
 
-	tripDetailFactory.tripDetail = function(travelNo){
+	tripDetailFactory.tripDetail = function(sa,travelNo){
 		//메인 리스트 ajax로 요청
 		console.log('팩토리에 넘어온 travelNo:'+travelNo);
 		return $http({
-			'url' :"tripDetail.ajax",
+			'url' :sa+"tripDetail.ajax",
 			'method' : 'POST',
 			'data' : {'travelNo':travelNo}
 		}).success(function(data){
@@ -19,11 +19,11 @@ angular.module('sumhangApp')
 	};
 	
 	//메인 상세보기 삭제 시작
-	tripDetailFactory.deleteTripDetail=function(travelNo){
+	tripDetailFactory.deleteTripDetail=function(sa,travelNo){
 		console.log('팩토리 메인 상세보기 삭제 시작')
 		alert('팩토리 메인 상세보기 삭제  넘어온 travelNo확인 : ' + travelNo);
 		return $http({
-			'url' :"deleteTripDetail.ajax",
+			'url' :sa+"deleteTripDetail.ajax",
 			'method': 'POST',
 			'data' : {'travelNo':travelNo}
 		}).success(function(){
@@ -34,13 +34,13 @@ angular.module('sumhangApp')
 	}
 	
 	//메인 상세보기 수정 시작
-	tripDetailFactory.editTripDetail=function(trip,travelNo){
+	tripDetailFactory.editTripDetail=function(sa,trip,travelNo){
 		trip.travelNo=travelNo;
 		alert('팩토리 메인 상세보기 수정 시작')
 		alert('팩토리 메인 상세보기 수정  넘어온 trip 객체 ====='+JSON.stringify(trip));
 				
 		return $http({
-			'url':"editTripDetail.ajax",
+			'url':sa+"editTripDetail.ajax",
 			'method' : 'POST',
 			'data'   :	trip
 		}).success(function(){
@@ -54,10 +54,10 @@ angular.module('sumhangApp')
 	var suser;
 	
 	//리플 출력 시작
-	tripDetailFactory.tripDetailListReply=function(travelNo){
+	tripDetailFactory.tripDetailListReply=function(sa,travelNo){
 		console.log('tripDetailFactory 시작 넘어온 travelNo확인 : ' + travelNo);
 		return $http({
-			'url' :"tripDetailListReply.ajax",
+			'url' :sa+"tripDetailListReply.ajax",
 			'method': 'POST',
 			'data' : {'travelNo':travelNo}
 		}).success(function(data){
@@ -77,7 +77,7 @@ angular.module('sumhangApp')
 			for(var i=0; i<data.length;i++){
 				if(data[i].user_no==suser){
 					console.log('트루 user_no[  ' +i+']  :'+data[i].user_no);
-					data[i].del='true';
+					data[i].del='true';//제이슨 추가
 				}
 				else{
 					console.log('실패 user_no[  ' +i+']  :'+data[i].user_no);
@@ -97,11 +97,11 @@ angular.module('sumhangApp')
 	
 	//리플 입력 시작
 	
-	tripDetailFactory.tripDetailReply=function(tripDetailReply,travelNo){
+	tripDetailFactory.tripDetailReply=function(sa,tripDetailReply,travelNo){
 		console.log('팩토리에 넘어온 메인상세 리플: '+tripDetailReply);
 		console.log('팩토리에 넘어온 메인상세 방번호: '+travelNo);
 		return $http({
-			'url' :"tripDetailReply.ajax",
+			'url' :sa+"tripDetailReply.ajax",
 			'method' : 'POST',
 			'data' : {'travelNo':travelNo,
 					  'tripDetailReply':tripDetailReply 	
@@ -116,11 +116,11 @@ angular.module('sumhangApp')
 	
 	
 	//리플 삭제 시작 
-	tripDetailFactory.delTripDetailRe=function(tripDetailReNo){
+	tripDetailFactory.delTripDetailRe=function(sa,tripDetailReNo){
 		console.log('팩토리 리플 델리트 시작');
 		console.log('팩토리에 넘어온 메인상세 리플 번호: '+tripDetailReNo);
 		return $http({
-			'url' :"delTripDetailRe.ajax",
+			'url' :sa+"delTripDetailRe.ajax",
 			'method' : 'POST',
 			'data' : {'tripDetailReNo':tripDetailReNo}
 		}).success(function(data){
@@ -131,12 +131,12 @@ angular.module('sumhangApp')
 	};
 	
 	//리플 수정 시작
-	tripDetailFactory.tripDetailReplyEdit=function(tripDetailReNo,tripDetailReply){
+	tripDetailFactory.tripDetailReplyEdit=function(sa,tripDetailReNo,tripDetailReply){
 		console.log('랙토리 리플 수정 시작');
 		console.log('팩토리에 넘어온 수정 리플 번호 : '+tripDetailReNo);
 		console.log('팩토리에 넘어온 수정 내용 : '+tripDetailReply)
 			return $http({
-			'url' :"editTripDetailRe.ajax",
+			'url' :sa+"editTripDetailRe.ajax",
 			'method' : 'POST',
 			'data' : {'tripDetailReNo':tripDetailReNo,
 					  'tripDetailReply':tripDetailReply
