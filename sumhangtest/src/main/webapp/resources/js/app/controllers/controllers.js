@@ -1,4 +1,4 @@
-﻿﻿app.controller('IntroController', ['$scope','userFactory','globalFactory', 
+﻿app.controller('IntroController', ['$scope','userFactory','globalFactory', 
                                    function ($scope, userFactory,globalFactory) {
 	
 	function loginCheck(){
