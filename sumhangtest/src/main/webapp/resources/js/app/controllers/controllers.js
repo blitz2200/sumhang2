@@ -1,4 +1,4 @@
-﻿app.controller('IntroController', ['$scope','userFactory','globalFactory', 
+﻿﻿app.controller('IntroController', ['$scope','userFactory','globalFactory', 
                                    function ($scope, userFactory,globalFactory) {
 	
 	function loginCheck(){
@@ -35,6 +35,7 @@ app.controller('LoginController', ['$scope','userFactory','globalFactory',
     		
     		console.log(data);
 			if(data == ""){
+				alert('아이디와 비밀번호를 확인해 주세요');
 				$scope.location.path('/login');
 			}else{
 				$scope.location.path('/main');
@@ -55,7 +56,6 @@ app.controller('LoginController', ['$scope','userFactory','globalFactory',
     	
     };
 }]);
-
 
 
 
@@ -91,7 +91,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory'
 		
 		var tripfile=$scope.tripfile;		
     	
-			if (typeof $scope.tripfile == 'undifined') {
+			if (typeof $scope.tripfile != 'undefined') {
 		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
     	
 			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
@@ -138,7 +138,51 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
 	
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
+	$scope.userTrips = $route.current.locals.userTrips; //resolve에 있는 변수를 scope에 넘겨준다.
+	$scope.sessionUser = $route.current.locals.sessionUser; //resolve에 있는 변수를 scope에 넘겨준다
+	$scope.userTripSelected = $scope.userTrips[0];
 	
+	$scope.date =new Date();
+	
+	$scope.hideDelMenu = function(tripUser){
+		console.log('sessionuser :'+JSON.stringify($scope.sessionUser.userNo))
+		console.log('hideDelMenu tripUser : '+JSON.stringify($scope.userTripSelected));
+		
+		
+		if($scope.sessionUser.userNo != $scope.userTripSelected.USER_NO){
+			return true;
+		}else if(tripUser.USER_NO == $scope.userTripSelected.USER_NO){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	$scope.kickOutTripUser = function (userNo){
+		console.log(userNo);
+		mainFactory.kickOutTripUser($scope.userTripSelected.TBOARD_NO,userNo)
+		.success(function(){
+    		console.log('kickOutTripUser 성공');
+    		$scope.getTripUsers();
+    		
+    	}).error(function (error){
+    		console.log('kickOutTripUser 실패');
+    	});		
+	}
+
+
+	
+	$scope.tripUserKickOut = function (){
+		$scope.$watch(userSelect,function(){
+			console.log('watchUserSelect funciton invoked..');
+			//console.log('indiUser : '+$scope.attendingUsers.indiUser);
+			console.log(JSON.stringify(kickOutUser));
+			
+		});
+		console.log('강퇴할 userNo'+$scope.kickOut.userNo);
+		
+	}
+
 	
 	$scope.getTripUsers = function (){
 		mainFactory.getTripUsers(globalFactory.serverAdress,$scope.userTripSelected.TBOARD_NO)
@@ -243,7 +287,6 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams','timeLin
 	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
 	//메인 html파일과 연결 시킴 
 	
-	//main();
 	console.log('timeLine 시작');
 	var travelNo = $routeParams.travelNo;	
 	//$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
