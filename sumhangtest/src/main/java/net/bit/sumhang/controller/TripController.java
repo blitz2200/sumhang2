@@ -5,6 +5,7 @@ package net.bit.sumhang.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -179,6 +180,24 @@ public class TripController {
 			System.out.println("travelNo : "+ travelNo);
 			
 			return sqlSession.selectList("tripControlMapper.getTripUsers", travelNo);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/kickOutTripUser", method=RequestMethod.POST)
+	public @ResponseBody int kickOutTripUser(HttpSession session, @RequestBody String kickOutUser){
+			System.out.println("kickOutTripUser invoked...");
+			
+
+			System.out.println("kickOutUser : "+ kickOutUser);
+			
+			Map<String,String> map = new HashMap<String,String>();
+			Gson gson = new Gson();
+			
+			map=gson.fromJson(kickOutUser, Map.class);	
+			
+			System.out.println("map"+map);
+			
+			return sqlSession.delete("tripControlMapper.kickOutTripUser", map);
 	}
 
 
