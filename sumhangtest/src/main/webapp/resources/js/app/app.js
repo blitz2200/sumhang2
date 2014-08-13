@@ -9,7 +9,7 @@
 });
 
 
-var app = angular.module('sumhangApp', ['ngRoute','pageslide-directive']);
+var app = angular.module('sumhangApp', ['ngRoute','pushNotify','pageslide-directive']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
@@ -106,6 +106,11 @@ app.config(function ($routeProvider) {
 
 app.run(function($rootScope, $location){
 	$rootScope.location = $location;
+
+});
+
+app.run(function(pushNotification){
+	pushNotification.registerPush();
 });
 
 app.directive('jqueryMobileTpl', function () {
