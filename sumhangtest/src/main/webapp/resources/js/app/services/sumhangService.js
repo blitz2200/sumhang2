@@ -26,7 +26,7 @@ app.service('sumhangService', ['$http',function ($http) {
     		method:'POST',
     		url :sa+"addUser.ajax",
     		data : user,
-    		headers : {'Content-Type':'application/json charset=utf-8'},    		
+    		headers : {'Content-Type':'application/json; charset=utf-8'},    		
     	}).success(function(){
     		alert("회원가입 성공")
     	}).error(function(){
