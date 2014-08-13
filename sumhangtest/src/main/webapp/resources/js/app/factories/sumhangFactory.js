@@ -1,4 +1,4 @@
-﻿﻿//유저 팩토리
+﻿//유저팩토리
 app.factory('userFactory', ['$http', function($http) {
     	
     var urlBase = '';
