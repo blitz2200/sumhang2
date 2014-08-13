@@ -188,7 +188,7 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
 	
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
-
+	
 	
 	$scope.getTripUsers = function (){
 		mainFactory.getTripUsers(globalFactory.serverAdress,$scope.userTripSelected.TBOARD_NO)
@@ -202,18 +202,53 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
     	});
 	}
 	
+	/*타임라인 바로가기*/
+	$scope.goTimeLine=function(travelNo){
+		var temp="timeLine/"+travelNo;
+		$scope.location.path(temp);
+	}
+	
 	$scope.goTripDetail=function(travelNo){
 		var temp="/tripDetail/"+travelNo;
 		$scope.location.path(temp);
 	}
 	
-		/*로그아웃*/
-	$scope.logout=function(){
+	/*로그아웃*/
+	$scope.logout=function(){		
 		mainFactory.logout(globalFactory.serverAdress).success(function (){
 			$scope.location.path('/login');
 		});
 	}
 	
+	/*회원정보 수정 라우터*/
+	$scope.goModifyMember=function(){
+		$scope.location.path('/modifyMember');		
+	}
+	
+	/*회원추천 라우터*/
+	$scope.inviteRequest=function(){
+		$scope.location.path('/tripManager');		
+	}
+
+	
+	/*버전정보 라우터*/
+	$scope.goVersionInfo=function(){
+		$scope.location.path('/versionInfo');		
+	}
+	
+	/*셋팅 라우터*/
+	$scope.goSettings=function(){
+		$scope.location.path('/settings');		
+	}
+	
+	
+	/*타임라인쓰기 라우터*/
+	$scope.goAddTrip=function(){
+		$scope.location.path('/addTrip');		
+	}	
+	
+
+
    /*function main() {
     	console.log('메인 컨트롤러 시작');
     	
@@ -273,7 +308,113 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams','timeLin
     	});
 	}
 	
+	/*로그아웃*/
+	$scope.logout=function(){		
+		mainFactory.logout(globalFactory.serverAdress).success(function (){
+			$scope.location.path('/login');
+		});
+	}
 	
+	/*회원정보 수정 라우터*/
+	$scope.goModifyMember=function(){
+		$scope.location.path('/modifyMember');		
+	}
+	
+	/*회원추천 라우터*/
+	$scope.inviteRequest=function(){
+		$scope.location.path('/tripManager');		
+	}
+
+	
+	/*버전정보 라우터*/
+	$scope.goVersionInfo=function(){
+		$scope.location.path('/versionInfo');		
+	}
+	
+	/*셋팅 라우터*/
+	$scope.goSettings=function(){
+		$scope.location.path('/settings');		
+	}
+	
+	
+	/*타임라인쓰기 라우터*/
+	$scope.goAddTrip=function(){
+		$scope.location.path('/addTrip');		
+	}	
+	
+}]);
+
+//여행 세부 게시판 시작
+//main페이지에서 tboard_no를 a링크에 넣어서 보냄  
+//app.js파일에  when주소뒤에 :스코프이름 으로 넘긴걸 받음 
+//콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
+app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFactory',
+                                        function ($scope,$routeParams ,tripDetailFactory) {
+	
+	
+	//넘어온 tboard_no,tripDetailReply값  변수에 저장
+	
+	var travelNo=$routeParams.travelNo;	
+	
+	
+	//tripDetail함수에 변수값 전달후 실행
+	tripDetail(travelNo);
+	//tripDetailReply 함수 실행 
+	tripDetailListReply(travelNo);
+	
+	//tripDetail 페이지 시작 
+	function tripDetail(travelNo){
+		console.log('tripDetail 시작');			
+		console.log('넘어온 tboardNo는:'+travelNo);		
+		
+		tripDetailFactory.tripDetail(travelNo)
+		.success(function(data){    		
+    		console.log('디비에서 꺼내온 main detail 출력용 data:'+JSON.stringify(data));
+			$scope.trip=data;
+			console.log("HTML예 출력할 데이타 :" +JSON.stringify($scope.trip));
+    		
+    	}).error(function (error){
+    		console.log('실패');
+    		
+    	});
+	}//tripDetail 끝
+	
+	
+	//리플 리스트 시작
+	function tripDetailListReply(travelNo){
+		console.log('tripDetailReply 시작')
+		tripDetailFactory.tripDetailListReply(travelNo)
+		.success(function(data){
+			console.log('디비에서 꺼내온 main detail reply data:'+JSON.stringify(data));
+			$scope.replys=data;
+			console.log('html에 출력할 리플라이 데이타 '+JSON.stringify($scope.replys));
+		}).error(function(error){
+			console.log('tripDetailReply 콘트롤러 실패');
+		})
+	}
+	
+	
+	
+	//tripDetail 답변 게시판 시작
+	
+	$scope.goTripDetailReply=function(){
+		tripDetailReply();
+	}
+
+	function tripDetailReply(){
+		console.log('trpDetail 리플 입력 함수 시작');
+		var tripDetailData=$scope.tripDetailReply;
+			
+		console.log('받아온 tripDetailReply 값은: '+tripDetailData);
+		console.log('받아온 travelNo 값은: '+travelNo);
+		tripDetailFactory.tripDetailReply(tripDetailData,travelNo)
+		.success(function(){
+			console.log('메인상세 리플 입력완료')
+			tripDetailListReply(travelNo);
+		}).error(function(error){
+			console.log('메인상세 리플 입력 실패')
+		})
+	}
 	
 }]);
 
@@ -373,3 +514,4 @@ app.controller('VersionInfoController', function ($scope, sumhangService) {
     }
     //you need to describe event handler below... 
 });
+

@@ -3,8 +3,8 @@
 
 /* 페이지 가로 크기 */
 #mainPage .container-mainPage{
-	width: 80%;
-	margin: auto;
+/* 	width: 80%;
+	margin: auto; */
 	border-width: 6px;
 	border-style: solid;
 	border-color: #e6bb46;
@@ -15,11 +15,17 @@
 .ui-filterable .ui-input-search{
 	font-family: 'Nanum Gothic Coding', monospace;
 	color: white;
-	border-width:2px;
+	border-width:3px;
  	border-style:dotted;
-	margin-bottom: -7px;
+/* 	margin-bottom: 30px; */
 	text-align: center;
 	color: white;
+	z-index:999;
+	position:fixed;
+	width: 99%;
+	margin-left: -4px;
+	margin-right: -4px;;
+	margin-top: -5px;
 }
 
 /* 서치바 검색 글자 색 */
@@ -27,43 +33,56 @@
 	color:white;
 }
 
-/* 헤더 색깔 */
+/* 배경 색깔 */
 #mainPage #header{
 	background:#ffbb33;
 }
 
+/* 헤더 고정 */
+#imageWrapper{
+	z-index:999;
+	position:fixed;
+	height: 50px;
+	width: 100%;
+	background: #ffbb33;
+	margin-top:-6px;
+	margin-left: -4px;
+	border-radius: 8px;
+}
+
 /* 헤더 왼쪽 아이콘 */
-#leftSideIcon {
+#imageWrapper #leftSideIcon {
 	margin-left: 10px;
-	margin-top: 5px;
+	margin-top: 10px;
+	position: absolute;
 	width: 30px;
 	height: 30px;
 }
 
 /* 헤더 오른쪽 아이콘 */
-#rightSideIcon {
-	float:right;
-	margin-right: 10px;
-	margin-top: 3px;
+#imageWrapper #rightSideIcon {
+	margin-top: 7px;
+	position: absolute;
 	width: 30px;
 	height: 30px;
+	left: 90%;
 }
 
 /* 제목 */
-#mainPageTitle{
+#imageWrapper #mainPageTitle{
 	font-family: 'Nanum Gothic Coding', monospace;
+	left: 42%;
 	position: absolute;
-	top: 5px;
-	left: 40%;
 	font-size: 30px;
 	color: white;
 }
+
 
 /* 여행사진 */
 #tripPictures #tripPcture{
 	height: 120px;
 	border-radius: 8px;
-	width:100%;
+	width:100%;	
 }
 
 /* 여행지  위치*/
@@ -75,6 +94,7 @@
 	margin-bottom: 10px;
 }
 
+/* 여행지 오렌지색 정의 */
 #tripDestinationTag .visible #tripDestination{
 	color:orange;
 }
@@ -84,7 +104,7 @@
 	font-family: 'Nanum Gothic Coding', monospace;
 	text-align: left;
 	color: black;
-	font-size: 8px;
+	font-size: 10px;
 	margin-left: 5px;
 	margin-bottom: -4px;
 }
@@ -94,7 +114,7 @@
 	font-family: 'Nanum Gothic Coding', monospace;
 	text-align: left;
 	color: black;
-	font-size: 8px;	
+	font-size: 10px;	
 	margin-left: 5px;
 }
 
@@ -116,6 +136,12 @@
 	margin-top: 5px;
 }
 
+/* 리스트 배경색,탑 */
+#listviewMainPage{
+		background:#ffbb33;
+		margin-top: 45px;
+}
+
 /* 리스트뷰간 공백 */
 #listviewMainPage #eachListview{
 	padding:0;
@@ -130,7 +156,6 @@
 	width:20px;
 	height:20px;
 	border-radius: 8px;
-
 	margin-top: 2px;
 }
 
@@ -138,9 +163,20 @@
 .iconsBack .icons #face1{
 	border-radius: 8px;
 	margin-left: 3px;
-
 	margin-top: 2px;
+	margin-bottom: 2px;
 }
+
+/* 얼굴이미지2 */
+.iconsBack .icons #face2{
+margin-bottom: 2px;
+	}
+	
+/* 얼굴이미지3 */
+.iconsBack .icons #face3{
+margin-bottom: 2px;
+	}
+	
 
 /* 좋아요 숫자 */
 #participants #mainLikeNum{
@@ -168,11 +204,25 @@
 	margin-top: 0;
 }
 
+/* 타임라인 쓰기 고정 */
+#wtiteTimeline #wirteTrip{
+	height:50px;
+	margin-bottom:0;
+	bottom:0;
+	z-index:999;
+	position:fixed;
+/* 	float: right;
+	text-align:right; */
+	left: 85%;
+
+}
+
 
 
 /* left slide */	
 .ng-pageslide {
-	background: #eee;
+	/* background: #eee; */
+	background-color: #FFF;
 	opacity: 0.9;
 }
 
@@ -181,28 +231,23 @@
 	float: right;
 }
 
-/*   settings icons 1st   */
-.systemSettings1 {
-	margin-top: 30%;
-	text-align: center;
+/*   좌측 패널 아이콘 간격  */
+.systemSettings1 #userInfo{
+	margin-top: 40px;
+	margin-left: 20px;
 }
 
-/*    icons margin 1st     */
-#sysinfo {
-	margin-right: 20%;
+.systemSettings1  #acceptance, #sysinfo, #settings{
+	margin-bottom: 40px;
+	margin-left: 20px;
 }
 
-/*   settings icons 2nd  */ 
-.systemSettings2 {
-	margin-top: 20%;
-	text-align: center;
+/* 로그아웃 버튼 */
+.systemSettings2 #logoutBtn{
+	width:80px;
+	margin-left: 10px;
+	font-family: 'Nanum Gothic Coding', monospace;
 }
-
-/*    icons margin 2st     */
-#userInfo {
-	margin-right: 20%;
-}
-
 
 /*  rightPanel */
 /* 방장 사진 */ 

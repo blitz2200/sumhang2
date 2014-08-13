@@ -1,33 +1,222 @@
-<div class="timeLine view">
-    <div class="container-timeline">
-		<div class="travel-timeline" data-ng-model="timeLine">
-			<div class="row">
-				<div class="col-xs-2"><span>여행지</span></div>
-				<div class="col-xs-3"><span>{{timeLine.TRAVEL}}</span></div>
-			</div>
-			<div class="row">
-				<div class="col-xs-2">여행 제목</div>
-				<div class="col-xs-3">{{timeLine.TITLE}}</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-2">일 정</div>
-				<div class="col-xs-3">{{timeLine.TRAVEL_START}}~{{timeLine.TRAVEL_END}}</div>
-			</div>
-		</div>
-		<div class="replylist-timeline">
-			<div class="row">
-				<div class="col-xs-1"><img id="img-reply-src" src="fboy.png"></div>
-				<div class="col-xs-1">유저1</div>
-				<div class="col-xs-4">하하하하 잼있겠군요 빨리 여행갔으면 좋겠어요 다들 보고 싶어요 </div>
-			</div>	
-		</div>
+<!-- 전체 페이지 -->
+<div id="timeLinePage">
+	<div class="container-timeLinePage">
+
+	<!-- 입력페이지 전체 -->
+	<div id="headerTimeLine" data-ng-model="timeLine">
+	
+	<!-- 헤더 -->
+		<div id="imageWrapperTimeLine">
 		
-		<div class="reply-timeline">
-			<div class="row">
-				<textarea class="form-control" rows="7"></textarea>					
+		<!-- 왼쪽패널 -->
+			<img id="leftSideIcon" src="resources/images/leftSide.png" data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
+					data-ps-auto-close="true">	
+						
+		<!-- 제목 -->		
+			<span id="timeLineTitle">SUM행</span> 
+			
+		<!-- 오른쪽패널 -->				
+			<span id="rightSideIcon">
+				<img src="resources/images/home.png" data-pageslide="right" data-ps-speed="0.5"
+					href="#rightPanel" data-ps-auto-close="true">
+			</span>
+		</div> <!-- imageWrapperTimeLine End -->
+		
+	</div>	<!-- headerTimeLine End -->
+
+	<!-- 리스트뷰 -->
+		<div id="listViewTimeLinePage">
+				
+		<!-- 여행 정보 -->			
+			<div id="timeLineInfo">	
+					<div class="row" id="timeLineListDestination">
+			
+				<!-- 여행사진 -->			
+						<div id="tripPictures">
+							<img data-ng-src="resources/images/beach_girl.png" class="imgMain visible" id="tripPcture">
+						</div>
+						
+				<!-- 여행지 -->
+						<div id="tripDestinationTag">
+							<h1 class="visible" id="timeLineDestinationTag">
+							{{timeLine.travel}}
+							</h1>
+						</div>	
+										
+				<!-- 여행제목 -->
+						<div id="tripTitleTag">
+							<p class="travelPhrase visible" id="tripTitle">{{timeLine.title}}</p>
+						</div>
+						
+				<!-- 여행기간 -->
+						<div id="tripPeriodTag">
+							<p class="travelPeriod visible" id="tripPeriod">{{timeLine.travelStart}}~{{timeLine.travelEnd}}</p>
+						</div>	
+			
+			<!-- 참여인원 -->
+						<div id="timeLineMembers">
+								<img src="resources/images/conference-24.png" class="imgMain visible" id="tripPcture"/>
+									<span id="tripJoinMembers"> ? 명 참여중</span>
+						</div>
+					</div> <!-- row End -->
+			</div><!--  timeLineInfo End -->
+			
+		<!-- 사용자 업데이트 타임라인 리스트 -->	
+			<ul data-theme="none" data-role="listview" id="listViewTimeLine">				
+				<li class="replylist-timeline">
+					<div class="row">
+						
+							<!-- 타임라인 유저사진 -->
+							<div class="timeLineUserInfo">
+								<img data-ng-src="resources/images/sman1.png"  id="timeLineUserPhoto"/>
+								<!-- 타임라인 유저 아이디 -->
+								<span id="timeLineUserID">유저1</span>
+							</div><br/><br/>
+							
+						
+						<div class="col-xs-12" id="timeLineText">
+							하하하하 잼있겠군요 빨리 여행갔으면 좋겠어요 다들 보고 싶어요 
+						</div>
+						
+						<div id="timeLineBtns">
+							<button type="button" class="btn btn-warning btn-xs" data-ng-click="">좋아요</button>
+							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" data-ng-click="">댓글</button>
+						</div>
+			
+			<!-- 타임라인 댓글 -->			
+		<!-- 	<div class="timeLineListReply">
+				<ul>
+					<li data-ng-repeat="reply in replys">
+						<div class="row reply">
+							<div class="col-xs-1 reUser">
+								<img data-ng-src="resources/images/userPhotoFiles/{{reply.user_photo}}" />
+							</div>
+							<div class="col-xs-3 reNick">{{reply.nick}}</div>				
+							<div class="col-xs-5">{{reply.TBOARD_RE_DESCRIPTION}}</div>
+						</div>
+					</li>
+				</ul>
 			</div>
-			<div class="row">
-				<button type="button" class="btn btn-success btn-timeline">글 전송</button>
-			</div>
-	</div>
+	
+<div class=wraper-footer-tripDetail>
+		<div class="row inputReply">
+			<div class="timeLineReplyInput">
+				<input type="text" class="textbox" placeholder="덧글을 입력하세요"
+					data-ng-model="">
+			<span class="timeLineReplyBtn">
+				<button type="button" class="btn btn-warning replybtn"
+					data-ng-click="goTripDetailReply()">입력</button>
+			</span> -->
+		<!-- </div>	 -->	<!-- timeLineReplyInput -->
+		<!-- </div> --><!-- row inputReply End -->
+<!-- </div>	 -->		<!-- wraper-footer-tripDetail -->
+
+					</div>	<!-- row End -->
+				</li>
+				
+				
+			<!-- 리스트3시작 -->	
+				<li class="replylist-timeline">
+					<div class="row">
+						
+							<!-- 타임라인 유저사진 -->
+							<div class="timeLineUserInfo">
+								<img data-ng-src="resources/images/sman1.png"  id="timeLineUserPhoto"/>
+								<!-- 타임라인 유저 아이디 -->
+								<span id="timeLineUserID">유저3</span>
+							</div><br/><br/>
+							
+						
+						<div class="col-xs-12" id="timeLineText">
+							반복이 안됩니다.
+						</div>
+						
+						<div id="timeLineBtns">
+							<button type="button" class="btn btn-warning btn-xs" data-ng-click="">좋아요</button>
+							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" data-ng-click="">댓글</button>
+						</div>
+	
+					</div>	<!-- row End -->
+				</li>
+				
+			<!-- 리스트2시작 -->	
+				<li class="replylist-timeline">
+					<div class="row">
+						
+							<!-- 타임라인 유저사진 -->
+							<div class="timeLineUserInfo">
+								<img data-ng-src="resources/images/sman1.png"  id="timeLineUserPhoto"/>
+								<!-- 타임라인 유저 아이디 -->
+								<span id="timeLineUserID">유저2</span>
+							</div><br/><br/>
+							
+						
+						<div class="col-xs-12" id="timeLineText">
+							반복이 안됩니다.
+						</div>
+						
+						<div id="timeLineBtns">
+							<button type="button" class="btn btn-warning btn-xs" data-ng-click="">좋아요</button>
+							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" data-ng-click="">댓글</button>
+						</div>
+	
+					</div>	<!-- row End -->
+				</li>
+			
+			<!-- 리스트4시작 -->	
+				<li class="replylist-timeline">
+					<div class="row">
+						
+							<!-- 타임라인 유저사진 -->
+							<div class="timeLineUserInfo">
+								<img data-ng-src="resources/images/sman1.png"  id="timeLineUserPhoto"/>
+								<!-- 타임라인 유저 아이디 -->
+								<span id="timeLineUserID">유저4</span>
+							</div><br/><br/>
+							
+						
+						<div class="col-xs-12" id="timeLineText">
+							반복이 안됩니다.
+						</div>
+						
+						<div id="timeLineBtns">
+							<button type="button" class="btn btn-warning btn-xs" data-ng-click="">좋아요</button>
+							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" data-ng-click="">댓글</button>
+						</div>
+	
+					</div>	<!-- row End -->
+				</li>
+				
+	<!-- 쓰기 아이콘 -->
+	<div id="wtiteTimelineList">
+		<img src="resources/images/plus.png"  id="wirteTimeLine" href="" >
+	</div>			
+			
+		</ul>
+</div>	<!-- listViewTimeLinePage End -->
+			
+<!-- 왼쪽패널 -->
+	<!-- 셋팅 닫기 아이콘  -->
+	<div id="leftPanel">
+		<img src="resources/images/x-mark-4-24.png" id="leftPanel-close" href="#"> <br /> 
+
+		<!-- settings icons -->
+		<div class=systemSettings1>
+			<img src="resources/images/reviewer-48.png"  data-ng-click="goModifyMember()" id="userInfo"><br/>
+			<!-- userInfo -->
+			<img src="resources/images/handshake.png"  data-ng-click="inviteRequest()" id="acceptance" ><br/>
+			<!-- acceptance -->
+			<img src="resources/images/info.png"  data-ng-click="goVersionInfo()" id="sysinfo"><br/>
+			<!-- info -->
+			<img src="resources/images/settings.png"  data-ng-click="goSettings()" id="settings"><br/>
+			<!-- settings -->
+		</div>
+
+		<div class=systemSettings2>
+			<button class="btn btn-warning" data-ng-click="logout()"id="logoutBtn">
+				Logout
+			</button>		
+		</div>	<!-- logout End -->
+	</div> <!-- systemSettings2 End -->
+	</div>	<!--좌측 패널아이콘 끝-->
 </div>
