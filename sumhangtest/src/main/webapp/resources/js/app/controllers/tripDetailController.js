@@ -85,7 +85,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
     		var tripfile=$scope.tripfile;		
         	alert ('수정할 여행세부게시판 내용: '+JSON.stringify(trip));
         	
-    		if (typeof $scope.tripfile != 'undifined') {
+    		if (typeof $scope.tripfile == 'undifined') {
 	    		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
 	        	
 	    			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
