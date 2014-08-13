@@ -41,14 +41,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="getUserTrip" parameterType="int" resultType="Map">
-		SELECT t.TBOARD_NO, t.TITLE, t.TRAVEL_START, t.TRAVEL_END, us.STATUS
+		SELECT t.TBOARD_NO, t.USER_NO, t.TITLE, t.TRAVEL_START, t.TRAVEL_END, us.STATUS
 		FROM TBOARD t, USER_STATUS us
 		WHERE t.TBOARD_NO = us.TBOARD_NO AND us.USER_NO = #{value}
 	
 	</select>
 	
 	<select id="getTripUsers" resultType="Map">
-		SELECT u.NICK, u.GENDER, u.USER_PHOTO, us.STATUS
+		SELECT u.USER_NO, u.NICK, u.GENDER, u.USER_PHOTO, us.STATUS
 		FROM USER u,TBOARD t, USER_STATUS us
 		WHERE u.USER_NO = us.USER_NO AND t.TBOARD_NO = us.TBOARD_NO AND t.TBOARD_NO = #{travelNo}
 	</select>
@@ -83,9 +83,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getTripList" resultMap="travelSelectMap">
 		SELECT TBOARD_NO, USER_NO, TITLE, TRAVEL, TRAVEL_START, TRAVEL_END, TRAVEL_USER_COUNT, TRAVEL_DESCRIPTION, TRAVEL_PHO, TRAVEL_TAG
 		FROM TBOARD;
-	
-
 	</select>
+	
+	<delete id="kickOutTripUser" parameterType="Map">
+		DELETE
+		FROM USER_STATUS
+		WHERE
+		USER_NO = #{userNo} AND TBOARD_NO = #{tBoardNo}
+	</delete>
 	
 	<!-- <select id="selectTrip" resultMap="travelSelectMap">
 	
