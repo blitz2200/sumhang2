@@ -18,26 +18,47 @@
 		  <div class="form-group" data-ng-class="{ 'has-error' : joinMember.inputIdInput.$invalid && submitted}" >
 		    	<label for="inputId" class="col-xs-2 control-label">아이디</label>
 		   	<div class="col-xs-8">
-		      	<input type="text" class="form-control" id="inputIdInput"  name="inputIdInput" placeholder="ID" data-ng-model="newMember.id"   required>
+		      	<input type="text" class="form-control" id="inputIdInput"  name="inputIdInput" placeholder="ID" data-ng-model="newMember.id"    ng-minlength="4"       ng-maxlength="16"required>
+		      	  <span  class="label label-info" ng-show="joinMember.inputIdInput.$error.required">필수 입력</span>
+		      	   <span  class="label label-warning"  ng-show="joinMember.inputIdInput.$error.minlength">너무 짦음</span>
+          			<span  class="label label-warning"   ng-show="joinMember.inputIdInput.$error.maxlength">너무 김</span>
 		   	</div>
 		  </div>
 		  
+		  
+		<!--   비밀번호 -->
 		  <div class="form-group" data-ng-class="{ 'has-error' : joinMember.inputPassword3Input.$invalid && submitted}">
 		    	<label for="inputPassword3" class="col-xs-2 control-label" >비밀번호</label>
 		    <div class="col-xs-8">
-		      	<input type="password" class="form-control" id="inputPassword3Input" name="inputPassword3Input" placeholder="Password" data-ng-model="newMember.password" required>
+		      	<input type="password" class="form-control" id="inputPassword3Input" name="inputPassword3Input" placeholder="Password" data-ng-model="newMember.password" ng-minlength="4"  ng-maxlength="16"     required>
+		      		<span  class="label label-info" ng-show="joinMember.inputPassword3Input.$error.required">필수 입력</span>
+		      	   <span  class="label label-warning"  ng-show="joinMember.inputPassword3Input.$error.minlength">너무 짦음</span>
+          			<span  class="label label-warning"   ng-show="joinMember.inputPassword3Input.$error.maxlength">너무 김</span>
+          			
 		    </div>
+		    
+		        
+		     
 		  </div>		 		
 		  
+		  
+		   <!--  비밀번호 유효성 체크 -->
 		    <div class="form-group"  data-ng-class="{ 'has-error' : joinMember.inputPassword1Input.$invalid && submitted}">
 		    	<label for="inputPassword1" class="col-xs-2 control-label">비밀번호 확인</label>
 		    <div class="col-xs-8">
-		      	<input type="password" class="form-control" id="inputPassword1Input" name="inputPassword1Input" placeholder="Password" data-ng-model="newMember.password" required>
+		      	<input type="password" class="form-control" id="inputPassword1Input" name="inputPassword1Input" placeholder="Password" data-ng-model="newMember.password1" pw-check="inputPassword3Input"    required>
 		    </div>
+		  
+		     <!-- 비밀번호 유효성체크 메세지 -->
+ 	 	 
+		  	   	 <span class="help-error" data-ng-show="joinMember.inputPassword1Input.$error.pwcheck">Passwords don't match.</span> 
+	 
+          
+            
 		  </div>
 		  
 		    <div class="form-group" data-ng-class="{ 'has-error' : joinMember.nicknameInput.$invalid && submitted}">
-		    	<label for="inputNickname" class="col-xs-2 control-label">닉네임</label>
+		    	<label for="inputNickname" class="col-xs-2 control-label"    >닉네임</label>
 		    <div class="col-xs-8">
 		      	<input type="text" class="form-control" id="nicknameInput" name="nicknameInput" placeholder="NickName" data-ng-model="newMember.nick" required>
 		    </div>
