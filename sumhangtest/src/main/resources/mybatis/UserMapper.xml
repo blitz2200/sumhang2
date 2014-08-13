@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <insert id="addMember" parameterType="user">
 		INSERT 											
-		INTO USER(ID,NAME,PASSWD,NICK,BIRTH,GENDER,USER_PHOTO,PUSH,INVITE,SIGNOUT)
+		INTO USER(ID,NAME,PASSWD,NICK,BIRTH,GENDER,USER_PHOTO,PUSH,INVITE,SIGNOUT,REGISTID)
 		VALUES ( 	#{id},
 					#{name},
 					#{password},
@@ -32,7 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{photo},
 					#{push},
 					#{invite},				
-					#{signOut} )	
+					#{signOut},
+					#{regId} )	
 	</insert>
 	
 	<select id="getUser" parameterType="String" resultMap="userSelectMap">
