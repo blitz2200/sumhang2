@@ -16,7 +16,7 @@
       
         <div id="box" class="clearfix">
         	 
-          	<div  data-ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine && submitted}">
+          	<div  data-ng-class="{ 'has-error' : loginForm.username.$invalid && submitted}">
             <p id="text">
             UserID
             </p>
@@ -27,8 +27,12 @@
                
             </label>
             </div>
+            
+            
          	<br/>
-            <div     data-ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine && submitted}">
+            
+            
+            <div     data-ng-class="{ 'has-error' : loginForm.password.$invalid && submitted}">
             <p id="text3">
             Password
             </p> 
@@ -46,7 +50,35 @@
                 <span id="text5">
                 Remeber Me
                 </span> 
-             
+                
+                
+          <!--   카카오톡    로그인 -->
+          <!--      <a href="javascript:loginWithKakao()" id="custom-login-btn">
+			      		<img src="http://mud-kage.kakao.co.kr/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"></img>
+			    </a>  -->
+		<!-- 	 <a id="kakao-login-btn" href="javascript:loginWithKakao()" >
+			 				<img src="http://mud-kage.kakao.co.kr/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg">
+			 </a>  -->
+			    
+			  <!--  페이스북 로그인 -->
+			  
+			  
+			  
+		<!-- 		  <div class="fb-login-button" data-max-rows="1" data-size="small" data-show-faces="false" data-auto-logout-link="true"></div> 
+			  	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+				</fb:login-button>	   
+				<div id="status">
+				</div> -->
+				<!--   <div id="fb-root"></div>
+				<script>
+				(function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&appId=533965203376664&version=v2.0";
+				  fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+				</script>     -->
                  
             </div>
             
@@ -70,5 +102,9 @@
       </form>
       </div>
  </div>
- 
-  
+
+<!--  <script>
+      // 사용할 앱의 Javascript 키를 설정해 주세요.
+    
+    </script>
+   -->
