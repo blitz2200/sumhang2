@@ -1,4 +1,4 @@
-﻿//유저 팩토리
+﻿﻿//유저 팩토리
 app.factory('userFactory', ['$http', function($http) {
     	
     var urlBase = '';
@@ -36,7 +36,7 @@ app.factory('userFactory', ['$http', function($http) {
     
     userFactory.getSessionUser = function (){
     	return $http({
-			'url' : 'http://192.168.0.88:8080/getSessionUser.ajax',
+			'url' : 'http://192.168.0.72:8080/getSessionUser.ajax',
 			'method' : 'POST',
 			'headers': {'Content-Type' : 'application/json'}        	   		
 		}).success(function (data) {
@@ -59,7 +59,7 @@ app.factory('mainFactory',['$http', function($http){
 		//메인 리스트 ajax로 요청
 		return $http({
 			//main.ajax로 서버에서  전송 스프링 컨트롤러에서 @Requestmapping main찾아서 실행
-			'url' :"http://192.168.0.88:8080/main.ajax",
+			'url' :"http://192.168.0.72:8080/main.ajax",
 			'method' : 'POST'    		
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
@@ -79,7 +79,7 @@ app.factory('mainFactory',['$http', function($http){
 			console.log('getUserTrip 성공'+JSON.stringify(data));
 
 		}).error(function(){
-			console.log('메인 자료받아오기 실패');
+			console.log('getUserTrip 실패');
 		});
 	};
 	
@@ -96,6 +96,22 @@ app.factory('mainFactory',['$http', function($http){
 
 		}).error(function(){
 			console.log('메인 자료받아오기 실패');
+		});
+	}
+	
+	mainFactory.kickOutTripUser = function(tBoardNo,userNo){
+		console.log('factory:userNo : '+userNo);
+		return $http({
+			'url' :"kickOutTripUser.ajax",
+			'method' : 'POST',
+			'data' : {'tBoardNo': tBoardNo+'' ,
+    			'userNo' : userNo +'' }
+		}).success(function(){
+			//db에서 자료 가져오기 성공하면 찍어보기 
+			console.log('kickOutTripUser 성공');
+
+		}).error(function(){
+			console.log('kickOutTripUser 실패');
 		});
 	}
 	
