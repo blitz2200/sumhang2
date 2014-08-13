@@ -13,10 +13,17 @@ public class UserVO {
 	private String signOut;
 	private String role;
 	private int userNo;
+	private String regId;
 	
 	
 	
 	
+	public String getRegId() {
+		return regId;
+	}
+	public void setRegId(String regId) {
+		this.regId = regId;
+	}
 	public int getUserNo() {
 		return userNo;
 	}
@@ -92,15 +99,16 @@ public class UserVO {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
 	@Override
 	public String toString() {
 		return "UserVO [id=" + id + ", name=" + name + ", password=" + password
 				+ ", nick=" + nick + ", birth=" + birth + ", gender=" + gender
 				+ ", photo=" + photo + ", push=" + push + ", invite=" + invite
 				+ ", signOut=" + signOut + ", role=" + role + ", userNo="
-				+ userNo + "]";
+				+ userNo + ", regId=" + regId + "]";
 	}
-	
+
 
 	
 }
