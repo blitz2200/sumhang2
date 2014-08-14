@@ -101,6 +101,11 @@ app.config(function ($routeProvider) {
                 controller: 'VersionInfoController',
                 templateUrl: 'partials/versionInfo.html'
             })
+        .when('/invite',
+            {
+                controller: 'inviteController',
+                templateUrl: 'partials/invite.html'
+            })
         .otherwise({ redirectTo: '/intro' });
 });
 
