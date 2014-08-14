@@ -1,7 +1,7 @@
 app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactory', 
                                         function ($scope, sumhangService,globalFactory) {
 		
-	 var sa=globalFactory.serverAdress;
+	 var sa=globalFactory.serverAddress;
 	  $scope.addMemberRequest = function(){
 		  	 $scope.submitted = true;	 
 			if( $scope.joinMember.inputIdInput.$valid && $scope.joinMember.inputPassword3Input.$valid																			
