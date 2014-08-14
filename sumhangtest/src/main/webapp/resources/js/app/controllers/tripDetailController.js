@@ -148,15 +148,15 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	
 	
 	//여행참가하기 버튼 클릭 방장한테 푸쉬 날리기
-	$scope.goEnterTrip=function(userNo){
-		pushEnterTrip(userNo)
+	$scope.goEnterTrip=function(){
+		pushEnterTrip()
 	};
 	
-	function pushEnterTrip(userNo){
+	function pushEnterTrip(){
 		alert('여행참가하기 버튼 클릭')
-		tripDetailFactory.pushEnterTrip(sa,userNo)
+		tripDetailFactory.pushEnterTrip(sa,travelNo)
 		.success(function(){
-			alert('여행참가하기 푸시 성공'+userNo);
+			alert('여행참가하기 푸시 성공');
 		}).error(function(error){
 			alert('여행참가하기 푸시 실패');
 		})
