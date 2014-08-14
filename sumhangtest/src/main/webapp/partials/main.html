@@ -120,17 +120,17 @@
 		</div>
 
 		<ul>
-			<li data-ng-repeat="tripUser in tripUsers">{{tripUser.NICK}}
-				<button class="btn btn-xs btn-warning"
+			<li class="tripUser" data-ng-repeat="tripUser in tripUsers"><span class="placeHolder">{{tripUser.NICK}}</span>
+				<span class="placeHolder1"><img class="removeUser" src="{{serverAdress}}/resources/images/removeUser.png"
 					data-ng-click="kickOutTripUser(tripUser.USER_NO)"
-					data-ng-hide="hideDelMenu(tripUser)"></button>
+					data-ng-hide="hideDelMenu(tripUser)"></span>
 			</li>
 		</ul>
 
 
 		<!-- 강퇴&초대 버튼 -->
 		<div class="tripActionBtn">			
-			<button class="btn btn-xs btn-warning" type="submit" id="inviteBtn">초대</button>
+			<button class="btn btn-xs btn-warning" type="submit" id="inviteBtn" data-ng-click="goInvite()">초대</button>
 		</div>
 
 		<!--  디데이 -->
