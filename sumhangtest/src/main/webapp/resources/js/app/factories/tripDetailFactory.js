@@ -1,5 +1,4 @@
-angular.module('sumhangApp')
-.factory('tripDetailFactory',['$http', function($http){
+app.factory('tripDetailFactory',['$http', function($http){
 	
 	var tripDetailFactory = {};
 
