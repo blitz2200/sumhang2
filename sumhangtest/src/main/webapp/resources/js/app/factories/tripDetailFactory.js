@@ -50,8 +50,8 @@ app.factory('tripDetailFactory',['$http', function($http){
 	}
 	
 	//여행 참가하기 버튼 클릭 방장한테 푸시 날리기	
-	tripDetailFactory.pushEnterTrip=function(sa,userNo){
-		alert('팩토리 여행참가하기 버튼 클릭'+userNo);
+	tripDetailFactory.pushEnterTrip=function(sa,travelNo){
+		alert('팩토리 여행참가하기 버튼 클릭 방번호'+travelNo);
 		return $http({
 			'url' : sa+"pushEnterTrip.ajax",
 			'method' : 'POST',
