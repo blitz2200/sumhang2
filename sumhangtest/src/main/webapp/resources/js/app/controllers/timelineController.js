@@ -1,18 +1,31 @@
-app.controller('TimeLineController', ['$scope', '$route','$routeParams','timeLineFactory','globalFactory',
-                                      function ($scope, $route, $routeParams, timeLineFactory,globalFactory) {
+app.controller('TimeLineController', ['$scope', '$route','$routeParams','tripDetailFactory','timeLineFactory','globalFactory',
+                                      function ($scope, $route, $routeParams, tripDetailFactory, timeLineFactory,globalFactory) {
 
-	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
-	//메인 html파일과 연결 시킴 
+
+	
+	//서버 주소 설정
+	var sa=globalFactory.serverAddress;
+	$scope.serverAddress=sa;
 	
 	console.log('timeLine 시작');
 	var travelNo = $routeParams.travelNo;	
 	//$scope.timeLine = $route.current.locals.timeLine; //resolve에 있는 변수를 scope에 넘겨준다.
-	getTimeLine(travelNo);
+	getTravelInfo(travelNo)
+	getTimelineList(travelNo);
 	
-	function getTimeLine(travelNo) {
-		timeLineFactory.getTimeLine(travelNo)
+	function getTravelInfo(travelNo) {
+		tripDetailFactory.tripDetail(sa,travelNo)
 		.success(function(data){
-			$scope.timeLine = data;
+			$scope.tripDetail = data;
+		}).error(function (error){
+    		console.log('getTravelInfo 실패');
+    	});
+	}
+	
+	function getTimelineList(travelNo) {
+		timeLineFactory.getTimelineList(sa,travelNo)
+		.success(function(data){
+			$scope.timelines = data;
 		}).error(function (error){
     		console.log('getTimeLine 실패');
     	});
@@ -20,7 +33,7 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams','timeLin
 	
 	/*로그아웃*/
 	$scope.logout=function(){		
-		mainFactory.logout(globalFactory.serverAdress).success(function (){
+		mainFactory.logout(globalFactory.serverAddress).success(function (){
 			$scope.location.path('/login');
 		});
 	}
