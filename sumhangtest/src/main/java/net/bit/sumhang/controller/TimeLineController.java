@@ -1,5 +1,7 @@
 package net.bit.sumhang.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -17,14 +19,18 @@ public class TimeLineController {
 
 		@Autowired
 		private SqlSession sqlSession;
-		@RequestMapping(value="/timeLine", method = RequestMethod.POST)
-		public @ResponseBody Map<String,String> getTimeLine(HttpSession session, @RequestBody String travelNo){
+		
+		@SuppressWarnings("rawtypes")
+		@RequestMapping(value="/timeline", method = RequestMethod.POST)
+		public @ResponseBody List<Map> getTimeLine(HttpSession session, @RequestBody String travelNo){
 			
 			
 			System.out.println("타임라인 시작... ");
 			System.out.println("travelNo"+travelNo);
+			List <Map> list = new ArrayList<Map>();
 			
-			System.out.println(sqlSession.selectOne("tripControlMapper.getTimeLine",travelNo));
-			return sqlSession.selectOne("tripControlMapper.getTimeLine",travelNo);
+			list = sqlSession.selectList("tripControlMapper.getTimelineList",travelNo);
+			
+			return list;
 		}
 }
