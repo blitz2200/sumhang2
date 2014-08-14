@@ -1,5 +1,12 @@
 package net.bit.sumhang.controller;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import net.bit.sumhang.domain.TripVO;
 import net.bit.sumhang.domain.UserVO;
 
+
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +27,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
 import com.google.gson.Gson;
 
 @Controller
@@ -202,6 +216,46 @@ public class TripDetailController {
 			sqlSession.update("tripControlMapper.updateTripDetailReply", tripVO);
 			System.out.println(sqlSession.update("tripControlMapper.updateTripDetailReply", tripVO));	
 			return "수정 완료";
+		}
+
+		//GCM 여행 참가 방장한테 날리기
+		@RequestMapping(value="/pushEnterTrip", method=RequestMethod.POST)
+		public@ResponseBody String pushEnterTrip(@RequestBody String userNo) throws UnsupportedEncodingException{
+			System.out.println("==========================================");
+			System.out.println("pushEnterTirp 시작 ");
+			System.out.println("==========================================");
+			System.out.println("넘어온 푸시 날릴 방장 넘버"+userNo);
+			
+			Gson gson = new Gson();
+			
+			UserVO userVO;
+			userVO=gson.fromJson(userNo, UserVO.class);			
+			Map <String,String> map = new HashMap<String,String>();
+			System.out.println("푸쉬 받을 방장 번호"+userVO.getUserNo());
+			map=sqlSession.selectOne("userControlMapper.selectPushTripUser",userVO.getUserNo());
+			System.out.println("푸쉬아이디 날릴 방장 아이디 "+map);
+		
+			Sender sender = new Sender("AIzaSyBzr8ZxqRDmP_P7WuN5ffp3U-4cUcEoDHU");
+			
+			System.out.println(map.get("REGISTID"));
+			String regId=map.get("REGISTID");
+			System.out.println("멥에서 꺼낸"+regId);
+			Message message = new Message.Builder().addData("msg","hurry up").build();		
+			Result result;
+			System.out.println(message);
+			try {
+				result = sender.send(message, regId, 5);
+				String messageId =result.getMessageId();
+				System.out.println(messageId);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		
+			return "푸쉬 성공";
+			
 		}
 		
 }
