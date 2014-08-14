@@ -1,7 +1,103 @@
-<div class="settingManager view">
-    <div class="container">
-        <header>
-            <h3>settingManager view</h3>
-        </header>
-    </div>
-</div>
+<div class="settingsView">
+    <div class="container-settings">
+    
+    	<!-- 입력페이지 전체 -->
+			<div id="header-settings">
+	
+		      <!-- 헤더 -->
+				<div id="imageWrapper-settings">
+				
+				<!-- 왼쪽패널 -->
+					<img id="leftSideIcon" src="{{serverAddress}}resources/images/leftSide.png" data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
+							data-ps-auto-close="true">	
+								
+				<!-- 제목 -->		
+					<span id="settingsTitle">SUM행</span> 
+					
+				<!-- 오른쪽패널 -->				
+					<img src="{{serverAddress}}resources/images/home.png" data-ng-click="goMain()" id="rightSideIcon" >
+							
+				</div> <!-- imageWrapper-settings End -->
+			</div>		<!-- header-settings End -->
+			
+ <!-- 설정 목록 -->
+       <div id="listviewSettings">
+       		
+		<!-- 서치바 -->		
+			<ul data-theme="none" data-role="listview"  id="listviewSettingsSwitch">	
+				
+				<!-- 푸쉬버튼 -->
+       			<li id="listviewPushBtn-Settings">
+       				<!-- 푸쉬버튼 라벨 -->
+       				<div id="settings-PushBtnLabel">
+       					푸쉬알림
+					<!-- 푸쉬버튼 -->			
+						<span id="settings-PushBtnSwitch">switch</span>
+       				</div>				<!-- settings-PushBtnLabel End -->
+       			</li>
+       			
+       			<!-- 공백 1-->
+       			<li id="space-settings">
+       			</li>
+       			      			
+       			<!-- 초대 버튼 -->
+       			<li id="listviewInviteBtn-Settings">
+       				<!-- 푸쉬버튼 라벨 -->
+       				<div id="settings-InviteBtnLabel">
+       					초대알림
+					<!-- 푸쉬버튼 -->			
+						<span id="settings-InviteBtnSwitch">switch</span>
+       				</div>				<!--listviewInviteBtn-Settings End -->
+       			</li>
+       			
+       			<!-- 공백 2-->
+       			<li id="space-settings2">
+       			</li>
+       			
+       		<!-- 회원탈퇴버튼 -->
+       			<li id="leaveBtn-settings">
+       				<button type="button" class="btn btn-warning btn-xs" data-ng-click="leave()" id="leaveBtn">회원탈퇴</button>			
+       			</li>
+		</ul>
+		<!-- 스위치 버튼 -->
+<!-- <div id="sdd">
+<form>
+    <label for="flip-checkbox-1">Flip toggle switch checkbox:</label>
+    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1">
+</form>
+</div> -->
+	
+		<!-- 회원탈퇴 버튼 -->
+<!-- 			<div id="leaveBtn-settings"> -->
+				<!-- <button type="button" class="btn btn-warning btn-xs" data-ng-click="leave()" id="leaveBtn">회원탈퇴</button>			 -->
+		<!-- 	</div> -->
+		
+			<!-- 왼쪽패널 -->
+			<!-- 셋팅 닫기 아이콘  -->
+			<div id="leftPanel">
+				<img src="{{serverAddress}}resources/images/x-mark-4-24.png" id="leftPanel-close" href="#"> <br />
+		
+				<!-- settings icons -->
+				<div class=systemSettings1>
+					<img src="{{serverAddress}}resources/images/reviewer-48.png"  data-ng-click="goModifyMember()" id="userInfo"><br/>
+					<!-- userInfo -->
+					<img src="{{serverAddress}}resources/images/handshake.png"  data-ng-click="inviteRequest()" id="acceptance" ><br/>
+					<!-- acceptance -->
+					<img src="{{serverAddress}}resources/images/info.png"  data-ng-click="goVersionInfo()" id="sysinfo"><br/>
+					<!-- info -->
+					<img src="{{serverAddress}}resources/images/settings.png"  data-ng-click="goSettings()" id="settings"><br/>
+					<!-- settings -->
+				</div>
+		
+				<div class=systemSettings2>
+					<button class="btn btn-warning" data-ng-click="logout()"id="logoutBtn">
+						Logout
+					</button>		
+				</div>	<!-- logout End -->
+			</div> <!-- systemSettings2 End -->
+			</div>	<!--좌측 패널아이콘 끝-->
+		
+	</div>			<!-- container-tripManager End -->
+</div>			<!--tripManagerView End -->
+
+

@@ -66,12 +66,11 @@
 
 
 							<!-- 아이콘들 -->
-							<span id="participants"> <img
-								data-ng-src="{{serverAddress}}resources/images/wishMember.png"
-								class="groupImg visible" /> <!-- 모집인원아이콘 --> <span
-								class="groupCount visible" id="mainTripMember">{{trip.travelUserCount}}</span>
-								<!-- 모집인원 --> <img
-								data-ng-src="{{serverAddress}}resources/images/heart.png"
+							<span id="participants"> 
+								<img data-ng-src="{{serverAddress}}resources/images/wishMember.png" class="groupImg visible" /> <!-- 모집인원아이콘 --> 
+							<span class="groupCount visible" id="mainTripMember">{{trip.travelUserCount}}</span>
+								<!-- 모집인원 --> 
+								<img data-ng-src="{{serverAddress}}resources/images/heart.png"
 								class="favoImg visible" /> <!-- 좋아요 아이콘 --> <span
 								class="favoriteCount visible" id="mainLikeNum">{{trip.likenum}}</span>
 								<!-- 좋아요 카운트 -->
@@ -79,6 +78,11 @@
 						</div>
 					</div>
 				</li>
+				
+		<!-- 쓰기 아이콘 -->
+				<div id="wtiteTimeline">
+					<img src="{{serverAddress}}resources/images/writeTrip.png"  id="wirteTrip" data-ng-click="goAddTrip()">
+				</div>			
 			</ul>
 		</div>
 	</div>

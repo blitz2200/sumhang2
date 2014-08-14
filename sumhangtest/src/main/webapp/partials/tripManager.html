@@ -1,7 +1,139 @@
-<div class="tripManager view">
-    <div class="container">
-        <header>
-            <h3>tripManager view</h3>
-        </header>
-    </div>
-</div>
+<div class="tripManagerView">
+    <div class="container-tripManager">
+    
+    	<!-- 입력페이지 전체 -->
+			<div id="header-tripManager">
+	
+		      <!-- 헤더 -->
+				<div id="imageWrapper-tripManager">
+				
+				<!-- 왼쪽패널 -->
+					<img id="leftSideIcon" src="{{serverAddress}}resources/images/leftSide.png" data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
+							data-ps-auto-close="true">	
+								
+				<!-- 제목 -->		
+					<span id="mainPageTitle">SUM행</span> 
+					
+				<!-- 오른쪽패널 -->				
+					<img src="{{serverAddress}}resources/images/home.png" data-ng-click="goMain()" id="rightSideIcon" >
+							
+				</div> <!-- imageWrapper-tripManager End -->
+			</div>		<!-- header-tripManager End -->
+		
+	<!-- 서치바 -->	
+	<div class="tripManagerSearchbatSpace">
+      <div class="input-group" id="tripManagerSearchbar">
+			 <input type="text" class="form-control" placeholder="아이디 검색" id="tripManagerSerchbarInputId">
+					<div class="input-group-btn" id="tripManagerSerchbarBtns">
+						      <button type="submit" class="btn btn-warning" id="ripManagerSerchbarBtn">
+						      	<span class="glyphicon glyphicon-search" id="tripManagerSerchbarBtn"></span>
+						      </button>
+					</div>			<!-- input-group-btn End -->
+		 </div>				<!-- tripManagerSerchbar End -->
+     </div>   				<!-- tripManagerSearchbatSpace End -->
+     
+      <!-- 추천 회원 목록 -->
+       <div id="listviewTripManager">
+       		
+		<!-- 서치바 -->		
+			<ul data-theme="none" data-role="listview"  id="listviewTripManagers">	
+				
+				<!-- 추천인1 -->
+       			<li id="listviewTripManagerUser">
+       				<!-- 추천인 사진 -->
+       				<div id="listviewTripManagerUserInfo">
+       					<img data-ng-src="{{serverAddress}}resources/images/man.png"  id="listviewTripManagerUserPhoto"/>
+					<!-- 추천인 아이디 -->
+			
+						<span id="listviewTripManagerUserID">개똥이</span>
+					<!-- 추천 버튼 -->
+							<span id="listviewTripManagerAcceptanceBtn">
+								<button class="btn  btn-xs btn-warning" data-ng-click="invite()" id="inviteBtn">
+										<span class="glyphicon glyphicon-plus-sign" id="tripManagerInviteBtn"></span>
+								</button>		
+							</span>
+       				</div>				<!-- listviewTripManagerUserInfo End -->
+       			</li>
+       			
+   
+       			<!-- 추천인2 -->
+       			<li id="listviewTripManagerUser">
+       				<!-- 추천인 사진 -->
+       				<div id="listviewTripManagerUserInfo">
+       					<img data-ng-src="{{serverAddress}}resources/images/man.png"  id="listviewTripManagerUserPhoto"/>
+					<!-- 추천인 아이디 -->
+						<span id="listviewTripManagerUserID">길똥이</span>
+					<!-- 추천 버튼 -->
+							<span id="listviewTripManagerAcceptanceBtn">
+								<button class="btn  btn-xs btn-warning" data-ng-click="invite()" id="inviteBtn">
+									<span class="glyphicon glyphicon-plus-sign" id="tripManagerInviteBtn"></span>
+								</button>		
+							</span>
+       				</div>				<!-- listviewTripManagerUserInfo End -->
+       			</li>
+       			
+				<!-- 추천인3 -->
+	       			<li id="listviewTripManagerUser">
+	       				<!-- 추천인 사진 -->
+	       				<div id="listviewTripManagerUserInfo">
+	       					<img data-ng-src="{{serverAddress}}resources/images/woman.png"  id="listviewTripManagerUserPhoto"/>
+						<!-- 추천인 아이디 -->
+							<span id="listviewTripManagerUserID">안졸리나졸리나</span>
+						<!-- 추천 버튼 -->
+								<span id="listviewTripManagerAcceptanceBtn">
+									<button class="btn  btn-xs btn-warning" data-ng-click="invite()" id="inviteBtn">
+										<span class="glyphicon glyphicon-plus-sign" id="tripManagerInviteBtn"></span>
+									</button>		
+								</span>
+	       				</div>				<!-- listviewTripManagerUserInfo End -->
+	       			</li>		
+			
+				<!-- 추천인4-->
+		       			<li id="listviewTripManagerUser">
+		       				<!-- 추천인 사진 -->
+		       				<div id="listviewTripManagerUserInfo">
+		       					<img data-ng-src="{{serverAddress}}resources/images/woman.png"  id="listviewTripManagerUserPhoto"/>
+							<!-- 추천인 아이디 -->
+								<span id="listviewTripManagerUserID">현아친구</span>
+							<!-- 추천 버튼 -->
+									<span id="listviewTripManagerAcceptanceBtn">
+										<button class="btn  btn-xs btn-warning" data-ng-click="invite()" id="inviteBtn">
+											<span class="glyphicon glyphicon-plus-sign" id="tripManagerInviteBtn"></span>
+										</button>		
+									</span>
+		       				</div>				<!-- listviewTripManagerUserInfo End -->
+		       			</li>		
+		       			
+					</ul>				<!-- listviewTripManagers End -->
+				</div>					<!-- listviewTripManager End -->
+			
+		<!-- 왼쪽패널 -->
+			<!-- 셋팅 닫기 아이콘  -->
+			<div id="leftPanel">
+				<img src="{{serverAddress}}resources/images/x-mark-4-24.png" id="leftPanel-close" href="#"> <br />
+		
+				<!-- settings icons -->
+				<div class=systemSettings1>
+					<img src="{{serverAddress}}resources/images/reviewer-48.png"  data-ng-click="goModifyMember()" id="userInfo"><br/>
+					<!-- userInfo -->
+					<img src="{{serverAddress}}resources/images/handshake.png"  data-ng-click="inviteRequest()" id="acceptance" ><br/>
+					<!-- acceptance -->
+					<img src="{{serverAddress}}resources/images/info.png"  data-ng-click="goVersionInfo()" id="sysinfo"><br/>
+					<!-- info -->
+					<img src="{{serverAddress}}resources/images/settings.png"  data-ng-click="goSettings()" id="settings"><br/>
+					<!-- settings -->
+				</div>
+		
+				<div class=systemSettings2>
+					<button class="btn btn-warning" data-ng-click="logout()"id="logoutBtn">
+						Logout
+					</button>		
+				</div>	<!-- logout End -->
+			</div> <!-- systemSettings2 End -->
+			</div>	<!--좌측 패널아이콘 끝-->
+				
+		
+		
+			        	
+    </div>			<!-- container-tripManager End -->
+</div>			<!--tripManagerView End -->

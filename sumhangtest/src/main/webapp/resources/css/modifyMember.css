@@ -54,7 +54,7 @@
 	font-family: 'Nanum Gothic Coding', monospace;
 	margin-left: -50px;
 	border: none;
-	width: 550px;
+	width: 100px;
 }
 
 /* 회원수정 라벨 */
@@ -65,13 +65,15 @@
 	border-width: 1px;
 	border-style: solid;
 	background-color: white;
+
 }
 
 /* 회원정보수정 라벨  위치*/
-.form-horizontal .control-label{
+#formModifyMemberSpace label {
 	text-align: left;
-	margin-left: 10px;
 	margin-right: 5px;
+	width: 70px;
+
 }
 
 /* 회원정보수정 아래 바탕 */

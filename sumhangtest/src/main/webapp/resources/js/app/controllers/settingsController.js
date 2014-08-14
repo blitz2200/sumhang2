@@ -1,10 +1,8 @@
-app.controller('TripManagerController', ['$scope','globalFactory', function ($scope, globalFactory) {
- 
+app.controller('SettingsController', ['$scope','globalFactory',function ($scope, globalFactory) {
+
 	$scope.serverAddress=globalFactory.serverAddress;
-    	
- 
-   	
-    /*로그아웃*/
+	
+	 /*로그아웃*/
 	$scope.logout=function(){		
 		mainFactory.logout(globalFactory.serverAdress).success(function (){
 			$scope.location.path('/login');
@@ -31,5 +29,4 @@ app.controller('TripManagerController', ['$scope','globalFactory', function ($sc
 	$scope.goSettings=function(){
 		$scope.location.path('/settings');		
 	}
-    
 }]);
