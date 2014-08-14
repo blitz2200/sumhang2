@@ -32,7 +32,8 @@ angular.module('pushNotify',[])
                 };
           if ( device.platform == 'android' || device.platform == 'Android') {
               pushNotification.register(successHandler, errorHandler, {
-                            'senderID': '461795755510',
+                            'senderID': '660840806634',
+                            			 
                             'ecb': 'onNotificationGCM'
                           });
           } else {
