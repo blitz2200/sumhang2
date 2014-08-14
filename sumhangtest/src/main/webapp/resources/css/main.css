@@ -219,7 +219,7 @@ margin-bottom: 2px;
 
 
 
-/* left slide */	
+/* left slide------------------------------------------- */	
 .ng-pageslide {
 	/* background: #eee; */
 	background-color: #FFF;
@@ -249,7 +249,8 @@ margin-bottom: 2px;
 	font-family: 'Nanum Gothic Coding', monospace;
 }
 
-/*  rightPanel */
+
+/*  rightPanel ------------------------------------------------*/
 /* 방장 사진 */ 
 #hostUserPic{
     float: left;
@@ -311,7 +312,7 @@ margin-bottom: 2px;
 .tripActionBtn{
 	font-family: 'Nanum Gothic Coding', monospace;
 	text-align: center;
-	margin-top: 100px;
+	margin-top: 50px;	
 }
 
 /* 강퇴버튼 */
@@ -348,5 +349,37 @@ margin-bottom: 2px;
 /* 오른쪽 패널 닫기 */
 #rightPanel-close{
 	float: left;
+}
+
+#rightPanel ul{
+	padding-left:10%;
+}
+
+#rightPanel .selectedTrip {
+	text-align:center;
+}
+
+/* 트립유저 목록 */
+#rightPanel .tripUser {
+	list-style-type: none;
+	font-size:15px;
+	border:outset;
+	border-radius: 5px;
+	margin-right:10%;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+#rightPanel .tripUser .placeHolder {
+	margin-left:10%;
+	
+}
+
+/* 트립유저 목록에서 삭제하기 버튼 */
+#rightPanel .tripUser .removeUser{
+	width:20px;
+	height:20px;
+	float:right;
+	margin-right:5%;
 }
  
