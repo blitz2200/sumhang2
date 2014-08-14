@@ -1,7 +1,65 @@
-<div class="info view">
-    <div class="container">
-        <header>
-            <h3>info view</h3>
-        </header>
-    </div>
-</div>
+<div class="versionInfoView">
+    <div class="container-versionInfo">
+    
+    	<!-- 입력페이지 전체 -->
+			<div id="header-versionInfo">
+	
+		      <!-- 헤더 -->
+				<div id="imageWrapper-versionInfo">
+				
+				<!-- 왼쪽패널 -->
+					<img id="leftSideIcon" src="resources/images/leftSide.png" data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
+							data-ps-auto-close="true">	
+								
+				<!-- 제목 -->		
+					<span id="versionInfoTitle">SUM행</span> 
+					
+				<!-- 오른쪽패널 -->				
+					<img src="resources/images/home.png" data-ng-click="goMain()" id="rightSideIcon-versionInfo" >
+							
+				</div> <!-- imageWrapper-versionInf" End -->
+			</div>		<!-- header-versionInfo End -->
+			
+		<!-- 로고 -->	
+			<div id="sumhangLogoVersionInfo">
+				<img src="resources/images/instagram-128.png" id="versionInfoLogo">
+			</div>
+			
+			
+		<!-- 현재 버전 -->
+			<div id="versionInfoShow">
+				<h4 id="nowVersionInfo">현재 버전 1.0.0</h3>
+		<!-- 	</div> -->
+			
+		<!-- 최신 버전 -->
+			<!-- <div id="recentVersion"> -->
+				<h4 id="recentVersionInfo">최신 버전 1.0.0</h3>
+			</div>
+			
+		<!-- 왼쪽패널 -->
+			<!-- 셋팅 닫기 아이콘  -->
+			<div id="leftPanel">
+				<img src="resources/images/x-mark-4-24.png" id="leftPanel-close" href="#"> <br />
+		
+				<!-- settings icons -->
+				<div class=systemSettings1>
+					<img src="resources/images/reviewer-48.png"  data-ng-click="goModifyMember()" id="userInfo"><br/>
+					<!-- userInfo -->
+					<img src="resources/images/handshake.png"  data-ng-click="inviteRequest()" id="acceptance" ><br/>
+					<!-- acceptance -->
+					<img src="resources/images/info.png"  data-ng-click="goVersionInfo()" id="sysinfo"><br/>
+					<!-- info -->
+					<img src="resources/images/settings.png"  data-ng-click="goSettings()" id="settings"><br/>
+					<!-- settings -->
+				</div>
+		
+				<div class=systemSettings2>
+					<button class="btn btn-warning" data-ng-click="logout()"id="logoutBtn">
+						Logout
+					</button>		
+				</div>	<!-- logout End -->
+			</div> <!-- systemSettings2 End -->
+			</div>	<!--좌측 패널아이콘 끝-->
+			
+	</div>			<!-- container-versionInfo End -->
+</div>			<!--versionInfoView End -->
