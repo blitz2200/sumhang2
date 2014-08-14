@@ -147,12 +147,28 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	}
 	
 	
+	//여행참가하기 버튼 클릭 방장한테 푸쉬 날리기
+	$scope.goEnterTrip=function(userNo){
+		pushEnterTrip(userNo)
+	};
+	
+	function pushEnterTrip(userNo){
+		alert('여행참가하기 버튼 클릭')
+		tripDetailFactory.pushEnterTrip(sa,userNo)
+		.success(function(){
+			alert('여행참가하기 푸시 성공'+userNo);
+		}).error(function(error){
+			alert('여행참가하기 푸시 실패');
+		})
+		
+	}
+	
+	
 	
 	//리플 리스트 시작
 	function tripDetailListReply(travelNo){
 		console.log('tripDetailReply 시작')
 		tripDetailFactory.tripDetailListReply(sa,travelNo)
-	
 		.success(function(data){
 			console.log('디비에서 꺼내온 main detail reply data:'+JSON.stringify(data));
 		
