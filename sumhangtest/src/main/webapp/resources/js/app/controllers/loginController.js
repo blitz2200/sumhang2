@@ -5,7 +5,7 @@ app.controller('LoginController', ['$scope','userFactory','globalFactory',
     function loginRequest(loginInfo){
     	
     	
-    	userFactory.loginRequest(globalFactory.serverAdress,loginInfo)
+    	userFactory.loginRequest(globalFactory.serverAddress,loginInfo)
     	.success(function(data){
     		
     		console.log(data);
