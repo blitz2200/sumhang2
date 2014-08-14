@@ -10,7 +10,7 @@
 
 				<!-- 왼쪽패널 -->
 				<img id="leftSideIcon"
-					src="{{serverAdress}}resources/images/leftSide.png"
+					src="{{serverAddress}}resources/images/leftSide.png"
 					data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
 					data-ps-auto-close="true">
 
@@ -19,7 +19,7 @@
 
 				<!-- 오른쪽패널 -->
 				<img id="rightSideIcon"
-					src="{{serverAdress}}resources/images/rightSide.png"
+					src="{{serverAddress}}resources/images/rightSide.png"
 					data-pageslide="right" data-ps-speed="0.5" href="#rightPanel"
 					data-ps-auto-close="true" data-ng-click="getTripUsers()">
 			</div>
@@ -40,7 +40,7 @@
 					<!-- 여행사진 -->
 					<div id="tripPictures">
 						<img
-							data-ng-src="{{serverAdress}}resources/images/tripPhotoFile/{{trip.travelPho}}"
+							data-ng-src="{{serverAddress}}resources/images/tripPhotoFile/{{trip.travelPho}}"
 							class="imgMain visible" id="tripPcture">
 					</div> <!-- 여행지 -->
 					<div id="tripDestinationTag">
@@ -59,19 +59,19 @@
 						<div class="icons" id="mainIcons">
 							<img src="resources/images/sman1.png" class="faceThumb_3 visible"
 								id="face1"> <img
-								src="{{serverAdress}}resources/images/swoman4.png"
+								src="{{serverAddress}}resources/images/swoman4.png"
 								class="faceThumb_4 visible" id="face2"> <img
-								src="{{serverAdress}}resources/images/swoman1.png"
+								src="{{serverAddress}}resources/images/swoman1.png"
 								class="faceThumb_5 visible" id="face3">
 
 
 							<!-- 아이콘들 -->
 							<span id="participants"> <img
-								data-ng-src="{{serverAdress}}resources/images/wishMember.png"
+								data-ng-src="{{serverAddress}}resources/images/wishMember.png"
 								class="groupImg visible" /> <!-- 모집인원아이콘 --> <span
 								class="groupCount visible" id="mainTripMember">{{trip.travelUserCount}}</span>
 								<!-- 모집인원 --> <img
-								data-ng-src="{{serverAdress}}resources/images/heart.png"
+								data-ng-src="{{serverAddress}}resources/images/heart.png"
 								class="favoImg visible" /> <!-- 좋아요 아이콘 --> <span
 								class="favoriteCount visible" id="mainLikeNum">{{trip.likenum}}</span>
 								<!-- 좋아요 카운트 -->
@@ -88,18 +88,18 @@
 	<!-- 오른쪽패널	 -->
 	<div id="rightPanel">
 		<!-- 패널 닫기 아이콘 -->
-		<img src="{{serverAdress}}resources/images/x-mark-4-24.png"
+		<img src="{{serverAddress}}resources/images/x-mark-4-24.png"
 			id="rightPanel-close" href="#"> <br />
 		<!-- 방장 사진, 아이디 -->
 		<div id="hostUser">
-			<img src="{{serverAdress}}resources/images/host.png" id="hostUserPic">
+			<img src="{{serverAddress}}resources/images/host.png" id="hostUserPic">
 			<p id="hostUserName">{{sessionUser.nick}}</p>
 		</div>
 
 		<!-- 참여 중인 방 표시 -->
 		<!-- 참여중인 여행 목록 -->
 		<div id="attandingView">
-			<select class="form-control" id="attandingTrips"
+			<select class="" id="attandingTrips"
 				data-ng-model="userTripSelected"
 				data-ng-options="userTrip.TITLE for userTrip in userTrips"
 				data-ng-change="getTripUsers()">
@@ -108,7 +108,7 @@
 
 			<!-- 모임 게시판 가기 -->
 			<span class="groupBoard"> <img
-				src="{{serverAdress}}resources/images/groupBoard.png"
+				src="{{serverAddress}}resources/images/groupBoard.png"
 				id="groupMeeting"
 				data-ng-click="goTimeLine(userTripSelected.TBOARD_NO)">
 			</span>
@@ -121,7 +121,7 @@
 
 		<ul>
 			<li class="tripUser" data-ng-repeat="tripUser in tripUsers"><span class="placeHolder">{{tripUser.NICK}}</span>
-				<span class="placeHolder1"><img class="removeUser" src="{{serverAdress}}/resources/images/removeUser.png"
+				<span class="placeHolder1"><img class="removeUser" src="{{serverAddress}}/resources/images/removeUser.png"
 					data-ng-click="kickOutTripUser(tripUser.USER_NO)"
 					data-ng-hide="hideDelMenu(tripUser)"></span>
 			</li>
@@ -135,7 +135,7 @@
 
 		<!--  디데이 -->
 		<div id="dDay">
-			<img src="{{serverAdress}}resources/images/d-day.png" id="dDayAlert"
+			<img src="{{serverAddress}}resources/images/d-day.png" id="dDayAlert"
 				href="#">
 			<p id="dDayCal">여행까지 {{date | date:'yyyy-MM-dd'}}?일 남았습니다.</p>
 		</div>
@@ -143,21 +143,21 @@
 	</div>
 	<!-- 셋팅 닫기 아이콘  -->
 	<div id="leftPanel">
-		<img src="{{serverAdress}}resources/images/x-mark-4-24.png"
+		<img src="{{serverAddress}}resources/images/x-mark-4-24.png"
 			id="leftPanel-close" href="#"> <br />
 
 		<!-- settings icons -->
 		<div class=systemSettings1>
-			<img src="{{serverAdress}}resources/images/reviewer-48.png"
+			<img src="{{serverAddress}}resources/images/reviewer-48.png"
 				data-ng-click="goModifyMember()" id="userInfo"><br />
 			<!-- userInfo -->
-			<img src="{{serverAdress}}resources/images/handshake.png"
+			<img src="{{serverAddress}}resources/images/handshake.png"
 				data-ng-click="inviteRequest()" id="acceptance"><br />
 			<!-- acceptance -->
-			<img src="{{serverAdress}}resources/images/info.png"
+			<img src="{{serverAddress}}resources/images/info.png"
 				data-ng-click="goVersionInfo()" id="sysinfo"><br />
 			<!-- info -->
-			<img src="{{serverAdress}}resources/images/settings.png"
+			<img src="{{serverAddress}}resources/images/settings.png"
 				data-ng-click="goSettings()" id="settings"><br />
 			<!-- settings -->
 		</div>
