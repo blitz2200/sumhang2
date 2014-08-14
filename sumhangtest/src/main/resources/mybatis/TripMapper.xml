@@ -72,12 +72,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				)
 	</insert>
 	
-	<select id="getTimeLine" parameterType="String" resultType="Map">
-		SELECT tl.TIMELINE_NO, t.TBOARD_NO, t.TITLE, t.TRAVEL, t.TRAVEL_START, t.TRAVEL_END, t.TRAVEL_PHO, ucount.USERCOUNT
-		FROM TBOARD t, TIMELINE tl, (SELECT TBOARD_NO, COUNT(*) USERCOUNT
+	<select id="getTimelineList" parameterType="String" resultType="Map">
+		SELECT u.USER_PHOTO, u.NICK, tl.TIMELINE_NO, tl.TIMELINE_PHO, tl.TIMELINE_DESCRIPTION, tl.TIMELINE_LIKE, ucount.JOINCOUNT
+		FROM USER u, TIMELINE tl, (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
 										FROM USER_STATUS
 										GROUP BY TBOARD_NO ) ucount
-		WHERE t.TBOARD_NO = tl.TBOARD_NO AND ucount.TBOARD_NO = t.TBOARD_NO AND tl.TBOARD_NO = #{value}		 
+		WHERE u.USER_NO = tl.USER_NO AND ucount.TBOARD_NO = tl.TBOARD_NO AND tl.TBOARD_NO = #{value}	 
 	</select>
 	
 	<select id="getTripList" resultMap="travelSelectMap">
@@ -128,9 +128,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="tripDetail" parameterType="trip" resultType="Map">
 		select t.travel, t.TBOARD_NO, t.USER_NO, u.user_photo, u.nick,t.title,
 			 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
-			 t.TRAVEL_PHO	 
-			 from TBOARD t, USER u
-		where u.USER_NO=t.USER_NO and t.TBOARD_NO = #{travelNo}
+			 t.TRAVEL_PHO, ucount.JOINCOUNT
+			 from TBOARD t, USER u, (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
+										FROM USER_STATUS
+										GROUP BY TBOARD_NO ) ucount
+		where u.USER_NO=t.USER_NO AND ucount.TBOARD_NO = t.TBOARD_NO AND t.TBOARD_NO = #{travelNo}
 	</select>
 	
    <!-- 메인 상세보기 수정 -->
