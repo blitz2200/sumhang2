@@ -1,0 +1,40 @@
+/*fonts*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+/* 헤더 */
+#imageWrapper-versionInfo{
+		height: 50px;
+		background: #ffbb33;
+		margin-bottom: 20px;
+}
+/* 헤더 제목 */
+#imageWrapper-versionInfo #versionInfoTitle{
+		font-family: 'Nanum Gothic Coding', monospace;
+		left: 40%;
+		position: absolute;
+		text-align:center;
+		font-size: 30px;
+		color: white;	
+}
+
+/* 헤더 오른쪽 아이콘 */
+#rightSideIcon-versionInfo{
+	margin-top: 7px;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 90%;
+}
+
+/* 로고 */
+#sumhangLogoVersionInfo{
+	text-align: center;
+	margin-top:40px;
+}
+
+/* 버전 정보 */
+#versionInfoShow{
+	font-family: 'Nanum Gothic Coding', monospace;
+	margin-top:30px;
+	text-align: center;
+}
