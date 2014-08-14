@@ -56,6 +56,7 @@ pageslideDirective.directive('pageslide', [
                         slider.style.right = attrs.psCustomRight ||  '0px';
                         break;
                     case 'left':
+                        param.size = attrs.psSize || '100px';
                         slider.style.height = attrs.psCustomHeight || '100%';   
                         slider.style.top = attrs.psCustomTop || '0px';
                         slider.style.bottom = attrs.psCustomBottom || '0px';
