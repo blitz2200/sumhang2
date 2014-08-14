@@ -7,7 +7,7 @@
    		<div class="titleLogo">
    			<br/>
    			<br/>
-   			<img src="resources/images/logo-2.png">
+   			<img src="resources/images/logo-2.png" class="titleLogo">
    			<br/>
    			<br/>
    		</div>
@@ -18,14 +18,14 @@
         	 
           	<div  data-ng-class="{ 'has-error' : loginForm.username.$invalid && submitted}">
             <p id="text">
-            UserID
+          
+            <label id="formgroup" class="control-label">  UserID
+            </label>
             </p>
-            <label id="formgroup" >
                       
            
                 <input id="idInput" class="form-control" type="text"  name="username" placeholder="UserID"  data-ng-model="loginInfo.id" required></input>
-               
-            </label>
+             
             </div>
             
             
@@ -34,9 +34,10 @@
             
             <div     data-ng-class="{ 'has-error' : loginForm.password.$invalid && submitted}">
             <p id="text3">
-            Password
+           
+            <label id="formgroup1" class="control-label">  Password
+            </label>
             </p> 
-            <label id="formgroup1" class=""> 
           		 
                 <input id="PasswordInput"  class="form-control" type="password" name="password"   placeholder="Password" data-ng-model="loginInfo.password" required></input>
             </label>

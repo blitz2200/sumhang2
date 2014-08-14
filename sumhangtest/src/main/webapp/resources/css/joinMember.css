@@ -9,12 +9,21 @@ div.page-header{
 	margin:0;
 	padding:0;
  	height:50%;
-	 
+ 
  
 	 
  
  
 }
+
+div.joinMember.view{
+	background:url(../images/join.jpg); 
+	background-size:cover;
+	/* background-color:rgb(33,33,40); */
+	 
+	 
+}
+ 
 div.form-group{
  	
 }
@@ -30,49 +39,70 @@ form.joinMember{
 
 button#registerbtn.btn.btn-primary.btn-xs-5{
 	background-color:rgb(255, 187, 51);
+	/* background-color:rgb(243, 155, 17); */
 	color:white;
 	font-weight:600;
 	border-color:white;
 } 
 
+ 
 div.joinTitle{
-	text-align:right;
-	margin-right:20%;
+	 
+	padding-left:10%;
+	 
+	margin-left:6%;
+	margin-bottom:40px;
+	padding-top:2%;
+	padding-bottom:2%;
+	background-color:rgb(255, 187, 51); 
+	border-top-left-radius:20px;
+	/* background-color:rgb(243, 155, 17);
+	  */
+
+
 	
 }
 span#titleName{
 	font-size:3em;
 	font-weight:700;
-	font-family: 'Nanum Gothic Coding', monospace; 
+	font-family: 'Nanum Gothic Coding', monospace;
+	color:white; 
+	
 	
 }
-
+ 
+ 
 div.join1{
 	margin-top:2%;
-	margin-left:10%;
+	margin-left:6%;
 	margin-right:10%;
-	margin-bottom:2%;
-	padding: 1.5%;
-	border-top-right-radius: 20px;
-	border-top-left-radius:20px;
-	background-color:rgb(255, 187, 51);
-	color:white;
-	 box-shadow: rgb(200, 200, 200) -13px 16px 3px 0px;
-	 background:
+	margin-bottom:4%;
+	padding: 2%;
 	 
+	background-color:rgb(255, 187, 51);
+	/* background-color:rgb(243, 155, 17); */
+	color:white;
+	/*  box-shadow: rgb(200, 200, 200) -13px 16px 3px 0px; */
+	width:100%;
+	 font-family: 'Nanum Gothic Coding', monospace;
+	 font-weight:700;
 }
 
 div.join2{
 	background-color:rgb(255, 187, 51);
-	margin-left:10%;
+	/* background-color:rgb(243, 155, 17); */
+	margin-left:6%;
 	margin-right:10%;
-		padding: 1.5%;
+		padding: 2%;
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius:20px;
 	margin-bottom:2%;
-	box-shadow: rgb(200, 200, 200) -13px 16px 3px 0px;
+	/* box-shadow: rgb(200, 200, 200) -13px 16px 3px 0px; */
 	color:white;
- 
+ 	width:100%;
+ 	 font-family: 'Nanum Gothic Coding', monospace;
+	 font-weight:700;
+}
 }
 
 img.joinLogo{
@@ -80,3 +110,18 @@ img.joinLogo{
 	height:10%;
 }
 
+label.col-xs-2.control-label{
+	width:250px;
+	position: static;
+	margin-bottom:10px;
+	margin-left:10px;
+	 
+}
+
+#join-button{
+	margin-top:50px;
+}
+
+#join-1, #join-2, #join-3, #join-4, #join-5, #birth, #join-6, #join-7, #join-8, #join-9{
+	margin-left:20px;
+}

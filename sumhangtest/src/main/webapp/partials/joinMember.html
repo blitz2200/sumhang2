@@ -9,6 +9,7 @@
 
 	<form class="form-horizontal joinMember" name="joinMember" data-ng-submit="addMemberRequest()" data-ng-model="newMember" novalidate>
     	
+    	<div class="join-body"> 
     		<div class="joinTitle">
     			<span id="titleName">회원가입</span>
     		
@@ -17,7 +18,7 @@
     	<div class="join1">
 		  <div class="form-group" data-ng-class="{ 'has-error' : joinMember.inputIdInput.$invalid && submitted}" >
 		    	<label for="inputId" class="col-xs-2 control-label">아이디</label>
-		   	<div class="col-xs-8">
+		   	<div class="col-xs-8" id="join-1">
 		      	<input type="text" class="form-control" id="inputIdInput"  name="inputIdInput" placeholder="ID" data-ng-model="newMember.id"    ng-minlength="4"       ng-maxlength="16"required>
 		      	  <span  class="label label-info" ng-show="joinMember.inputIdInput.$error.required">필수 입력</span>
 		      	   <span  class="label label-warning"  ng-show="joinMember.inputIdInput.$error.minlength">너무 짦음</span>
@@ -29,7 +30,7 @@
 		<!--   비밀번호 -->
 		  <div class="form-group" data-ng-class="{ 'has-error' : joinMember.inputPassword3Input.$invalid && submitted}">
 		    	<label for="inputPassword3" class="col-xs-2 control-label" >비밀번호</label>
-		    <div class="col-xs-8">
+		    <div class="col-xs-8" id="join-2">
 		      	<input type="password" class="form-control" id="inputPassword3Input" name="inputPassword3Input" placeholder="Password" data-ng-model="newMember.password" ng-minlength="4"  ng-maxlength="16"     required>
 		      		<span  class="label label-info" ng-show="joinMember.inputPassword3Input.$error.required">필수 입력</span>
 		      	   <span  class="label label-warning"  ng-show="joinMember.inputPassword3Input.$error.minlength">너무 짦음</span>
@@ -45,7 +46,7 @@
 		   <!--  비밀번호 유효성 체크 -->
 		    <div class="form-group"  data-ng-class="{ 'has-error' : joinMember.inputPassword1Input.$invalid && submitted}">
 		    	<label for="inputPassword1" class="col-xs-2 control-label">비밀번호 확인</label>
-		    <div class="col-xs-8">
+		    <div class="col-xs-8" id="join-3">
 		      	<input type="password" class="form-control" id="inputPassword1Input" name="inputPassword1Input" placeholder="Password" data-ng-model="newMember.password1" pw-check="inputPassword3Input"    required>
 		    </div>
 		  
@@ -59,7 +60,7 @@
 		  
 		    <div class="form-group" data-ng-class="{ 'has-error' : joinMember.nicknameInput.$invalid && submitted}">
 		    	<label for="inputNickname" class="col-xs-2 control-label"    >닉네임</label>
-		    <div class="col-xs-8">
+		    <div class="col-xs-8" id="join-4">
 		      	<input type="text" class="form-control" id="nicknameInput" name="nicknameInput" placeholder="NickName" data-ng-model="newMember.nick" required>
 		    </div>
 		  </div>
@@ -69,7 +70,7 @@
 		  <div class="join2">
 		   <div class="form-group" data-ng-class="{ 'has-error' : joinMember.nameInput.$invalid && submitted}">
 		    	<label for="inputName-" class="col-xs-2 control-label">이름</label>
-		    <div class="col-xs-8">
+		    <div class="col-xs-8" id="join-5">
 		      	<input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Name" data-ng-model="newMember.name" required>
 		    </div>
 		  </div>
@@ -84,7 +85,7 @@
 		  
 		  <div class="form-group" >
 		    	<label for="checkGender" class="col-xs-2 control-label">성별</label>
-		    <div class="col-xs-8">
+		    <div class="col-xs-8" id="join-6" >
 		      	<input type="radio" class="optionsRadios" value="man" checked data-ng-model="newMember.gender">
    			남
    			<input type="radio" class="optionsRadios" value="woman" data-ng-model="newMember.gender">
@@ -94,7 +95,7 @@
 		  	  
 		  <div class="form-group">
 		    	<label for="exampleInputFile" class="col-xs-2 control-label">프로필 사진</label>
-		    	<div class="col-xs-8">
+		    	<div class="col-xs-8" id="join-7">
 		    		<input type="file" id="exampleInputFile" data-file-model="file" data-ng-model="newMember.photo">
 		   				 <!-- <p class="help-block">프로필 사진</p> -->
 		  		</div>
@@ -102,7 +103,7 @@
 		  
 		   <div class="form-group">
 		    	<label for="checkPushmessage" class="col-xs-2 control-label">푸쉬메시지</label>
-		    <div class="col-xs-8">
+		    <div class="col-xs-8" id="join-8">
 		      	<input type="radio" class="optionsRadios" value="yes" data-ng-model="newMember.push">
    			수락
    			<input type="radio" class="optionsRadios" value="no" data-ng-model="newMember.push">
@@ -112,7 +113,7 @@
 		  
 		   <div class="form-group">
 		    	<label for="invitePushmessage" class="col-xs-2 control-label">초대메시지</label>
-		    <div class="col-xs-8">
+		    <div class="col-xs-8" id="join-9">
 		      	<input type="radio" class="optionsRadios" value="yes" checked data-ng-model="newMember.invite">
    			수락
    			<input type="radio" class="optionsRadios" value="no" data-ng-model="newMember.invite">
@@ -120,14 +121,15 @@
 		    </div>
 		  </div>
   			</div>
+  		 </div>
   
-		  <div class="form-group">
+		  <div class="form-group" id="join-button">
 		    	<div class="col-sm-offset-2 col-xs-10">
-		      		<button  type="submit" class="btn btn-primary btn-xs-5" id="registerbtn">가입하기</button>
+		      		<button  type="submit" class="btn btn-primary btn-xs-5 join-btn" id="registerbtn">가입하기</button>
 		      	<!-- 	 <a   class="btn btn-primary btn-xs-5" href="#/main">Main</a> -->
 		    	</div>
 		  </div>
-		  
+		   
 </form>
 </div>
 </div>

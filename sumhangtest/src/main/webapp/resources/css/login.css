@@ -16,7 +16,12 @@ div.titleLogo{
 	border-top-left-radius: 20px;
 }
  
-
+.titleLogo{
+	width:60%;
+	margin-top:10%;
+	margin-bottom:5%;
+	
+}
  div#box{
   
  	
@@ -78,6 +83,17 @@ img.titleImg{
  	 
  }
  
+ #idInput{
+ 	width:65%;
+ 	position:relative;
+ 	left:40px;
+ }
+ 
+ #PasswordInput{
+ 	width:65%;
+ 	position:relative;
+ 	left:13px;
+ }
  
  input.input1{
  	
