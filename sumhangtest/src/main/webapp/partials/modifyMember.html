@@ -1,7 +1,107 @@
-<div class="modifyMember view">
-    <div class="container">
-        <header> 
-            <h3>modifyMember view</h3>
-        </header>
-    </div>
-</div>
+<div class="modifyMemberView">
+	<div class="container-modifyMemberView">
+
+	<!-- 헤더-->
+		<div class="header-modifyMember">
+			<!-- 왼쪽패널 -->
+					<img id="leftSideIcon" src="resources/images/backspace-32.png" data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
+							data-ps-auto-close="true">	
+								
+				<!-- 제목 -->		
+					<span id="modifyMemberTitle">SUM행</span> 
+					
+				<!-- 오른쪽패널 -->				
+					<img src="resources/images/save-32.png" data-ng-click="goMain()" id="modifyMemberSaveBtn" >
+		</div>				<!-- header-modifyMember End -->
+	
+	<!-- 프로필 사진 -->
+		<div id="modifyMemberPhotoSpace">
+			<img src="resources/images/man.png" id="modifyMemberUserPhoto">
+		</div>
+		
+	<!-- 프로필 수정 리스트 -->
+			<form id="formModifyMemberSpace" name="modifyMemberForm" class="form-horizontal" novalidate>
+			<!-- 아이디-->
+				<div class="form-group" id="userEmailModify">
+					<label for="userEmailModify" class="col-xs-2 control-label" id="userEmailModifyLabel">
+						<img src="resources/images/adobe-id-24.png" id="modifyMemberUserPhoto">
+					</label>
+					<div class="col-xs-9" id="userEmailModifyInputSpace"">
+						<input type="text" class="form-control" id="userEmailModifyInput" name="userEmailModifyInput" 
+						placeholder="아이디" required>
+					</div>		<!-- userEmailModifyInputSpace End -->
+				</div> 			<!-- form-group End -->
+				
+			<!-- 비밀번호-->
+				<div class="form-group" id="userPasswordModify">
+					<label for="userPasswordModify" class="col-xs-2 control-label" id="userPasswordModifyLabel">
+						<img src="resources/images/private-24.png" id="modifyMemberUserPhoto">
+					</label>
+					<div class="col-xs-9" id="userPasswordModifyInputSpace">
+						<input type="password"" class="form-control" id="userPasswordModifyInput" name="userPasswordModifyInput" 
+						placeholder="비밀번호" required>
+					</div>		<!-- userPasswordModifyInputSpace End -->
+				</div> 			<!-- form-group End -->
+				
+			<!-- 비밀번호확인-->
+				<div class="form-group" id="userPasswordReModify">
+					<label for="userPasswordReModify" class="col-xs-2  control-label" id="userPasswordReModifyLabel">
+						<img src="resources/images/private-24.png" id="modifyMemberUserPhoto">
+					</label>
+					<div class="col-xs-9" id="userPasswordReModifyInputSpace">
+						<input type="password"" class="form-control" id="userPasswordReModifyInput" name="userPasswordModifyInput" 
+						placeholder="비밀번호를 다시 입력 해주세요." required>
+					</div>		<!-- userPasswordReModifyInputSpace End -->
+				</div> 			<!-- form-group End -->
+				
+			<!-- 닉네임-->
+				<div class="form-group" id="userNickNameModify">
+					<label for="userNickNameModify" class="col-xs-2  control-label" id="userNickNameModifyLabel">
+						<img src="resources/images/star-4-24.png" id="modifyMemberUserPhoto">
+					</label>
+					<div class="col-xs-9" id="userNickNameModifyInputSpace"">
+						<input type="text" class="form-control" id="userNickNameModifyInput" name="userNickNameModifyInput" 
+						placeholder="닉네임" required>
+					</div>		<!-- useNickNameModifyInputSpace End -->
+				</div> 			<!-- form-group End -->
+				
+			<!--이름-->
+				<div class="form-group" id="userNameModify">
+					<label for="userNameModify" class="col-xs-2  control-label" id="userNameModifyLabel">
+						<img src="resources/images/contacts-24.png" id="modifyMemberUserPhoto">
+					</label>
+					<div class="col-xs-9" id="userNameModifyInputSpace"">
+						<input type="text" class="form-control" id="userNameModifyInput" name="userNameModifyInput" 
+						placeholder="이름" required>
+					</div>		<!-- userNameModifyInputSpace End -->
+				</div> 			<!-- form-group End -->
+			
+			<!-- 생년월일-->
+				<div class="form-group" id="userBirthModify">
+					<label for="userBirthModify" class="col-xs-2  control-label" id="userBirthModifyLabel">
+						<img src="resources/images/birthday-cake-24.png" id="modifyMemberUserPhoto">
+					</label>
+					<div class="col-xs-9" id="userBirthModifyInputSpace"">
+						<input type="text" class="form-control" id="userBirthModifyInput" name="userBirthModifyInput" 
+						placeholder="생년월일" required>
+					</div>		<!-- userBirthModifyInputSpace End -->
+				</div> 			<!-- form-group End -->
+				
+				<!-- 성별-->
+				<div class="form-group" id="userGenderModify">
+					<label for="userGenderModify" class="col-xs-2  control-label" id="userGenderModifyLabel">
+						<img src="resources/images/male-2-24.png" id="modifyMemberUserPhoto">
+					</label>
+					<div class="col-xs-9" id="userGenderModifyInputSpace"">
+						<input type="text" class="form-control" id="userGenderModifyInput" name="userGenderModifyInput" 
+						placeholder="성별" required>
+					</div>		<!-- userEmailGenderInputSpace End -->
+				</div> 			<!-- form-group End -->
+				
+				<div id="spaceModifyMember">
+				</div>
+		</form>		<!-- 프로필 수정 리스트 End -->
+				
+	</div>			<!-- modifyMemberView End -->
+</div>			<!-- modifyMemberView End -->
+
