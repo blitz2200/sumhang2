@@ -19,7 +19,7 @@
 					<img class="cal" src="resources/images/cal.png"> <span>
 						{{trip.travel_start}}~ {{trip.travel_end}} </span>
 				</div>
-				<div class="col-xs-5">
+				<div class="col-xs-3">
 					<img class="userPho"
 						data-ng-src="{{serverAddress}}resources/images/userPhotoFiles/{{trip.user_photo}}">
 					<p>
@@ -104,7 +104,8 @@
 		<div class="row addBtn">
 			<!-- 읽는사람용 버튼 -->
 			<div class="readUserButton" data-ng-show="readUserBUtton">
-				<button type="button" class="addTrip btn btn-warning">참가신청</button>
+				<button type="button" class="addTrip btn btn-warning" 
+				data-ng-click="goEnterTrip()">참가신청</button>
 			</div>
 			<!-- 글작성한 사람용 버튼 -->
 			<div class="writeUserButton" data-ng-show="writeUserButton">
@@ -123,9 +124,9 @@
 					<div class="col-xs-1 reUser">
 						<img data-ng-src="{{serverAddress}}resources/images/userPhotoFiles/{{reply.user_photo}}" />
 					</div>
-					<div class="col-xs-3 reNick">{{reply.nick}}</div>
+					<div class="col-xs-2 reNick">{{reply.nick}}</div>
 					
-					<div class="col-xs-5">{{reply.TBOARD_RE_DESCRIPTION}}</div>
+					<div class="col-xs-4">{{reply.TBOARD_RE_DESCRIPTION}}</div>
 					
 					<div class="col-xs-1 delete" data-ng-show="{{reply.del}}">
 						<img data-ng-click="goDelTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
