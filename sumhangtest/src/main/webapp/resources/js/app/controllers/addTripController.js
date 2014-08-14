@@ -1,7 +1,7 @@
 app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory', 
                                      function ($scope, sumhangService,globalFactory) {
 	
-	var sa=globalFactory.serverAdress;
+	var sa=globalFactory.serverAddress;
     $scope.addTripRequest = function () {
     	$scope.submitted = true;
     	
