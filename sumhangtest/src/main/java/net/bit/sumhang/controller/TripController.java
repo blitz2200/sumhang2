@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
-import net.bit.sumhang.domain.TimeLineVO;
 import net.bit.sumhang.domain.TripVO;
 import net.bit.sumhang.domain.UserStatusVO;
 import net.bit.sumhang.domain.UserVO;
