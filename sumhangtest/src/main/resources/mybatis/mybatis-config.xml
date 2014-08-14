@@ -16,5 +16,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <mappers>
         <mapper resource="/mybatis/UserMapper.xml"/>
         <mapper resource="/mybatis/TripMapper.xml"/>
+        <mapper resource="/mybatis/TripStatusMapper.xml"/>
     </mappers>
 </configuration>
