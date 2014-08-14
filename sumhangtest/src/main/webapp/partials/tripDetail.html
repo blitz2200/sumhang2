@@ -9,7 +9,7 @@
 		<div class="mainTripDetail" data-ng-show="mainTripDetail">
 			<div class="row row0">
 				<img class="mainImg"
-					data-ng-src="{{serverAdress}}resources/images/tripPhotoFile/{{trip.TRAVEL_PHO}}">
+					data-ng-src="{{serverAddress}}resources/images/tripPhotoFile/{{trip.TRAVEL_PHO}}">
 			</div>
 	
 			<div class="row row1">
@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-xs-5">
 					<img class="userPho"
-						data-ng-src="{{serverAdress}}resources/images/userPhotoFiles/{{trip.user_photo}}">
+						data-ng-src="{{serverAddress}}resources/images/userPhotoFiles/{{trip.user_photo}}">
 					<p>
 						<span class="username">{{trip.nick}}</span>
 					</p>
@@ -104,8 +104,7 @@
 		<div class="row addBtn">
 			<!-- 읽는사람용 버튼 -->
 			<div class="readUserButton" data-ng-show="readUserBUtton">
-				<button type="button" class="addTrip btn btn-warning" 
-				data-ng-click="goEnterTrip(trip.USER_NO)">				참가신청</button>
+				<button type="button" class="addTrip btn btn-warning">참가신청</button>
 			</div>
 			<!-- 글작성한 사람용 버튼 -->
 			<div class="writeUserButton" data-ng-show="writeUserButton">
@@ -122,7 +121,7 @@
 			<li data-ng-repeat="reply in replys">
 				<div class="row reply">
 					<div class="col-xs-1 reUser">
-						<img data-ng-src="{{serverAdress}}resources/images/userPhotoFiles/{{reply.user_photo}}" />
+						<img data-ng-src="{{serverAddress}}resources/images/userPhotoFiles/{{reply.user_photo}}" />
 					</div>
 					<div class="col-xs-3 reNick">{{reply.nick}}</div>
 					
@@ -130,11 +129,11 @@
 					
 					<div class="col-xs-1 delete" data-ng-show="{{reply.del}}">
 						<img data-ng-click="goDelTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
-						src="{{serverAdress}}resources/images/icons/tripDetailDelete.png"/>					
+						src="{{serverAddress}}resources/images/icons/tripDetailDelete.png"/>					
 					</div>
 					<div class="col-xs-1 edit" data-ng-show="{{reply.del}}">
 						<img data-ng-click="goEditTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
-						src="{{serverAdress}}resources/images/icons/tripDetailEdit.png"/>		
+						src="{{serverAddress}}resources/images/icons/tripDetailEdit.png"/>		
 					</div>				
 				</div>
 			</li>
