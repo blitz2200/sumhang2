@@ -2,7 +2,7 @@ app.controller('IntroController', ['$scope','userFactory','globalFactory',
                                    function ($scope, userFactory,globalFactory) {
 	
 	function loginCheck(){
-		userFactory.loginCheck(globalFactory.serverAdress)
+		userFactory.loginCheck(globalFactory.serverAddress)
 		.success(function(data){ 
 			
 			console.log(data.isLogged);
