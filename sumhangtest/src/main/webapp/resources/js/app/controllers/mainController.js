@@ -6,7 +6,7 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
 	
 	//main();
 	//서버 주소 설정
-	$scope.serverAdress=globalFactory.serverAdress;
+	$scope.serverAddress=globalFactory.serverAddress;
 	
 	$scope.checked;//This will be binded using the ps-open attribute
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
@@ -15,6 +15,7 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
 	$scope.userTripSelected = $scope.userTrips[0];
 	
 	$scope.date =new Date();
+
 	
 	$scope.hideDelMenu = function(tripUser){
 		console.log('sessionuser :'+JSON.stringify($scope.sessionUser.userNo))
@@ -41,6 +42,10 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
     		console.log('kickOutTripUser 실패');
     	});		
 	}
+	
+	$scope.goInvite = function (){
+		$scope.location.path('/invite');
+	}
 
 
 	
@@ -57,7 +62,7 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
 
 	
 	$scope.getTripUsers = function (){
-		mainFactory.getTripUsers(globalFactory.serverAdress,$scope.userTripSelected.TBOARD_NO)
+		mainFactory.getTripUsers(globalFactory.serverAddress,$scope.userTripSelected.TBOARD_NO)
 		.success(function(data){
     		console.log('getTripUsers 성공 넘어온 데이타는 ?:'+ JSON.stringify(data));
     		
@@ -81,7 +86,7 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
 	
 	/*로그아웃*/
 	$scope.logout=function(){		
-		mainFactory.logout(globalFactory.serverAdress).success(function (){
+		mainFactory.logout(globalFactory.serverAddress).success(function (){
 			$scope.location.path('/login');
 		});
 	}
