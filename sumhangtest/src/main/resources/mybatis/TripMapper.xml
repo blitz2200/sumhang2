@@ -172,4 +172,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    where travel_board_reply_no=#{tripDetailReNo}
 	</update>
 	
+	<!-- 여행 참가하기 버튼 누르면 방장한테 푸쉬 날리기 -->
+	<select id="selectPushTripUser" parameterType='int' resultType="Map">
+		select u.REGISTID from USER u, TBOARD t
+		where u.USER_NO=t.USER_NO and t.TBOARD_NO=#{traveNo}
+	</select>
+	
 </mapper>
