@@ -14,8 +14,8 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	var travelNo=$routeParams.travelNo;	
 	
 	//서버 주소 설정
-	var sa=globalFactory.serverAdress;
-	$scope.serverAdress=sa;
+	var sa=globalFactory.serverAddress;
+	$scope.serverAddress=sa;
 	
 	
 	//tripDetail함수에 변수값 전달후 실행
