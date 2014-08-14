@@ -3,11 +3,11 @@ app.factory('timeLineFactory',['$http', function($http){
 	
 	var timeLineFactory = {};
 	
-	timeLineFactory.getTimeLine = function(travelNo){
+	timeLineFactory.getTimelineList = function(sa,travelNo){
 		//메인 리스트 ajax로 요청
 		return $http({
 			//timeLine.ajax로 서버에서  전송 스프링 컨트롤러에서 @Requestmapping timeLine찾아서 실행
-			'url' :"timeLine.ajax",
+			'url' :sa+"timeline.ajax",
 			'method' : 'POST',
 			'data' : travelNo				
 		}).success(function(data){
