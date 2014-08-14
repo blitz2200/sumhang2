@@ -43,12 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where ID=#{id}
 	</select>
 	
-	<!-- 여행 참가하기 버튼 누르면 방장한테 푸쉬 날리기 -->
-	<select id="selectPushTripUser" parameterType='int' resultType="Map">
-		select REGISTID 
-		from USER
-		where USER_NO=#{userNo}
-	</select>
+	
 </mapper>
 
 
