@@ -91,12 +91,12 @@ app.config(function ($routeProvider) {
                 controller: 'TripDetailController',
                 templateUrl: 'partials/tripDetail.html',
             })
-        .when('/tripmanager',
+        .when('/tripManager',
             {
                 controller: 'TripManagerController',
                 templateUrl: 'partials/tripManager.html'
             })
-        .when('/versioninfo',
+        .when('/versionInfo',
             {
                 controller: 'VersionInfoController',
                 templateUrl: 'partials/versionInfo.html'
