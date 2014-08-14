@@ -17,8 +17,7 @@
 			
 		<!-- 오른쪽패널 -->				
 			<span id="rightSideIcon">
-				<img src="resources/images/home.png" data-pageslide="right" data-ps-speed="0.5"
-					href="#rightPanel" data-ps-auto-close="true">
+				<img src="resources/images/home.png" data-ng-click="goMain()" id="rightSideIcon" >
 			</span>
 		</div> <!-- imageWrapperTimeLine End -->
 		
@@ -189,7 +188,7 @@
 				
 	<!-- 쓰기 아이콘 -->
 	<div id="wtiteTimelineList">
-		<img src="resources/images/plus.png"  id="wirteTimeLine" href="" >
+		<img src="resources/images/plus.png"  id="wirteTimeLine" data-ng-click="goAddTrip()">
 	</div>			
 			
 		</ul>

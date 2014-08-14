@@ -36,11 +36,11 @@
 
 /* 헤더 오른쪽 아이콘 */
  #rightSideIcon {
-	margin-top: 7px;
+ margin-top:3px;
 	position: absolute;
 	width: 30px;
 	height: 30px;
-	left: 90%;
+	left: 85%;
 }
 
 /* 제목 */
