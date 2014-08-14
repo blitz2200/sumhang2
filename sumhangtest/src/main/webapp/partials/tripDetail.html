@@ -104,7 +104,8 @@
 		<div class="row addBtn">
 			<!-- 읽는사람용 버튼 -->
 			<div class="readUserButton" data-ng-show="readUserBUtton">
-				<button type="button" class="addTrip btn btn-warning">참가신청</button>
+				<button type="button" class="addTrip btn btn-warning" 
+				data-ng-click="goEnterTrip(trip.USER_NO)">				참가신청</button>
 			</div>
 			<!-- 글작성한 사람용 버튼 -->
 			<div class="writeUserButton" data-ng-show="writeUserButton">
