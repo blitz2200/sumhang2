@@ -59,9 +59,9 @@ public class TripDetailController {
 		System.out.println(tripVO);
 		Map<String, String> map = new HashMap<String, String>();
 
-		System.out.println("메인게시판 세부내용"
+		System.out.println("메인상세게시판 세부내용"
 				+ sqlSession.selectOne("tripControlMapper.tripDetail", tripVO));
-
+				
 		map = sqlSession.selectOne("tripControlMapper.tripDetail", tripVO);
 		map.put("wuser_no", Integer.toString(userVO.getUserNo()));
 		System.out.println(map);
@@ -142,7 +142,7 @@ public class TripDetailController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("suser_no", Integer.toString(userVO.getUserNo()));
 		list.add(map);
-		System.out.println("여행상세보기 게시판리턴할 최종리스트 :  " + list);
+		System.out.println("tripDetailListReply 리턴할 최종리스트 :  " + list);
 
 		return list;
 	}
@@ -271,7 +271,7 @@ public class TripDetailController {
 		
 		String t = URLEncoder.encode("날라가라","utf-8");
 		Message message = new Message.Builder()
-									.addData("msg", t)
+									.addData("message", t)
 									.timeToLive(10)
 									.build();
 		
@@ -285,81 +285,7 @@ public class TripDetailController {
 			e.printStackTrace();
 		}
 
-		/*
-		 * StringBuffer postDataBuilder = new StringBuffer();
-		 * postDataBuilder.append("registration_id=" + regId); // 등록ID
-		 * postDataBuilder.append("&collapse_key=1");
-		 * postDataBuilder.append("&delay_while_idle=1");
-		 * postDataBuilder.append("&data.msg=" + URLEncoder.encode("test",
-		 * "UTF-8"));
-		 * 
-		 * 
-		 * 
-		 * //byte[] postData = postDataBuilder.toString().getBytes("UTF8");
-		 * Map<String,String> postData =new HashMap<String, String>();
-		 * postData.put("registration_id", regId); postData.put("collapse_key",
-		 * "1"); postData.put("delay_while_idel", "1");
-		 * postData.put("data.msg","test");
-		 * 
-		 * 
-		 * 
-		 * URL url = new URL("https://android.googleapis.com/gcm/send");
-		 * HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		 * 
-		 * conn.setDoOutput(true); conn.setUseCaches(false);
-		 * conn.setRequestMethod("POST");
-		 * conn.setRequestProperty("Content-Type",
-		 * "application/x-www-form-urlencoded; charset=UTF-8");
-		 * conn.setRequestProperty("Content-Length",
-		 * Integer.toString(postData.length));
-		 * conn.setRequestProperty("Authorization", "key=" +
-		 * "AIzaSyBzr8ZxqRDmP_P7WuN5ffp3U-4cUcEoDHU");
-		 * 
-		 * ObjectMapper mapper = new ObjectMapper();
-		 * 
-		 * OutputStream out = conn.getOutputStream();
-		 * mapper.writeValue(out,postData); out.flush(); out.close();
-		 * conn.getInputStream();
-		 * 
-		 * System.out.println("postData : " + postData); String reponseLine =
-		 * new BufferedReader(new InputStreamReader(
-		 * conn.getInputStream())).readLine();
-		 * 
-		 * System.out.println("responseLine : " + reponseLine);
-		 */
-
-		/*
-		 * 
-		 * try{ URL url = new URL("https://android.googleapis.com/gcm/send");
-		 * HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		 * conn.setRequestMethod("POST");
-		 * conn.setRequestProperty("Content-Type", "application/json");
-		 * conn.setRequestProperty("Authorization", "key=" +
-		 * "AIzaSyBzr8ZxqRDmP_P7WuN5ffp3U-4cUcEoDHU"); conn.setDoOutput(true);
-		 * DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
-		 * 
-		 * 
-		 * wr.writeBytes("data"+"title=안녕하세요&");
-		 * wr.writeBytes("registration_ids="+regId);
-		 * 
-		 * wr.flush(); wr.close();
-		 * 
-		 * int responseCode = conn.getResponseCode();
-		 * System.out.println("\nSending 'POST' request to URL : " + url);
-		 * System.out.println("Response Code : " + responseCode);
-		 * 
-		 * BufferedReader in = new BufferedReader(new InputStreamReader(
-		 * conn.getInputStream())); String inputLine; StringBuffer response =
-		 * new StringBuffer();
-		 * 
-		 * while ((inputLine = in.readLine()) != null) {
-		 * response.append(inputLine); } in.close();
-		 * 
-		 * // 7. Print result System.out.println(response.toString());
-		 * 
-		 * } catch (MalformedURLException e) { e.printStackTrace(); } catch
-		 * (IOException e) { e.printStackTrace(); }
-		 */
+		
 
 		return "푸쉬 성공";
 
