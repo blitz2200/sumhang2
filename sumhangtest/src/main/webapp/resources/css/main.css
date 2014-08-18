@@ -149,6 +149,7 @@
 	height:20px;
 	border-radius: 8px;
 	margin-top: 2px;
+	border:none;
 	padding: 0;
 }
 
@@ -362,9 +363,13 @@ margin-bottom: 2px;
 	margin-bottom:10px;
 }
 
-#rightPanel .tripUser .placeHolder {
+#rightPanel .tripUser .woman {
 	margin-left:10%;
-	
+	color:red;
+}
+#rightPanel .tripUser .man {
+	margin-left:10%;
+	color:blue;
 }
 
 /* 트립유저 목록에서 삭제하기 버튼 */
