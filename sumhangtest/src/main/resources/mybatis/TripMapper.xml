@@ -77,12 +77,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM USER u, TIMELINE tl, (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
 										FROM USER_STATUS
 										GROUP BY TBOARD_NO ) ucount
-		WHERE u.USER_NO = tl.USER_NO AND ucount.TBOARD_NO = tl.TBOARD_NO AND tl.TBOARD_NO = #{value}	 
+		WHERE u.USER_NO = tl.USER_NO AND ucount.TBOARD_NO = tl.TBOARD_NO AND tl.TBOARD_NO = #{value}
 	</select>
 	
 	<select id="getTripList" resultMap="travelSelectMap">
 		SELECT TBOARD_NO, USER_NO, TITLE, TRAVEL, TRAVEL_START, TRAVEL_END, TRAVEL_USER_COUNT, TRAVEL_DESCRIPTION, TRAVEL_PHO, TRAVEL_TAG
-		FROM TBOARD;
+		FROM TBOARD
+		ORDER BY TBOARD_NO DESC
 	</select>
 	
 	<delete id="kickOutTripUser" parameterType="Map">
