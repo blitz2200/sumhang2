@@ -204,7 +204,7 @@ margin-top: 0;
 }
 
 /* 타임라인 쓰기 고정 */
-#wtiteTimeline #wirteTrip{
+#writeTimeline #writeTrip{
 	height:50px;
 	margin-bottom:0;
 	bottom:0;
@@ -251,7 +251,7 @@ margin-top: 0;
 
 /*  rightPanel ------------------------------------------------*/
 /* 방장 사진 */ 
-#hostUserPic{
+#rightPanel .userIcon{
     float: left;
     width: auto;
     max-width: 100%;
