@@ -20,8 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		<result property="travelNo" column="TBOARD_NO" jdbcType="NUMERIC"/>
   	</resultMap>
   	
-  	<insert id="addTrip" parameterType="java.util.Map" useGeneratedKeys="true">
   	
+  	<!-- 여행작성입력 -->
+  	<insert id="addTrip" parameterType="java.util.Map" useGeneratedKeys="true">  	
 		INSERT 											
 		INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,TRAVEL_END,TRAVEL_PHO,TRAVEL_USER_COUNT,TRAVEL_TAG,USER_NO)
 		VALUES ( 	#{travel},
@@ -33,26 +34,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{travelUserCount},
 					#{travelTag},
 					#{userNo}
-					 )
-						
+					 )						
 	<selectKey keyProperty="travelNo" resultType="String">
  	   SELECT LAST_INSERT_ID()
  	</selectKey>
 	</insert>
 	
+	<!-- 참가중인 여행목록 검색 -->
 	<select id="getUserTrip" parameterType="int" resultType="Map">
 		SELECT t.TBOARD_NO, t.USER_NO, t.TITLE, t.TRAVEL_START, t.TRAVEL_END, us.STATUS
 		FROM TBOARD t, USER_STATUS us
-		WHERE t.TBOARD_NO = us.TBOARD_NO AND us.USER_NO = #{value}
-	
+		WHERE t.TBOARD_NO = us.TBOARD_NO AND us.USER_NO = #{value}	
 	</select>
 	
+	<!-- 해당 여행에 참가중인 사용자들 검색 -->
 	<select id="getTripUsers" resultType="Map">
 		SELECT u.USER_NO, u.NICK, u.GENDER, u.USER_PHOTO, us.STATUS
 		FROM USER u,TBOARD t, USER_STATUS us
 		WHERE u.USER_NO = us.USER_NO AND t.TBOARD_NO = us.TBOARD_NO AND t.TBOARD_NO = #{travelNo}
 	</select>
 	
+	<!-- 사용자 상태 추가(방에 참가중인지 방장인지 등등)	 -->
 	<insert id="addUserStatus" parameterType="userStatus">
 		INSERT
 		INTO USER_STATUS(TBOARD_NO, USER_NO, STATUS)
@@ -62,6 +64,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					)
 	</insert>
 	
+	<!-- 타임라인 추가 -->
 	<insert id="addTimeLine" parameterType="timeLineVO">
 		INSERT
 		INTO TIMELINE(TBOARD_NO, USER_NO, TIMELINE_PHO, TIMELINE_DESCRIPTION)
@@ -72,6 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				)
 	</insert>
 	
+	<!-- 타임라인 리스트 가져오기 -->
 	<select id="getTimelineList" parameterType="String" resultType="Map">
 		SELECT u.USER_PHOTO, u.NICK, tl.TIMELINE_NO, tl.TIMELINE_PHO, tl.TIMELINE_DESCRIPTION, tl.TIMELINE_LIKE, ucount.JOINCOUNT
 		FROM USER u, TIMELINE tl, (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
@@ -80,12 +84,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE u.USER_NO = tl.USER_NO AND ucount.TBOARD_NO = tl.TBOARD_NO AND tl.TBOARD_NO = #{value}
 	</select>
 	
-	<select id="getTripList" resultMap="travelSelectMap">
+	<!-- 메인페이지 여행목록가져오기 -->
+	<select id="getTripList" resultType="Map">
 		SELECT TBOARD_NO, USER_NO, TITLE, TRAVEL, TRAVEL_START, TRAVEL_END, TRAVEL_USER_COUNT, TRAVEL_DESCRIPTION, TRAVEL_PHO, TRAVEL_TAG
 		FROM TBOARD
 		ORDER BY TBOARD_NO DESC
 	</select>
-	
+		
+	<!-- 여행에서 사용자 추방 -->
 	<delete id="kickOutTripUser" parameterType="Map">
 		DELETE
 		FROM USER_STATUS
@@ -134,6 +140,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 										FROM USER_STATUS
 										GROUP BY TBOARD_NO ) ucount
 		where u.USER_NO=t.USER_NO AND ucount.TBOARD_NO = t.TBOARD_NO AND t.TBOARD_NO = #{travelNo}
+	</select>
+	
+	<!-- 여행에 참가중인 인원 뽑아내기 -->
+	<select id="getTripUserNum" parameterType="int" resultType="int">
+		SELECT ucount.TBOARD_NO, ucount.JOINCOUNT
+		FROM (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
+					FROM USER_STATUS
+					GROUP BY TBOARD_NO) ucount
+		WHERE ucount.TBOARD_NO = #{value}
 	</select>
 	
    <!-- 메인 상세보기 수정 -->
