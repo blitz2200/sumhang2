@@ -46,7 +46,7 @@ app.config(function ($routeProvider) {
                 templateUrl: 'partials/main.html',
                 resolve: {//브라우저가 뿌려줄 데이터를 먼저 db에서 가져와 변수로 저장하고 변수에 저장된후에 값들과 함께 template에 뿌려준다.
                 	trips :function(mainFactory){
-                		return mainFactory.listMain().then(function (response){
+                		return mainFactory.tripList().then(function (response){
                 			return response.data;
                 		});
                 	},
