@@ -30,12 +30,15 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 		console.log('넘어온 tboardNo는:'+travelNo);		
 		
 		tripDetailFactory.tripDetail(sa,travelNo)
-		.success(function(data){    		
-			if(data.USER_NO==data.wuser_no){
-				$scope.readUserBUtton=false;
+		.success(function(data){
+			if(data.USER_NO == data.wuser_no){
+				$scope.readUserButton=false;
 				$scope.writeUserButton=true;
+			}else if(data.TRAVEL_USER_COUNT <= data.JOINCOUNT){
+				$scope.readUserButton=false;
+				$scope.writeUserButton=false;
 			}else{
-				$scope.readUserBUtton=true;
+				$scope.readUserButton=true;
 				$scope.writeUserButton=false;
 			}
 			
