@@ -5,6 +5,7 @@ package net.bit.sumhang.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -146,12 +147,34 @@ public class TripController {
 	}
 	
 	//메인 리스트 게시판 시작
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value="/main", method=RequestMethod.POST)
-	public @ResponseBody List<TripVO> selectTrip(){
+	public @ResponseBody List<Map> getTripList(){
 			System.out.println("메인 리스트 시작...");
 			
 			System.out.println(sqlSession.selectList("tripControlMapper.getTripList"));
-			return sqlSession.selectList("tripControlMapper.getTripList");
+			List<Map> list = new ArrayList<Map>();
+			List<Map> list2 = new ArrayList<Map>();
+			
+			
+			list = sqlSession.selectList("tripControlMapper.getTripList");
+			System.out.println("getTripList"+list);
+			int temp = list.size();
+			for(int i=0;i<temp;i++){
+				
+				System.out.println(list.get(i).get("TBOARD_NO"));
+				list2 = sqlSession.selectList("tripControlMapper.getTripUsers", list.get(i).get("TBOARD_NO"));
+				System.out.println("list2"+list2);
+				Map<String,Map> map = new HashMap<String,Map>();
+				for(int j=0;j<list2.size();j++){
+					map.put("juser"+j,list2.get(j));	
+					System.out.println("jmap"+map);					
+				}
+				list.get(i).putAll(map);
+				System.out.println("listadded"+list);				
+			}	
+			
+			return list;
 	}
 	
 	//getUserTrip
