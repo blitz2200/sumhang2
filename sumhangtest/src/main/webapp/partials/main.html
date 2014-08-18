@@ -97,7 +97,8 @@
 			id="rightPanel-close" href="#"> <br />
 		<!-- 방장 사진, 아이디 -->
 		<div id="hostUser">
-			<img src="{{serverAddress}}resources/images/host.png" id="hostUserPic">
+			<img src="{{serverAddress}}resources/images/host.png" class="userIcon" data-ng-show="userTripSelected.STATUS==1">
+			<img src="{{serverAddress}}resources/images/guest.png" class="userIcon" data-ng-hide="userTripSelected.STATUS==1">
 			<p id="hostUserName">{{sessionUser.nick}}</p>
 		</div>
 
@@ -125,8 +126,8 @@
 		</div>
 
 		<ul>
-			<li class="tripUser" data-ng-repeat="tripUser in tripUsers"><span data-ng-class="{man:tripUser.GENDER=='man',woman:tripUser.GENDER=='woman'}">{{tripUser.NICK}}</span>
-				<span class="placeHolder1"><img class="removeUser" src="{{serverAddress}}/resources/images/removeUser.png"
+			<li class="tripUser" data-ng-repeat="tripUser in tripUsers"><span class="placeHolder" data-ng-class="{man:tripUser.GENDER=='man',woman:tripUser.GENDER=='woman'}">{{tripUser.NICK}}</span>
+				<span class="placeHolder1"><img class="removeUser" src="{{serverAddress}}resources/images/removeUser.png"
 					data-ng-click="kickOutTripUser(tripUser.USER_NO)"
 					data-ng-hide="hideDelMenu(tripUser)"></span>
 			</li>
