@@ -14,8 +14,9 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
 	$scope.sessionUser = $route.current.locals.sessionUser; //resolve에 있는 변수를 scope에 넘겨준다
 	$scope.userTripSelected = $scope.userTrips[0];
 	
-	$scope.date =new Date();
 
+	
+	
 	
 	$scope.hideDelMenu = function(tripUser){
 		console.log('sessionuser :'+JSON.stringify($scope.sessionUser.userNo))
@@ -67,6 +68,19 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
     		console.log('getTripUsers 성공 넘어온 데이타는 ?:'+ JSON.stringify(data));
     		
     		$scope.tripUsers=data;
+    		var today = new Date();  
+    		var dateString = $scope.userTripSelected.TRAVEL_START;    		
+    		var dateArray = dateString.split("-");    		  
+    		var dateObj = new Date(dateArray[0], Number(dateArray[1])-1, dateArray[2]);    		  
+    		var betweenDay = Math.abs((today.getTime() - dateObj.getTime())/1000/60/60/24)+1;
+    		$scope.dDay= parseInt(betweenDay);
+    		if(today<=dateObj){
+    			$scope.dDayPassed = true
+    		}else{
+    			$scope.dDayPassed = false
+    		}
+    		console.log('ddaypassed'+$scope.dDayPassed);
+    		
     		console.log("getTripUsers 메인에 넘길데이타 :" +JSON.stringify($scope.tripUsers));		
     	}).error(function (error){
     		console.log('getTripUsers 실패');
@@ -79,7 +93,7 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
 		$scope.location.path(temp);
 	}
 	
-	$scope.goTripDetail=function(travelNo){
+	$scope.goTripDetail=function(travelNo){		
 		var temp="/tripDetail/"+travelNo;
 		$scope.location.path(temp);
 	}
