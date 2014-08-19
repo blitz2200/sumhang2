@@ -1,7 +1,76 @@
-app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactory', 
-                                        function ($scope, sumhangService,globalFactory) {
-		
+app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactory','Camera','userPhotoService',
+                                        function ($scope, sumhangService,globalFactory,Camera,userPhotoService) {
+	//서버 주소 가져오기
 	 var sa=globalFactory.serverAddress;
+	 $scope.serverAddress=globalFactory.serverAddress;
+	 
+	 //디비 서버에 넘길 변수 (갤러리나 카메라 둘중하나) 
+	  var userPhotoFile;
+	  //유저사진 하드에 저장할 변수 (갤러리나 카메라 둘중하나) 
+	  var userPhotoMultipartFile;
+	  
+	 //카메라 켜기 
+	 $scope.capturePhoto=function(){
+		  joinMemberCamera();
+		
+	  }
+	  
+	  function joinMemberCamera(){
+		  Camera.getPicture(function(cameraImage) {
+	            $scope.$apply(function() {
+	                $scope.imageData = cameraImage;
+	                alert('카메라 사진 경로:'+cameraImage);
+	                userPhotoFile = cameraImage.substr(cameraImage.lastIndexOf('/') + 1)+".jpg";
+	                userPhotoMultipartFile=cameraImage;
+	                //userPhotoService.uploadPhoto(sa,image);
+	                alert('디비에 넣을 사진 이름 '+userPhotoFile);
+	                alert('서버에 저장할 파일 경로'+userPhotoMultipartFile);
+	            });
+	        }, function(error) {
+	            $scope.$apply(function() {
+	                $scope.error = error;
+	            });
+	        }, {
+	            destinationType: Camera.DestinationType.FILE_URL,
+	            sourceType: Camera.PictureSourceType.CAMERA,
+	            encodingType: Camera.EncodingType.JPEG,
+	            quality: 50
+	        });
+	  }
+	 
+	
+	  
+	  
+	  //갤러리에서 사진 가져오기
+	  $scope.galleryPhoto=function(){
+		  joinMemberGallery();
+	  }
+	  function joinMemberGallery(){
+		  Camera.getPicture(function(galleryImage) {
+	            $scope.$apply(function() {
+	               // $scope.imageData = image;
+	                alert('갤러리 사진 경로:'+galleryImage);
+	                userPhotoFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
+	                userPhotoMultipartFile=galleryImage;
+	                alert('디비에 넣을 사진 이름 '+userPhotoFile);
+	                alert('서버에 저장할 파일 경로'+userPhotoMultipartFile);
+	                //alert(JSON.stringify($scope.imageData));
+	                //uploadPhoto(image);
+	                //sumhangService.addUserPhoto(sa,image);	                
+	            });
+	        }, function(error) {
+	            $scope.$apply(function() {
+	                $scope.error = error;
+	            });
+	        }, {
+	            destinationType: Camera.DestinationType.FILE_URL,
+	            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+	            encodingType: Camera.EncodingType.JPEG,
+	            quality: 50
+	        });
+	  }
+	  
+	  
 	  $scope.addMemberRequest = function(){
 		  	 $scope.submitted = true;	 
 			if( $scope.joinMember.inputIdInput.$valid && $scope.joinMember.inputPassword3Input.$valid																			
@@ -11,25 +80,19 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactor
 		console.log("회원가입 시작");
 		
 		var user =$scope.newMember;
-		var file=$scope.file;		
+		//var file=$scope.file;		
 	
 		console.log('회원가입 내용  :'+JSON.stringify(user));
 		
-		if (typeof $scope.tripfile != 'undifined') {
-			console.log('업로드 파일은 :' + JSON.stringify(file.name));
-			
-			//파일객체에서 이름을 빼서 userFile에 저장후 substr함수로 따음표 잘라내기
-			var userFile= JSON.stringify(file.name)
-						  .substr(1,JSON.stringify(file.name).length-2);
-			console.log('유저파일은? :'+userFile)
+		if (typeof userPhotoFile  != 'undifined') {			
 			
 			//회원가입 객체에 파일이름 추가 
-			user.photo=userFile;	
+			user.photo=userPhotoFile;	
 			
 			console.log("사진 파일 추가후 업로드"+JSON.stringify(user));
 			
 			//파일객체 서비스에 전송
-			sumhangService.addFile(sa,file);	
+			userPhotoService.uploadPhoto(sa,userPhotoMultipartFile);	
 		}else{
 			user.photo='1.png';
 			alert("디폴트파일이름"+JSON.stringify(user.photo));
@@ -50,7 +113,8 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactor
 				
 			}
 				
-		}	  
+		}	 
+	  
     
 }]); 
 //회원가입 controller 끝
