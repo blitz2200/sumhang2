@@ -1,7 +1,44 @@
-app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory', 
-                                     function ($scope, sumhangService,globalFactory) {
+app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory','Camera','tripUploadService', 
+                                     function ($scope, sumhangService,globalFactory,Camera,tripUploadService) {
 	
 	var sa=globalFactory.serverAddress;
+	$scope.serverAddress=sa;
+	//갤러리 사진을 디비에 저장할 변수
+	var tripGalleryFile;
+	//갤러리 사진을 서버에 저장할 파일 변수
+	var tripGalleryMultipartFile;
+	//여행 등록하기 갤러리 아이콘 선택시 실행됨 
+	$scope.galleryPhoto=function(){
+		addTripGallery();
+	}
+	
+	function addTripGallery(){
+		Camera.getPicture(function(galleryImage) {
+            $scope.$apply(function() {
+                $scope.imageData = galleryImage;
+                alert('갤러리 사진 경로:'+galleryImage);
+                tripGalleryFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
+                tripGalleryMultipartFile=galleryImage;
+                alert('디비에 넣을 사진 이름 '+ tripGalleryFile);
+                alert('서버에 저장할 파일 경로'+tripGalleryMultipartFil);	                
+            });
+        }, function(error) {
+            $scope.$apply(function() {
+                $scope.error = error;
+            });
+        }, {
+            destinationType: Camera.DestinationType.FILE_URL,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            encodingType: Camera.EncodingType.JPEG,
+            quality: 50
+        });
+  }
+	
+	
+	
+	
+	//여행 등록하기 
+	
     $scope.addTripRequest = function () {
     	$scope.submitted = true;
     	
@@ -16,24 +53,21 @@ app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory'
     	
     	var trip =$scope.newTrip;		
 		
-		var tripfile=$scope.tripfile;		
+		
     	
-			if (typeof $scope.tripfile != 'undefined') {
-		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
+			if (typeof tripGalleryFile != 'undefined') {
+		console.log('업로드 파일은 :' + tripGalleryFile);
     	
-			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
-			var tripFile= JSON.stringify(tripfile.name)
-						  .substr(1,JSON.stringify(tripfile.name).length-2);
-			console.log('여행파일은? :'+tripFile)
+			
 			
 			//여행등록 객체에 파일이름 추가 
-			trip.travelPho=tripFile;	
+			trip.travelPho=tripGalleryFile;	
 			
 			console.log("사진 파일 추가후 업로드"+JSON.stringify(trip));
 				
 				//파일객체 서비스에 전송
 		
-			sumhangService.addTripFile(sa,tripfile);
+			tripUploadService.addTripGalleryFile(sa,tripGalleryMultipartFile);
 			
 		}else{
 			trip.travelPho='1.png';
