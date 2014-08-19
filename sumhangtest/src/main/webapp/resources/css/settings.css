@@ -25,6 +25,12 @@
 		color: white;	
 }
 
+/* 오른쪽 아이콘 */
+#imageWrapper-settings #rightSideIcon{
+	margin-top: 6px;
+	left: 90%;
+}
+
 /* 리스트 배경색 */
 #listviewSettings{
 		background: white;
@@ -49,7 +55,7 @@
 
 /* 공백1 */
 #listviewSettings #space-settings, #space-settings2{
-	height: 50px;
+	height: 30px;
 	background: #f3f4f3;
 }
 
@@ -69,3 +75,11 @@
 	text-align: center;
 	font-family: 'Nanum Gothic Coding', monospace;
 }
+
+#leaveBtn-settings #leaveBtn{
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 12px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	}

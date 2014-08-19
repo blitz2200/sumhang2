@@ -29,5 +29,10 @@ app.controller('VersionInfoController', ['$scope','globalFactory', function ($sc
 	$scope.goSettings=function(){
 		$scope.location.path('/settings');		
 	}
+	
+	/*메인 라우터*/
+	$scope.goMain=function(){
+		$scope.location.path('/main');		
+	}
     
 }]);

@@ -65,4 +65,9 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams','tripDet
 		$scope.location.path('/addTrip');		
 	}	
 	
+	/*메인 라우터*/
+	$scope.goMain=function(){
+		$scope.location.path('/main');		
+	}
+	
 }]);

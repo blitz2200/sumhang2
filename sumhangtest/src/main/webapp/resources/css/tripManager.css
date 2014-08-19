@@ -2,12 +2,12 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
 /* 페이지 테두리 */
-.tripManagerView .container-tripManager{
+/* .tripManagerView .container-tripManager{
 	border-width: 6px;
 	border-style: solid;
 	border-color: #e6bb46;
 	border-radius: 8px;
-}
+} */
 
 /* 헤더 */
 #imageWrapper-tripManager{
@@ -19,10 +19,19 @@
 /* 헤더 제목 */
 #imageWrapper-tripManager #mainPageTitle{
 		font-family: 'Nanum Gothic Coding', monospace;
-		left: 42%;
+		left: 40%;
 		position: absolute;
 		font-size: 30px;
 		color: white;	
+}
+
+/* 헤더 오른쪽 아이콘 */
+#rightSideIconTripManager{
+	margin-top: 7px;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 90%;
 }
 
 /* 서치바 공간 */
@@ -54,6 +63,7 @@
 	border-bottom-style: solid;
 	border-color: #cccccc;
 	margin-left:-40px;
+	background-color: white;
 }
 
 /* 추천인 사진 */

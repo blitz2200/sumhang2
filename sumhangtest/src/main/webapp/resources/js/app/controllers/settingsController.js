@@ -1,4 +1,4 @@
-app.controller('SettingsController', ['$scope','globalFactory',function ($scope, globalFactory) {
+app.controller('SettingsController', ['$scope','globalFactory', function ($scope, globalFactory) {
 
 	$scope.serverAddress=globalFactory.serverAddress;
 	
@@ -28,5 +28,10 @@ app.controller('SettingsController', ['$scope','globalFactory',function ($scope,
 	/*셋팅 라우터*/
 	$scope.goSettings=function(){
 		$scope.location.path('/settings');		
+	}
+	
+	/*메인 라우터*/
+	$scope.goMain=function(){
+		$scope.location.path('/main');		
 	}
 }]);
