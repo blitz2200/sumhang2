@@ -8,8 +8,8 @@
 	loadCSS("");
 });
 
+var app = angular.module('sumhangApp', ['ngRoute','sumhangCordova','pageslide-directive','ngResource']);
 
-var app = angular.module('sumhangApp', ['ngRoute','pushNotify','pageslide-directive']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
