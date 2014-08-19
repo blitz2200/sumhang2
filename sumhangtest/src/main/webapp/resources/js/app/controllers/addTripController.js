@@ -8,7 +8,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory'
 	//갤러리 사진을 서버에 저장할 파일 변수
 	var tripGalleryMultipartFile;
 	//여행 등록하기 갤러리 아이콘 선택시 실행됨 
-	$scope.galleryPhoto=function(){
+	$scope.goGalleryPhoto=function(){
 		addTripGallery();
 	}
 	
