@@ -15,7 +15,7 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactor
 	
 		console.log('회원가입 내용  :'+JSON.stringify(user));
 		
-		if (typeof $scope.tripfile == 'undifined') {
+		if (typeof $scope.tripfile != 'undifined') {
 			console.log('업로드 파일은 :' + JSON.stringify(file.name));
 			
 			//파일객체에서 이름을 빼서 userFile에 저장후 substr함수로 따음표 잘라내기
