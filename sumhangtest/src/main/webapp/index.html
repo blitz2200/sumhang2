@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html data-ng-app="sumhangApp">
+<head>
+	 <meta charset="utf-8"> 
+	 <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+     <title>Sumhang App</title>
+     
+      <!-- 외부 벤더 라이브러리  --> 
+     <link rel="stylesheet" href="resources/lib/jquery-ui.min.css" />
+     <link rel="stylesheet" href="resources/lib/bootstrap.min.css" />
+	 <link rel="stylesheet" href="resources/lib/jquery.mobile-1.4.3.min.css" />
+   
+     <!--  bootstrap.css -->
+      <link href="resources/lib/bootstrap.css" rel="stylesheet">
+     
+     
+      <!-- 섬행 css 시작 -->
+      
+      <!-- loging css -->   
+      
+   		 <!-- 인트로 css -->
+	<link rel="stylesheet" href="resources/css/intro.css"/>
+	 	<!-- logininput css -->
+	<link rel="stylesheet" href="resources/css/login.css"/>
+		<!-- 	 회원가입 css -->
+	 <link rel="stylesheet" href="resources/css/joinMember.css"/>
+	 	<!-- addTrip css -->
+	<link rel="stylesheet" href="resources/css/addTrip.css"/> 
+		<!-- 	maincss -->
+	<link rel="stylesheet" href="resources/css/main.css"/>
+		<!--  timeLinecss -->
+	<link rel="stylesheet" href="resources/css/timeLine.css"/>  
+		<!-- 메인 상세 페이지 css -->
+	<link rel="stylesheet" href="resources/css/tripDetail.css"/> 
+		<!-- 이용자 추천 페이지 css -->
+	<link rel="stylesheet" href="resources/css/tripManager.css"/> 
+		<!-- 셋팅 페이지 css -->
+	<link rel="stylesheet" href="resources/css/settings.css"/>
+</head>
+
+
+<body>
+
+	<div data-ng-view=""></div>
+	
+	<!-- Vendor Lib-->
+	<script src="resources/lib/jquery-1.11.1.min.js"></script>
+	<script src="resources/lib/jquery-ui.min.js"></script>
+	<script src="resources/lib/jqm-config.js"></script>
+	<script src="resources/lib/jquery.mobile-1.4.3.min.js"></script>	
+	<script src="resources/lib/angular.js"></script>
+	<script src="resources/lib/angular-route.js"></script>
+	<script src="resources/lib/angular-resource.js"></script>
+	
+	<!-- UI Libs -->
+	
+    <script src="resources/lib/bootstrap.min.js"></script>
+
+
+<!-- App libs -->
+    <script src="resources/js/app/app.js"></script>
+    
+<!-- controller libs --> 
+    <script src="resources/js/app/controllers/addTripController.js"></script>
+    <script src="resources/js/app/controllers/introController.js"></script>
+    <script src="resources/js/app/controllers/joinMemberController.js"></script>
+    <script src="resources/js/app/controllers/loginController.js"></script>
+    <script src="resources/js/app/controllers/mainController.js"></script>
+    <script src="resources/js/app/controllers/timelineController.js"></script>
+    <script src="resources/js/app/controllers/tripDetailController.js"></script>
+    <script src="resources/js/app/controllers/modifyMemberController.js"></script>
+    <script src="resources/js/app/controllers/tripManagerController.js"></script>
+    <script src="resources/js/app/controllers/versionInfoController.js"></script>
+
+<!-- factory libs -->    
+    <script src="resources/js/app/factories/globalFactory.js"></script>
+    <script src="resources/js/app/factories/mainFactory.js"></script>
+    <script src="resources/js/app/factories/timelineFactory.js"></script>
+    <script src="resources/js/app/factories/tripDetailFactory.js"></script>
+    <script src="resources/js/app/factories/userFactory.js"></script>
+    
+<!-- service libs -->  
+    <script src="resources/js/app/services/sumhangService.js"></script>
+    <script src="resources/js/app/services/userPhotoService.js"></script>
+    <script src="resources/js/app/services/tripUploadService.js"></script>
+    
+<!-- direcctives libs -->    
+    <script src="resources/js/app/directives/angular-pageslide-directive.js"></script>
+    <script src="resources/js/app/directives/angular-password-directive.js"></script>
+    
+<!-- cordova user libs -->
+	<script src="resources/lib/cordova/sumhang-cordova.js"></script>
+	<!-- cordova user GCM libs -->
+	 <script src="resources/lib/cordova/pushnotification.js"></script>
+	 <script src="resources/lib/cordova/push.js"></script>
+	
+	<!-- cordova user CAMERA libs -->
+	 <script src="resources/lib/cordova/angular-camera.js"></script>
+
+	 
+<!-- cordova libs--> 
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="resources/lib/PushNotification.js"></script>
+
+
+
+</body>
+</html>
