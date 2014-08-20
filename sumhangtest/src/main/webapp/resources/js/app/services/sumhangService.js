@@ -36,7 +36,7 @@ app.service('sumhangService', ['$http',function ($http) {
     
     
     /*여행 파일 업로드*/
-    this.addTripFile = function(sa,tripfile){
+/*    this.addTripFile = function(sa,tripfile){
     	var fd1 = new FormData();
     	fd1.append('tripfile',tripfile);    	    	
     	$http({
@@ -52,7 +52,9 @@ app.service('sumhangService', ['$http',function ($http) {
     	.error(function(){
     		alert("파일업로드  실패")
     	});
-    };		
+    };		*/
+  //여행 파일 업로드 끝
+    
     
     this.addTrip = function(sa,trip){
     	$http({
@@ -66,5 +68,24 @@ app.service('sumhangService', ['$http',function ($http) {
     		alert("여행 정보 입력 실패")
     	})
     };
+    
+    
+/*    //유저 포토 업로드 시작 
+    this.addUserPthoto=function(sa,userPhoto){
+    	alert("서비스에 넘어온 포토 사진:"+userPhoto);
+    	var fdPhoto = new FormData();
+    	fdPhoto.append('userPhoto',userPhoto);
+    	$http({    		
+    		method:'POST',
+    		url : sa +"userPhoto.ajax",
+    		data : fdPhoto,
+    		transformRequest:angular.identify,
+       	 	headers:{'Content-Type':undefined}
+    	}).success(function(){
+    		alert('유저사진 업로드 성공');
+    	}).error(function(){
+    		alert('유저사진 업로드 실패')
+    	})
+    }*/
   
-}]);	//여행 파일 업로드 끝
+}]);	
