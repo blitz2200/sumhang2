@@ -2,9 +2,9 @@
 	<div class="container-joinMemberview">
 
 		<!-- page name -->
-		<div class="page-header">
-			<img class="joinLogo" src="resources/images/logo-2.png">
-		</div>
+	<div class="header-tripDetail"> 
+		 <p class="header-logo">SUMHANG</p>
+	 </div>
 		 
 
 	<form class="form-horizontal joinMember" name="joinMember" data-ng-submit="addMemberRequest()" data-ng-model="newMember" novalidate>
@@ -96,12 +96,18 @@
 <!-- 사진 올리기 -->
 		  <div class="form-group">
 		    	<label for="exampleInputFile" class="col-xs-2 control-label">프로필 사진</label>
+		    	<!-- <img class="cameraImg" data-ng-click="capturePhoto()" 
+		    		data-ng-src="{{serverAddress}}resources/images/icons/slr-camera-64.png"> -->
+		  <div class="col-xs-8" id="join-8"> 	
 		    	<img class="cameraImg" data-ng-click="capturePhoto()" 
-		    		data-ng-src="{{serverAddress}}resources/images/icons/slr-camera-64.png">
-		        
-		        <img class="cameraImg" data-ng-click="galleryPhoto()" 
-		    		data-ng-src="{{serverAddress}}resources/images/icons/gallery.png">
+		    		src="resources/images/icons/slr-camera-64.png">	
 		    		
+		        
+		       <!--  <img class="cameraImg" data-ng-click="galleryPhoto()" 
+		    		data-ng-src="{{serverAddress}}resources/images/icons/gallery.png"> -->
+		    	 <img class="cameraImg" data-ng-click="galleryPhoto()" 
+		    		src="resources/images/icons/gallery.png">	
+		</div>    		
 		    	<!-- <div class="col-xs-8" id="join-7">
 		    		<input type="file" id="exampleInputFile" data-file-model="file" data-ng-model="newMember.photo">
 		   				 <p class="help-block">프로필 사진</p>
@@ -140,8 +146,10 @@
 		      		<button  type="submit" class="btn btn-primary btn-xs-5 join-btn" id="registerbtn">가입하기</button>
 		      	<!-- 	 <a   class="btn btn-primary btn-xs-5" href="#/main">Main</a> -->
 		    	</div>
-		  </div>
 		   
+		    	<br/>
+		  </div>
+		<br/>   
 </form>
 </div>
 </div>
