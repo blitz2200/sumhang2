@@ -1,5 +1,5 @@
-app.controller('AddTripController', ['$scope',  'tripService','globalFactory','Camera', 
-                                     function ($scope, tripService,globalFactory,Camera) {
+app.controller('AddTripController', ['$scope',  'tripService','globalFactory','Camera','tripUploadService', 
+                                     function ($scope, tripService,globalFactory,Camera,tripUploadService) {
 	
 	var sa=globalFactory.serverAddress;
 	$scope.serverAddress=sa;
@@ -58,13 +58,13 @@ app.controller('AddTripController', ['$scope',  'tripService','globalFactory','C
 			
 			//여행등록 객체에 파일이름 추가 
 			trip.travelPho=tripGalleryFile;
-			//trip.travelSphoto="s_"+tripGalleryFile;
+			trip.travelSphoto="s_"+tripGalleryFile;
 			
 			console.log("사진 파일 추가후 업로드"+JSON.stringify(trip));
 				
 				//파일객체 서비스에 전송
 		
-			tripService.addTripFile(sa,tripfile);
+			
 			tripUploadService.addTripGalleryFile(sa,tripGalleryMultipartFile);
 			
 		}else{
