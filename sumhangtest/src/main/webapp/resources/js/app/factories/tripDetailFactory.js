@@ -20,7 +20,7 @@ app.factory('tripDetailFactory',['$http', function($http){
 	//메인 상세보기 삭제 시작
 	tripDetailFactory.deleteTripDetail=function(sa,travelNo){
 		console.log('팩토리 메인 상세보기 삭제 시작')
-		console.log('팩토리 메인 상세보기 삭제  넘어온 travelNo확인 : ' + travelNo);
+		alert('팩토리 메인 상세보기 삭제  넘어온 travelNo확인 : ' + travelNo);
 		return $http({
 			'url' :sa+"deleteTripDetail.ajax",
 			'method': 'POST',
@@ -35,31 +35,31 @@ app.factory('tripDetailFactory',['$http', function($http){
 	//메인 상세보기 수정 시작
 	tripDetailFactory.editTripDetail=function(sa,trip,travelNo){
 		trip.travelNo=travelNo;
-		console.log('팩토리 메인 상세보기 수정 시작')
-		console.log('팩토리 메인 상세보기 수정  넘어온 trip 객체 ====='+JSON.stringify(trip));
+		alert('팩토리 메인 상세보기 수정 시작')
+		alert('팩토리 메인 상세보기 수정  넘어온 trip 객체 ====='+JSON.stringify(trip));
 				
 		return $http({
 			'url':sa+"editTripDetail.ajax",
 			'method' : 'POST',
 			'data'   :	trip
 		}).success(function(){
-			console.log('팩토리 메인상세보기 게시판 수정 성공')
+			alert('팩토리 메인상세보기 게시판 수정 성공')
 		}).error(function(){
-			console.log('팩토리 메인상세보기 게시판 수정 실패')
+			alert('팩토리 메인상세보기 게시판 수정 실패')
 		})
 	}
 	
 	//여행 참가하기 버튼 클릭 방장한테 푸시 날리기	
 	tripDetailFactory.pushEnterTrip=function(sa,travelNo){
-		console.log('팩토리 여행참가하기 버튼 클릭 방번호'+travelNo);
+		alert('팩토리 여행참가하기 버튼 클릭 방번호'+travelNo);
 		return $http({
 			'url' : sa+"pushEnterTrip.ajax",
 			'method' : 'POST',
-			'data': {'userNo':userNo}
+			'data': {'travelNo':travelNo}
 		}).success(function(data){
-			console.log('여행 참가하기 버튼 클릭 방장한테 푸시 날리기 성공')
+			alert('여행 참가하기 버튼 클릭 방장한테 푸시 날리기 성공')
 		}).error(function(){
-			console.log('여행 참가하기 버튼 클릭 방장한테 푸시 날리기 실패 ')
+			alert('여행 참가하기 버튼 클릭 방장한테 푸시 날리기 실패 ')
 		})
 	}
 
