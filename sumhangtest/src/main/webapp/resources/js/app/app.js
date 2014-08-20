@@ -8,8 +8,7 @@
 	loadCSS("");
 });
 
-var app = angular.module('sumhangApp', ['ngRoute','sumhangCordova','pageslide-directive','ngResource']);
-
+var app = angular.module('sumhangApp', ['ngRoute','sumhangCordova','pushNotify','pageslide-directive', 'ngResource', 'ui.bootstrap']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
@@ -72,7 +71,7 @@ app.config(function ($routeProvider) {
         .when('/settings',
             {
                 controller: 'SettingsController',
-                templateUrl: 'partials/settings.html'
+                templateUrl: 'partials/settings.html'            	
             })
         .when('/timeLine/:travelNo',
             {
@@ -105,6 +104,11 @@ app.config(function ($routeProvider) {
             {
                 controller: 'inviteController',
                 templateUrl: 'partials/invite.html'
+            })
+           .when('/timeLineReply',
+            {
+                controller: 'timeLineReplyController',
+                templateUrl: 'partials/timeLineReply.html'
             })
         .otherwise({ redirectTo: '/intro' });
 });
