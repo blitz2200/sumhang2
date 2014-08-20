@@ -144,8 +144,16 @@
 }
 
 /* 타임라인 버튼 간격 */
-.replylist-timeline .row #timeLineBtns #timeLineBtnReply{
-	margin-left: 5px;
+#timeLineBtns #timeLineBtnReply{
+	width: 43%;
+	float: right;
+	margin-right: 20px;
+}
+
+#timeLineBtns #timeLineLikeBtn{
+	width: 43%;
+	float: left;
+	margin-left: 20px;	
 }
 
 /* 타임라인 쓰기 고정 */

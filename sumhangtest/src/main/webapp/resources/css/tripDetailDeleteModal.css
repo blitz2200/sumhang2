@@ -1,0 +1,57 @@
+/*fonts*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+/* 글씨체 설정 */
+.tripDetailDeleteModalView{
+	font-family: 'Nanum Gothic Coding', monospace;
+}
+
+/* 헤더  */
+#tripDetailDeleteModalHeader{
+	font-weight:bold;
+	color:black;
+	text-align: center;
+	margin-top: 15px;
+	font-size: 15px;
+}
+
+/*  modal 바디 내용  */
+#tripDetailDeleteModalBody{
+	text-align: center;
+	margin-top: -5px;
+	margin-bottom: -5px;
+	font-weight: bold;
+}
+
+/* 수평선 */
+.tripDetailDeleteModalView hr{
+	border-bottom-color:#f6f6f6;
+	border-bottom-style:solid ;
+	border-bottom-width:1px; 
+}
+
+/* modal 하단 버튼 */
+.tripDetailDeleteModal-footer{
+	text-align: center;
+	margin-top: -20px;
+}
+
+/* 왼쪽 버튼 */
+.tripDetailDeleteModal-footer #tripDetailDeleteModalFooterBtnLeft{
+	width: 50%;
+	float: left;
+	border-radius: 0;
+	color: #ffbb33;
+	font-weight: bold;
+	 border-bottom-left-radius: 6px;
+}
+
+/* 오른쪽 버튼 */
+.tripDetailDeleteModal-footer #tripDetailDeleteModalFooterBtnRight{
+	width: 50%;
+	float: right;
+	border-radius: 0;
+	color: #ffbb33;
+	font-weight: bold;
+	border-bottom-right-radius: 6px;
+}
