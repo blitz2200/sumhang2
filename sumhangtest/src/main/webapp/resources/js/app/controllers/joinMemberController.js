@@ -1,10 +1,25 @@
-app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactory','Camera','userPhotoService',
-                                        function ($scope, sumhangService,globalFactory,Camera,userPhotoService) {
-	//서버 주소 가져오기
-	 var sa=globalFactory.serverAddress;
-	 $scope.serverAddress=globalFactory.serverAddress;
-	 
-	 //디비 서버에 넘길 변수 (갤러리나 카메라 둘중하나) 
+app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	'globalFactory', 'Camera', 'userPhotoService',
+                                        function($scope, userService, userFactory, globalFactory, Camera, userPhotoService) {
+			
+	var sa = globalFactory.serverAddress;
+	$scope.serverAddress=globalFactory.serverAddress;
+	
+	$scope.duplicateChecking = function (userId){
+		console.log('controllerUserId:'+userId);
+		userFactory.duplicateCheck(sa, userId)
+		.success(function(data){
+			if(data==''){
+				$scope.joinMember.isDuplicate=true;
+				console.log('$scope.joinMember.isDuplicate'+$scope.joinMember.isDuplicate);
+			}else{
+				$scope.joinMember.isDuplicate=false;
+				console.log('$scope.joinMember.isDuplicate'+$scope.joinMember.isDuplicate);
+			}
+		});
+		
+	}
+			
+			//디비 서버에 넘길 변수 (갤러리나 카메라 둘중하나) 
 	  var userPhotoFile;
 	  //유저사진 하드에 저장할 변수 (갤러리나 카메라 둘중하나) 
 	  var userPhotoMultipartFile;
@@ -73,8 +88,7 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactor
 	            quality: 50
 	        });
 	  }
-	  
-	  
+			
 	  $scope.addMemberRequest = function(){
 		  	 $scope.submitted = true;	 
 			if( $scope.joinMember.inputIdInput.$valid && $scope.joinMember.inputPassword3Input.$valid																			
@@ -117,8 +131,5 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactor
 				
 			}
 				
-		}	 
-	  
-    
-}]); 
-//회원가입 controller 끝
+		}
+} ]);
