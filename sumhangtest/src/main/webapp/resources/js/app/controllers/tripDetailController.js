@@ -131,10 +131,7 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 	}
 			
 	//메인 상세보기 삭제 시작
-	$scope.goDeleteTripDetail=function(){		
-		modalService.showModal().then(function(){
-			deleteTripDetail(travelNo);
-		});		
+ 
 	$scope.goDeleteTripDetail=function(){	   
 		
 		/*상세보기 삭제 modal 설정*/
