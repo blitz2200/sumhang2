@@ -35,7 +35,8 @@
 		<!--  timeLinecss -->
 	<link rel="stylesheet" href="resources/css/timeLine.css"/>  
 		<!-- 메인 상세 페이지 css -->
-	<link rel="stylesheet" href="resources/css/tripDetail.css"/> 
+	<link rel="stylesheet" href="resources/css/tripDetail.css"/>
+	<link rel="stylesheet" href="resources/css/invite.css"/>
 		<!-- 이용자 추천 페이지 css -->
 	<link rel="stylesheet" href="resources/css/tripManager.css"/> 
 		<!-- 셋팅 페이지 css -->
@@ -59,15 +60,14 @@
 	<script src="resources/lib/jquery.mobile-1.4.3.min.js"></script>	
 	<script src="resources/lib/angular.js"></script>
 	<script src="resources/lib/angular-route.js"></script>
-
+	<script src="resources/lib/ui-bootstrap-tpls-0.11.0.min.js"></script>
+	<script src="resources/lib/ng-infinite-scroll.js"></script>	
 	
-	<!-- UI Libs -->
-	
+	<!-- UI Libs -->	
     <script src="resources/lib/bootstrap.min.js"></script>
     <script src="resources/lib/bootstrap-lightbox.js"></script>
  
-
-
+    
 <!-- App libs -->
     <script src="resources/js/app/app.js"></script>
     
@@ -79,6 +79,7 @@
     <script src="resources/js/app/controllers/mainController.js"></script>
     <script src="resources/js/app/controllers/timelineController.js"></script>
     <script src="resources/js/app/controllers/tripDetailController.js"></script>
+    <script src="resources/js/app/controllers/inviteController.js"></script>
     <script src="resources/js/app/controllers/modifyMemberController.js"></script>
     <script src="resources/js/app/controllers/tripManagerController.js"></script>
     <script src="resources/js/app/controllers/versionInfoController.js"></script>
@@ -91,12 +92,15 @@
     <script src="resources/js/app/factories/userFactory.js"></script>
     
 <!-- service libs -->  
-    <script src="resources/js/app/services/sumhangService.js"></script>
+    <script src="resources/js/app/services/userService.js"></script>
+    <script src="resources/js/app/services/tripService.js"></script>
+    <script src="resources/js/app/services/modalService.js"></script>
     
-<!-- direcctives libs -->    
+<!-- directive libs -->    
     <script src="resources/js/app/directives/fileDirective.js"></script>
     <script src="resources/js/app/directives/angular-pageslide-directive.js"></script>
     <script src="resources/js/app/directives/angular-password-directive.js"></script>
+    
 <!-- GCM libs -->
 	 <script src="resources/lib/pushnotification.js"></script>
 	 <script src="resources/lib/push.js"></script>
