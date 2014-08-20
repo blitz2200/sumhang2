@@ -92,7 +92,7 @@ img.titleImg{
  #PasswordInput{
  	width:65%;
  	position:relative;
- 	left:13px;
+ 	left:17px;
  }
  
  input.input1{
@@ -119,28 +119,31 @@ img.titleImg{
  	width:100px;
  	height:35px;
  	margin-right:5%;
+ 	background-color:#F9CF7B;
+ 	width:80px;
+ 	height:35px;
+ 	
  }
  
  p#Log{
  	font-weight:700;
- 	
+ 	color:white;
  
  }
  
- log.button.btn{
- 	background-color:white;
- 	width:100px;
- 	height:35px;
+ 
+ 
+ .Log{
+ 	margin:1%;
  }
- 
- 
  a#SignIn{
- 	color:black;
+ 	color:white;
  	margin-top:2%;
+ 	background-color:#F9CF7B;
  }
   span.btn{
- 	background-color:white;
- 	width:100px;
+ 	background-color:#F9CF7B;
+ 	width:80px;
  	height:35px;
  }
   
