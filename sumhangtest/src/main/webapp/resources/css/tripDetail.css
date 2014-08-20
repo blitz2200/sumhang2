@@ -27,14 +27,14 @@
 	color: #333;
 }
 
-.tripDetail .tripAdd {
+/* .tripDetail .tripAdd {
 	float: left;
 	margin-left: 300px
-}
+} */
 
 .tripDetail .userPho {
-	height: 80px;
-	width: 80px;
+	height: 70px;
+	width: 70px;
 	margin-top: 0.5em;
 	margin-left: 1.5em;
 	-webkit-border-radius: 10px;
@@ -50,9 +50,10 @@
 }
 
 .tripDetail .mainImg {
-	margin: 1em;
+	 margin: 1em; 
+	
 	height: 200px;
-	width: 400px;
+	width: 87%;
 	padding: 10px 10px 10px;
 	background-color: #FFF;
 	box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
@@ -63,59 +64,7 @@
 	margin-left:70%;
 }
 
-/* 
-.tripDetail .addTrip {
-	margin-left: 300px;
-	-moz-box-shadow: inset -2px -3px 50px -25px #dcecfb;
-	-webkit-box-shadow: inset -2px -3px 50px -25px #dcecfb;
-	box-shadow: inset -2px -3px 50px -25px #dcecfb;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bddbfa
-		), color-stop(1, #80b5ea));
-	background: -moz-linear-gradient(center top, #bddbfa 5%, #80b5ea 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa',
-		endColorstr='#80b5ea');
-	background-color: #bddbfa;
-	-webkit-border-top-left-radius: 12px;
-	-moz-border-radius-topleft: 12px;
-	border-top-left-radius: 12px;
-	-webkit-border-top-right-radius: 12px;
-	-moz-border-radius-topright: 12px;
-	border-top-right-radius: 12px;
-	-webkit-border-bottom-right-radius: 12px;
-	-moz-border-radius-bottomright: 12px;
-	border-bottom-right-radius: 12px;
-	-webkit-border-bottom-left-radius: 12px;
-	-moz-border-radius-bottomleft: 12px;
-	border-bottom-left-radius: 12px;
-	text-indent: -2.44px;
-	border: 1px solid #84bbf3;
-	display: inline-block;
-	color: #ffffff;
-	font-family: Arial;
-	font-size: 17px;
-	font-weight: bold;
-	font-style: normal;
-	height: 53px;
-	line-height: 53px;
-	width: 118px;
-	text-decoration: none;
-	text-align: center;
-	text-shadow: 0px 3px 50px #528ecc;
-}
 
-.tripDetail .addTrip:hover {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #80b5ea
-		), color-stop(1, #bddbfa));
-	background: -moz-linear-gradient(center top, #80b5ea 5%, #bddbfa 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea',
-		endColorstr='#bddbfa');
-	background-color: #80b5ea;
-}
-
-.tripDetail .addTrip:active {
-	position: relative;
-	top: 1px;
-} */
 
 .tripDetail .cal {
 	height: 30px;
@@ -160,14 +109,14 @@
 /* 휴지통 */
 .tripDetail ul .delete img{
 	height:30px;
-	width:30px;
+	width:100%;
 	
 }
 
 /* 수정 */
 .tripDetail ul .edit img{
 	height:28px;
-	width:28px;
+	width:100%;
 	margin-left:10px;
 }
 
@@ -178,20 +127,20 @@
 
 
 .wraper-footer-tripDetail .replybtn {
-	margin-left: 60px;
+	margin-left: 30px;
 } 
 
 
 
  .wraper-footer-tripDetail input{
 	height: 35px;
-	width: 280px;
+	width: 100%;
 	background-color: transparent;
 	border-style: solid;
 	border-width: 0px 0px 1px 0px;
 	border-color: darkred;
 	outline: 0;
-	margin-left:50px;
+	margin-left:30px;
 } 
 
 
