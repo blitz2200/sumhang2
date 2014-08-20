@@ -79,8 +79,10 @@
 						{{TIMELINE_PHO}}<br/>
 						좋아요:{{timeline.TIMELINE_LIKE}}
 						<div id="timeLineBtns">
-							<button type="button" class="btn btn-warning btn-xs" data-ng-click="">좋아요</button>
-							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" data-ng-click="">댓글</button>
+							<button type="button" class="btn btn-warning btn-xs" data-ng-click="" id="timeLineLikeBtn">좋아요 {{timeline.TIMELINE_LIKE}}</button>
+					
+							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" data-ng-click="goWriteReply">댓글</button>
+				
 						</div>
 			
 			<!-- 타임라인 댓글 -->			

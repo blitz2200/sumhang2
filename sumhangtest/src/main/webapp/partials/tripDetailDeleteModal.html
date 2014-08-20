@@ -1,0 +1,23 @@
+<div class="tripDetailDeleteModalView">
+<!-- tripDetailDeleteModal-header -->	
+	<div class="tripDetailDeleteModal-header">
+	  <p id="tripDetailDeleteModalHeader">{{modalOptions.headerText}}</p>
+	</div>	
+<!-- tripDetailDeleteModal-header End -->
+	
+<!-- tripDetailDeleteModal-body -->
+	<div class="tripDetailDeleteModal-body">
+	  <p id="tripDetailDeleteModalBody">{{modalOptions.bodyText}}</p>
+	</div><hr/>			
+<!-- tripDetailDeleteModal-body End -->
+	
+<!-- tripDetailDeleteModal-footer -->
+	<div class="tripDetailDeleteModal-footer">
+	  <button type="button" class="btn btn-default"  id="tripDetailDeleteModalFooterBtnLeft"
+	          data-ng-click="modalOptions.close()">{{modalOptions.closeButtonText}}</button>
+	  <button class="btn btn-default"   id="tripDetailDeleteModalFooterBtnRight"
+	          data-ng-click="modalOptions.ok();">{{modalOptions.actionButtonText}}</button>
+	</div>			
+<!-- tripDetailDeleteModal-footer End -->
+
+</div>			<!-- tripDetailDeleteModalView End -->
