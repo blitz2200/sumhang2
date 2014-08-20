@@ -1,5 +1,5 @@
-app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory','Camera','tripUploadService', 
-                                     function ($scope, sumhangService,globalFactory,Camera,tripUploadService) {
+app.controller('AddTripController', ['$scope',  'tripService','globalFactory', 
+                                     function ($scope, tripService,globalFactory) {
 	
 	var sa=globalFactory.serverAddress;
 	$scope.serverAddress=sa;
@@ -63,6 +63,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory'
 				
 				//파일객체 서비스에 전송
 		
+			tripService.addTripFile(sa,tripfile);
 			tripUploadService.addTripGalleryFile(sa,tripGalleryMultipartFile);
 			
 		}else{
@@ -73,7 +74,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory'
 		
 		alert('여행 등록 내용  :'+JSON.stringify(trip));
 		//여행객체 서비스에 전송
-		sumhangService.addTrip(sa,trip);
+		tripService.addTrip(sa,trip);
 		$scope.location.path('/main');  
 		}else{
 			alert('양식을 입력하세요');
