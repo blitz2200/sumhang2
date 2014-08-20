@@ -170,20 +170,42 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 	
 	
 	//여행참가하기 버튼 클릭 방장한테 푸쉬 날리기
-	$scope.goEnterTrip=function(){
-		pushEnterTrip()
-	};
+	$scope.goEnterTrip=function(push){
+	     var modalDefaults = {
+	          backdrop: true,
+	                keyboard: true,
+	                modalFade: true,
+	                  templateUrl: '/partials/tripDetailDeleteModal.html',
+	              };
+	     
+	     var modalOptions = {
+	                closeButtonText: '취소',
+	                actionButtonText: '보내기',
+	                headerText: '푸쉬 보내기',
+	                bodyText: '푸쉬 날리시겠습니까??'
+	            };
+	     
+	     modalService.showModal(modalDefaults, modalOptions).then(function () {
+	       pushEnterTrip(push); 
+	          });
+	    
+	  };
 	
-	function pushEnterTrip(){
-		console.log('여행참가하기 버튼 클릭')
-		tripDetailFactory.pushEnterTrip(sa,travelNo)
-		.success(function(){
-			console.log('여행참가하기 푸시 성공');
-		}).error(function(error){
-			console.log('여행참가하기 푸시 실패');
-		})
-		
-	}
+	  function pushEnterTrip(push){
+		    alert('여행참가하기 버튼 클릭'+push);
+		    alert('방장이 푸쉬를 원합니까???   '+push);
+		    if(push=='no'){
+		      alert('방장은 푸쉬 거부 상태 입니다.')
+		    }else{
+		      tripDetailFactory.pushEnterTrip(sa,travelNo)
+		      .success(function(){
+		        alert('여행참가하기 푸시 성공');
+		      }).error(function(error){
+		        alert('여행참가하기 푸시 실패');
+		      })
+		    }
+		  }
+		  
 	
 	
 	
