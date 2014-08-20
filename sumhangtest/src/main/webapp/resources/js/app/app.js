@@ -8,7 +8,8 @@
 	loadCSS("");
 });
 
-var app = angular.module('sumhangApp', ['ngRoute','sumhangCordova','pageslide-directive', 'ngResource', 'ui.bootstrap']);
+
+var app = angular.module('sumhangApp', ['ngRoute','sumhangCordova','pageslide-directive','ui.bootstrap', 'infinite-scroll']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
@@ -71,7 +72,7 @@ app.config(function ($routeProvider) {
         .when('/settings',
             {
                 controller: 'SettingsController',
-                templateUrl: 'partials/settings.html'            	
+                templateUrl: 'partials/settings.html'
             })
         .when('/timeLine/:travelNo',
             {
@@ -137,4 +138,3 @@ app.directive('repeatDone', function () {
         }
     }
 });
-
