@@ -3,10 +3,10 @@
 //main페이지에서 tboard_no를 a링크에 넣어서 보냄  
 //app.js파일에  when주소뒤에 :스코프이름 으로 넘긴걸 받음 
 //콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
-app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFactory',
-                                        'sumhangService','modalService','globalFactory',
-                                        function ($scope,$routeParams ,tripDetailFactory,
-                                        		  sumhangService,modalService,globalFactory) {
+app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFactory',
+                                        'tripService', 'modalService', 'globalFactory',
+                                        function ($scope,$routeParams, tripDetailFactory,
+                                        		  tripService, modalService, globalFactory) {
 	
 	
 	//넘어온 tboard_no,tripDetailReply값  변수에 저장
@@ -103,7 +103,7 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	    				
 	    				//파일객체 서비스에 전송
 	    		
-	    			sumhangService.addTripFile(sa,tripfile);
+	    			tripService.addTripFile(sa,tripfile);
 	    			
 	    		}else{
 	    			trip.travelPho='1.png';
@@ -131,6 +131,10 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	}
 			
 	//메인 상세보기 삭제 시작
+	$scope.goDeleteTripDetail=function(){		
+		modalService.showModal().then(function(){
+			deleteTripDetail(travelNo);
+		});		
 	$scope.goDeleteTripDetail=function(){	   
 		
 		/*상세보기 삭제 modal 설정*/
