@@ -11,6 +11,17 @@
 
 }
 
+/* #listviewMainPage ul{
+	max-height: 800px;
+    overflow: auto;
+    list-style-type: none;
+} */
+
+#listviewMainPage li{
+	background-color:white;
+}
+
+
 /* 서치바디자인 */
 .ui-filterable .ui-input-search{
 	font-family: 'Nanum Gothic Coding', monospace;
@@ -173,7 +184,7 @@ margin-top: 0;
 margin-bottom: 2px;
 margin-top: 0;
 border: none;
-	}
+}
 	
 
 /* 좋아요 숫자 */
@@ -203,7 +214,7 @@ border: none;
 }
 
 /* 타임라인 쓰기 고정 */
-#wtiteTimeline #wirteTrip{
+#writeTimeline #writeTrip{
 	height:50px;
 	margin-bottom:0;
 	bottom:0;
