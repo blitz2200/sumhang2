@@ -141,7 +141,7 @@ public class UserController {
 	
 	
 		@RequestMapping(value="/userPhoto", method = RequestMethod.POST)
-		public @ResponseBody String addUserPhoto(@RequestPart MultipartFile userPhoto){
+		public @ResponseBody String addUserPhoto(HttpServletRequest req,@RequestPart MultipartFile userPhoto){
 			System.out.println("카메라 사진 촬영 파일"+userPhoto);
 
 			if(!userPhoto.isEmpty()){ //파일 유효성 체크
@@ -154,12 +154,13 @@ public class UserController {
 					System.out.println("업로드 파일이름 : "+userPhotoFile);
 					
 					//저장할 파일 폴더 스트링에 저장 (서블렛 컨텍스트 홈으로 설정)
-					/*String rootPath = new HttpServletRequestWrapper(req).getRealPath("/");*/
-					String rootPath = "c:/userUploads";
+					String rootPath = req.getSession().getServletContext().getRealPath("resources/images/userPhotoFiles");    
+							//.getRealPath("/");
+				
 					System.out.println("유저포터 저장위치: "+rootPath);
 					
 					//파일 저장 풀경로 만들기 
-			/*		File dir = new File(rootPath +File.separator +"resources"+File.separator
+				/*	File dir = new File(rootPath +File.separator +"resources"+File.separator
 							+"images"+ File.separator + "userPhotoFiles");*/
 					File dir = new File(rootPath);
 					//디렉토리가 없다면 디렉토리 생성
