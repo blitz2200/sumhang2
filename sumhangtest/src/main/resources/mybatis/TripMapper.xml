@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<!-- 여행작성입력 -->
   	<insert id="addTrip" parameterType="java.util.Map" useGeneratedKeys="true">  	
 		INSERT 											
-		INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,TRAVEL_END,TRAVEL_PHO,TRAVEL_USER_COUNT,TRAVEL_TAG,USER_NO)
+		INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,TRAVEL_END,TRAVEL_PHO,TRAVEL_SPHOTO,TRAVEL_USER_COUNT,TRAVEL_TAG,USER_NO)
 		VALUES ( 	#{travel},
 					#{title},
 					#{travelDescription},
@@ -33,6 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{travelPho},
 					#{travelUserCount},
 					#{travelTag},
+					#{travelSphoto},
 					#{userNo}
 					 )						
 	<selectKey keyProperty="travelNo" resultType="String">
@@ -86,7 +87,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 메인페이지 여행목록가져오기 -->
 	<select id="getTripList" parameterType="int" resultType="Map">
-		SELECT TBOARD_NO, USER_NO, TITLE, TRAVEL, TRAVEL_START, TRAVEL_END, TRAVEL_USER_COUNT, TRAVEL_DESCRIPTION, TRAVEL_PHO, TRAVEL_TAG
+		SELECT TBOARD_NO, USER_NO, TITLE, TRAVEL, TRAVEL_START, TRAVEL_END, TRAVEL_USER_COUNT, 
+			  TRAVEL_SPHOTO,TRAVEL_DESCRIPTION, TRAVEL_PHO, TRAVEL_TAG
 		FROM TBOARD
 		ORDER BY TBOARD_NO DESC LIMIT #{value},5
 	</select>
@@ -133,7 +135,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
    <!-- 메인 상세보기 출력 -->
 	<select id="tripDetail" parameterType="trip" resultType="Map">
-		select t.travel, t.TBOARD_NO, t.USER_NO, u.user_photo, u.nick,t.title,
+		select t.travel, t.TBOARD_NO, t.USER_NO, u.user_photo, u.nick,u.PUSH,t.title,
 			 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
 			 t.TRAVEL_PHO, ucount.JOINCOUNT
 			 from TBOARD t, USER u, (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
