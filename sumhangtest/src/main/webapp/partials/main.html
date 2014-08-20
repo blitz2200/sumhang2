@@ -30,6 +30,7 @@
 		<div id="listviewMainPage">
 
 			<!-- 서치바 -->
+			<div data-infinite-scroll="loadMore()">
 			<ul data-theme="none" data-role="listview" data-inset="true"
 				data-filter="true" data-filter-placeholder="검색" id="mainSearchBar">
 
@@ -81,10 +82,11 @@
 				</li>
 				
 		<!-- 쓰기 아이콘 -->
-				<div id="wtiteTimeline">
-					<img src="{{serverAddress}}resources/images/yellow-document-plus-icon.png"  id="wirteTrip" data-ng-click="goAddTrip()">
+				<div id="writeTimeline">
+					<img src="{{serverAddress}}resources/images/writeTrip.png" id="wirteTrip" data-ng-click="goAddTrip()">
 				</div>			
 			</ul>
+			</div>
 		</div>
 	</div>
 
