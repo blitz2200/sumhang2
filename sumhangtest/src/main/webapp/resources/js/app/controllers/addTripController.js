@@ -15,7 +15,11 @@ app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory'
 	function addTripGallery(){
 		Camera.getPicture(function(galleryImage) {
             $scope.$apply(function() {
-                $scope.imageData = galleryImage;
+            	if (galleryImage.substring(0,21)=="content://com.android") {
+            		  photo_split=galleryImage.split("%3A");
+            		  galleryImage="content://media/external/images/media/"+photo_split[1];
+            	}
+                $scope.addTripImage = galleryImage;
                 alert('갤러리 사진 경로:'+galleryImage);
                 tripGalleryFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
                 tripGalleryMultipartFile=galleryImage;
@@ -32,17 +36,11 @@ app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory'
             encodingType: Camera.EncodingType.JPEG,
             quality: 50
         });
-  }
-	
-	
-	
-	
+  }	
 	//여행 등록하기 
 	
     $scope.addTripRequest = function () {
-    	$scope.submitted = true;
-    	
-    	
+    	$scope.submitted = true;    	
     	
     	if( $scope.addTripForm.tripTitleInput.$valid && $scope.addTripForm.tripDestinationInput.$valid
     		&& $scope.addTripForm.datepicker3.$valid && $scope.addTripForm.datepicker4.$valid
@@ -56,9 +54,7 @@ app.controller('AddTripController', ['$scope',  'sumhangService','globalFactory'
 		
     	
 			if (typeof tripGalleryFile != 'undefined') {
-		console.log('업로드 파일은 :' + tripGalleryFile);
-    	
-			
+		console.log('업로드 파일은 :' + tripGalleryFile);		
 			
 			//여행등록 객체에 파일이름 추가 
 			trip.travelPho=tripGalleryFile;	
