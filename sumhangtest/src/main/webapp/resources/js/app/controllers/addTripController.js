@@ -57,7 +57,8 @@ app.controller('AddTripController', ['$scope',  'tripService','globalFactory',
 		console.log('업로드 파일은 :' + tripGalleryFile);		
 			
 			//여행등록 객체에 파일이름 추가 
-			trip.travelPho=tripGalleryFile;	
+			trip.travelPho=tripGalleryFile;
+			trip.travelSphoto="s_"+tripGalleryFile;
 			
 			console.log("사진 파일 추가후 업로드"+JSON.stringify(trip));
 				
