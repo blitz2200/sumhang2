@@ -46,7 +46,11 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactor
 		  joinMemberGallery();
 	  }
 	  function joinMemberGallery(){
-		  Camera.getPicture(function(galleryImage) {
+		  Camera.getPicture(function(galleryImage) {			  
+				if (galleryImage.substring(0,21)=="content://com.android") {
+          		  photo_split=galleryImage.split("%3A");
+          		  galleryImage="content://media/external/images/media/"+photo_split[1];
+				}
 	            $scope.$apply(function() {
 	               // $scope.imageData = image;
 	                alert('갤러리 사진 경로:'+galleryImage);
@@ -63,7 +67,7 @@ app.controller('JoinMemberController', ['$scope', 'sumhangService','globalFactor
 	                $scope.error = error;
 	            });
 	        }, {
-	            destinationType: Camera.DestinationType.FILE_URL,
+	            destinationType: Camera.DestinationType.FILE_URI,
 	            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
 	            encodingType: Camera.EncodingType.JPEG,
 	            quality: 50
