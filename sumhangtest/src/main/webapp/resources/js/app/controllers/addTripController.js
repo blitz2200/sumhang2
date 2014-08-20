@@ -1,4 +1,4 @@
-app.controller('AddTripController', ['$scope',  'tripService','globalFactory',Camera, 
+app.controller('AddTripController', ['$scope',  'tripService','globalFactory','Camera', 
                                      function ($scope, tripService,globalFactory,Camera) {
 	
 	var sa=globalFactory.serverAddress;
