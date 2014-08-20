@@ -92,11 +92,31 @@ public class UserController {
 			Gson gson = new Gson();
 			addUser=gson.fromJson(user, UserVO.class);
 			
-			//DB에 자료 넣기
-			System.out.println("디비에 넣을 유저 데이타는?"+addUser);			
-			sqlSession.insert("userControlMapper.addMember", addUser);
+			//DB자료와 유효성체크
+			if(sqlSession.selectOne("userControlMapper.getUser",addUser.getId())==null){
+				return null;
+			}else{							
+				//DB에 자료 넣기
+				System.out.println("디비에 넣을 유저 데이타는?"+addUser);			
+				sqlSession.insert("userControlMapper.addMember", addUser);
+				return user;
+			}
+	}
+	
+	//아이디 중복체크
+	@RequestMapping(value = "/duplicateCheck", method = RequestMethod.POST)
+	public @ResponseBody String duplicateCheck(@RequestBody String userId){
 		
-		return user;
+			System.out.println("넘어온 유저 데이타는?"+userId);			
+			
+			//DB자료와 유효성체크
+			if(sqlSession.selectOne("userControlMapper.getUser",userId)==null){
+				System.out.println("중복아님");
+				return "notDuplicated";
+			}else{
+				System.out.println("중복임");
+				return null;
+			}
 	}
 	
 	/*로그아웃*/
