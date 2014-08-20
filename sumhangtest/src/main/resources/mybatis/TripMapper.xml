@@ -85,10 +85,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 메인페이지 여행목록가져오기 -->
-	<select id="getTripList" resultType="Map">
+	<select id="getTripList" parameterType="int" resultType="Map">
 		SELECT TBOARD_NO, USER_NO, TITLE, TRAVEL, TRAVEL_START, TRAVEL_END, TRAVEL_USER_COUNT, TRAVEL_DESCRIPTION, TRAVEL_PHO, TRAVEL_TAG
 		FROM TBOARD
-		ORDER BY TBOARD_NO DESC
+		ORDER BY TBOARD_NO DESC LIMIT #{value},5
 	</select>
 		
 	<!-- 여행에서 사용자 추방 -->
