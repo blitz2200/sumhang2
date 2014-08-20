@@ -4,9 +4,9 @@
 //app.js파일에  when주소뒤에 :스코프이름 으로 넘긴걸 받음 
 //콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
 app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFactory',
-                                        'sumhangService','globalFactory',
+                                        'sumhangService','modalService','globalFactory',
                                         function ($scope,$routeParams ,tripDetailFactory,
-                                        		  sumhangService,globalFactory) {
+                                        		  sumhangService,modalService,globalFactory) {
 	
 	
 	//넘어온 tboard_no,tripDetailReply값  변수에 저장
@@ -81,12 +81,12 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
     		$scope.editTripForm.tripDestinationInput.$valid	&& 
     		$scope.editTripForm.datepicker3.$valid && 
     		$scope.editTripForm.datepicker4.$valid ){
-        	alert("여행세부게시판수정 시작...");
+        	console.log("여행세부게시판수정 시작...");
         	
         	var trip =$scope.editTrip;
     		
     		var tripfile=$scope.tripfile;		
-        	alert ('수정할 여행세부게시판 내용: '+JSON.stringify(trip));
+        	console.log ('수정할 여행세부게시판 내용: '+JSON.stringify(trip));
         	
     		if (typeof $scope.tripfile == 'undifined') {
 	    		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
@@ -107,11 +107,11 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	    			
 	    		}else{
 	    			trip.travelPho='1.png';
-	    			alert("디폴트파일이름"+JSON.stringify(trip.travelPho));
+	    			console.log("디폴트파일이름"+JSON.stringify(trip.travelPho));
 	    			 
 	    		}
 	    		
-			alert('여행상세게시판 수정 내용  :'+JSON.stringify(trip));
+			console.log('여행상세게시판 수정 내용  :'+JSON.stringify(trip));
 			//여행수정 객체 서비스에 전송
 			tripDetailFactory.editTripDetail(sa,trip,travelNo)
 			.success(function(){
@@ -126,25 +126,43 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
     		//완료후 메인페이지 리스트 뿌려주기
     			
     		}else{
-    			alert('양식을 입력하세요');
+    			console.log('양식을 입력하세요');
     		}		
 	}
-	
-	
+			
 	//메인 상세보기 삭제 시작
-	$scope.goDeleteTripDetail=function(){
-		deleteTripDetail(travelNo);
+	$scope.goDeleteTripDetail=function(){	   
+		
+		/*상세보기 삭제 modal 설정*/
+		 var modalDefaults = {
+				 	backdrop: true,
+		            keyboard: true,
+		            modalFade: true,
+	                templateUrl: '/partials/tripDetailDeleteModal.html',
+	            };
+		 
+		 var modalOptions = {
+		            closeButtonText: '취소',
+		            actionButtonText: '삭제',
+		            headerText: '게시물 삭제',
+		            bodyText: '게시물을 정말  삭제하시겠습니까?'
+		        };
+		 
+		 /*modal 페이지*/
+		  modalService.showModal(modalDefaults, modalOptions).then(function () {
+			  deleteTripDetail(travelNo);  
+	        });
 	}
-	
+
 	function deleteTripDetail(travelNo){
-		alert(travelNo)
+		console.log(travelNo)
 		
 		tripDetailFactory.deleteTripDetail(sa,travelNo)
 		.success(function(data){
-			alert('콘트롤러 메인 게시판 상세보기 삭제 성공')
+			console.log('콘트롤러 메인 게시판 상세보기 삭제 성공')
 			$scope.location.path('/main');
 		}).error(function(error){
-			alert('콘트롤러 메인 게시판 상세보기 삭제 실패')
+			console.log('콘트롤러 메인 게시판 상세보기 삭제 실패')
 		})
 		
 	}
@@ -156,12 +174,12 @@ app.controller('TripDetailController', ['$scope','$routeParams','tripDetailFacto
 	};
 	
 	function pushEnterTrip(){
-		alert('여행참가하기 버튼 클릭')
+		console.log('여행참가하기 버튼 클릭')
 		tripDetailFactory.pushEnterTrip(sa,travelNo)
 		.success(function(){
-			alert('여행참가하기 푸시 성공');
+			console.log('여행참가하기 푸시 성공');
 		}).error(function(error){
-			alert('여행참가하기 푸시 실패');
+			console.log('여행참가하기 푸시 실패');
 		})
 		
 	}
