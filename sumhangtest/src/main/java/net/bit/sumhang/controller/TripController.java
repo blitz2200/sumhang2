@@ -111,7 +111,7 @@ public class TripController {
 					//System.out.println("jmap"+map);					
 				}
 				list.get(i).putAll(map);
-				System.out.println("listadded"+list);				
+				//System.out.println("listadded"+list);				
 			}	
 			
 			return list;
