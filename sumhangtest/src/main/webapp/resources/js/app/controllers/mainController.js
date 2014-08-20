@@ -1,10 +1,9 @@
-app.controller('MainController',['$scope','$route','mainFactory','globalFactory',
-                                 function ($scope,$route, mainFactory,globalFactory) {
+app.controller('MainController',['$scope','$timeout', '$route','mainFactory','globalFactory',
+                                 function ($scope, $timeout, $route, mainFactory, globalFactory) {
 
 	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
 	//메인 html파일과 연결 시킴 
 	
-	//main();
 	//서버 주소 설정
 	$scope.serverAddress=globalFactory.serverAddress;
 	
@@ -14,8 +13,28 @@ app.controller('MainController',['$scope','$route','mainFactory','globalFactory'
 	$scope.sessionUser = $route.current.locals.sessionUser; //resolve에 있는 변수를 scope에 넘겨준다
 	$scope.userTripSelected = $scope.userTrips[0];
 	
-
-	
+	//리스트 동적로딩
+	var pageNum;	
+	var isWorking = 0;
+	pageNum=1;	
+	$scope.loadMore = function(){
+		
+		if(isWorking==0){
+			isWorking=1;
+		console.log('loadmore invoked....')
+		mainFactory.tripList(pageNum)
+		.then(function(data){
+			pageNum += 1;
+			console.log('pageNum++ :'+pageNum);			
+			for(var i=0;i<data.data.length;i++){
+				$scope.trips.push(data.data[i]);
+			}			
+		});
+		$timeout(function(){
+			isWorking=0
+		},1000);
+		}
+    }
 	
 	
 	$scope.hideDelMenu = function(tripUser){
