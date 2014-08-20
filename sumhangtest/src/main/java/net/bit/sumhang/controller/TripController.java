@@ -58,7 +58,6 @@ public class TripController {
 			UserStatusVO userStatusVO = new UserStatusVO();
 			//TimeLineVO timeLineVO = new TimeLineVO();
 			
-			
 			map=gson.fromJson(trip, Map.class);
 			map.put("userNo",String.valueOf(userVO.getUserNo()));
 			
@@ -66,27 +65,14 @@ public class TripController {
 			System.out.println("디비에 넣을 여행 데이타는?"+map);			
 			sqlSession.insert("tripControlMapper.addTrip", map);
 			
-			
-		
 			//tboard DB에 자료 넣고 자동증가값리턴받아 맵에 다시 저장받아서 userStatusVO에 setting
 			System.out.println("returnValue"+map);
 			userStatusVO.setTboardNo(Integer.parseInt(map.get("travelNo")));
 			userStatusVO.setUserNo(Integer.parseInt(map.get("userNo")));
 			userStatusVO.setStatus(1);
 			
-			//timeLineVO에 값 setting
-			//timeLineVO.setTboardNo(Integer.parseInt(map.get("travelNo")));
-			//timeLineVO.setUserNo(userVO.getUserNo());
-			//timeLineVO.setTimeLinePhoto(map.get("travelPho"));
-			//timeLineVO.setTimeLineDesc(map.get("travelDescription"));
-			
 			//userStatusVO DB에 insert
 			sqlSession.insert("tripControlMapper.addUserStatus", userStatusVO );
-			
-			//timeLine DB에 insert
-			//sqlSession.insert("tripControlMapper.addTimeLine", timeLineVO );
-			
-			
 			
 		return trip;
 	}	
@@ -95,26 +81,34 @@ public class TripController {
 	//메인 리스트 게시판 시작
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value="/main", method=RequestMethod.POST)
-	public @ResponseBody List<Map> getTripList(){
+	public @ResponseBody List<Map> getTripList(@RequestBody String pageNum){
 			System.out.println("메인 리스트 시작...");
 			
-			System.out.println(sqlSession.selectList("tripControlMapper.getTripList"));
+			int pageCount;
+			pageCount=0;
+			
+			if(!pageNum.equals("undefined")){
+				Gson gson = new Gson();
+				pageCount = gson.fromJson(pageNum, Integer.class)*5;			
+			}
+			System.out.println("pageCount"+pageCount);
+			
+			//System.out.println(sqlSession.selectList("tripControlMapper.getTripList",pageCount));
 			List<Map> list = new ArrayList<Map>();
 			List<Map> list2 = new ArrayList<Map>();
-			
-			
-			list = sqlSession.selectList("tripControlMapper.getTripList");
-			System.out.println("getTripList"+list);
+						
+			list = sqlSession.selectList("tripControlMapper.getTripList", pageCount);
+			//System.out.println("getTripList"+list);
 			int temp = list.size();
 			for(int i=0;i<temp;i++){
 				
-				System.out.println(list.get(i).get("TBOARD_NO"));
+				//System.out.println(list.get(i).get("TBOARD_NO"));
 				list2 = sqlSession.selectList("tripControlMapper.getTripUsers", list.get(i).get("TBOARD_NO"));
-				System.out.println("list2"+list2);
+				//System.out.println("list2"+list2);
 				Map<String,Map> map = new HashMap<String,Map>();
 				for(int j=0;j<list2.size();j++){
 					map.put("juser"+j,list2.get(j));	
-					System.out.println("jmap"+map);					
+					//System.out.println("jmap"+map);					
 				}
 				list.get(i).putAll(map);
 				System.out.println("listadded"+list);				
