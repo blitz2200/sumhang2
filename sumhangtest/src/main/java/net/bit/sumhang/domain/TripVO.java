@@ -17,10 +17,11 @@ public class TripVO {
 	private String travelSphoto;
 	
 	
-	private String getTravelSphoto() {
+
+	public String getTravelSphoto() {
 		return travelSphoto;
 	}
-	private void setTravelSphoto(String travelSphoto) {
+	public void setTravelSphoto(String travelSphoto) {
 		this.travelSphoto = travelSphoto;
 	}
 	public int getTripDetailReNo() {
