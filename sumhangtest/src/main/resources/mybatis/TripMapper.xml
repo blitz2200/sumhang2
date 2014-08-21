@@ -24,7 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<!-- 여행작성입력 -->
   	<insert id="addTrip" parameterType="java.util.Map" useGeneratedKeys="true">  	
 		INSERT 											
-		INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,TRAVEL_END,TRAVEL_PHO,TRAVEL_SPHOTO,TRAVEL_USER_COUNT,TRAVEL_TAG,USER_NO)
+		INTO TBOARD(TRAVEL,TITLE,TRAVEL_DESCRIPTION,TRAVEL_START,
+					TRAVEL_END,TRAVEL_PHO,TRAVEL_USER_COUNT,TRAVEL_TAG,TRAVEL_SPHOTO,USER_NO)
 		VALUES ( 	#{travel},
 					#{title},
 					#{travelDescription},
@@ -50,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 해당 여행에 참가중인 사용자들 검색 -->
 	<select id="getTripUsers" resultType="Map">
-		SELECT u.USER_NO, u.NICK, u.GENDER, u.USER_PHOTO, us.STATUS
+		SELECT u.USER_NO, u.NICK, u.GENDER, u.USER_SPHOTO, us.STATUS
 		FROM USER u,TBOARD t, USER_STATUS us
 		WHERE u.USER_NO = us.USER_NO AND t.TBOARD_NO = us.TBOARD_NO AND t.TBOARD_NO = #{travelNo}
 	</select>
@@ -78,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 타임라인 리스트 가져오기 -->
 	<select id="getTimelineList" parameterType="String" resultType="Map">
-		SELECT u.USER_PHOTO, u.NICK, tl.TIMELINE_NO, tl.TIMELINE_PHO, tl.TIMELINE_DESCRIPTION, tl.TIMELINE_LIKE, ucount.JOINCOUNT
+		SELECT u.USER_SPHOTO, u.NICK, tl.TIMELINE_NO, tl.TIMELINE_PHO, tl.TIMELINE_DESCRIPTION, tl.TIMELINE_LIKE, ucount.JOINCOUNT
 		FROM USER u, TIMELINE tl, (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
 										FROM USER_STATUS
 										GROUP BY TBOARD_NO ) ucount
@@ -101,41 +102,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		USER_NO = #{userNo} AND TBOARD_NO = #{tBoardNo}
 	</delete>
 	
-	<!-- <select id="selectTrip" resultMap="travelSelectMap">
 	
-		select b.TBOARD_NO, b.title, b.travel
-		, b.travel_start, b.travel_end
-		, b.travel_user_count, b.travel_pho
-		, u.user_photo , c.likenum
-		, n.participants_num
-		from TBOARD b left join 
-		(
-			select
-			TBOARD_NO,
-			USER_PHOTO,
-			row_num
-			from
-			(
-				select *,
-				@num := if(@first_column = TBOARD_NO, @num:= @num + 1, 1) as row_num,
-				@first_column:=TBOARD_NO as c
-				from tripParticipantsPhotoView order by TBOARD_NO, USER_PHOTO
-			) as t
-			,
-			(
-				select @first_column:='',@num:=0
-			) as r
-			having row_num<![CDATA[<=]]>3  
-		) u on( b.TBOARD_NO = u.TBOARD_NO)
-		left join participantsNumPerTripView n on (b.TBOARD_NO = n.TBOARD_NO)
-		left join tripLikeNumView c on (b.TBOARD_NO = c.TBOARD_NO)
-	
-
-	</select> -->
 	
    <!-- 메인 상세보기 출력 -->
 	<select id="tripDetail" parameterType="trip" resultType="Map">
-		select t.travel, t.TBOARD_NO, t.USER_NO, u.user_photo, u.nick,u.PUSH,t.title,
+		select t.travel, t.TBOARD_NO, t.USER_NO, u.user_sphoto, u.nick,u.PUSH,t.title,
 			 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
 			 t.TRAVEL_PHO, ucount.JOINCOUNT
 			 from TBOARD t, USER u, (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
@@ -176,7 +147,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectTripDetailReply" parameterType="int" resultType="Map">
 		select u.nick, tr.TBOARD_RE_DESCRIPTION, 
-			   tr.user_no, u.user_photo, tr.TRAVEL_BOARD_REPLY_NO
+			   tr.user_no, u.user_sphoto, tr.TRAVEL_BOARD_REPLY_NO
 		from USER u, TBOARD t, TBOARD_RE tr 	
 		where  u.USER_NO=tr.USER_NO and t.TBOARD_NO=tr.TBOARD_NO and tr.TBOARD_NO=#{travelNo}
 	</select>
