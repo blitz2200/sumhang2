@@ -5,10 +5,10 @@ app.factory('mainFactory',['$http', function($http){
 	
 	mainFactory.tripList = function(pageNum){
 		console.log('pageNum'+pageNum);
-		return $http({			
-			'url' :"http://192.168.0.85:8080/main.ajax",
-			'method' : 'POST',
-			   'data' : pageNum+''
+		return $http({
+			'url' :"http://192.168.0.18:8080/main.ajax",
+			'method' : 'POST' ,
+			'data' : pageNum+''   		
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
 			//console.log('메인 팩토리 성공'+JSON.stringify(data));			
@@ -20,7 +20,7 @@ app.factory('mainFactory',['$http', function($http){
 	
 	mainFactory.getUserTrip = function(){
 		return $http({
-			'url' :"http://192.168.0.85:8080/getUserTrip.ajax",
+			'url' :"http://192.168.0.18:8080/getUserTrip.ajax",
 			'method' : 'GET'
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
