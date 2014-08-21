@@ -1,13 +1,13 @@
 app.factory('userFactory', ['$http', function($http) {
     	
     var userFactory = {};
-    
+
     //로그인 체크
     userFactory.loginCheck = function (sa) {  
     	return $http({
     			'url' : sa+'loginCheck.ajax',
     			'method' : 'POST',
-    			'headers': {'Content-Type' : 'application/json'}	
+    			'headers': {'Content-Type' : 'application/json; charset=utf-8'}	
     		}).success(function (data) {
     			console.log('$http 성공');
     			console.log(data);
@@ -37,7 +37,7 @@ app.factory('userFactory', ['$http', function($http) {
     	return $http({
     			'url' :sa+ 'login.ajax',
     			'method' : 'POST',
-    			'headers': {'Content-Type' : 'application/json'},
+    			'headers': {'Content-Type' : 'application/json;; charset=utf-8'},
 	        	'data' : {'username': loginInfo.id ,
 	        			'password' : loginInfo.password }    		
     		}).success(function (data) {
@@ -52,7 +52,7 @@ app.factory('userFactory', ['$http', function($http) {
     //세션유져가져오기
     userFactory.getSessionUser = function (){
     	return $http({
-			'url' : 'http://192.168.0.85:8080/getSessionUser.ajax',
+			'url' : 'http://192.168.0.88:8080/getSessionUser.ajax; charset=utf-8',
 			'method' : 'POST',
 			'headers': {'Content-Type' : 'application/json'}        	   		
 		}).success(function (data) {
