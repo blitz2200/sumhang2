@@ -111,7 +111,7 @@ public class TripController {
 					//System.out.println("jmap"+map);					
 				}
 				list.get(i).putAll(map);
-				//System.out.println("listadded"+list);				
+				System.out.println("listadded"+list);				
 			}	
 			
 			return list;
@@ -161,6 +161,35 @@ public class TripController {
 			
 			return sqlSession.delete("tripControlMapper.kickOutTripUser", map);
 	}
+	
+	
+	//invite
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value="/invite", method=RequestMethod.GET)
+	public @ResponseBody List<Map> invite(HttpSession session){
+			System.out.println("invite 리스트 시작...");
+			
+			//session에서 UserVO가져오기
+			if(session.getAttribute("user")!=null){				
+				userVO=(UserVO)session.getAttribute("user");
+				System.out.println("userVO임:"+userVO);			
+			}	
+			 
+			
+			//System.out.println(sqlSession.selectList("tripControlMapper.getTripList",pageCount));
+			List<Map> list = new ArrayList<Map>();
+		 
+						
+			list = sqlSession.selectList("tripControlMapper.invite");
+			//System.out.println("getTripList"+list);
+			 
+			System.out.println(list);				
+	
+			
+		return list;
+	}
+	
+	
 
 
 }
