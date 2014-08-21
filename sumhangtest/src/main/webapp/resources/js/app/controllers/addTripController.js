@@ -4,7 +4,7 @@ app.controller('AddTripController', ['$scope',  'tripService','globalFactory','C
 	var sa=globalFactory.serverAddress;
 	$scope.serverAddress=sa;
 	//갤러리 사진을 디비에 저장할 변수
-	var tripGalleryFile;
+	var tripGalleryFile=null;
 	//갤러리 사진을 서버에 저장할 파일 변수
 	var tripGalleryMultipartFile;
 	//여행 등록하기 갤러리 아이콘 선택시 실행됨 
@@ -53,7 +53,7 @@ app.controller('AddTripController', ['$scope',  'tripService','globalFactory','C
 		
 		
     	
-			if (typeof tripGalleryFile != 'undefined') {
+			if ( tripGalleryFile != null) {
 		console.log('업로드 파일은 :' + tripGalleryFile);		
 			
 			//여행등록 객체에 파일이름 추가 
