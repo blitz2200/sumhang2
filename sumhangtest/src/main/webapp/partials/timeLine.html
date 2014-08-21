@@ -81,10 +81,12 @@
 						<div id="timeLineBtns">
 							<button type="button" class="btn btn-warning btn-xs" data-ng-click="" id="timeLineLikeBtn">좋아요 {{timeline.TIMELINE_LIKE}}</button>
 					
-							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" data-ng-click="goWriteReply">댓글</button>
-				
+							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" data-ng-click="goWriteReply(timeline.TIMELINE_NO)">댓글</button>
+					
+					
+					
 						</div>
-			
+	
 			<!-- 타임라인 댓글 -->			
 		<!-- 	<div class="timeLineListReply">
 				<ul>
@@ -120,8 +122,8 @@
 			
 				
 	<!-- 쓰기 아이콘 -->
-	<div id="wtiteTimelineList">
-		<img src="{{serverAddress}}resources/images/yellow-document-plus-icon.png"  id="wirteTimeLine" data-ng-click="goAddTrip()">
+	<div id="writeTimelineList">
+		<img src="{{serverAddress}}resources/images/yellow-document-plus-icon.png"  id="writeTimeLine" data-ng-click="goAddTrip())">
 	</div>			
 			
 		</ul>
