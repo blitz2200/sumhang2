@@ -16,13 +16,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		<result property="push" column="PUSH" jdbcType="VARCHAR" />
   		<result property="invite" column="INVITE" jdbcType="VARCHAR" /> 	
   		<result property="signOut" column="SIGNOUT" jdbcType="VARCHAR" /> 
-  		<result property="userNo" column="USER_NO" jdbcType="NUMERIC" /> 
+  		<result property="userNo" column="USER_NO" jdbcType="NUMERIC" />
+  		<result property="sPhoto" column="USER_SPHOTO" jdbcType="VARCHAR" />  
   	</resultMap>
 
     
     <insert id="addMember" parameterType="user">
 		INSERT 											
-		INTO USER(ID,NAME,PASSWD,NICK,BIRTH,GENDER,USER_PHOTO,PUSH,INVITE,SIGNOUT,REGISTID)
+		INTO USER(ID,NAME,PASSWD,NICK,BIRTH,GENDER,USER_PHOTO,PUSH,INVITE,SIGNOUT,REGISTID,USER_SPHOTO)
 		VALUES ( 	#{id},
 					#{name},
 					#{password},
@@ -33,12 +34,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{push},
 					#{invite},				
 					#{signOut},
-					#{regId} )	
+					#{regId},
+					#{sPhoto} )	
 	</insert>
 	
 	<select id="getUser" parameterType="String" resultMap="userSelectMap">
 		Select
-		ID, NAME, PASSWD, NICK, BIRTH, GENDER, USER_PHOTO, PUSH, INVITE, SIGNOUT, USER_NO
+		ID, NAME, PASSWD, NICK, BIRTH, GENDER, USER_PHOTO, PUSH, INVITE, SIGNOUT, USER_NO,USER_SPHOTO
 		from USER
 		where ID=#{id}
 	</select>
