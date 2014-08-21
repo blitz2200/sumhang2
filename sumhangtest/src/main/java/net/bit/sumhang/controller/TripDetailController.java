@@ -269,7 +269,7 @@ public class TripDetailController {
 
 		Sender sender = new Sender("AIzaSyBzr8ZxqRDmP_P7WuN5ffp3U-4cUcEoDHU");
 		
-		String t = URLEncoder.encode("날라가라","utf-8");
+		String t ="크크크크";
 		Message message = new Message.Builder()
 									.addData("message", t)
 									.timeToLive(10)
