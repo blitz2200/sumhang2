@@ -20,7 +20,7 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 	}
 			
 			//디비 서버에 넘길 변수 (갤러리나 카메라 둘중하나) 
-	  var userPhotoFile;
+	  var userPhotoFile=null;
 	  //유저사진 하드에 저장할 변수 (갤러리나 카메라 둘중하나) 
 	  var userPhotoMultipartFile;
 	  
@@ -37,7 +37,6 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 	                alert('카메라 사진 경로:'+cameraImage);
 	                userPhotoFile = cameraImage.substr(cameraImage.lastIndexOf('/') + 1)+".jpg";
 	                userPhotoMultipartFile=cameraImage;
-	                //userPhotoService.uploadPhoto(sa,image);
 	                alert('디비에 넣을 사진 이름 '+userPhotoFile);
 	                alert('서버에 저장할 파일 경로'+userPhotoMultipartFile);
 	            });
@@ -102,12 +101,13 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 	
 		console.log('회원가입 내용  :'+JSON.stringify(user));
 		
-		if (typeof userPhotoFile  != 'undifined') {			
+		if (userPhotoFile  != null) {			
 			
 			//회원가입 객체에 파일이름 추가 
-			user.photo=userPhotoFile;	
+			user.photo=userPhotoFile;
+			user.sPhoto='s_'+userPhotoFile;
 			
-			console.log("사진 파일 추가후 업로드"+JSON.stringify(user));
+			alert("사진 파일 추가후 업로드"+JSON.stringify(user));
 			
 			//파일객체 서비스에 전송
 			userPhotoService.uploadPhoto(sa,userPhotoMultipartFile);	
@@ -121,7 +121,7 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 		user.regId=joinUseRegid;
 		alert('regid추가후 회원입력 객체 : '+JSON.stringify(user));
 		//유저객체 서비스에 전송
-		sumhangService.addUser(sa,user);
+		userService.addUser(sa,user);
 		
 		
 		
