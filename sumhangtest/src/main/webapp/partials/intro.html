@@ -8,57 +8,19 @@
   	 
   
    <div class="container">
-     <div class="bs-example">
-    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
-    	<!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-       
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>   
-       <!-- Carousel items -->
-        <div class="carousel-inner">
-        	 
-            <div class="active item image1">
-               
-                <div class="carousel-caption">
-                  <h3>First slide label</h3>
-                  <br/>
-                 <!--  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
-                </div>
-                <h2 class="title-intro">SUMHANG</h2>
-            </div>
-            <div class="item image2">
-                
-                <div class="carousel-caption">
-                  <h3>Second slide label</h3>
-                  <br/>
-                  <!-- <p>Aliquam sit amet gravida nibh, facilisis gravida odio.</p> -->
-                </div>
-                <h2 class="title-intro">SUMHANG</h2>
-            </div>
-            <div class="item image3">
-                
-                <div class
-                ="carousel-caption">
-                  <h3>Third slide label</h3>
-                  <br/>
-                  <!-- <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
-                </div>
-                <h2 class="title-intro">SUMHANG</h2>
-            </div>
-        </div>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-   	 </div>
-	</div>
- 
+     
+	 <div style="height: 305px">
+		    <carousel interval="myInterval">
+		      <slide ng-repeat="slide in slides" active="slide.active">
+		        <img ng-src="{{slide.image}}" style="margin:auto;">
+		        <div class="carousel-caption">
+		          <h2>SUMHANG</h2>
+		          <p>{{slide.text}}</p>
+		        </div>
+		      </slide>
+		    </carousel>
+	  </div>
+	 
   
      
 
