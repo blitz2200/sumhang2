@@ -16,19 +16,16 @@ public class TripVO {
 	private int tripDetailReNo;
 	private String travelSphoto;
 	
-	
-
-	public String getTravelSphoto() {
-		return travelSphoto;
-	}
-	public void setTravelSphoto(String travelSphoto) {
-		this.travelSphoto = travelSphoto;
-	}
-	public int getTripDetailReNo() {
-		return tripDetailReNo;
-	}
-	public void setTripDetailReNo(int tripDetailReNo) {
-		this.tripDetailReNo = tripDetailReNo;
+	@Override
+	public String toString() {
+		return "TripVO [travel=" + travel + ", title=" + title
+				+ ", travelDescription=" + travelDescription + ", travelStart="
+				+ travelStart + ", travelEnd=" + travelEnd + ", travelPho="
+				+ travelPho + ", travelUserCount=" + travelUserCount
+				+ ", travelTag=" + travelTag + ", likenum=" + likenum
+				+ ", travelNo=" + travelNo + ", userNo=" + userNo
+				+ ", tripDetailReply=" + tripDetailReply + ", tripDetailReNo="
+				+ tripDetailReNo + ", travelSphoto=" + travelSphoto + "]";
 	}
 	public String getTravel() {
 		return travel;
@@ -102,18 +99,21 @@ public class TripVO {
 	public void setTripDetailReply(String tripDetailReply) {
 		this.tripDetailReply = tripDetailReply;
 	}
-	@Override
-	public String toString() {
-		return "TripVO [travel=" + travel + ", title=" + title
-				+ ", travelDescription=" + travelDescription + ", travelStart="
-				+ travelStart + ", travelEnd=" + travelEnd + ", travelPho="
-				+ travelPho + ", travelUserCount=" + travelUserCount
-				+ ", travelTag=" + travelTag + ", likenum=" + likenum
-				+ ", travelNo=" + travelNo + ", userNo=" + userNo
-				+ ", tripDetailReply=" + tripDetailReply + ", tripDetailReNo="
-				+ tripDetailReNo + ", travelSphoto=" + travelSphoto + "]";
+	public int getTripDetailReNo() {
+		return tripDetailReNo;
+	}
+	public void setTripDetailReNo(int tripDetailReNo) {
+		this.tripDetailReNo = tripDetailReNo;
+	}
+	public String getTravelSphoto() {
+		return travelSphoto;
+	}
+	public void setTravelSphoto(String travelSphoto) {
+		this.travelSphoto = travelSphoto;
 	}
 	
+	
+
 
 	
 	
