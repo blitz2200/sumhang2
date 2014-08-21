@@ -1,25 +1,6 @@
 app.service('userPhotoService',['$http',function($http){
 	
-	
-/*	this.uploadPhoto=function(sa,userPhoto){
-		alert("팩토리에 넘어온 유저사진"+userPhoto);
-		var fd = new FormData();
-		fd.append('userPhoto',userPhoto);
-		$http({
-			method:'POST',
-			url : sa+"userPhoto.ajax" ,
-			data : fd,
-	    	transformRequest:angular.identify,
-	    	headers:{'Content-Type':undefined}
-		}).success(function(){
-			alert("유저사진 업로드 성공");
-		}).error(function(){
-			alert("유저 사진 업로드 실패");
-		});
-	};*/
-		
-		
-		
+
 	this.uploadPhoto=function(sa,userPhoto){
 		alert('유저사진 업로드 팩토리 시작');
 	
