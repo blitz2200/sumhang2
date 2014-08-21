@@ -1,7 +1,7 @@
 app.factory('userFactory', ['$http', function($http) {
     	
     var userFactory = {};
-
+    
     //로그인 체크
     userFactory.loginCheck = function (sa) {  
     	return $http({
@@ -52,7 +52,7 @@ app.factory('userFactory', ['$http', function($http) {
     //세션유져가져오기
     userFactory.getSessionUser = function (){
     	return $http({
-			'url' : 'http://192.168.0.88:8080/getSessionUser.ajax; charset=utf-8',
+			'url' : 'http://192.168.0.18:8080/getSessionUser.ajax',
 			'method' : 'POST',
 			'headers': {'Content-Type' : 'application/json'}        	   		
 		}).success(function (data) {
