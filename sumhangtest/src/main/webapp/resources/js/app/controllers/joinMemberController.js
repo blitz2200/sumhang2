@@ -92,7 +92,8 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 		  	 $scope.submitted = true;	 
 			if( $scope.joinMember.inputIdInput.$valid && $scope.joinMember.inputPassword3Input.$valid																			
 		    	&& $scope.joinMember.inputPassword1Input.$valid && $scope.joinMember.nicknameInput.$valid
-		    	&& $scope.joinMember.nameInput.$valid&& $scope.joinMember.datepicker1.$valid ){
+		    	&& $scope.joinMember.nameInput.$valid&& $scope.joinMember.datepicker1.$valid
+		    	&& !($scope.joinMember.isDuplicate)){
 		
 		console.log("회원가입 시작");
 		
@@ -127,7 +128,7 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 		
 		$scope.location.path('/login'); 
 			}else{
-				alert('양식을 입력하세요');
+				alert('양식을 확인해 주세요');
 				
 			}
 				
