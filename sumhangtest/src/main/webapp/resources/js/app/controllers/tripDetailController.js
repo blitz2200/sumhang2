@@ -67,7 +67,13 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 	$scope.goEditTripDetail=function(){
 		$scope.mainTripDetail=false;
 		$scope.editPage=true;
-		$scope.writeUserButton=false;	
+		$scope.writeUserButton=false;
+		console.log('$scope.trip'+JSON.stringify($scope.trip));
+		$scope.editTrip.travel=$scope.trip.travel;
+		$scope.editTrip.title=$scope.trip.title;
+		$scope.editTrip.title=$scope.trip.title;
+		$scope.editTrip.title=$scope.trip.title;
+		$scope.editTrip.title=$scope.trip.title;
 	}
 	
 	$scope.goEditTripRequest=function(){
@@ -135,14 +141,14 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 	$scope.goDeleteTripDetail=function(){	   
 		
 		/*상세보기 삭제 modal 설정*/
-		 var modalDefaults = {
+		 var delTripModalDefaults = {
 				 	backdrop: true,
 		            keyboard: true,
 		            modalFade: true,
-	                templateUrl: '/partials/tripDetailDeleteModal.html',
+	                templateUrl: 'partials/tripDetailDeleteModal.html',
 	            };
 		 
-		 var modalOptions = {
+		 var delTripModalOptions = {
 		            closeButtonText: '취소',
 		            actionButtonText: '삭제',
 		            headerText: '게시물 삭제',
@@ -150,7 +156,7 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 		        };
 		 
 		 /*modal 페이지*/
-		  modalService.showModal(modalDefaults, modalOptions).then(function () {
+		  modalService.showModal(delTripModalDefaults, delTripModalOptions).then(function () {
 			  deleteTripDetail(travelNo);  
 	        });
 	}
@@ -171,21 +177,21 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 	
 	//여행참가하기 버튼 클릭 방장한테 푸쉬 날리기
 	$scope.goEnterTrip=function(push){
-	     var modalDefaults = {
+	     var enterTripModalDefaults = {
 	          backdrop: true,
 	                keyboard: true,
 	                modalFade: true,
-	                  templateUrl: '/partials/tripDetailDeleteModal.html',
+	                  templateUrl: 'partials/tripDetailDeleteModal.html',
 	              };
 	     
-	     var modalOptions = {
+	     var enterTripModalOptions = {
 	                closeButtonText: '취소',
 	                actionButtonText: '보내기',
 	                headerText: '푸쉬 보내기',
 	                bodyText: '푸쉬 날리시겠습니까??'
 	            };
 	     
-	     modalService.showModal(modalDefaults, modalOptions).then(function () {
+	     modalService.showModal(enterTripModalDefaults, enterTripModalOptions).then(function () {
 	       pushEnterTrip(push); 
 	          });
 	    
