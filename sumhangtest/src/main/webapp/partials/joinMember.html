@@ -10,7 +10,6 @@
 		<form class="form-horizontal joinMember" name="joinMember"
 			data-ng-submit="addMemberRequest()" data-ng-model="newMember"
 			novalidate>
-			<div class="join-body">
 				<div class="joinTitle">
 					<span id="titleName">회원가입</span>
 
@@ -110,7 +109,7 @@
 					<div class="form-group"
 						data-ng-class="{ 'has-error' : joinMember.datepicker1.$invalid && submitted}">
 						<label for="datepicker4" class="col-xs-2 control-label">생년월일</label>
-						<div class="col-xs-8" id="birth" name="bday">
+						<div class="col-xs-8" id="birth">
 							<input type="text" class="form-control" id="datepicker1"
 								name="datepicker1" data-ng-model="newMember.birth"
 								placeholder="Birth" required>
