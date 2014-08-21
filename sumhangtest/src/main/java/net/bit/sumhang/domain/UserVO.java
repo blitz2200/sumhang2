@@ -14,10 +14,17 @@ public class UserVO {
 	private String role;
 	private int userNo;
 	private String regId;
+	private String sPhoto;
 	
 	
 	
-	
+
+	public String getsPhoto() {
+		return sPhoto;
+	}
+	public void setsPhoto(String sPhoto) {
+		this.sPhoto = sPhoto;
+	}
 	public String getRegId() {
 		return regId;
 	}
@@ -99,15 +106,15 @@ public class UserVO {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
 	@Override
 	public String toString() {
 		return "UserVO [id=" + id + ", name=" + name + ", password=" + password
 				+ ", nick=" + nick + ", birth=" + birth + ", gender=" + gender
 				+ ", photo=" + photo + ", push=" + push + ", invite=" + invite
 				+ ", signOut=" + signOut + ", role=" + role + ", userNo="
-				+ userNo + ", regId=" + regId + "]";
+				+ userNo + ", regId=" + regId + ", sPhoto=" + sPhoto + "]";
 	}
+	
 
 
 	
