@@ -64,6 +64,7 @@ app.controller('MainController',['$scope','$timeout', '$route','mainFactory','gl
 	}
 	
 	$scope.goInvite = function (){
+		alert('test중');
 		$scope.location.path('/invite');
 	}
 

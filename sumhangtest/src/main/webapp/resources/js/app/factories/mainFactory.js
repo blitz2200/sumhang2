@@ -8,7 +8,7 @@ app.factory('mainFactory',['$http', function($http){
 		return $http({			
 			'url' :"http://192.168.0.85:8080/main.ajax",
 			'method' : 'POST',
-			'data' : pageNum+''
+			   'data' : pageNum+''
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
 			//console.log('메인 팩토리 성공'+JSON.stringify(data));			
@@ -62,6 +62,33 @@ app.factory('mainFactory',['$http', function($http){
 		});
 	}
 	
+	mainFactory.invite = function(sa){
+		alert("왔삼3");
+		return $http({
+			'url' :sa+"invite.ajax",
+			'method' : 'GET'
+		}).success(function(data){
+			//db에서 자료 가져오기 성공하면 찍어보기 
+			console.log('invite 성공'+JSON.stringify(data));
+
+		}).error(function(){
+			console.log('invite 실패');
+		});
+	};
+	
+	mainFactory.pushInviteTrip=function(sa,userNo){
+		console.log('초대 푸쉬버큰 클릭'+userNoo);
+		return $http({
+			'url':sa+"pushInviteTrip.ajax",
+			'method' : 'POST',
+			'data' : {'userNo':userNo}
+		}).success(function(data){
+			console.log('여행 초대해기 버튼 날리기 성공')
+		}).error(function(){
+			console.log('여행 초대하기 버튼 날리기 실패')
+		})
+		
+	}
 	
 	
 	
