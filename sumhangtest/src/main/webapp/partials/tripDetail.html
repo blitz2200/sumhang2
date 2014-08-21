@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-xs-5">
 					<img class="userPho"
-						data-ng-src="{{serverAddress}}resources/images/userPhotoFiles/{{trip.user_photo}}">
+						data-ng-src="{{serverAddress}}resources/images/userPhotoFile/{{trip.user_sphoto}}">
 					<p>
 						<span class="username">{{trip.nick}}</span>
 					</p>
@@ -122,7 +122,7 @@
 			<li data-ng-repeat="reply in replys">
 				<div class="row reply">
 					<div class="col-xs-1 reUser">
-						<img data-ng-src="{{serverAddress}}resources/images/userPhotoFiles/{{reply.user_photo}}" />
+						<img data-ng-src="{{serverAddress}}resources/images/userPhotoFile/{{reply.user_sphoto}}" />
 					</div>
 					<div class="col-xs-2 reNick">{{reply.nick}}</div>
 					
