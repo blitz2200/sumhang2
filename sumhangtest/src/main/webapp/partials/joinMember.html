@@ -19,7 +19,7 @@
 
 					<!-- ID입력 -->
 					<div class="form-group"
-						data-ng-class="{ 'has-error' : joinMember.inputIdInput.$invalid && submitted}">
+						data-ng-class="{ 'has-error' : joinMember.inputIdInput.$invalid && submitted || joinMember.isDuplicate}">
 						<label for="inputId" class="col-xs-2 control-label">아이디</label>
 						<div class="col-xs-8" id="join-1">
 							<input type="text" class="form-control" id="inputIdInput"
