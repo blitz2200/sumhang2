@@ -15,19 +15,7 @@ app.controller('IntroController', ['$scope','userFactory','globalFactory',
 		    		 {image:'http://192.168.0.88:8080/resources/images/tripPhotoFile/1831.jpg',
 		    			 text:'필수적인'},
 		  ]
-		  /*var slides = $scope.slides = [];
-		  $scope.addSlide = function() {
-		    var newWidth = 400 
-		    slides.push({
-		      image: 'http://192.168.0.88:8080/resources/images/tripPhotoFile/' + newWidth + '/300',
-		     // http://192.168.0.88:8080/resources/images/tripPhotoFile/
-		      text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-		        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-		    });
-		  };
-		  for (var i=0; i<4; i++) {
-		    $scope.addSlide();
-		  }*/
+
 		  
 		  var slides=$scope.slides;
 	}
