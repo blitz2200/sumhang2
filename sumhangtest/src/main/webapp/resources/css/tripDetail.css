@@ -1,3 +1,4 @@
+
 .header-tripDetail {
 	background-color: #FFBB33;
 	text-align: center;
@@ -13,19 +14,20 @@
 
 .tripDetail {
 	padding-top:50px;
-
 	padding-left: 8%;
 	line-height: 2.5em;
 	padding-bottom:40px;
+	font-family:nanomgothic;
+	font-size:13px;
 }
 
-.tripDetail .title {
+/* .tripDetail .title {
 	font-size: 35px;
-	font-weight: 900;
+	font-family:nanomgothicBold;
 	margin-top: 40px;
 	margin-left: 40px;
 	color: #333;
-}
+} */
 
 /* .tripDetail .tripAdd {
 	float: left;
@@ -35,23 +37,25 @@
 .tripDetail .userPho {
 	height: 70px;
 	width: 70px;
-	margin-top: 0.5em;
+	/* margin-top: 0.5em;
 	margin-left: 1.5em;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	-webkit-box-shadow: 6px 6px 6px -1px rgba(59, 75, 45, 0.64);
 	-moz-box-shadow: 6px 6px 6px -1px rgba(59, 75, 45, 0.64);
-	box-shadow: 6px 6px 6px -1px rgba(59, 75, 45, 0.64);
+	box-shadow: 6px 6px 6px -1px rgba(59, 75, 45, 0.64); */
+	border: 3px solid white;
+	border-radius: 70px;
+	margin-left:30%;
 }
 
-.tripDetail .username {
-	margin-left: 3.1em;
+.tripDetail .mainPosition{
+	position:relative;
 }
+.tripDetail .mainImg  {
 
-.tripDetail .mainImg {
-	 margin: 1em; 
-	
+	 margin: 1em; 	
 	height: 200px;
 	width: 87%;
 	padding: 10px 10px 10px;
@@ -60,6 +64,43 @@
 	-moz-box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
 	-webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 }
+/* 메인 사진 위에 글짜 쓰기 */
+.tripDetail .tripDetailImageText{
+		position:absolute;
+		bottom :30px;
+		left : 10%;
+		color : white;
+		font-size : 20px;
+		font-family:nanomgothicExtraBold;
+}
+
+/* 여행지 */
+.tripDetail .detailTitle{
+		
+	font-family:nanomgothicBold;
+	color : white;
+	font-size : 15px;
+	background-color: #FFBB33;
+	width:100%;
+	padding-left :25%;
+	margin-bottom:10%;
+	margin-top:3%;
+}
+
+
+/* 유저닉네임  */
+
+.tripDetail .nick{
+	margin-left:26%;
+}
+.tripDetail .username {
+	margin-left: 2%;
+	background-color:#FFBB33;
+	color: white;
+	font-weight:400;
+}
+
+/* 여행참가 버튼 */
 .tripDetail .addTrip {
 	margin-left:70%;
 }
@@ -72,21 +113,41 @@
 	margin-right: 5px;
 }
 
+
+/* 메인상세페이지 상세내용 */
 .tripDetail .desc {
-	border-top: 1px solid;
-	border-color: skyblue;
-	width: 430px;
+	border-top: 2px solid;
+	border-color: white;
+	width: 100%;
 	font-size: 15px;
+	padding-top:4%;
+	padding-bottom:4%;
 }
+
+/*메인 상세 페이지 수정 삭제*/
+.tripDetail .addBtn{
+	border-bottom:2px solid;
+	border-color:white;
+	width:100%;
+	padding-bottom:5%;
+}
+
+.tripDetail .editTrip{
+	margin-left:30%;
+}
+
+.tripDetail .deleteTrip{
+	margin-left: 20%;
+}
+
 
 /* li */
 .tripDetail .reply{
 	margin-top:20px;
 	margin-bottom:20px;
-	font-size:15px;
-	
-	
+	font-size:15px;	
 }
+
 .tripDetail ul{ 
 	list-style-type:none;
 	padding:0;
@@ -109,14 +170,14 @@
 /* 휴지통 */
 .tripDetail ul .delete img{
 	height:30px;
-	width:100%;
+	width:30px;
 	
 }
 
 /* 수정 */
 .tripDetail ul .edit img{
-	height:28px;
-	width:100%;
+	height:30px;
+	width:30px%;
 	margin-left:10px;
 }
 
@@ -135,10 +196,10 @@
  .wraper-footer-tripDetail input{
 	height: 35px;
 	width: 100%;
-	background-color: transparent;
+	/* background-color: transparent; */
 	border-style: solid;
-	border-width: 0px 0px 1px 0px;
-	border-color: darkred;
+	border-width: 2px;
+	border-color: #FACE55;
 	outline: 0;
 	margin-left:30px;
 } 
@@ -146,9 +207,39 @@
 
 /* 리플 입력 게시판 하단 고정시키기 */
 .wraper-footer-tripDetail{
-	height:50px;
+	height:30px;
 	position:fixed;
 	bottom:0;
 	width:100%;
 	z-index:999;
+}
+
+/* 말풍선 모양 리플 만들기 */
+.arrow_box {
+	position: relative;
+	background: #FFFFFF;
+	border: 4px solid #f5b216;
+}
+.arrow_box:after, .arrow_box:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(210, 213, 200, 0);
+	border-right-color: #FFFFFF;
+	border-width: 10px;
+	margin-top: -10px;
+}
+.arrow_box:before {
+	border-color: rgba(245, 178, 22, 0);
+	border-right-color: #f5b216;
+	border-width: 16px;
+	margin-top: -16px;
 }
