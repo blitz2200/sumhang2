@@ -66,7 +66,7 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
           		  galleryImage="content://media/external/images/media/"+photo_split[1];
 				}
 	            $scope.$apply(function() {
-	               // $scope.imageData = image;
+	                $scope.imageData = image;
 	                alert('갤러리 사진 경로:'+galleryImage);
 	                userPhotoFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
 	                userPhotoMultipartFile=galleryImage;
