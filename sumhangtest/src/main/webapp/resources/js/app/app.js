@@ -103,7 +103,7 @@ app.config(function ($routeProvider) {
             })
         .when('/invite',
             {
-                controller: 'inviteController',
+                controller: 'InviteController',
                 templateUrl: 'partials/invite.html'
             })
            .when('/timeLineReply',
