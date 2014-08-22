@@ -6,9 +6,9 @@ app.factory('mainFactory',['$http', function($http){
 	mainFactory.tripList = function(pageNum){
 		console.log('pageNum'+pageNum);
 		return $http({			
-			'url' :"http://192.168.0.72:8080/main.ajax",
+			'url' :"http://192.168.0.88:8080/main.ajax",
 			'method' : 'POST',
-			'data' : pageNum+''
+			   'data' : pageNum+''
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
 			//console.log('메인 팩토리 성공'+JSON.stringify(data));			
@@ -20,7 +20,7 @@ app.factory('mainFactory',['$http', function($http){
 	
 	mainFactory.getUserTrip = function(){
 		return $http({
-			'url' :"http://192.168.0.72:8080/getUserTrip.ajax",
+			'url' :"http://192.168.0.88:8080/getUserTrip.ajax",
 			'method' : 'GET'
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
@@ -63,7 +63,6 @@ app.factory('mainFactory',['$http', function($http){
 	}
 	
 	mainFactory.invite = function(sa){
-		alert("왔삼3");
 		return $http({
 			'url' :sa+"invite.ajax",
 			'method' : 'GET'
@@ -75,20 +74,7 @@ app.factory('mainFactory',['$http', function($http){
 			console.log('invite 실패');
 		});
 	};
-	
-	mainFactory.pushInviteTrip=function(sa,userNo){
-		console.log('초대 푸쉬버큰 클릭'+userNoo);
-		return $http({
-			'url':sa+"pushInviteTrip.ajax",
-			'method' : 'POST',
-			'data' : {'userNo':userNo}
-		}).success(function(data){
-			console.log('여행 초대해기 버튼 날리기 성공')
-		}).error(function(){
-			console.log('여행 초대하기 버튼 날리기 실패')
-		})
-		
-	}
+
 	
 	
 	
