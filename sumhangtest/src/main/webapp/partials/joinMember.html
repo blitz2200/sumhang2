@@ -1,189 +1,182 @@
 <div class="joinMember view">
 	<div class="container-joinMemberview">
 
-		<!-- page name -->
-		<div class="header-tripDetail">
-			<p class="header-logo">SUMHANG</p>
-		</div>
+	<!-- 페이지 헤더----------------------------------- -->
+		<div class="header-tripDetail">		
+				<!-- 왼쪽 아이콘 -->
+				<img id="joinLeftIcon" src="{{serverAddress}}resources/images/arrow-92-32.png" data-ng-click="goIntro()">
 
+				<!-- 제목 -->
+				<span id="joinPageHeader">
+					SUMHANG
+				</span>
+				
+				<!-- 오른쪽 아이콘 -->
+				<img id="joinHeaderRight" src="{{serverAddress}}resources/images/arrow-28-32.png">
+		</div>			<!-- header-tripDetail End -->
+	<!-- -------------------------------------------------------- -->	
 
-		<form class="form-horizontal joinMember" name="joinMember"
-			data-ng-submit="addMemberRequest()" data-ng-model="newMember"
-			novalidate>
-				<div class="joinTitle">
-					<span id="titleName">회원가입</span>
-
-				</div>
-
-				<div class="join1">
-
-					<!-- ID입력 -->
-					<div class="form-group"
-						data-ng-class="{ 'has-error' : joinMember.inputIdInput.$invalid && submitted || joinMember.isDuplicate}">
-						<label for="inputId" class="col-xs-2 control-label">아이디</label>
-						<div class="col-xs-8" id="join-1">
-							<input type="text" class="form-control" id="inputIdInput"
-								data-ng-keyup="duplicateChecking(newMember.id)"
-								name="inputIdInput" placeholder="ID"
-								data-ng-model="newMember.id" data-ng-minlength="2"
-								data-ng-maxlength="16" required><span
-								class="label label-info" data-ng-show="joinMember.isDuplicate">아이디
-								중복입니다</span> <span class="label label-warning"
-								data-ng-show="joinMember.inputIdInput.$error.minlength">너무
-								짦음</span> <span class="label label-warning"
-								data-ng-show="joinMember.inputIdInput.$error.maxlength">너무
-								김</span>
-						</div>
-					</div>
-
-
-					<!--   비밀번호 -->
-					<div class="form-group"
-						data-ng-class="{ 'has-error' : joinMember.inputPassword3Input.$invalid && submitted}">
-						<label for="inputPassword3" class="col-xs-2 control-label">비밀번호</label>
-						<div class="col-xs-8" id="join-2">
-							<input type="password" class="form-control"
-								id="inputPassword3Input" name="inputPassword3Input"
-								placeholder="Password" data-ng-model="newMember.password"
-								data-ng-minlength="4" data-ng-maxlength="16" required> <span
-								class="label label-info"
-								data-ng-show="joinMember.inputPassword3Input.$error.required">필수
-								입력</span> <span class="label label-warning"
-								data-ng-show="joinMember.inputPassword3Input.$error.minlength">너무
-								짦음</span> <span class="label label-warning"
-								data-ng-show="joinMember.inputPassword3Input.$error.maxlength">너무
-								김</span>
-
-						</div>
-
-
-
-					</div>
-
-
-					<!--  비밀번호 유효성 체크 -->
-					<div class="form-group"
-						data-ng-class="{ 'has-error' : joinMember.inputPassword1Input.$invalid && submitted}">
-						<label for="inputPassword1" class="col-xs-2 control-label">비밀번호
-							확인</label>
-						<div class="col-xs-8" id="join-3">
-							<input type="password" class="form-control"
-								id="inputPassword1Input" name="inputPassword1Input"
-								placeholder="Password" data-ng-model="newMember.password1"
-								data-pw-check="inputPassword3Input" required>
-						</div>
-
-						<!-- 비밀번호 유효성체크 메세지 -->
-
-						<span class="help-error"
-							data-ng-show="joinMember.inputPassword1Input.$error.pwcheck">Passwords
-							don't match.</span>
-
-
-
-					</div>
-
-					<div class="form-group"
-						data-ng-class="{ 'has-error' : joinMember.nicknameInput.$invalid && submitted}">
-						<label for="inputNickname" class="col-xs-2 control-label">닉네임</label>
-						<div class="col-xs-8" id="join-4">
-							<input type="text" class="form-control" id="nicknameInput"
-								name="nicknameInput" placeholder="NickName"
-								data-ng-model="newMember.nick" required>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="join2">
-					<div class="form-group"
-						data-ng-class="{ 'has-error' : joinMember.nameInput.$invalid && submitted}">
-						<label for="inputName-" class="col-xs-2 control-label">이름</label>
-						<div class="col-xs-8" id="join-5">
-							<input type="text" class="form-control" id="nameInput"
-								name="nameInput" placeholder="Name"
-								data-ng-model="newMember.name" required>
-						</div>
-					</div>
-
-					<div class="form-group"
-						data-ng-class="{ 'has-error' : joinMember.datepicker1.$invalid && submitted}">
-						<label for="datepicker4" class="col-xs-2 control-label">생년월일</label>
-						<div class="col-xs-8" id="birth">
-							<input type="text" class="form-control" id="datepicker1"
-								name="datepicker1" data-ng-model="newMember.birth"
-								placeholder="Birth" required>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="checkGender" class="col-xs-2 control-label">성별</label>
-						<div class="col-xs-8">
-							<input type="radio" class="optionsRadios" value="man" checked
-								data-ng-model="newMember.gender"> 남 <input type="radio"
-								class="optionsRadios" value="woman"
-								data-ng-model="newMember.gender"> 여
-						</div>
-					</div>
-
-					
-
-					<div class="form-group">
-						<label for="checkPushmessage" class="col-xs-2 control-label">푸쉬메시지</label>
-						<div class="col-xs-8">
-							<input type="radio" class="optionsRadios" value="yes"
-								data-ng-model="newMember.push"> 수락 <input type="radio"
-								class="optionsRadios" value="no" data-ng-model="newMember.push">
-							거절
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="invitePushmessage" class="col-xs-2 control-label">초대메시지</label>
-						<div class="col-xs-8">
-							<input type="radio" class="optionsRadios" value="yes" checked
-								data-ng-model="newMember.invite"> 수락 <input type="radio"
-								class="optionsRadios" value="no"
-								data-ng-model="newMember.invite"> 거절
-						</div>
-					</div>
-				</div>
-
-
-
-				<!-- 사진 올리기 -->
-				<div class="form-group">
-					<label for="exampleInputFile" class="col-xs-2 control-label">프로필
-						사진</label>
+<!-- 회원가입 입력 폼----------------------------------- -->
+	<form id="formJoinMemberSpace" name="joinMember" class="form-horizontal" data-ng-submit="addMemberRequest()"  data-ng-model="newMember" novalidate>
 		
-					<div class="col-xs-8" id="join-8">
-						<img class="cameraImg" data-ng-click="capturePhoto()"
-							data-ng-src="{{serverAddress}}/resources/images/icons/slr-camera-64.png">
+		<div id="join-8">
+				<div id="joinMemberPhotoImg">
+			<!-- 사진 나오는 곳 -->		
+					<img class="cameraAfterImg" data-ng-src="{{imageData}}" >
+			<!-- 사진 찍기 -->				
+					<img class="cameraImg" data-ng-click="capturePhoto()"
+					data-ng-src="{{serverAddress}}resources/images/compact-camera-32.png" id="takeAPictureIMG">
+			<!-- 갤러리 -->
+					<img class="galleryImg" data-ng-click="galleryPhoto()"
+					data-ng-src="{{serverAddress}}resources/images/gallery-32.png">
+				</div>			<!-- joinMemberPhotoImg End -->
+		</div>				<!-- join-8 End -->
 
-						<img class="cameraImg" data-ng-click="galleryPhoto()"
-							data-ng-src="{{serverAddress}}/resources/images/icons/gallery.png">
-					</div>
-
-
-
-					<div class="form-group">
-						<img class="cameraAfterImg" data-ng-src="{{imageData}}">
-					</div>
-				</div>
-
-
-
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-xs-10">
-						<button type="submit" class="btn btn-primary btn-xs-5"
+	
+			<!-- 이름-->
+				<div class="form-group" data-ng-class="{ 'has-error' : joinMember.userNameJoinInput.$invalid && submitted}" id="userNameJoin">
+					<label for="userNameJoin" class="col-xs-2  control-label" id="userNameJoinLabel">
+						<img src="{{serverAddress}}resources/images/contacts-24.png" id="joinUserName">
+					</label>
+					<div class="col-xs" id="userNameJoinInputSpace">
+						<input type="text" class="form-control" id="userNameJoinInput" name="userNameJoinInput"
+						placeholder="이름" data-ng-model="newMember.name" required>
+					</div>		<!-- serNameJoinInputSpace End -->
+				</div> 			<!-- userNameJoin End -->
+				
+			<!-- ID 입력-->
+				<div class="form-group" data-ng-class="{ 'has-error' : joinMember.userIdJoinInput.$invalid && submitted || joinMember.isDuplicate}"  id="userNameJoin">
+					<label for="userIdJoin" class="col-xs-2  control-label" id="userIdJoinLabel">
+						<img src="{{serverAddress}}resources/images/adobe-id-24.png" id="joinUserName">
+					</label>
+					<div class="col-xs" id="userIdJoinInputSpace">
+						<input type="text" class="form-control" id="userIdJoinInput" name="userIdJoinInput" 	data-ng-keyup="duplicateChecking(newMember.id)"
+						placeholder="ID" data-ng-model="newMember.id" data-ng-minlength="2" data-ng-maxlength="16" required>
+				<!-- 아이디 중복 체크 -->	
+					<span class="label label-info" data-ng-show="joinMember.isDuplicate" id="idDup">
+					아이디 중복
+					</span> 
+					<span class="label label-warning" data-ng-show="joinMember.userIdJoinInput.$error.minlength" id="idShort">
+					2자 이상
+					</span>
+					<span class="label label-warning" data-ng-show="joinMember.userIdJoinInput.$error.maxlength" id="idLong">
+					Long
+					</span>
+					</div>		<!-- userIdJoinInputSpace End -->
+				</div> 			<!-- userNameJoin End -->
+				
+			<!-- 닉네임-->
+				<div class="form-group" data-ng-class="{ 'has-error' : joinMember.userNickJoinInput.$invalid && submitted}" id="userNickJoin">
+					<label for="userNickJoin" class="col-xs-2  control-label" id="userNickJoinLabel">
+						<img src="{{serverAddress}}resources/images/star-4-24.png" id="joinUserNick">
+					</label>
+					<div class="col-xs" id="userNickJoinInputSpace">
+						<input type="text" class="form-control" id="userNickJoinInput" name="userNickJoinInput"
+						placeholder="닉네임" data-ng-model="newMember.nick" required>
+					</div>		<!-- userNickJoinLabel End -->
+				</div> 			<!-- userNickJoin End -->
+			
+			<!-- 비밀번호 입력-->
+				<div class="form-group" data-ng-class="{ 'has-error' : joinMember.userPswdJoinInput.$invalid && submitted}" id="userPswdJoin">
+					<label for="userPswdJoin" class="col-xs-2  control-label" id="userPswdJoinLabel">
+						<img src="{{serverAddress}}resources/images/private-24.png" id="joinUserPswd">
+					</label>
+					<div class="col-xs" id="userPswdJoinInputSpace">
+						<input type="password" class="form-control" id="userPswdJoinInput" name="userPswdJoinInput" 	placeholder="비밀번호" data-ng-model="newMember.password"
+								data-ng-minlength="4" data-ng-maxlength="16" required>
+				<!-- 비밀번호 중복 체크 -->	
+					 <!-- <span class="label label-info" data-ng-show="joinMember.userPswdJoinInput.$error.required" id="pswdCheck">
+					 	필수 입력 
+					 </span>  -->
+					 <span class="label label-warning" data-ng-show="joinMember.userPswdJoinInput.$error.minlength" id="pswdShort">
+					 	Short
+					 </span>
+					 <span class="label label-warning" data-ng-show="joinMember.userPswdJoinInput.$error.maxlength" id="pswdLong">
+					 	Long
+					 </span>
+					</div>		<!-- userPswdJoinInputSpace End -->
+				</div> 			<!-- userPswdJoin End -->	
+				
+		<!--  비밀번호 유효성 체크 -->
+				<div class="form-group" data-ng-class="{ 'has-error' : joinMember.userPswdCheckInput.$invalid && submitted}" id="userPswdCheck">
+					<label for="userPswdCheck" class="col-xs-2  control-label" id="userPswdCheckLabel">
+						<img src="{{serverAddress}}resources/images/private-24.png" id="joinUserPswd">
+					</label>
+					<div class="col-xs" id="userPswdCheckSpace">
+						<input type="password" class="form-control" id="userPswdCheckInput" name="userPswdCheckInput" 	placeholder="비밀번호 확인" 
+						data-ng-model="newMember.password1" data-pw-check="userPswdJoinInput" required>
+					</div>					<!-- userPswdCheckSpace End -->
+					
+				<!-- 비밀번호 유효성체크 메세지 -->
+					<span class="label label-warning" data-ng-show="joinMember.userPswdCheckInput.$error.pwcheck" id="passwordCheck">
+					Passwords don't match
+					</span>
+				</div>						<!-- userPswdCheck End -->
+				
+		<!-- 생년월일 -->
+			<div class="form-group" data-ng-class="{ 'has-error' : joinMember.datepicker1.$invalid && submitted}"  id="userBirthJoin">
+					<label for="datepicker4" class="col-xs-2  control-label" id="userBirthJoinLabel">
+						<img src="{{serverAddress}}resources/images/birthday-cake-24.png" id="joinUserBirth">
+					</label>
+					<div class="col-xs" id="userBirthJoinInputSpace">
+						<input type="text" class="form-control" id="datepicker1" name="datepicker1"
+						placeholder="생년월일" data-ng-model="newMember.birth" required>
+					</div>		<!-- userBirthJoinLabel End -->
+			</div> 			<!-- userBirthJoin End -->
+			
+		<!-- 성별-->
+				<div class="form-group" id="userGenderJoin">
+					<label for="checkGender" class="col-xs-2  control-label" id="userGenderJoinLabel">
+						<img src="{{serverAddress}}resources/images/male-2-24.png" id="joinUserNick">
+					</label>
+					<div class="col-xs" id="userGenderChoiceSpace">
+						<input type="radio" class="optionsRadios" value="man" id="userNickJoinInput1" data-ng-model="newMember.gender">
+						남
+						<input type="radio" class="optionsRadios" value="woman" id="userNickJoinInput2" data-ng-model="newMember.gender">
+						여
+					</div>		<!-- userGenderChoiceSpace End -->
+				</div> 			<!-- userGenderJoin End -->
+			
+		<!-- 푸쉬메세지-->
+				<div class="form-group" id="userPushChoice">
+					<label for="checkPushmessage" class="col-xs-2  control-label" id="userPushChoiceLabel">
+						<img src="{{serverAddress}}resources/images/comments-24.png" id="joinPushChoice">
+					</label>
+					<div class="col-xs" id="userPushChoiceSpace">
+						<input type="radio" class="optionsRadios" value="yes" id="userPushChoiceInput1" data-ng-model="newMember.push">
+						푸쉬 수락
+						<input type="radio" class="optionsRadios" value="no" id="userPushChoiceInput2" data-ng-model="newMember.push">
+						푸쉬 거절
+					</div>		<!-- serPushChoiceSpace End -->
+				</div> 			<!-- userPushChoice End -->
+				
+		<!-- 초대메세지-->
+				<div class="form-group" id="userInviteChoice">
+					<label for="invitePushmessage" class="col-xs-2  control-label" id="userInviteChoiceLabel">
+						<img src="{{serverAddress}}resources/images/handshake-24.png" id="joinPushChoice">
+					</label>
+					<div class="col-xs" id="userInviteChoiceSpace">
+						<input type="radio" class="optionsRadios" value="yes" id="userInviteChoiceInput1" data-ng-model="newMember.invite">
+						초대 수락
+						<input type="radio" class="optionsRadios" value="no" id="userInviteChoiceInput2" data-ng-model="newMember.invite">
+						초대 거절
+					</div>		<!-- userInviteChoiceSpace End -->
+				</div> 			<!-- userInviteChoice End -->
+				
+				
+				
+		<!-- 가입버튼 -->
+				<div class="form-group" >
+					<div class="col-sm" id="joinMemberBtn">
+						<button type="submit" class="btn btn-warning btn-block"
 							id="registerbtn">가입하기</button>
-
 					</div>
 				</div>
-				<br />
 		</form>
-	</div>
-</div>
+	</div>					<!-- container-joinMemberview End -->
+</div>						<!-- joinMember view End -->
+
+<!-- 달력 상자 -->
 <script>
 	$(function() {
 		$("#datepicker1").datepicker({
@@ -192,5 +185,6 @@
 		});
 	});
 </script>
+
 
 
