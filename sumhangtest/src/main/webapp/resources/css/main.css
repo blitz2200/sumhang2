@@ -55,8 +55,9 @@
 	text-color: black;			
 	z-index:999;
 	position:fixed;
-	width: 100%;
- 	margin-left:-23px;
+	width: 110%;
+ 	/* margin-left:-23px; */
+ 	left:-5px;
 	margin-top:-11px;
 	border-color: #ccc; 
 }
@@ -101,7 +102,7 @@
 /* 제목 */
 #imageWrapper #mainPageTitle{
 	 
-	left: 45%;
+	left: 40%;
 	position: absolute;
 	font-size: 30px;
 	color: white;
@@ -223,7 +224,8 @@ border: none;
 
 /* 좋아요 숫자 */
 #participants #mainLikeNum{
-	margin-right: 5px;
+	margin-right: 10px;
+	font-family:nanomgothicBold;
 }
 
 /* 아이콘 크기 */
@@ -236,15 +238,19 @@ border: none;
 
 /* 모집인원 숫자 */
 .iconsBack #participants #mainTripMember{
-	font-size: 12px;	
+	font-size: 10px;
+	color:orange;	
 	margin-top: 0;
 	margin-right: 5px;
+	font-family:nanomgothicExtraBold;
 }
 
 /* 좋아요 숫자 */
 .iconsBack #participants #mainLikeNum{
-	font-size: 12px;	
+	font-size: 20px;
+	color:orange;
 	margin-top: 0;
+	font-family:nanomgothicExtraBold;
 }
 
 /* 타임라인 쓰기 고정 */
@@ -291,7 +297,7 @@ border: none;
 .systemSettings2 #logoutBtn{
 	width:80px;
 	margin-left: 10px;
-	font-family: 'Nanum Gothic Coding', monospace;
+	 
 }
 
 
@@ -308,7 +314,7 @@ border: none;
 
 /* 방장 이름 */
 #hostUserName {
-	font-family: 'Nanum Gothic Coding', monospace;
+	 
     float: left;
     font-size: 1em;
     width: 50.01%;
@@ -323,7 +329,7 @@ border: none;
 
 /* 참여 목록 */
 #attandingView .form-control{
-	font-family: 'Nanum Gothic Coding', monospace;
+	 
 	margin-top: 20px;
 	float: left;
     height: auto;
@@ -337,7 +343,7 @@ border: none;
 
 /* 여행기간 */
 #rightPanel .tripPeriod{
- font-family: 'Nanum Gothic Coding', monospace;
+ 
   text-align: center;
 }
 
@@ -355,14 +361,14 @@ border: none;
 
 /* 강퇴&초대 버튼 */
 .tripActionBtn{
-	font-family: 'Nanum Gothic Coding', monospace;
+ 
 	text-align: center;
 	margin-top: 50px;	
 }
 
 /* 강퇴버튼 */
 .tripActionBtn #kickOutBtn{
-	font-family: 'Nanum Gothic Coding', monospace;
+	 
 	margin-right: 10px;
 }
 
@@ -378,7 +384,7 @@ border: none;
 
 /* 디데이 알림 문구 */
 #dDayCal{
-	font-family: 'Nanum Gothic Coding', monospace;
+	 
   	float: left;
     font-size: 1m;
     width: auto;
