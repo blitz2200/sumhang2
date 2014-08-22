@@ -1,44 +1,72 @@
 /*fonts*/
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@font-face{
+	font-family:nanomgothic;
+	src:url('../fonts/nanomGothic.ttf');
+	
+} 
+@font-face{
+	font-family:nanomgothicBold;
+	src:url('../fonts/nanomGothicBold.ttf');
+	
+} 
+@font-face{
+	font-family:nanomgothicExtraBold;
+	src:url('../fonts/nanomGothicExtraBold.ttf');
+	
+} 
 
 /* 페이지 가로 크기 */
-#mainPage .container-mainPage{
-/* 	width: 80%;
-	margin: auto; */
-	border-width: 10px;
-	border-style: solid;
-	border-color: #fcd487
 
+.Hader-Logo{
+	margin-top:10px;
+	margin-bottom:5px;
 }
 
-/* #listviewMainPage ul{
+/*   #listviewMainPage ul{
 	max-height: 800px;
     overflow: auto;
     list-style-type: none;
-} */
+}   */
 
 #listviewMainPage li{
 	background-color:white;
 }
 
+#listviewMainPage{
+	margin-left:5%;
+	margin-right:5%;
+	box-shadow:20px 20px 20px silver;
+	-moz-box-shadow:20px 20px 20px silver;
+	
+}
 
+.under-line{
+	background:#ffbb33;
+	height:3px;
+	width:80%;
+	position:relative;
+	left:10px;
+}
 /* 서치바디자인 */
 .ui-filterable .ui-input-search{
-	font-family: 'Nanum Gothic Coding', monospace;
+	 
  	background-color: white;
 	text-align: center;
 	text-color: black;			
 	z-index:999;
 	position:fixed;
 	width: 100%;
-	margin-left: -10px;
+ 	margin-left:-23px;
 	margin-top:-11px;
 	border-color: #ccc; 
 }
-
+ 
 /* 배경 색깔 */
 #mainPage #header{
-	background:#ffbb33;
+	/* background:#ffbb33; */
+	padding-top:10px;
+	padding-bottom:4px;
+	width:100%;
 }
 
 /* 헤더 고정 */
@@ -49,7 +77,7 @@
 	width: 100%;
 	background: #ffbb33;
 	margin-top:-10px;
-	margin-left: -10px;
+	 
 }
 
 /* 헤더 왼쪽 아이콘 */
@@ -72,8 +100,8 @@
 
 /* 제목 */
 #imageWrapper #mainPageTitle{
-	font-family: 'Nanum Gothic Coding', monospace;
-	left: 42%;
+	 
+	left: 45%;
 	position: absolute;
 	font-size: 30px;
 	color: white;
@@ -84,16 +112,20 @@
 #tripPictures #tripPcture{
 	height: 120px;
 	border-radius: 8px;
-	width:100%;	
+	width:100%;
+		
 }
 
 /* 여행지  위치*/
 #tripDestinationTag .visible {
+	font-family:nanomgothicExtraBold;
 	width: 100%;
 	text-align: left;
-	margin-left: 5px;
+	margin-left: 15px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	font-size:20px;
+
 }
 
 /* 여행지 오렌지색 정의 */
@@ -103,22 +135,24 @@
 
 /* 여행제목 */
 #tripTitleTag #tripTitle{
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothicBold;
 	text-align: left;
-	color: black;
-	font-size: 10px;
-	margin-left: 5px;
+	color:orange;
+	font-size: 25px;
+	margin-left: 10px;
 	margin-bottom: -4px;
 	font-size: 12px;
+	font-weight:bold;
+	
 }
 
 /* 여행기간 */
 #tripPeriodTag #tripPeriod{
-	font-family: 'Nanum Gothic Coding', monospace;
+	 font-family:nanomgothicBold;
 	text-align: left;
-	color: black;
+	color:orange;
 	font-size: 12px;	
-	margin-left: 5px;
+	margin-left: 10px;
 }
 
 /* 아이콘 카운트 위치 */
@@ -142,7 +176,7 @@
 
 /* 리스트 배경색,탑 */
 #listviewMainPage{
-		background:#ffbb33;
+		background:#fcd487;
 		margin-top: 45px;
 }
 
@@ -150,8 +184,8 @@
 #listviewMainPage #eachListview{
 	padding:0;
 	margin-top:20px;
-	margin-left:30px;
-	margin-right:30px;
+	margin-left:15px;
+	margin-right:15px;
 	border-radius: 8px;
 }
 
@@ -217,7 +251,7 @@ border: none;
 #writeTimeline #writeTrip{
 	height:50px;
 	margin-bottom:0;
-	bottom:0;
+	bottom:5%;
 	z-index:999;
 	position:fixed;
 /* 	float: right;
@@ -226,7 +260,9 @@ border: none;
 
 }
 
-
+.container-mainPage{
+	background:#d8d7d7;
+}
 
 /* left slide------------------------------------------- */	
 .ng-pageslide {
