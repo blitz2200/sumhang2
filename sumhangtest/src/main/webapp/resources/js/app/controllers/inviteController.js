@@ -6,7 +6,7 @@ app.controller('InviteController',['$scope','mainFactory','globalFactory','pushI
 	invite();
 	
 	function invite(){
-		alert('인바이트 시작')
+		console.log('인바이트 시작')
 		mainFactory.invite(globalFactory.serverAddress)
 		.success(function(data){
 			console.log('invite 성공 넘어온 데이터는?:'+JSON.stringify(data));
@@ -23,10 +23,9 @@ app.controller('InviteController',['$scope','mainFactory','globalFactory','pushI
 	$scope.inviteUser=function(inviteUser){
 		
 			console.log('여행 초대하기 버튼 클릭');
-			alert('여행 초대할 사람 번호'+inviteUser);
-			
+			console.log('여행 초대할 사람 번호'+inviteUser);			
 			pushInviteFactory.pushInviteUser(sa,inviteUser)
-			.sucess(function(){
+			.success(function(data){
 				console.log('여행초대하기 푸시성공');
 			}).error(function(error){
 				console.log('여행참가하기 푸시실패');
