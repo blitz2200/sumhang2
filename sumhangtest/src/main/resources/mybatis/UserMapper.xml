@@ -45,6 +45,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where ID=#{id}
 	</select>
 	
+	<select id="invitePushUser" parameterType="Int" resultType="Map">
+		select REGISTID,NICK
+		from USER
+		where USER_NO=#{userNo}
+	</select>
 	
 </mapper>
 
