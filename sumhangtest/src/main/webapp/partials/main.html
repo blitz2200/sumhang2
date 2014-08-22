@@ -10,12 +10,12 @@
 
 				<!-- 왼쪽패널 -->
 				<img id="leftSideIcon"
-					src="{{serverAddress}}resources/images/leftSide.png"
+					src="{{serverAddress}}resources/images/leftSide-2.png"
 					data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
-					data-ps-auto-close="true">
+					data-ps-auto-close="true" style="margin-top:4px; margin-left:0;">
 
 				<!-- 제목 -->
-				<span id="mainPageTitle">SUM행</span>
+				<span id="mainPageTitle"><a href="#/main"><img src='resources/images/Header-Logo.png' class="Header-Logo"> </a></span>
 
 				<!-- 오른쪽패널 -->
 				<img id="rightSideIcon"
@@ -30,7 +30,7 @@
 		<div id="listviewMainPage">
 
 			<!-- 서치바 -->
-			<div data-infinite-scroll="loadMore()">
+			<div data-infinite-scroll="loadMore()"  >
 			<ul data-theme="none" data-role="listview" data-inset="true"
 				data-filter="true" data-filter-placeholder="검색" id="mainSearchBar">
 
@@ -49,9 +49,11 @@
 							<a data-ng-href="#/tripDetail/{{trip.TBOARD_NO}}"
 								id="tripDestination">{{trip.TRAVEL}}</a>
 						</h1>
+						<p class="under-line"><br/></p>
 					</div> <!-- 여행제목 -->
 					<div id="tripTitleTag">
 						<p class="travelPhrase visible" id="tripTitle">{{trip.TITLE}}</p>
+						
 					</div> <!-- 여행기간 -->
 					<div id="tripPeriodTag">
 						<p class="travelPeriod visible" id="tripPeriod">{{trip.TRAVEL_START}}~{{trip.TRAVEL_END}}</p>
@@ -83,7 +85,7 @@
 				
 		<!-- 쓰기 아이콘 -->
 				<div id="writeTimeline">
-					<img src="{{serverAddress}}resources/images/yellow-document-plus-icon.png" id="writeTrip" data-ng-click="goAddTrip()">
+					<img src="{{serverAddress}}resources/images/trip-writer.png" id="writeTrip" data-ng-click="goAddTrip()">
 				</div>			
 			</ul>
 			</div>
