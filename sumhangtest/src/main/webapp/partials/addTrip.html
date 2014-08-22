@@ -13,8 +13,12 @@
 				<!-- 오른쪽패널 -->				
 					<img src="resources/images/save-32.png" data-ng-click="goMain()" id="addTripSaveBtn" >
 		</div>				<!-- header-modifyMember End -->
-	
-	<!-- 여행 사진 -->
+		
+	<!-- 여행 정보 올리기 폼 -->
+			<form id="addTripForm" name="addTripForm" data-ng-submit="addTripRequest()" class="form-horizontal"
+			data-ng-model="newTrip" novalidate>
+			
+			<!-- 여행 사진 -->
 		<div id="addTripPhotoLabelSpace">
 			<h4 id="addTripPhotoLabel">
 				사진 선택
@@ -22,79 +26,92 @@
 		</div>
 		
 	<!-- 여행 사진 선택 -->
-		<div id="addTripPhotoSpace">
+		<div id=addTripPhotoSpace>
 			<div id="addTripPhotoImg">
-				<img src="resources/images/picture-attachment-128.png" id="tripFileUpdate" data-ng-click="goGalleryPhoto()">
-				
-			</div>
+				<img src="resources/images/picture-attachment-128.png" id="tripFileUpdate" data-ng-click="goGalleryPhoto()">	
+			
+			</div>				
 				<img data-ng-src="{{addTripImage}}">
 			<div id="addTripPhotoText">
 				<h5 id="addTripPhotoUpload">사진을 올려주세요.</h5>
 			</div>
 		</div>			<!-- addTripPhotoSpace End -->
-		
-	<!-- 여행 정보 올리기 폼 -->
-			<form id="addTripForm" name="addTripForm" data-ng-submit="addTripRequest()" class="form-horizontal"
-			data-ng-model="newTrip" novalidate>
 			
 			<!-- 여행지-->
 				<div class="form-group" data-ng-class="{ 'has-error' : addTripForm.tripDestinationInput.$invalid && submitted}" id="destinationAddTripSpace">
-					<label for="tripDestination" class="col-xs-2 control-label"id="destination-addTrip">
-						여행지
+					<label for="tripDestination" class="col-xs-2 control-label" id="destination-addTrip">
+						<img src="{{serverAddress}}resources/images/airplane-7-24.png" id="modifyMemberUserName">
 					</label>
-					<input type="text" class="form-control" id="tripDestinationInput"
-						name="tripDestinationInput" placeholder="ex)홍콩, 제주도"
-						data-ng-model="newTrip.travel" required>
+					<div class="col-xs" id="tripDestinationInputSpace">
+						<input type="text" class="form-control" id="tripDestinationInput" name="tripDestinationInput" placeholder="여행지"
+							data-ng-model="newTrip.travel" required>
+					</div>			<!-- tripDestinationInputSpace End -->
 				</div>		<!-- destination-addTrip End -->
 				
 			<!-- 여행제목-->
-				<div class="form-group" data-ng-class="{ 'has-error' : addTripForm.tripTitleInput.$invalid && submitted}"  id="tripTitleAddTripSpace">
+				<div class="form-group" data-ng-class="{ 'has-error' : addTripForm.tripTitleInput.$invalid && submitted}" id="tripTitleAddTripSpace">
 					<label for="tripTitleAddTrip" class="col-xs-2 control-label" id="tripTitleLabel">
-						여행제목
+						<img src="{{serverAddress}}resources/images/baggage-24.png" id="modifyMemberUserName">
 					</label>
-					<input type="text" class="form-control" id="tripTitleInput" name="tripTitleInput" 
-					data-ng-model="newTrip.title" placeholder="여행 제목을 입력하세요." required>
+					<div class="col-xs" id="tripTitleInputSpace">
+							<input type="text" class="form-control" id="tripTitleInput" name="tripTitleInput" 
+					data-ng-model="newTrip.title" placeholder="여행 제목" required>
 				</div>			<!-- tripTitleLabel End -->
-				
-			<!-- 여행일정-->
-			<div class="form-group" data-ng-class="{ 'has-error' : (addTripForm.datepicker3.$invalid || addTripForm.datepicker4.$invalid ) && submitted}"  id="scheduleAddTripSpace">
-					<label for="datepicker2" class="col-xs-2 control-label" id="scheduleAddTrip">
-						여행기간
-					</label><br/>
-					<input type="text" class="form-control" id="datepicker3" name="datepicker3" placeholder="출발"
-						data-ng-model="newTrip.travelStart" required>
-					<span id="scheduleSpan">
-					<input type="text" class="form-control" id="datepicker4" name="datepicker4" data-ng-model="newTrip.travelEnd"
-						placeholder="도착" required>
-					</span>
-			</div>		<!-- scheduleAddTrip End -->
+				</div>		<!-- tripTitleAddTripSpace End -->
+			
+				<div class="form-group" data-ng-class="{ 'has-error' : (addTripForm.datepicker3.$invalid || addTripForm.datepicker4.$invalid ) && submitted}" id="scheduleAddTripSpace">
+					<div id="addTripScheduleLeft">
+						<label for="datepicker2" class="col-xs-2 control-label" id="scheduleAddTrip">
+							<img src="{{serverAddress}}resources/images/planner-24.png" id="modifyMemberUserName">
+						</label>
+						<div class="col-xs" id="tripscheduleSpace">
+							<input type="text" class="form-control" id="datepicker3" name="datepicker3" placeholder="출발" data-ng-model="newTrip.travelStart" required>
+						</div>			<!--tripscheduletSpace End -->
+					</div>		<!-- addTripScheduleLeft End -->
+					
+				<div id="addTripScheduleRight">
+					<label for="datepicker2" class="col-xs-2 control-label" id="scheduleEndAddTrip">
+						<img src="{{serverAddress}}resources/images/planner-24.png" id="modifyMemberUserName">
+					</label>
+					<div class="col-xs" id="tripScheduletEndSpace">
+						<input type="text" class="form-control" id="datepicker4" name="datepicker4" placeholder="도착" data-ng-model="newTrip.travelEnd" required>
+					</div>	
+				</div>			<!-- addTripScheduleRight End -->
+			</div>			<!-- scheduleAddTripSpace End -->
+
+			
+			
 				
 			<!-- 모집인원-->
 				<div class="form-group" data-ng-class="{ 'has-error' : addTripForm.tripNumberInputAddTrip.$invalid && submitted}" id="countAddTrip">
 					<label for="addTripNumber" class="col-xs-2 control-label" id="tripNumberLabel-addTrip">
-						모집인원
+						<img src="{{serverAddress}}resources/images/conference-ccc-24.png" id="modifyMemberUserName">
 					</label>
-					<input type="number" class="form-control" min="1" max="20" id="tripNumberInput-addTrip" name="tripNumberInputAddTrip"
-					data-ng-model="newTrip.travelUserCount" placeholder="명" value="{{defaultNumber}}" required>
+					<div class="col-xs" id="tripNumberInput-addTripSpace">
+						<input type="number" class="form-control" min="1" max="20" id="tripNumberInput-addTrip" name="tripNumberInputAddTrip"
+						data-ng-model="newTrip.travelUserCount" placeholder="모집 인원" value="{{defaultNumber}}" required>
+					</div>			<!-- tripNumberInput-addTripSpace End -->
 				</div>			<!-- tripNumberLabel-addTrip End -->
 			
 			<!-- 세부 내용-->
 				<div class="form-group" id="contextAddTripSpace">
 					<label for="tripContext" class="col-xs-4 control-label" id="addTripContextLabel">
-						세부내용
+						<img src="{{serverAddress}}resources/images/text-justify-24.png" id="modifyMemberUserName">
 					</label>
-					<textarea class="form-control" rows="3" id="tripContextText"
-						data-ng-model="newTrip.travelDescription"></textarea>
-				</div>			<!-- contextAddTripSpace End -->
+					<div class="col-xs" id="tripContextTextSpace">
+						<textarea class="form-control" rows="3" id="tripContextText" data-ng-model="newTrip.travelDescription" placeholder="세부내용"></textarea>
+					</div>			<!-- tripContextTextSpace End -->
+				</div>		<!-- contextAddTripSpace End -->
 				
 			<!-- 여행태그-->
 				<div class="form-group" id="addTripTag">
 					<label for="tripTag" class="col-xs-2 control-label" id="addTripTagLabel">
-						TAG
+						<img src="{{serverAddress}}resources/images/tag-24.png" id="modifyMemberUserName">
 					</label>
-					<input type="text" class="form-control" id="tripTagInput"
-					placeholder="ex)30대" data-ng-model="newTrip.travelTag">
-				</div>			<!-- addTripTag End -->
+					<div class="col-xs" id="addTripTagSpace">
+						<input type="text" class="form-control" id="tripTagInput" placeholder="여행 태그" data-ng-model="newTrip.travelTag">
+					</div>			<!-- addTripTagSpace End -->
+				</div>		<!-- addTripTag End -->
 				
 			<!-- 여행올리기 -->
 			<div class="form-group">
