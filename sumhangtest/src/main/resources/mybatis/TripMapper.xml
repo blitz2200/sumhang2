@@ -182,9 +182,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 무작위로 초대 -->
 	<select id="invite" resultType="Map">
-	 SELECT u.USER_NO, u.NAME, u.nick, u.GENDER,u.PUSH
-	  FROM USER u, TBOARD t, USER_STATUS us
-      WHERE t.TBOARD_NO = us.TBOARD_NO AND u.PUSH = 'no' AND u.USER_NO NOT Like us.USER_NO ORDER BY RAND() LIMIT 5;
-	
+	  SELECT USER_NO, NAME, nick, GENDER,PUSH
+	  FROM USER 
+	  where push='yes'
+      ORDER BY RAND() LIMIT 5
 	</select>
 </mapper>
