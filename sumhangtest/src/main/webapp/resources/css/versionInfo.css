@@ -1,5 +1,27 @@
-/*fonts*/
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+ /*fonts*/
+@font-face{
+	font-family:nanomgothic;
+	src:url('../fonts/nanomGothic.ttf');
+	
+} 
+@font-face{
+	font-family:nanomgothicBold;
+	src:url('../fonts/nanomGothicBold.ttf');
+	
+} 
+@font-face{
+	font-family:nanomgothicExtraBold;
+	src:url('../fonts/nanomGothicExtraBold.ttf');
+	
+} 
+ 
+.versionInfoView{
+	background-color:#fcd487;
+	height:800px;
+	
+ 
+}
+
 
 /* 헤더 */
 #imageWrapper-versionInfo{
@@ -8,8 +30,9 @@
 		margin-bottom: 20px;
 }
 /* 헤더 제목 */
+
 #imageWrapper-versionInfo #versionInfoTitle{
-		font-family: 'Nanum Gothic Coding', monospace;
+		 
 		left: 40%;
 		position: absolute;
 		text-align:center;
@@ -33,8 +56,18 @@
 }
 
 /* 버전 정보 */
-#versionInfoShow{
-	font-family: 'Nanum Gothic Coding', monospace;
+/* #versionInfoShow{
+	font-family:nanomgothicExtraBold;
+	color:orange; 
 	margin-top:30px;
 	text-align: center;
+}
+ */
+ 
+#recentVersion, #versionInfoShow{
+	text-align:center;
+	font-family:nanomgothicExtraBold;
+	color:orange;
+	font-size:20px;
+	
 }
