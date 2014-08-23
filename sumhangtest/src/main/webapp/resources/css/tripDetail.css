@@ -14,7 +14,7 @@
 
 .tripDetail {
 	padding-top:50px;
-	padding-left: 8%;
+/* 	padding-left: 8%; */
 	line-height: 2.5em;
 	padding-bottom:40px;
 	font-family:nanomgothic;
@@ -212,6 +212,171 @@
 	bottom:0;
 	width:100%;
 	z-index:999;
+}
+
+/* 말풍선 모양 리플 만들기 */
+.arrow_box {
+	position: relative;
+	background: #FFFFFF;
+	border: 4px solid #f5b216;
+}
+.arrow_box:after, .arrow_box:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(210, 213, 200, 0);
+	border-right-color: #FFFFFF;
+	border-width: 10px;
+	margin-top: -10px;
+}
+.arrow_box:before {
+	border-color: rgba(245, 178, 22, 0);
+	border-right-color: #f5b216;
+	border-width: 16px;
+	margin-top: -16px;
+	
+/* //////////////////////////////tripDetail 상세 보기 수정 페이지/////////////////////////////////////// */
+
+/* 배경 색 */
+.tripDetail {
+	background-color: white;	
+}
+
+/* //////////// 사진 올리기 관련///////////////////////////////////////////////////////////////////////////////////////// */
+/* 여행사진 라벨 */
+#addTripPhotoLabelSpace #addTripPhotoLabel{
+	font-family: 'Nanum Gothic Coding', monospace;
+	color: #ffbb33;
+	font-weight: bold;
+	margin-left: 15px;
+
+}
+
+#addTripPhotoLabelSpace{
+		margin-top: 15px;
+		margin-bottom: 15px;
+	
+}
+
+/* 여행사진 올리기 */
+ #editTripPhotoSpace{
+	width:100%;
+	height: 200px;
+	background: url('../images/TK.jpg');
+	background-size: cover;
+	opacity:0.8;
+}
+
+/* 여행사진 올리기 이미지 */
+#editTripPhotoSpace #editTripPhotoImg{
+	text-align: center;
+}
+
+/* 여행 사진 올리기 텍스트 */
+#editTripPhotoSpace #editTripPhotoText{
+	font-family:nanomgothic;
+	text-align: center;
+}
+
+/* 사진을 올려주세요 */
+#editTripPhotoSpace #editTripPhotoText #editTripPhotoUpload{
+	font-family:nanomgothic;
+	color:orange;
+	background-color: white;
+}	
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* 폼 라벨 */
+#tripTitleLabel, #editDestinationLabel, #tripPeriodLabel, #editScheduleEndLabel, #tripContextLabel{
+	text-align: left;
+	width: 70px;
+	margin-left: 15px;
+	margin-top: -5px;
+}
+
+/* 세부내용 라벨 */
+ #tripContextLabel{
+ 	text-align: left;
+	width: 70px;
+	margin-left: 15px;
+	margin-top: 10px;
+ }
+ 
+/* 리스트뷰 상단 줄 */
+#editTitleGroup{
+	border-top-color: #ffbb33;
+	border-top-width: 1px;
+	border-top-style: solid;
+	margin-top: 20px;
+}
+
+/* 리스트뷰 입력란  */
+#tripTitleInput, #editDestinationText{
+	font-family:nanomgothic;
+	width: 75%;
+	border: none;
+	margin-left: -30px;
+	height: 43px;
+	vertical-align: middle;
+}
+
+/* 리스트 뷰 입력 공간 */
+#tripTitleInputGroup, #contextEditTripSpace, #editScheduleGroup{
+	border-bottom-color: #ffbb33;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	background-color: white;	
+	margin-bottom: 0px;
+}
+
+/* 여행지 입력 공간 */
+#editDestinationGroup{
+	border-bottom-color: #ffbb33;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	background-color: white;	
+	margin-bottom: 0px;
+	margin-top: -15px;
+}
+
+/* 여행 출발일  */
+#datepicker7{
+	float: left;	
+	font-family:nanomgothic;
+	border: none;
+	height: 43px;
+	width: 37%;
+	margin-left: -30px;
+	border-right-color: #ffbb33;
+	border-right-width: 1px;
+	border-right-style: solid;
+}
+
+/* 도착일 입력란 */
+#datepicker8{
+	font-family:nanomgothic;
+	border: none;
+	height: 43px;
+	width: 30%;
+	margin-left: -30px;
+}
+
+/* 여행 수정하기 버튼 */
+#updateTrip{
+	font-family:nanomgothic;
+	padding: 5px;
+	width: 93%;
+	margin-left: 17px;
+	
 }
 
 /* 말풍선 모양 리플 만들기 */
