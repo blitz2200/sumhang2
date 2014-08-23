@@ -38,11 +38,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{sPhoto} )	
 	</insert>
 	
-	<select id="getUser" parameterType="String" resultMap="userSelectMap">
+	<select id="getUserbyId" parameterType="String" resultMap="userSelectMap">
 		Select
 		ID, NAME, PASSWD, NICK, BIRTH, GENDER, USER_PHOTO, PUSH, INVITE, SIGNOUT, USER_NO,USER_SPHOTO
 		from USER
-		where ID=#{id}
+		where ID=#{value}
+	</select>
+	
+	<select id="getUserbyNick" parameterType="String" resultMap="userSelectMap">
+		Select
+		ID, NAME, PASSWD, NICK, BIRTH, GENDER, USER_PHOTO, PUSH, INVITE, SIGNOUT, USER_NO,USER_SPHOTO
+		from USER
+		where NICK=#{value}
 	</select>
 	
 	<select id="invitePushUser" parameterType="Int" resultType="Map">
@@ -50,6 +57,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from USER
 		where USER_NO=#{userNo}
 	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateUserInfo" parameterType='user'>
+		update USER set PASSWD=#{password}, NICK=#{nick}, BIRTH=#{birth}, 
+		USER_PHOTO=#{photo}, PUSH=#{push}, INVITE=#{invite}, SIGNOUT=#{signOut}
+		where USER_NO=#{userNo}
+	</update>
 	
 </mapper>
 
