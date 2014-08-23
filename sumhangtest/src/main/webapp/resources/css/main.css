@@ -22,11 +22,11 @@
 	margin-bottom:5px;
 }
 
-/*   #listviewMainPage ul{
+/* #listviewMainPage ul{
 	max-height: 800px;
     overflow: auto;
     list-style-type: none;
-}   */
+} */
 
 #listviewMainPage li{
 	background-color:white;
@@ -61,7 +61,7 @@
 	margin-top:-11px;
 	border-color: #ccc; 
 }
- 
+
 /* 배경 색깔 */
 #mainPage #header{
 	/* background:#ffbb33; */
@@ -113,8 +113,7 @@
 #tripPictures #tripPcture{
 	height: 120px;
 	border-radius: 8px;
-	width:100%;
-		
+	width:100%;	
 }
 
 /* 여행지  위치*/
@@ -327,8 +326,19 @@ border: none;
     min-height: 28px;
 }
 
-/* 참여 목록 */
-#attandingView .form-control{
+#attendingTrips {
+	display:block;
+	float:left;
+}
+
+#attendingView{
+	width:85%;
+	margin-left:10;
+	
+}
+
+/* 참여중인 트립 목록 */
+#attendingView .form-control{
 	 
 	margin-top: 20px;
 	float: left;
@@ -337,8 +347,7 @@ border: none;
     font-size: 1em;
     display: block;
     width: 80%;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin:0 10px;
 }
 
 /* 여행기간 */
@@ -349,14 +358,15 @@ border: none;
 
 /* 확정자 게시판 이미지 */
 #groupMeeting{
-	 float: left;
     width: auto;
-    max-width: 100%;
-    height: auto;
-    margin-left: 0%;
+    margin-left: 0%; 
     clear: none;
-    color: rgb(0, 0, 0);	
-    margin-top: 20px;
+    color: rgb(0, 0, 0);
+    display:block;
+    float:right;
+    position:absolute;
+    top:125px;
+    right:8px;
 }
 
 /* 강퇴&초대 버튼 */
@@ -372,14 +382,23 @@ border: none;
 	margin-right: 10px;
 }
 
+#dDay{
+	margin-left:20px;
+}
+#dDay p{
+	display:inline-block;
+	margin-top:25px;
+	margin-left:5px;
+	
+}
+
 /* 디데이 알림 달력사진 */
 #dDayAlert{
-	 float: left;
+	float: left;
     width: auto;
     max-width: 100%;
-    height: auto;
     margin-left: 15%;
-    margin-top: 44px;
+    margin-top: 20px;
 }
 
 /* 디데이 알림 문구 */
@@ -402,31 +421,28 @@ border: none;
 	float: left;
 }
 
-#rightPanel ul{
-	padding-left:10%;
+#rightPanel .tripUsers{
+	border:solid;
+	border-radius:8px;
+	margin:0 10%;
 }
 
-#rightPanel .selectedTrip {
-	text-align:center;
-}
+
 
 /* 트립유저 목록 */
-#rightPanel .tripUser {
+ #rightPanel .tripUser {
 	list-style-type: none;
 	font-size:15px;
-	border:outset;
-	border-radius: 5px;
+	border:none;
 	margin-right:10%;
 	margin-top:10px;
 	margin-bottom:10px;
-}
+} 
 
 #rightPanel .tripUser .woman {
-	margin-left:10%;
 	color:red;
 }
 #rightPanel .tripUser .man {
-	margin-left:10%;
 	color:blue;
 }
 
