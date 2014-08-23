@@ -22,9 +22,9 @@ public class UserAuthService{
 		System.out.println(sqlSession);
 		
 		
-		userVO = sqlSession.selectOne("userControlMapper.getUser",(String)loginInfo.get("username"));
+		userVO = sqlSession.selectOne("userControlMapper.getUserbyId",(String)loginInfo.get("username"));
 		
-		if(sqlSession.selectOne("userControlMapper.getUser",(String)loginInfo.get("username")) == null){
+		if(sqlSession.selectOne("userControlMapper.getUserbyId",(String)loginInfo.get("username")) == null){
 			return null;
 		}else if(loginInfo.get("password").equals(userVO.getPassword())){
 			
