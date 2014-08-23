@@ -30,7 +30,7 @@
 		<div id="listviewMainPage">
 
 			<!-- 서치바 -->
-			<div data-infinite-scroll="loadMore()"  >
+			<div data-infinite-scroll="loadMore()">
 			<ul data-theme="none" data-role="listview" data-inset="true"
 				data-filter="true" data-filter-placeholder="검색" id="mainSearchBar">
 
@@ -53,7 +53,6 @@
 					</div> <!-- 여행제목 -->
 					<div id="tripTitleTag">
 						<p class="travelPhrase visible" id="tripTitle">{{trip.TITLE}}</p>
-						
 					</div> <!-- 여행기간 -->
 					<div id="tripPeriodTag">
 						<p class="travelPeriod visible" id="tripPeriod">{{trip.TRAVEL_START}}~{{trip.TRAVEL_END}}</p>
@@ -108,8 +107,8 @@
 
 		<!-- 참여 중인 방 표시 -->
 		<!-- 참여중인 여행 목록 -->
-		<div id="attandingView">
-			<select class="" id="attandingTrips"
+		<div id="attendingView">
+			<select class="" id="attendingTrips"
 				data-ng-model="userTripSelected"
 				data-ng-options="userTrip.TITLE for userTrip in userTrips"
 				data-ng-change="getTripUsers()">
@@ -117,11 +116,11 @@
 			</select>
 
 			<!-- 모임 게시판 가기 -->
-			<span class="groupBoard"> <img
+			<div class="groupBoard"> <img
 				src="{{serverAddress}}resources/images/groupBoard.png"
 				id="groupMeeting"
 				data-ng-click="goTimeLine(userTripSelected.TBOARD_NO)">
-			</span>
+			</div>
 		</div>
 
 		<!-- 여행일정 -->
@@ -129,8 +128,8 @@
 			<p>{{userTripSelected.TRAVEL_START}}~{{userTripSelected.TRAVEL_END}}</p>
 		</div>
 
-		<ul>
-			<li class="tripUser" data-ng-repeat="tripUser in tripUsers"><span class="placeHolder" data-ng-class="{man:tripUser.GENDER=='man',woman:tripUser.GENDER=='woman'}">{{tripUser.NICK}}</span>
+		<ul class="tripUsers">
+			<li data-repeat-done="" class="tripUser" data-ng-repeat="tripUser in tripUsers"><span class="placeHolder" data-ng-class="{man:tripUser.GENDER=='man',woman:tripUser.GENDER=='woman'}">{{tripUser.NICK}}</span>
 				<span class="placeHolder1"><img class="removeUser" src="{{serverAddress}}resources/images/removeUser.png"
 					data-ng-click="kickOutTripUser(tripUser.USER_NO)"
 					data-ng-hide="hideDelMenu(tripUser)"></span>
@@ -140,7 +139,7 @@
 
 		<!-- 강퇴&초대 버튼 -->
 		<div class="tripActionBtn">			
-			<button class="btn btn-xs btn-warning" type="submit" id="inviteBtn" data-ng-click="goInvite()">초대</button>
+			<button data-ng-show="userTripSelected.STATUS==1" class="btn btn-xs btn-warning" type="submit" id="inviteBtn" data-ng-click="goInvite()">초대</button>
 		</div>
 
 		<!--  디데이 -->
