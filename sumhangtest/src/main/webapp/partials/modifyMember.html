@@ -14,62 +14,66 @@
 					<img src="{{serverAddress}}resources/images/save-32.png" data-ng-click="goMain()" id="modifyMemberSaveBtn" >
 		</div>				<!-- header-modifyMember End -->
 	
-	<!-- 프로필  -->
-		<div id="modifyMemberPhotoSpace">
-			<img src="{{serverAddress}}resources/images/simpson.jpg" id="modifyMemberUserPhoto">	
-					<label id="'userIdModifyLabel">
-					ID
-					</label><br/>		
-					<p id="userIdModifyMember22">
-					simpson
-					</p>
-		</div>				<!-- modifyMemberPhotoSpace End -->
+	
 		
 	<!-- 프로필 수정 리스트 -->
-			<form id="formModifyMemberSpace" name="modifyMemberForm" class="form-horizontal" novalidate>
-				
+			<form data-ng-submit="modifyUserInfo()" id="formModifyMemberSpace" name="modifyMemberForm" class="form-horizontal" data-ng-model="userInfo" novalidate>
+			
+			<!-- 프로필  -->
+				<div id="modifyMemberPhotoSpace">
+					<img src="{{serverAddress}}resources/images/{{userInfo.sPhoto}}" id="modifyMemberUserPhoto" data-ng-click="goModifyUserPhoto()">	
+							<label id="'userIdModifyLabel">
+							ID
+							</label><br/>		
+							<p id="userIdModifyMember22">
+							{{userInfo.id}}
+							</p>
+				</div>				<!-- modifyMemberPhotoSpace End -->
+			
 			<!-- 이름-->
 				<div class="form-group" id="userNameModify">
 					<label for="userNameModify" class="col-xs-2  control-label" id="userNameModifyLabel">
 						<img src="{{serverAddress}}resources/images/contacts-24.png" id="modifyMemberUserName">
 					</label>
 					<div class="col-xs" id="userNameModifyInputSpace">
-						<input type="text" class="form-control" id="userNameModifyInput" name="userNameModifyInput"
-						placeholder="이름" required>
+						{{userInfo.name}}
 					</div>		<!-- userNameModifyInputSpace End -->
 				</div> 			<!-- form-group End -->
 														
 			<!-- 닉네임-->
-				<div class="form-group" id="userNickNameModify">
+				<div class="form-group" id="userNickNameModify" data-ng-class="{ 'has-error' : modifyMemberForm.userNickNameModifyInput.$invalid && submitted || modifiedUserInfo.nickDuplicate}">
 					<label for="userNickNameModify" class="col-xs-2  control-label" id="userNickNameModifyLabel">
 						<img src="{{serverAddress}}resources/images/star-4-24.png" id="modifyMemberUserNickName">
 					</label>
-					<div class="col-xs" id="userNickNameModifyInputSpace"">
-						<input type="text" class="form-control" id="userNickNameModifyInput" name="userNickNameModifyInput" 
-						placeholder="닉네임" required>
+					<div class="col-xs" id="userNickNameModifyInputSpace">
+						<input type="text" class="form-control" id="userNickNameModifyInput" name="userNickNameModifyInput" data-ng-blur="nickDuplicateChecking(modifiedUserInfo.nick)"
+						data-ng-init="modifiedUserInfo.nick=userInfo.nick" value="{{userInfo.nick}}" data-ng-model="modifiedUserInfo.nick" required>
+						<span class="label label-info" data-ng-show="modifiedUserInfo.nickDuplicate">닉네임 중복입니다</span>
 					</div>		<!-- useNickNameModifyInputSpace End -->
 				</div> 			<!-- form-group End -->
-								
 			<!-- 비밀번호-->
-				<div class="form-group" id="userPasswordModify">
+				<div class="form-group" id="userPasswordModify" data-ng-class="{ 'has-error' : modifyMemberForm.userPasswordModifyInput.$invalid && submitted}">
 					<label for="userPasswordModify" class="col-xs-2 control-label" id="userPasswordModifyLabel">
 						<img src="{{serverAddress}}resources/images/private-24.png" id="modifyMemberUserPassword">
 					</label>
 					<div class="col-xs" id="userPasswordModifyInputSpace">
-						<input type="password"" class="form-control" id="userPasswordModifyInput" name="userPasswordModifyInput" 
-						placeholder="비밀번호" required>
+						<input type="password" class="form-control" id="userPasswordModifyInput" name="userPasswordModifyInput" 
+						placeholder="비밀번호" data-ng-model="modifiedUserInfo.password" required>
 					</div>		<!-- userPasswordModifyInputSpace End -->
 				</div> 			<!-- form-group End -->
 				
 			<!-- 비밀번호확인-->
-				<div class="form-group" id="userPasswordReModify">
+				<div class="form-group" id="userPasswordReModify" data-ng-class="{ 'has-error' : modifyMemberForm.userPasswordModifyInput.$invalid && submitted}">
 					<label for="userPasswordReModify" class="col-xs-2  control-label" id="userPasswordReModifyLabel">
 						<img src="{{serverAddress}}resources/images/private-24.png" id="modifyMemberUserRePassword">
 					</label>
 					<div class="col-xs" id="userPasswordReModifyInputSpace">
-						<input type="password"" class="form-control" id="userPasswordReModifyInput" name="userPasswordModifyInput" 
-						placeholder="비밀번호를 다시 입력 해주세요." required>
+						<input type="password" class="form-control" id="userPasswordReModifyInput" name="userPasswordModifyInput" 
+						placeholder="비밀번호를 다시 입력 해주세요." data-ng-model="modifiedUserInfo.passwordConfirm" data-pw-check="userPasswordModifyInput" required>
 					</div>		<!-- userPasswordReModifyInputSpace End -->
+					<span class="help-error"
+							data-ng-show="modifyMemberForm.userPasswordReModifyInput.$error.pwcheck">Passwords
+							don't match.</span>
 				</div> 			<!-- form-group End -->
 		
 			<!-- 생년월일-->
@@ -77,9 +81,9 @@
 					<label for="userBirthModify" class="col-xs-2  control-label" id="userBirthModifyLabel">
 						<img src="{{serverAddress}}resources/images/birthday-cake-24.png" id="modifyMemberUserBirth">
 					</label>
-					<div class="col-xs" id="userBirthModifyInputSpace"">
+					<div class="col-xs" id="userBirthModifyInputSpace">
 						<input type="text" class="form-control" id="userBirthModifyInput" name="userBirthModifyInput" 
-						placeholder="생년월일" required>
+						value="{{userInfo.birth}}" data-ng-model="modifiedUserInfo.birth">
 					</div>		<!-- userBirthModifyInputSpace End -->
 				</div> 			<!-- form-group End -->
 				
@@ -88,12 +92,11 @@
 					<label for="userGenderModify" class="col-xs-2  control-label" id="userGenderModifyLabel">
 						<img src="{{serverAddress}}resources/images/male-2-24.png" id="modifyMemberUserGender">
 					</label>
-					<div class="col-xs" id="userGenderModifyInputSpace"">
-						<input type="text" class="form-control" id="userGenderModifyInput" name="userGenderModifyInput" 
-						placeholder="성별" required>
+					<div class="col-xs" id="userGenderModifyInputSpace">
+						{{userInfo.gender}}
 					</div>		<!-- userEmailGenderInputSpace End -->
 				</div> 			<!-- form-group End -->
-			
+				<button type="submit">수정하기</button>
 			<!-- 빈공간-->
 				<div class="form-group" id="modifyMemberBottom">
 				
@@ -128,7 +131,7 @@
 		<!-- logout End -->
 	</div>
 	<!-- systemSettings2 End -->
-</div>
+
 <!--좌측 패널아이콘 끝-->		
 	</div>			<!-- modifyMemberView End -->
 </div>			<!-- modifyMemberView End -->
