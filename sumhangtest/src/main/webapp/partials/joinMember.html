@@ -35,7 +35,7 @@
 				
 			<!-- 이름 -->
 			<div class="form-group"
-				data-ng-class="{ 'has-error' : joinMember.nameInput.$invalid && submitted}">
+				data-ng-class="{ 'has-error' : joinMember.userNameJoinInput.$invalid && submitted}">
 				<label for="userNameJoin" class="col-xs-2 control-label" id="userNameJoinLabel">
 				<img src="{{serverAddress}}resources/images/contacts-24.png" id="joinUserName">
 				</label>
@@ -91,7 +91,7 @@
 					<!--   비밀번호 -->
 					<div class="form-group"
 						id="userPswdJoin"
-						data-ng-class="{ 'has-error' : joinMember.inputPassword3Input.$invalid && submitted}">
+						data-ng-class="{ 'has-error' : joinMember.userPswdJoinInput.$invalid && submitted}">
 						<label for="inputPassword3" class="col-xs-2 control-label" id="userPswdJoinLabel">
 							<img src="{{serverAddress}}resources/images/private-24.png" id="joinUserPswd">
 						</label>
@@ -112,7 +112,7 @@
 					<!--  비밀번호 유효성 체크 -->
 					<div class="form-group"
 						id="userPswdCheck"
-						data-ng-class="{ 'has-error' : joinMember.inputPassword1Input.$invalid && submitted}">
+						data-ng-class="{ 'has-error' : joinMember.userPswdCheckInput.$invalid && submitted}">
 						<label for="userPswdCheck" class="col-xs-2 control-label" id="userPswdCheckLabel">
 							<img src="{{serverAddress}}resources/images/private-24.png" id="joinUserPswd">
 						</label>
@@ -143,15 +143,16 @@
 					</div>	<!-- userBirthJoin End -->
 					
 					<!-- 성별-->
-					<div class="form-group" id="userGenderJoin">
+					<div class="form-group"
+						id="userGenderJoin" data-ng-class="{ 'has-error' : (joinMember.userGendermInput.unchecked && joinMember.userGenderwInput.unchecked) && submitted}">
 						<label for="checkGender" class="col-xs-2 control-label" id="userGenderJoinLabel">
 							<img src="{{serverAddress}}resources/images/male-2-24.png" id="joinUserNick">
 						</label>
 						<div class="col-xs" id="userGenderChoiceSpace">
-							<input type="radio" class="optionsRadios" value="man" checked
-								data-ng-model="newMember.gender"> 남 <input type="radio"
-								class="optionsRadios" value="woman"
-								data-ng-model="newMember.gender"> 여
+							<input type="radio" class="optionsRadios" value="man"
+								data-ng-model="newMember.gender" name="userGendermInput"> 남
+							<input type="radio"	class="optionsRadios" value="woman"
+								data-ng-model="newMember.gender" name="userGenderwInput"> 여
 						</div>	<!-- userGenderChoiceSpace End -->
 					</div>	<!-- userGenderJoin End -->
 					
