@@ -15,20 +15,34 @@ app.factory('userFactory', ['$http', function($http) {
     			
     		});
     }
-    
-    
-	userFactory.duplicateCheck = function(sa, userId){
+        
+	userFactory.idDuplicateCheck = function(sa, userId){
 		return $http({
 				'method' : 'POST',
-				'url' : sa + "duplicateCheck.ajax",
+				'url' : sa + "idDuplicateCheck.ajax",
 				'headers' : {'Content-Type' : 'application/json; charset=utf-8'},			
 				'cache' : false,
 				'data' : userId			
 			}).success(function(data) {			
-				console.log("duplicateCheck http성공")
+				console.log("idDuplicateCheck http성공")
 				console.log('successdata'+JSON.stringify(data));
 			}).error(function(e) {
-				console.log("duplicateCheck http실패")
+				console.log("idDuplicateCheck http실패")
+			});
+	}
+	
+	userFactory.nickDuplicateCheck = function(sa, nick){
+		return $http({
+				'method' : 'POST',
+				'url' : sa + "nickDuplicateCheck.ajax",
+				'headers' : {'Content-Type' : 'application/json; charset=utf-8'},			
+				'cache' : false,
+				'data' : nick			
+			}).success(function(data) {			
+				console.log("nickDuplicateCheck http성공")
+				console.log('successdata'+JSON.stringify(data));
+			}).error(function(e) {
+				console.log("nickdDplicateCheck http실패")
 			});
 	}
     
@@ -37,7 +51,7 @@ app.factory('userFactory', ['$http', function($http) {
     	return $http({
     			'url' :sa+ 'login.ajax',
     			'method' : 'POST',
-    			'headers': {'Content-Type' : 'application/json;; charset=utf-8'},
+    			'headers': {'Content-Type' : 'application/json; charset=utf-8'},
 	        	'data' : {'username': loginInfo.id ,
 	        			'password' : loginInfo.password }    		
     		}).success(function (data) {
@@ -52,15 +66,30 @@ app.factory('userFactory', ['$http', function($http) {
     //세션유져가져오기
     userFactory.getSessionUser = function (){
     	return $http({
-			'url' : 'http://192.168.0.72:8080/getSessionUser.ajax',
+			'url' : 'http://192.168.0.102:8080/getSessionUser.ajax',
 			'method' : 'POST',
-			'headers': {'Content-Type' : 'application/json'}        	   		
+			'headers': {'Content-Type' : 'application/json; charset=utf-8'}        	   		
 		}).success(function (data) {
 			console.log('getSessionUser $http 성공');
 			console.log(data);			
 		}).error(function () {			
 		});
     }
+    
+  //유저정보 업데이트
+    userFactory.updateUserInfo = function (modifiedUserInfo){
+    	return $http({
+			'url' : 'http://192.168.0.102:8080/updateUserInfo.ajax',
+			'method' : 'POST',
+			'headers': {'Content-Type' : 'application/json; charset=utf-8'},
+			'data' : modifiedUserInfo
+		}).success(function () {
+			console.log('updateUserInfo $http 성공');	
+		}).error(function () {
+			console.log('updateUserInfo $http 실패');
+		});
+    }
+    
     
     return userFactory;
 }]);
