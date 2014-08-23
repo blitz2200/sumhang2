@@ -130,8 +130,8 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams','tripDet
 	
 	
 	/*타임라인쓰기 라우터*/
-	$scope.goAddTrip=function(){
-		$scope.location.path('/addTrip');		
+	$scope.addTimeLine=function(){
+		$scope.location.path('/addTimeline');		
 	}	
 	
 	/*메인 라우터*/
