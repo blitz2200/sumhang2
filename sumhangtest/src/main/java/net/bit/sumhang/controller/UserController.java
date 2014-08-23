@@ -101,13 +101,13 @@ public class UserController {
 	}
 	
 	//아이디 중복체크
-	@RequestMapping(value = "/duplicateCheck", method = RequestMethod.POST)
-	public @ResponseBody String duplicateCheck(@RequestBody String userId){
+	@RequestMapping(value = "/idDuplicateCheck", method = RequestMethod.POST)
+	public @ResponseBody String idDuplicateCheck(@RequestBody String userId){
 		
-			System.out.println("넘어온 유저 데이타는?"+userId);			
+			System.out.println("넘어온 유저아이디 데이타는?"+userId);			
 			
 			//DB자료와 유효성체크
-			if(sqlSession.selectOne("userControlMapper.getUser",userId)==null){
+			if(sqlSession.selectOne("userControlMapper.getUserbyId",userId)==null){
 				System.out.println("중복아님");
 				return "notDuplicated";
 			}else{
@@ -115,6 +115,42 @@ public class UserController {
 				return null;
 			}
 	}
+	
+	//닉네임 중복체크
+	@RequestMapping(value = "/nickDuplicateCheck", method = RequestMethod.POST)
+	public @ResponseBody String nickDuplicateCheck(@RequestBody String nick){
+		
+			System.out.println("넘어온 유저 닉네임데이타는?"+nick);			
+			
+			//DB자료와 유효성체크
+			if(sqlSession.selectOne("userControlMapper.getUserbyNick",nick)==null){
+				System.out.println("중복아님");
+				return "notDuplicated";
+			}else{
+				System.out.println("중복임");
+				return null;
+			}
+	}
+	
+	//유저정보 업데이트
+		@RequestMapping(value = "/updateUserInfo", method = RequestMethod.POST)
+		public @ResponseBody String updateUserInfo(@RequestBody String userInfo){
+			
+				
+				System.out.println("넘어온 유저 데이타는?"+userInfo);
+				//유저객체 생성
+				UserVO userVO;
+				
+				//JSON형식 GSON사용하여 스트링으로 바꾸기 
+				Gson gson = new Gson();
+				userVO = gson.fromJson(userInfo, UserVO.class);
+				
+											
+				//DB에 자료 넣기
+				System.out.println("디비에 넣을 유저 데이타는?"+userVO);			
+				sqlSession.update("userControlMapper.updateUserInfo", userVO);
+				return "success";
+		}
 	
 	/*로그아웃*/
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
