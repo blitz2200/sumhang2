@@ -49,50 +49,86 @@
 		<div class="editDetailPage" data-ng-show="editPage">
 		<form id="editTripForm" name="editTripForm" data-ng-submit="goEditTripRequest()" 
 		      class="form-horizontal" data-ng-model="editTrip" novalidate>
-	<!-- 여행제목-->
-			<div class="form-group " data-ng-class="{ 'has-error' : editTripForm.tripTitleInput.$invalid && submitted}">
-				<label for="tripTitle" class="col-xs-3 control-label" id="tripTitleLabel">여행제목</label>	
-				<div class="col-xs-7" id="tripTitleText">
-					<input type="text" class="form-control" id="tripTitleInput" name="tripTitleInput" data-ng-model="editTrip.title"
-					value="{{trip.title}}" data-ng-init="editTrip.title=trip.title" required>	
+		      
+		 <!-- 여행 사진 -->
+<!-- 			<div id="editTripPhotoLabelSpace">
+				<h4 id="editTripPhotoLabel">
+					사진 선택
+				</h4>
+			</div> -->
+		
+	<!-- 여행 사진 선택 -->
+			<div id=editTripPhotoSpace>
+				<div id="editTripPhotoImg">
+					<img src="resources/images/picture-attachment-128.png" id="editPhotoUpdate">				
+				</div>				<!-- editTripPhotoImg End	 -->	
+					<!-- <img data-ng-src="{{addTripImage}}"> -->
+				<div id="editTripPhotoText">
+					<h5 id="editTripPhotoUpload">사진을 올려주세요.</h5>
 				</div>
-			</div>
+			</div>			<!-- editTripPhotoSpace End -->
+			
+		<!-- 여행제목-->
+			<div class="form-group " data-ng-class="{ 'has-error' : editTripForm.tripTitleInput.$invalid && submitted}" id="editTitleGroup">
+				<label for="tripTitle" class="col-xs-3 control-label" id="tripTitleLabel">
+					<img src="{{serverAddress}}resources/images/airplane-7-24.png" id="modifyMemberUserName">
+				</label>	
+				<div class="col-xs" id="tripTitleInputGroup">
+					<input type="text" class="form-control" id="tripTitleInput" name="tripTitleInput" data-ng-model="editTrip.title"
+					placeholder="여행제목" value="" required>	
+				</div>			<!-- tripTitleInputGroup End -->
+			</div>		<!--editTripTitleGroup End -->
+			
 			
 		<!--여행지-->
-			<div class="form-group" data-ng-class="{ 'has-error' : editTripForm.tripDestinationInput.$invalid && submitted}">
-				<label for="tripDestination" class="col-xs-3 control-label" id="destination">여행지</label>
-				<div class="col-xs-6" id="tripDestinationText">
-					<input type="text" class="form-control" id="tripDestinationInput" name="tripDestinationInput" value="{{trip.travel}}"  data-ng-model="editTrip.travel" required>
-				</div>
-			</div>
+			<div class="form-group" data-ng-class="{ 'has-error' : editTripForm.tripDestinationInput.$invalid && submitted}" id="editDestinationGroup">
+				<label for="tripDestination" class="col-xs-3 control-label" id="editDestinationLabel">
+					<img src="{{serverAddress}}resources/images/airplane-7-24.png" id="modifyMemberUserName">
+				</label>
+				<div class="col-xs" id="editDestinationInputGroup">
+					<input type="text" class="form-control" id="editDestinationText" name="tripDestinationInput" value="{{trip.travel}}"  
+					data-ng-model="editTrip.travel" placeholder="여행지" required>
+				</div>				<!-- editDestinationInputGroup End -->
+			</div>						<!-- editDestinationGroup End -->
 	
 		<!-- 여행기간 -->
-			<div class="form-group" data-ng-class="{ 'has-error' : (editTripForm.datepicker3.$invalid || editTripForm.datepicker4.$invalid ) && submitted}">
+		<div class="form-group" data-ng-class="{ 'has-error' : (editTripForm.datepicker3.$invalid || editTripForm.datepicker4.$invalid ) && submitted}" id="editScheduleGroup">
 		<!-- 출발일 -->
-				<label for="datepicker2" class="col-xs-3 control-label" id="tripperiodLabel">여행기간</label>
-				<div class="col-xs-3" id="tripStartdate">
-					<input type="text" class="form-control" id="datepicker3" name="datepicker3" data-ng-model="editTrip.travelStart"
-						value="{{trip.travel_start}}" required>
-				</div>
+				<div id="editTripScheduleLeft">
+					<label for="datepicker2" class="col-xs-3 control-label" id="tripPeriodLabel">
+						<img src="{{serverAddress}}resources/images/airplane-7-24.png" id="modifyMemberUserName">
+					</label>
+					<div class="col-xs" id="editStartDate" name="sta">
+						<input type="text" class="form-control" id="datepicker7" name="datepicker3" data-ng-model="editTrip.travelStart"
+							value="{{trip.travel_start}}" placeholder="출발" required>
+					</div>					<!-- editStartDate End -->
+				</div>					<!-- editTripScheduleLeft End -->
 		
-		<!-- 도착일 -->
-				<div class="col-xs-3" id="tripEnddate">
-					<input type="text" class="form-control" id="datepicker4" name="datepicker4" data-ng-model="editTrip.travelEnd"
-						value="{{trip.travel_end}}" required>
-				</div>
-			</div>
-	
+		<!-- 도착일 -->		
+				<div id="editTripScheduleRight">
+						<label for="datepicker2" class="col-xs-2 control-label" id="editScheduleEndLabel">
+							<img src="{{serverAddress}}resources/images/planner-24.png" id="modifyMemberUserName">
+						</label>
+						<div class="col-xs" id="tripEnddate">
+							<input type="text" class="form-control" id="datepicker8" name="datepicker4" placeholder="도착" data-ng-model="editTrip.travelEnd" required>
+						</div>	
+				</div>			<!-- editTripScheduleRight End -->
+		</div>			<!-- seditScheduleGroup" End -->
+			
+			
 	
 		<!-- 세부내용 -->
-			<div class="form-group">
-				<label for="tripContext" class="col-xs-3 control-label" id="tripContextLabel">세부내용</label>
-				<div class="col-xs-7">
-					<textarea class="form-control" rows="3" id="tripContextText" 
-					         data-ng-value="trip.TRAVEL_DESCRIPTION" data-ng-model="editTrip.travelDescription" ></textarea>
-				</div>
-			</div>
-	
-	
+			<div class="form-group" id="contextEditTripSpace">
+				<label for="tripContext" class="col-xs-3 control-label" id="tripContextLabel">
+					<img src="{{serverAddress}}resources/images/text-justify-24.png" id="modifyMemberUserName">
+				</label>
+				<div class="col-xs" id="eidtContextTextSpace">
+					<textarea class="form-control" rows="3" id="tripContextText"  placeholder="세부내용"
+					data-ng-value="trip.TRAVEL_DESCRIPTION" data-ng-model="editTrip.travelDescription" placeholder="세부내용"> 
+					</textarea>
+				</div>			<!-- eidtContextTextSpace End -->
+			</div>				<!-- contextEditTripSpace End -->
+			
 		<!-- 사진 올리기 -->
 			<div class="form-group photo">
 				<label for="pho" class="col-xs-3 control-label">사 진 </label>
@@ -110,7 +146,7 @@
 			
 		</form>
 	</div>
-		
+<!-- /////////////////////////////////////메인 상세 수정 하기 끝//////////////////////////////////////////////	 -->
 		
 		
 		<div class="row addBtn">
@@ -138,15 +174,15 @@
 					</div>
 					<div class="col-xs-2 reNick">{{reply.nick}}</div>
 					
-					<div class="col-xs-4 arrow_box">{{reply.TBOARD_RE_DESCRIPTION}}</div>
+					<div class="col-xs-4">{{reply.TBOARD_RE_DESCRIPTION}}</div>
 					
 					<div class="col-xs-1 delete" data-ng-show="{{reply.del}}">
 						<img data-ng-click="goDelTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
-						src="{{serverAddress}}resources/images/icons/deleteWhite32.png"/>					
+						src="{{serverAddress}}resources/images/icons/tripDetailDelete.png"/>					
 					</div>
 					<div class="col-xs-1 edit" data-ng-show="{{reply.del}}">
 						<img data-ng-click="goEditTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
-						src="{{serverAddress}}resources/images/icons/editWhite32.png"/>		
+						src="{{serverAddress}}resources/images/icons/tripDetailEdit.png"/>		
 					</div>				
 				</div>
 			</li>
@@ -157,12 +193,12 @@
 <div class=wraper-footer-tripDetail>
 		<div class="row inputReply" data-ng-show="inputRe">
 			<div class="col-xs-7">
-				<input type="text" class="textbox" placeholder="    댓글 입력"
+				<input type="text" class="textbox" placeholder="덧글을 입력하세요"
 					data-ng-model="tripDetailReply">
 			</div>
 			<div class="col-xs-2">
 				<button type="button" class="btn btn-warning replybtn"
-					data-ng-click="goTripDetailReply()">입 력</button>
+					data-ng-click="goTripDetailReply()">댓글 입력</button>
 			</div>
 		</div>
 		
@@ -181,13 +217,13 @@
 <!-- datepicker -->
 	<script>
         $(function() {
-            $( "#datepicker3" ).datepicker({
+            $( "#datepicker7" ).datepicker({
                 dateFormat: 'yy-mm-dd'
             });
         });
         
         $(function() {
-            $( "#datepicker4" ).datepicker({
+            $( "#datepicker8" ).datepicker({
                 dateFormat: 'yy-mm-dd'
             });
         });
