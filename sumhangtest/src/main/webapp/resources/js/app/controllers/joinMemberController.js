@@ -4,16 +4,31 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 	var sa = globalFactory.serverAddress;
 	$scope.serverAddress=globalFactory.serverAddress;
 	
-	$scope.duplicateChecking = function (userId){
+	$scope.idDuplicateChecking = function (userId){
 		console.log('controllerUserId:'+userId);
-		userFactory.duplicateCheck(sa, userId)
+		userFactory.idDuplicateCheck(sa, userId)
 		.success(function(data){
 			if(data==''){
-				$scope.joinMember.isDuplicate=true;
-				console.log('$scope.joinMember.isDuplicate'+$scope.joinMember.isDuplicate);
+				$scope.joinMember.idDuplicate=true;
+				console.log('$scope.joinMember.idDuplicate'+$scope.joinMember.idDuplicate);
 			}else{
-				$scope.joinMember.isDuplicate=false;
-				console.log('$scope.joinMember.isDuplicate'+$scope.joinMember.isDuplicate);
+				$scope.joinMember.idDuplicate=false;
+				console.log('$scope.joinMember.idDuplicate'+$scope.joinMember.idDuplicate);
+			}
+		});
+		
+	}
+	
+	$scope.nickDuplicateChecking = function (nick){
+		console.log('controllerNick:'+nick);
+		userFactory.nickDuplicateCheck(sa, nick)
+		.success(function(data){
+			if(data==''){
+				$scope.joinMember.nickDuplicate=true;
+				console.log('$scope.joinMember.nickDuplicate'+$scope.joinMember.nickDuplicate);
+			}else{
+				$scope.joinMember.nickDuplicate=false;
+				console.log('$scope.joinMember.nickDuplicate'+$scope.joinMember.nickDuplicate);
 			}
 		});
 		
@@ -93,7 +108,7 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 			if( $scope.joinMember.inputIdInput.$valid && $scope.joinMember.inputPassword3Input.$valid																			
 		    	&& $scope.joinMember.inputPassword1Input.$valid && $scope.joinMember.nicknameInput.$valid
 		    	&& $scope.joinMember.nameInput.$valid&& $scope.joinMember.datepicker1.$valid
-		    	&& !($scope.joinMember.isDuplicate)){
+		    	&& !($scope.joinMember.idDuplicate) && !($scope.joinMember.nickDuplicate)){
 		
 		console.log("회원가입 시작");
 		
@@ -129,6 +144,8 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 		$scope.location.path('/login'); 
 			}else{
 				alert('양식을 확인해 주세요');
+				$scope.newMember.password='';
+				$scope.newMember.password1='';
 				
 			}
 				
