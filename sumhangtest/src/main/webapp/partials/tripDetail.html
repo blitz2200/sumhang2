@@ -54,7 +54,7 @@
 				<label for="tripTitle" class="col-xs-3 control-label" id="tripTitleLabel">여행제목</label>	
 				<div class="col-xs-7" id="tripTitleText">
 					<input type="text" class="form-control" id="tripTitleInput" name="tripTitleInput" data-ng-model="editTrip.title"
-					value="" required>	
+					value="{{trip.title}}" data-ng-init="editTrip.title=trip.title" required>	
 				</div>
 			</div>
 			
@@ -70,7 +70,7 @@
 			<div class="form-group" data-ng-class="{ 'has-error' : (editTripForm.datepicker3.$invalid || editTripForm.datepicker4.$invalid ) && submitted}">
 		<!-- 출발일 -->
 				<label for="datepicker2" class="col-xs-3 control-label" id="tripperiodLabel">여행기간</label>
-				<div class="col-xs-3" id="tripStartdate" name="sta">
+				<div class="col-xs-3" id="tripStartdate">
 					<input type="text" class="form-control" id="datepicker3" name="datepicker3" data-ng-model="editTrip.travelStart"
 						value="{{trip.travel_start}}" required>
 				</div>
