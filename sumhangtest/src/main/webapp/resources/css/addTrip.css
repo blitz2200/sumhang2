@@ -87,6 +87,7 @@
 #addTripForm  #destination-addTrip, #tripTitleLabel, #scheduleAddTrip, #tripNumberLabel-addTrip, #addTripContextLabel, #addTripTagLabel, #scheduleAddTrip, #scheduleEndAddTrip{
 	text-align: left;
 	width: 70px;
+	margin-left: 15px;
 }
 
 /* 도착일 입력 라벨 */
@@ -96,7 +97,7 @@ margin-left: -5px;
 	
 /* 세부내용 라벨 위치 */
 #addTripContextLabel{
-	margin-left: 10px;
+	margin-left: 15px;
 	margin-top: 15px;
 }
 
@@ -172,67 +173,3 @@ margin-left: -5px;
 #tripContextText{
 	padding-top: 20px;
 }
-
-
-
-
-
-
-
-/* 라벨 */
-/* #addTripForm label{
-	font-family: 'Nanum Gothic Coding', monospace;
-	color: #ffbb33;
-	font-weight: bold;
-	text-align: left;
-	margin-left: -16px;
-} */
-
-/* 인풋 상자*/
-/* #addTripForm #destinationAddTripSpace, #tripTitleAddTripSpace, #scheduleAddTripSpace, #countAddTrip, #contextAddTripSpace, #addTripTag {
-	border-color: #ffbb33;
-	border-width: 2px;
-	border-bottom-style: solid; */
-/* 	width: 96%; */
-/* 	margin: auto;
-	padding: 15px;
-} */
-
-/* 인풋 상자 테두리*/
-/* #addTripForm input{
-	font-family: 'Nanum Gothic Coding', monospace;
-	border-color: #ffbb33;
-	border-width: 1px;
-	border-bottom-style: solid;
-	color: black;
-} */
-
-/* 텍스트상자 테두리 */
-/* #contextAddTripSpace #tripContextText{
-	border-color: #ffbb33;
-	border-width: 1px;
-	border-bottom-style: solid;
-	color: black;
-}
- */
-/* 세부내용 라벨 */
-/* #contextAddTripSpace #addTripContextLabel{
-	margin-bottom: 10px;	
-	
-} */
-
-/* 여행기간-출발 */
-/* #scheduleAddTripSpace #datepicker3{
-	width:47%;
-	float: left;
-	margin-left: -230px;
-	margin-top: 21px;
-} */
-
-/* 여행기간-도착 */	
-/* #scheduleAddTripSpace #datepicker4{
-	width:47%;
-	float: right;
-	margin-top: 21px;
-	margin-left: -120px;
-} */
