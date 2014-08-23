@@ -71,9 +71,9 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 		console.log('$scope.trip'+JSON.stringify($scope.trip));
 		$scope.editTrip.travel=$scope.trip.travel;
 		$scope.editTrip.title=$scope.trip.title;
-		$scope.editTrip.title=$scope.trip.title;
-		$scope.editTrip.title=$scope.trip.title;
-		$scope.editTrip.title=$scope.trip.title;
+		$scope.editTrip.travelStart=$scope.trip.travel_start;
+		$scope.editTrip.travelEnd=$scope.trip.travel_end;
+		$scope.editTrip.travelDescription=$scope.trip.TRAVEL_DESCRIPTION;
 	}
 	
 	$scope.goEditTripRequest=function(){
