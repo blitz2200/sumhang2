@@ -139,7 +139,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!-- 메인 상세보기 수정 -->
 	<update id="updateTripDetail" parameterType='trip'>
 		update TBOARD set title=#{title}, travel=#{travel}, travel_start=#{travelStart}, 
-		travel_end=#{travelEnd}, travel_pho=#{travelPho}, travel_description=#{travelDescription}
+		travel_end=#{travelEnd}, travel_pho=#{travelPho},travel_sphoto=#{travelSphoto}, travel_description=#{travelDescription}
 		where tboard_no=#{travelNo}
 	</update>
 	
