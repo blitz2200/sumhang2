@@ -1,18 +1,20 @@
 app.controller('IntroController', ['$scope','userFactory','globalFactory', 
                                    function ($scope, userFactory,globalFactory) {
 	
+	var sa =globalFactory.serverAddress
+	
 	CarouselDemoCtrl($scope)
 	
 	function CarouselDemoCtrl($scope) {
 		  $scope.myInterval = 5000;
 		  
 		  $scope.slides=[
-		     {image:'http://192.168.0.88:8080/resources/images/tripPhotoFile/1818.jpg',
+		     {image:sa+'/resources/images/15.jpg',
 		    	 text:'하하하'},
 		    	 
-		    	 {image:'http://192.168.0.88:8080/resources/images/tripPhotoFile/1820.jpg',
+		    	 {image:sa+'/resources/images/16.jpg',
 		    		 text:'너에게'},
-		    		 {image:'http://192.168.0.88:8080/resources/images/tripPhotoFile/1831.jpg',
+		    		 {image:sa+'/resources/images/19.jpg',
 		    			 text:'필수적인'},
 		  ]
 
