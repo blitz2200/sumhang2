@@ -65,7 +65,7 @@ app.controller('MainController',['$scope','$timeout', '$route','mainFactory','gl
 	
 	$scope.goInvite = function (){
 		alert('test중');
-		$scope.location.path('/invite');
+		$scope.location.path('invite');
 	}
 
 
@@ -114,7 +114,7 @@ app.controller('MainController',['$scope','$timeout', '$route','mainFactory','gl
 	}
 	
 	$scope.goTripDetail=function(travelNo){		
-		var temp="/tripDetail/"+travelNo;
+		var temp="tripDetail/"+travelNo;
 		$scope.location.path(temp);
 	}
 	
@@ -127,29 +127,29 @@ app.controller('MainController',['$scope','$timeout', '$route','mainFactory','gl
 	
 	/*회원정보 수정 라우터*/
 	$scope.goModifyMember=function(){
-		$scope.location.path('/modifyMember');		
+		$scope.location.path('modifyMember/');
 	}
 	
 	/*회원추천 라우터*/
 	$scope.inviteRequest=function(){
-		$scope.location.path('/tripManager');		
+		$scope.location.path('tripManager');		
 	}
 
 	
 	/*버전정보 라우터*/
 	$scope.goVersionInfo=function(){
-		$scope.location.path('/versionInfo');		
+		$scope.location.path('versionInfo');		
 	}
 	
 	/*셋팅 라우터*/
 	$scope.goSettings=function(){
-		$scope.location.path('/settings');		
+		$scope.location.path('settings');		
 	}
 	
 	
 	/*타임라인쓰기 라우터*/
 	$scope.goAddTrip=function(){
-		$scope.location.path('/addTrip');		
+		$scope.location.path('addTrip');		
 	}	
 	
 
