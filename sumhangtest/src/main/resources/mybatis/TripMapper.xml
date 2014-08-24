@@ -182,7 +182,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 무작위로 초대 -->
 	<select id="invite" resultType="Map">
-	  SELECT USER_NO, NAME, nick, GENDER,PUSH
+	  SELECT USER_NO, NAME, nick, GENDER,PUSH,USER_SPHOTO
 	  FROM USER 
 	  where push='yes'
       ORDER BY RAND() LIMIT 5
