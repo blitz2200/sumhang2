@@ -29,7 +29,9 @@
 		<!-- 	maincss -->
 	<link rel="stylesheet" href="resources/css/main.css"/>
 		<!--  timeLinecss -->
-	<link rel="stylesheet" href="resources/css/timeLine.css"/>  
+	<link rel="stylesheet" href="resources/css/timeLine.css"/> 
+	<!-- 초대 페이지 css -->	 
+	<link rel="stylesheet" href="resources/css/invite.css"/>
 		<!-- 메인 상세 페이지 css -->
 	<link rel="stylesheet" href="resources/css/tripDetail.css"/> 
 		<!-- 이용자 추천 페이지 css -->
@@ -43,9 +45,7 @@
 		<!-- 삭제 modal 페이지 css -->
 	<link rel="stylesheet" href="resources/css/tripDetailDeleteModal.css"/>
 		<!-- 타임라인 리플달기 modal 페이지 css -->
-<!-- 	<link rel="stylesheet" href="resources/css/timeLineReplyModal.css"/> -->
-	<!-- 초대 페이지 css -->	
-	<ink rel="stylesheet" href="resources/css/invite.css"/>
+	<link rel="stylesheet" href="resources/css/timeLineReplyModal.css"/>
 	<!-- 타임라인 css -->	
 	<ink rel="stylesheet" href="resources/css/addTimeline.css"/>
 	
@@ -90,8 +90,7 @@
 	 <script src="resources/js/app/controllers/settingsController.js"></script>
 <!-- 	 <script src="resources/js/app/controllers/timeLineReplyController.js"></script> -->
 	<script src="resources/js/app/controllers/inviteController.js"></script>
-	<script src="resources/js/app/controllers/addTimelineController.js"></script>
-
+<script src="resources/js/app/controllers/addTimelineController.js"></script>
 <!-- factory libs -->    
     <script src="resources/js/app/factories/globalFactory.js"></script>
     <script src="resources/js/app/factories/mainFactory.js"></script>
@@ -106,6 +105,8 @@
     <script src="resources/js/app/services/userPhotoService.js"></script>
     <script src="resources/js/app/services/tripUploadService.js"></script>
     <script src="resources/js/app/services/modalService.js"></script>
+    <script src="resources/js/app/services/tripDetailEditUplodService.js"></script>
+    <script src="resources/js/app/services/modifyPhotoUploadService.js"></script>
     
 <!-- direcctives libs -->    
     <script src="resources/js/app/directives/angular-pageslide-directive.js"></script>
@@ -123,9 +124,8 @@
 
 	 
 <!-- cordova libs--> 
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-<script type="text/javascript" charset="utf-8" src="resources/lib/PushNotification.js"></script>
-
+ <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
+ <script type="text/javascript" charset="utf-8" src="resources/lib/PushNotification.js"></script>
 
 
 </body>
