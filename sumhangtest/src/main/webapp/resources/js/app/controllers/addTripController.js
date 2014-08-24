@@ -14,12 +14,13 @@ app.controller('AddTripController', ['$scope',  'tripService','globalFactory','C
 	
 	function addTripGallery(){
 		Camera.getPicture(function(galleryImage) {
+			var documentEditGalleryFile=document.getElementById('tripFileUpdate');
+			documentEditGalleryFile.src=galleryImage;
             $scope.$apply(function() {
             	if (galleryImage.substring(0,21)=="content://com.android") {
             		  photo_split=galleryImage.split("%3A");
             		  galleryImage="content://media/external/images/media/"+photo_split[1];
             	}
-                $scope.addTripImage = galleryImage;
                 alert('갤러리 사진 경로:'+galleryImage);
                 tripGalleryFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
                 tripGalleryMultipartFile=galleryImage;
@@ -68,7 +69,8 @@ app.controller('AddTripController', ['$scope',  'tripService','globalFactory','C
 			tripUploadService.addTripGalleryFile(sa,tripGalleryMultipartFile);
 			
 		}else{
-			trip.travelPho='1.png';
+			trip.travelPho='defaultTripPhoto.png';
+			trip.travelSphoto='s_DefaultTripPhoto.png'
 			alert("디폴트파일이름"+JSON.stringify(trip.travelPho));
 			
 		}
