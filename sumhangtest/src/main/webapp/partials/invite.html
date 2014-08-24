@@ -1,25 +1,37 @@
-<div class="header-tripDetail"> SUMHANG </div>
-<br/>
-<br/>
-</br>
-<div class="invite view">
-	  <div>
-	  	<ul class="invite-ul">
+
+<div class="invitePush view">
+	<div class="header-tripDetail"> SUMHANG </div>
+ </br></br>
+  	  <div id="inviteTitle">
+ 		<p>썸행  추천 유저</p>
+ 	  </div>	
+	
+	  <div id="inviteUserList" >
+	  	<ul  style="list-style-type:none;" >
 	  		<li  data-ng-repeat="inviteTrip in inviteTrips" >
-	  			 	<img data-ng-src="{{serverAddress}}resources/images/man.png"  id="listviewTripManagerUserPhoto"/>
-  					<span>{{inviteTrip.GENDER}}</span>
-	  				<span>{{inviteTrip.nick}}  </span>
-	  				<span >
-						<button class="btn  btn-xs btn-warning" data-ng-click="inviteUser(inviteTrip.USER_NO)" id="inviteBtn">
-							<span class="glyphicon glyphicon-plus-sign" id="tripManagerInviteBtn"></span>
-						</button>		
-					</span>
+					<div id="inviteListView" class="row">
+						<div class="col-xs-3" id="inviteUserPhotoWrapper">
+							<div id="borderImage">
+								<img id="imageBorder" data-ng-src="resources/images/icons/imageBorder.png">	  			 	
+		  			 		</div>
+		  			 		<div id="inlineUserImage">
+		  			 			<img id="inviteUserPhoto" data-ng-src="{{serverAddress}}resources/images/userPhotoFile/{{inviteTrip.USER_SPHOTO}}" />
+	  						</div>
+	  					</div>
+	  				<!-- 	<div clss="col-xs-3">
+	  						{{inviteTrip.GENDER}}
+	  					</div> -->
+	  					<div id="inviteUserNick" class="col-xs-5">
+		  					{{inviteTrip.nick}}  
+		  				</div>
+		  				<div class="colxs-5">
+		  					<img id="inviteUserIcon" data-ng-src="resources/images/icons/add-user-64.png" data-ng-click="inviteUser(inviteTrip.USER_NO)">
+		  			 	</div>
+	  				</div>
 	  			  	
 	  		  </li>
 	  	 
 	  	</ul>
-	  
-	  
-	  
-	  </div>
+	 </div>
+
 </div>
