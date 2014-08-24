@@ -66,7 +66,7 @@ app.factory('userFactory', ['$http', function($http) {
     //세션유져가져오기
     userFactory.getSessionUser = function (){
     	return $http({
-			'url' : 'http://192.168.0.102:8080/getSessionUser.ajax',
+			'url' : 'http://192.168.0.88:8080/getSessionUser.ajax',
 			'method' : 'POST',
 			'headers': {'Content-Type' : 'application/json; charset=utf-8'}        	   		
 		}).success(function (data) {
@@ -77,9 +77,9 @@ app.factory('userFactory', ['$http', function($http) {
     }
     
   //유저정보 업데이트
-    userFactory.updateUserInfo = function (modifiedUserInfo){
+    userFactory.updateUserInfo = function (sa,modifiedUserInfo){
     	return $http({
-			'url' : 'http://192.168.0.102:8080/updateUserInfo.ajax',
+			'url' : sa+'updateUserInfo.ajax',
 			'method' : 'POST',
 			'headers': {'Content-Type' : 'application/json; charset=utf-8'},
 			'data' : modifiedUserInfo
