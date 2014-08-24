@@ -10,7 +10,16 @@ app.controller('InviteController',['$scope','mainFactory','globalFactory','pushI
 		mainFactory.invite(globalFactory.serverAddress)
 		.success(function(data){
 			console.log('invite 성공 넘어온 데이터는?:'+JSON.stringify(data));
-			$scope.inviteTrips=data;			
+			$scope.inviteTrips=data;
+		/*	if($scope.inviteTrips.GENDER='man'){
+				$scope.inviteWoman=false;
+				$scope.inviteMan=true;
+			}else if($scope.inviteTrips.GENDER="woman"){
+				$scope.inviteWoman=true;
+				$scope.inviteMan=false;
+			}*/
+			
+			
 			console.log("invite 메인에 넘길데이타 :" +JSON.stringify($scope.inviteTrips));
 		}).error(function(error){
 			console.log('error');
@@ -26,6 +35,7 @@ app.controller('InviteController',['$scope','mainFactory','globalFactory','pushI
 			console.log('여행 초대할 사람 번호'+inviteUser);			
 			pushInviteFactory.pushInviteUser(sa,inviteUser)
 			.success(function(data){
+				
 				console.log('여행초대하기 푸시성공');
 			}).error(function(error){
 				console.log('여행참가하기 푸시실패');
