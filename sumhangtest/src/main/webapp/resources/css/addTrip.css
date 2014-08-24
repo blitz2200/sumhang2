@@ -9,7 +9,7 @@
 
 /* //////////// 헤더 관련///////////////////////////////////////////////////////////////////////////////////////// */
 /* 헤더 */
-.header-addTrip{
+.addTrip .header-addTrip{
 		height: 50px;
 		background: #ffbb33;
 		z-index:999;
@@ -20,7 +20,7 @@
 }
 
 /* 헤더 제목 */
-.header-addTrip #addTripTitle{
+.addTrip .header-addTrip #addTripTitle{
 		font-family: 'Nanum Gothic Coding', monospace;
 		left: 40%;
 		position: absolute;
@@ -30,7 +30,7 @@
 }
 
 /* 저장하기 */
-#addTripSaveBtn{
+.addTrip #addTripSaveBtn{
 	margin-top: 8px;
 	position: absolute;
 	left: 90%;
@@ -39,7 +39,7 @@
 
 /* //////////// 사진 올리기 관련///////////////////////////////////////////////////////////////////////////////////////// */
 /* 여행사진 라벨 */
-#addTripPhotoLabelSpace #addTripPhotoLabel{
+.addTrip #addTripPhotoLabelSpace #addTripPhotoLabel{
 	font-family: 'Nanum Gothic Coding', monospace;
 	color: #ffbb33;
 	font-weight: bold;
@@ -47,14 +47,14 @@
 
 }
 
-#addTripPhotoLabelSpace{
+.addTrip #addTripPhotoLabelSpace{
 		margin-top: 15px;
 		margin-bottom: 15px;
 	
 }
 
 /* 여행사진 올리기 */
- #addTripPhotoSpace{
+ .addTrip #addTripPhotoSpace{
 	width:100%;
 	height: 200px;
 	background: url('../images/TK.jpg');
@@ -63,18 +63,19 @@
 }
 
 /* 여행사진 올리기 이미지 */
-#addTripPhotoSpace #addTripPhotoImg{
+.addTrip #addTripPhotoSpace #addTripPhotoImg{
 	text-align: center;
+	height:200px;
 }
 
 /* 여행 사진 올리기 텍스트 */
-#addTripPhotoSpace #addTripPhotoText{
+.addTrip #addTripPhotoSpace #addTripPhotoText{
 	font-family: 'Nanum Gothic Coding', monospace;
 	text-align: center;
 }
 
 /* 사진을 올려주세요 */
-#addTripPhotoSpace #addTripPhotoText #addTripPhotoUpload{
+.addTrip #addTripPhotoSpace #addTripPhotoText #addTripPhotoUpload{
 	font-family: 'Nanum Gothic Coding', monospace;
 	color:orange;
 	background-color: white;
@@ -84,25 +85,25 @@
 /* //////////// 리스트뷰 관련///////////////////////////////////////////////////////////////////////////////////////// */
 
 /* 리스트뷰 라벨 */
-#addTripForm  #destination-addTrip, #tripTitleLabel, #scheduleAddTrip, #tripNumberLabel-addTrip, #addTripContextLabel, #addTripTagLabel, #scheduleAddTrip, #scheduleEndAddTrip{
+.addTrip #addTripForm  #destination-addTrip, #tripTitleLabel, #scheduleAddTrip, #tripNumberLabel-addTrip, #addTripContextLabel, #addTripTagLabel, #scheduleAddTrip, #scheduleEndAddTrip{
 	text-align: left;
 	width: 70px;
 	margin-left: 15px;
 }
 
 /* 도착일 입력 라벨 */
-#scheduleEndAddTrip{
+.addTrip #scheduleEndAddTrip{
 margin-left: -5px;	
 	}
 	
 /* 세부내용 라벨 위치 */
-#addTripContextLabel{
+.addTrip #addTripContextLabel{
 	margin-left: 15px;
 	margin-top: 15px;
 }
 
 /* 리스트뷰 입력란  */
-#addTripForm #tripDestinationInput, #tripTitleInput, #tripNumberInput-addTrip, #tripTagInput{
+.addTrip #addTripForm #tripDestinationInput, #tripTitleInput, #tripNumberInput-addTrip, #tripTagInput{
 	font-family: 'Nanum Gothic Coding', monospace;
 	width: 75%;
 	border: none;
@@ -113,7 +114,7 @@ margin-left: -5px;
 }
 
 /* 출발일 입력란 */
-#datepicker3{
+.addTrip #datepicker3{
 	float: left;	
 	font-family: 'Nanum Gothic Coding', monospace;
 	border: none;
@@ -126,7 +127,7 @@ margin-left: -5px;
 }
 
 /* 도착일 입력란 */
-#datepicker4{
+.addTrip #datepicker4{
 	font-family: 'Nanum Gothic Coding', monospace;
 	border: none;
 	height: 43px;
@@ -137,7 +138,7 @@ margin-left: -5px;
 
 
 /* 리스트뷰 세부 내용 란 */
-#tripContextText{
+.addTrip #tripContextText{
 	font-family: 'Nanum Gothic Coding', monospace;
 	width: 75%;
 	border: none;
@@ -148,7 +149,7 @@ margin-left: -5px;
 }
 
 /* 리스트 뷰 입력 공간 */
-#destinationAddTripSpace, #tripTitleAddTripSpace, #tripTitleAddTripSpace, #countAddTrip, #contextAddTripSpace, #addTripTag, #tripScheduletEndSpace{
+.addTrip #destinationAddTripSpace, #tripTitleAddTripSpace, #tripTitleAddTripSpace, #countAddTrip, #contextAddTripSpace, #addTripTag, #tripScheduletEndSpace{
 	border-bottom-color: #ffbb33;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
@@ -157,7 +158,7 @@ margin-left: -5px;
 }
 
 /* 리스트뷰 첫 번째 */
-#destinationAddTripSpace{
+.addTrip #destinationAddTripSpace{
 	border-top-color: #ffbb33;
 	border-top-width: 1px;
 	border-top-style: solid;
@@ -165,11 +166,11 @@ margin-left: -5px;
 }
 
 /* 모집인원 위치 */
-#countAddTrip{
+.addTrip #countAddTrip{
 	margin-top: -13px;
 }
 
 /* 세부내용 입력란 */
-#tripContextText{
+.addTrip #tripContextText{
 	padding-top: 20px;
 }
