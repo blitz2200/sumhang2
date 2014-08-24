@@ -3,10 +3,12 @@
 //main페이지에서 tboard_no를 a링크에 넣어서 보냄  
 //app.js파일에  when주소뒤에 :스코프이름 으로 넘긴걸 받음 
 //콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
-app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFactory',
+app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFactory','Camera',
                                         'tripService', 'modalService', 'globalFactory',
-                                        function ($scope,$routeParams, tripDetailFactory,
-                                        		  tripService, modalService, globalFactory) {
+                                        'tripDetailEditUplodService',
+                                        function ($scope,$routeParams, tripDetailFactory,Camera,
+                                        		  tripService, modalService, globalFactory,
+                                        		  tripDetailEditUplodService) {
 	
 	
 	//넘어온 tboard_no,tripDetailReply값  변수에 저장
@@ -68,6 +70,10 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 		$scope.mainTripDetail=false;
 		$scope.editPage=true;
 		$scope.writeUserButton=false;
+		//답변달기 인풋 숨기기
+		$scope.inputRe=false;
+		//리플 리스트 숨기기
+		$scope.tripDetailReplyList=false;
 		console.log('$scope.trip'+JSON.stringify($scope.trip));
 		$scope.editTrip.travel=$scope.trip.travel;
 		$scope.editTrip.title=$scope.trip.title;
@@ -76,7 +82,50 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 		$scope.editTrip.travelDescription=$scope.trip.TRAVEL_DESCRIPTION;
 	}
 	
-	$scope.goEditTripRequest=function(){
+	
+	//tripDetail 수정 버튼 갤러리 파일 가져오기
+	
+	//수정할 여행파일을 갤러리에서 불러와 디비에 저장할 변수 
+	var editTripDetailGalleryFile=null;
+	//수정할 여행파일을 갤러리에서 불러와 저장할 변수
+	var editTripDetailGalleryMultipartFile;
+	//여행수정그림 클릭시 실행
+	$scope.goEditTripDetailPhoto=function(){
+		editTripDetailPhoto();
+	}
+	
+	function editTripDetailPhoto(){
+		Camera.getPicture(function(galleryImage) {	
+			//갤러리서 불러와서 바로 html페이지에 불러올 변수 생성
+			var documentEditGalleryFile=document.getElementById('editPhotoUpdate');
+			documentEditGalleryFile.src=galleryImage;
+			if (galleryImage.substring(0,21)=="content://com.android") {
+      		  photo_split=galleryImage.split("%3A");
+      		  galleryImage="content://media/external/images/media/"+photo_split[1];
+			}
+            $scope.$apply(function() {
+                alert('갤러리 사진 경로:'+galleryImage);
+                editTripDetailGalleryFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
+                editTripDetailGalleryMultipartFile=galleryImage;
+                alert('디비에 넣을 사진 이름 '+editTripDetailGalleryFile);
+                alert('서버에 저장할 파일 경로'+editTripDetailGalleryMultipartFile);                
+            });
+        }, function(error) {
+            $scope.$apply(function() {
+                $scope.error = error;
+            });
+        }, {
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            encodingType: Camera.EncodingType.JPEG,
+            quality: 50
+        });
+		
+	}
+	
+	
+	
+	$scope.goEditTripRequest=function(){	
 		editTripRequest(travelNo)
 	};
 	
@@ -87,33 +136,29 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
     		$scope.editTripForm.tripDestinationInput.$valid	&& 
     		$scope.editTripForm.datepicker3.$valid && 
     		$scope.editTripForm.datepicker4.$valid ){
-        	console.log("여행세부게시판수정 시작...");
+        	alert("여행세부게시판수정 시작...");
         	
         	var trip =$scope.editTrip;
-    		
-    		var tripfile=$scope.tripfile;		
         	console.log ('수정할 여행세부게시판 내용: '+JSON.stringify(trip));
         	
-    		if (typeof $scope.tripfile == 'undifined') {
-	    		console.log('업로드 파일은 :' + JSON.stringify(tripfile.name));
+    		if (editTripDetailGalleryFile  != null) {
+	    		alert('업로드 파일은 :' + editTripDetailGalleryFile);
 	        	
-	    			//파일객체에서 이름을 빼서 tripFile에 저장후 substr함수로 따음표 잘라내기
-	    			var tripFile= JSON.stringify(tripfile.name)
-	    						  .substr(1,JSON.stringify(tripfile.name).length-2);
-	    			console.log('여행파일은? :'+tripFile)
-	    			
+	    				    			
 	    			//여행등록 객체에 파일이름 추가 
-	    			trip.travelPho=tripFile;	
+	    			trip.travelPho=editTripDetailGalleryFile;
+	    			trip.travelSphoto="s_"+editTripDetailGalleryFile;
 	    			
 	    			console.log("사진 파일 추가후 업로드"+JSON.stringify(trip));
 	    				
 	    				//파일객체 서비스에 전송
 	    		
-	    			tripService.addTripFile(sa,tripfile);
+	    			tripDetailEditUplodService.tripDetailUpload(sa,editTripDetailGalleryMultipartFile);
 	    			
 	    		}else{
-	    			trip.travelPho='1.png';
-	    			console.log("디폴트파일이름"+JSON.stringify(trip.travelPho));
+	    			trip.travelPho='defaultTripPhoto.png';
+	    			trip.travelSphoto='s_DefaultTripPhoto.png'
+	    			alert("디폴트파일이름"+JSON.stringify(trip.travelPho));
 	    			 
 	    		}
 	    		
@@ -125,6 +170,8 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 	    		$scope.mainTripDetail=true;
 	    		$scope.editPage=false;
 	    		$scope.writeUserButton=true;
+	    		$scope.inputRe=true;
+	    		$scope.tripDetailReplyList=true;
 			}).error(function(error){
 				console.log('tripDetailReply 콘트롤러 실패');
 			})
@@ -187,8 +234,8 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 	     var enterTripModalOptions = {
 	                closeButtonText: '취소',
 	                actionButtonText: '보내기',
-	                headerText: '푸쉬 보내기',
-	                bodyText: '푸쉬 날리시겠습니까??'
+	                headerText: '여행 참가하기',
+	                bodyText: '참가 신청 하시겠습니까?'
 	            };
 	     
 	     modalService.showModal(enterTripModalDefaults, enterTripModalOptions).then(function () {
@@ -213,7 +260,7 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 		  }
 		  
 	
-	
+	$scope.tripDetailReplyList=true;
 	
 	//리플 리스트 시작
 	function tripDetailListReply(travelNo){
