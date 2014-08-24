@@ -23,7 +23,7 @@
 			<div id="join-8">
 				<div id="joinMemberPhotoImg">
 			<!-- 사진 나오는 곳 -->		
-					<img class="cameraAfterImg" data-ng-src="{{imageData}}" >
+					<img id="cameraAfterImg" src="" >
 			<!-- 사진 찍기 -->				
 					<img class="cameraImg" data-ng-click="capturePhoto()"
 					data-ng-src="{{serverAddress}}resources/images/compact-camera-32.png" id="takeAPictureIMG">
@@ -63,9 +63,9 @@
 								<!-- 아이디 중복 체크 -->	
 								<span class="label label-info" data-ng-show="joinMember.idDuplicate" id="idDup">아이디
 								중복</span> <span class="label label-warning"
-								data-ng-show="joinMember.inputIdInput.$error.minlength" id="idShort">너무
+								data-ng-show="joinMember.userIdJoinInput.$error.minlength" id="idShort">너무
 								2자 이상</span> <span class="label label-warning"
-								data-ng-show="joinMember.inputIdInput.$error.maxlength" id="idLong">너무
+								data-ng-show="joinMember.userIdJoinInput.$error.maxlength" id="idLong">너무
 								Long</span>
 						</div>	<!-- userIdJoinInputSpace End -->
 					</div>	<!-- userNameJoin End -->

@@ -26,7 +26,7 @@
 					 <p class="detailTitle"> 
 						{{trip.title}}
 					 </p> 
-					<img class="cal" src="{{serverAddress}}resources/images/icons/today-48.png"> 
+					<img class="cal" src="{{serverAddress}}resources/images/icons/weddingday32.png"> 
 					
 					<span>
 						{{trip.travel_start}}~ {{trip.travel_end}} </span>
@@ -45,28 +45,35 @@
 			</div>
 		</div>	
 		
-		<!-- 메인 상세 수정 페이지 -->	
+<!-- ////////////////   메인 상세 수정 페이지      ////////////////////////////////-->	
 		<div class="editDetailPage" data-ng-show="editPage">
 		<form id="editTripForm" name="editTripForm" data-ng-submit="goEditTripRequest()" 
 		      class="form-horizontal" data-ng-model="editTrip" novalidate>
 		      
-		 <!-- 여행 사진 -->
-<!-- 			<div id="editTripPhotoLabelSpace">
-				<h4 id="editTripPhotoLabel">
-					사진 선택
-				</h4>
-			</div> -->
 		
 	<!-- 여행 사진 선택 -->
 			<div id=editTripPhotoSpace>
 				<div id="editTripPhotoImg">
-					<img src="resources/images/picture-attachment-128.png" id="editPhotoUpdate">				
+					<img style="height: 200px;" src="resources/images/picture-attachment-128.png" id="editPhotoUpdate" data-ng-Click="goEditTripDetailPhoto()">				
 				</div>				<!-- editTripPhotoImg End	 -->	
-					<!-- <img data-ng-src="{{addTripImage}}"> -->
+				
 				<div id="editTripPhotoText">
 					<h5 id="editTripPhotoUpload">사진을 올려주세요.</h5>
 				</div>
 			</div>			<!-- editTripPhotoSpace End -->
+			
+				
+		<!--여행지-->
+			<div class="form-group" data-ng-class="{ 'has-error' : editTripForm.tripDestinationInput.$invalid && submitted}" id="editDestinationGroup">
+				<label for="tripDestination" class="col-xs-3 control-label" id="editDestinationLabel">
+					<img src="{{serverAddress}}resources/images/airplane-7-24.png" id="modifyMemberUserName">
+				</label>
+				<div class="col-xs" id="editDestinationInputGroup">
+					<input type="text" class="form-control" id="editDestinationText" name="tripDestinationInput" value="{{trip.travel}}"  
+					data-ng-model="editTrip.travel" required>
+				</div>				<!-- editDestinationInputGroup End -->
+			</div>						<!-- editDestinationGroup End -->
+	
 			
 		<!-- 여행제목-->
 			<div class="form-group " data-ng-class="{ 'has-error' : editTripForm.tripTitleInput.$invalid && submitted}" id="editTitleGroup">
@@ -75,23 +82,14 @@
 				</label>	
 				<div class="col-xs" id="tripTitleInputGroup">
 					<input type="text" class="form-control" id="tripTitleInput" name="tripTitleInput" data-ng-model="editTrip.title"
-					placeholder="여행제목" value="" required>	
+					value="{{trip.title}}" data-ng-init="editTrip.title=trip.title"required>	
 				</div>			<!-- tripTitleInputGroup End -->
 			</div>		<!--editTripTitleGroup End -->
 			
-			
-		<!--여행지-->
-			<div class="form-group" data-ng-class="{ 'has-error' : editTripForm.tripDestinationInput.$invalid && submitted}" id="editDestinationGroup">
-				<label for="tripDestination" class="col-xs-3 control-label" id="editDestinationLabel">
-					<img src="{{serverAddress}}resources/images/airplane-7-24.png" id="modifyMemberUserName">
-				</label>
-				<div class="col-xs" id="editDestinationInputGroup">
-					<input type="text" class="form-control" id="editDestinationText" name="tripDestinationInput" value="{{trip.travel}}"  
-					data-ng-model="editTrip.travel" placeholder="여행지" required>
-				</div>				<!-- editDestinationInputGroup End -->
-			</div>						<!-- editDestinationGroup End -->
-	
+		
 		<!-- 여행기간 -->
+		
+		
 		<div class="form-group" data-ng-class="{ 'has-error' : (editTripForm.datepicker3.$invalid || editTripForm.datepicker4.$invalid ) && submitted}" id="editScheduleGroup">
 		<!-- 출발일 -->
 				<div id="editTripScheduleLeft">
@@ -100,7 +98,7 @@
 					</label>
 					<div class="col-xs" id="editStartDate" name="sta">
 						<input type="text" class="form-control" id="datepicker7" name="datepicker3" data-ng-model="editTrip.travelStart"
-							value="{{trip.travel_start}}" placeholder="출발" required>
+							value="{{trip.travel_start}}"  required>
 					</div>					<!-- editStartDate End -->
 				</div>					<!-- editTripScheduleLeft End -->
 		
@@ -110,11 +108,22 @@
 							<img src="{{serverAddress}}resources/images/planner-24.png" id="modifyMemberUserName">
 						</label>
 						<div class="col-xs" id="tripEnddate">
-							<input type="text" class="form-control" id="datepicker8" name="datepicker4" placeholder="도착" data-ng-model="editTrip.travelEnd" required>
+							<input type="text" class="form-control" id="datepicker8" name="datepicker4"
+									value="{{trip.travel_end}}" data-ng-model="editTrip.travelEnd" required>
 						</div>	
 				</div>			<!-- editTripScheduleRight End -->
 		</div>			<!-- seditScheduleGroup" End -->
 			
+	<!-- 모집인원-->
+				<div class="form-group" data-ng-class="{ 'has-error' : addTripForm.tripNumberInputEditTrip.$invalid && submitted}" id="countAddTrip">
+					<label for="addTripNumber" class="col-xs-2 control-label" id="tripNumberLabel-editTrip">
+						<img src="{{serverAddress}}resources/images/conference-ccc-24.png" id="modifyMemberUserName">
+					</label>
+					<div class="col-xs" id="tripNumberInput-editTripSpace">
+						<input type="number" class="form-control" min="1" max="20" id="tripNumberInput-editTrip" name="tripNumberInputEditTrip"
+						data-ng-model="editTrip.travelUserCount"  value="{{trip.TRAVEL_USER_COUNT} }" required>
+					</div>			<!-- tripNumberInput-addTripSpace End -->
+				</div>			<!-- tripNumberLabel-addTrip End -->
 			
 	
 		<!-- 세부내용 -->
@@ -123,19 +132,13 @@
 					<img src="{{serverAddress}}resources/images/text-justify-24.png" id="modifyMemberUserName">
 				</label>
 				<div class="col-xs" id="eidtContextTextSpace">
-					<textarea class="form-control" rows="3" id="tripContextText"  placeholder="세부내용"
-					data-ng-value="trip.TRAVEL_DESCRIPTION" data-ng-model="editTrip.travelDescription" placeholder="세부내용"> 
+					<textarea class="form-control" rows="3" id="tripContextText" 
+					data-ng-value="trip.TRAVEL_DESCRIPTION" data-ng-model="editTrip.travelDescription" > 
 					</textarea>
 				</div>			<!-- eidtContextTextSpace End -->
 			</div>				<!-- contextEditTripSpace End -->
 			
-		<!-- 사진 올리기 -->
-			<div class="form-group photo">
-				<label for="pho" class="col-xs-3 control-label">사 진 </label>
-				<div class="col-xs-7">
-					<input type="file" class="custom-file-input"  id="tripFileUpdate" data-file-model="tripfile" >
-				</div>
-			</div>
+	
 	
 	<!-- 여행올리기 -->
 			<div class="form-group">
@@ -157,37 +160,37 @@
 			</div>
 			<!-- 글작성한 사람용 버튼 -->
 			<div class="writeUserButton" data-ng-show="writeUserButton">
-				<button type="button" class="editTrip btn btn-warning"
-						data-ng-click="goEditTripDetail()">수정</button>
+				<button type="button" class="editTrip btn btn-default"
+						data-ng-click="goEditTripDetail()">수        정</button>
 				<button type="button" class="deleteTrip btn btn-warning" 
-				        data-ng-click="goDeleteTripDetail()">삭제</button>
+				        data-ng-click="goDeleteTripDetail()">삭        제</button>
 			</div>
 		</div>
 	
 		<!-- 리플 시작 -->
-
-		<ul>
-			<li data-ng-repeat="reply in replys">
-				<div class="row reply">
-					<div class="col-xs-1 reUser">
-						<img data-ng-src="{{serverAddress}}resources/images/userPhotoFile/{{reply.user_sphoto}}" />
+		<div class=tripDetailReplyList data-ng-show="tripDetailReplyList">
+			<ul>
+				<li data-ng-repeat="reply in replys">
+					<div class="row reply">
+						<div class="col-xs-1 reUser">
+							<img data-ng-src="{{serverAddress}}resources/images/userPhotoFile/{{reply.user_sphoto}}" />
+						</div>
+						<div class="col-xs-2 reNick">{{reply.nick}}</div>
+						
+						<div class="col-xs-4 arrow_box">{{reply.TBOARD_RE_DESCRIPTION}}</div>
+						
+						<div class="col-xs-1 delete" data-ng-show="{{reply.del}}">
+							<img data-ng-click="goDelTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
+							src="{{serverAddress}}resources/images/icons/tripDetailDelete.png"/>					
+						</div>
+						<div class="col-xs-1 edit" data-ng-show="{{reply.del}}">
+							<img data-ng-click="goEditTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
+							src="{{serverAddress}}resources/images/icons/tripDetailEdit.png"/>		
+						</div>				
 					</div>
-					<div class="col-xs-2 reNick">{{reply.nick}}</div>
-					
-					<div class="col-xs-4">{{reply.TBOARD_RE_DESCRIPTION}}</div>
-					
-					<div class="col-xs-1 delete" data-ng-show="{{reply.del}}">
-						<img data-ng-click="goDelTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
-						src="{{serverAddress}}resources/images/icons/tripDetailDelete.png"/>					
-					</div>
-					<div class="col-xs-1 edit" data-ng-show="{{reply.del}}">
-						<img data-ng-click="goEditTripDetailRe(reply.TRAVEL_BOARD_REPLY_NO)"  
-						src="{{serverAddress}}resources/images/icons/tripDetailEdit.png"/>		
-					</div>				
-				</div>
-			</li>
-		</ul>
-		
+				</li>
+			</ul>
+		</div>
 	</div>
 	
 <div class=wraper-footer-tripDetail>
