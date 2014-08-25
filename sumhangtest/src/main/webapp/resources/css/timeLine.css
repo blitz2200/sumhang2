@@ -1,11 +1,6 @@
-/*fonts*/
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
-
 /* 페이지 가로 크기 */
 #timeLinePage .container-timeLinePage{
-/* 	width: 80%;
-	margin: auto;
- */	background-color:#ffbb33;
+	background-color:#ffbb33;
 	border-width: 6px;
 	border-style: solid;
 	border-color: #e6bb46;
@@ -74,13 +69,13 @@
 	color:orange;
 	font-weight: bold;
 	font-size: 15px;
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothicExtraBold;
 	margin-left: 20px;
 }
 
 /* 타임라인 제목 */
 #listViewTimeLinePage #timeLineInfo #timeLineListDestination #tripTitle{
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothicBold;
 	font-size: 12px;
 	margin-left:20px;
 	margin-bottom: 3px;
@@ -88,14 +83,14 @@
 
 /* 여행기간 */
 #listViewTimeLinePage #timeLineInfo #timeLineListDestination #tripPeriod{
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothicBold;
 	font-size: 12px;
 	margin-left:20px;
 }
 
 /* 타임라인 참여 인원 */ 
 #listViewTimeLinePage #timeLineInfo #timeLineListDestination #timeLineMembers {
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothic;
 	font-size: 12px;
 	margin-right:20px;
 	float: right;
@@ -125,14 +120,14 @@
 
 /* 타임라인 작성자 정보 */
 .row .timeLineUserInfo {
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothicBold;
 	float: left;
 	margin-left: 15px;
 }
 
 /* 타임라인 글씨체 */
 .row #timeLineText{
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothic;
 	text-align:left;
 	padding: 20px;
 }
@@ -140,7 +135,7 @@
 /* 타임라인 버튼 위치 */
 .replylist-timeline .row #timeLineBtns{
 	margin-top: 10px;
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothic;
 }
 
 /* 타임라인 버튼 간격 */
@@ -154,6 +149,70 @@
 	width: 43%;
 	float: left;
 	margin-left: 20px;	
+}
+
+
+/* 타임라인 쓰기 */
+#timelineContextText{
+	font-family:nanomgothic;
+	margin-top: 20px;
+	margin-left: -18px;
+	padding: 10px;
+}
+
+/* 타임라인 버튼 그룹 */
+.timeLineActionBtns{
+	width:99%;
+	height: 40px;
+	background-color: white;
+	margin-left: -17px;
+}
+
+/* 사진 보이는 곳 */
+.timeLineActionBtns2{
+	width:99%;
+	height: 70px;
+	background-color: white;
+	margin-left: -17px;
+	padding: 5px;
+}
+
+/* 사진 라벨 */
+#showingTimelinePhoto{
+	font-family:nanomgothicExtraBold;
+	margin-left: -10px;
+	margin-top: 5px;
+}
+
+
+/* 입력 버튼 */
+#updateTimelineBtn{
+	float: right;
+	font-family:nanomgothic;
+	margin-right: 10px;
+	margin-top: 2px;
+
+}
+
+
+/* 사진 찍기 아이콘 */
+#takeAPhotoTimeline{
+	margin-left: 10px;
+	margin-top: 2px;
+}
+
+/* 갤러리 아이콘 */
+#galleryPhoTimeline{
+	margin-left: 10px;
+	margin-top: 2px;
+}
+
+/* 보이는 사진 */
+#showTimelinePho{
+	height: 60px;
+	width: 60px;
+	background-color: red;
+	margin-left: 10px;
 }
 
 /* 타임라인 쓰기 고정 */
@@ -288,76 +347,3 @@
 	float: left;
 }
  
-
-
-
-
-
-/* .container-timeline {
-	background-image: url("../images/beach_girl.png");
-	background-attachment: inherit;
-	 -webkit-background-size: contain;
-    			background-size: contain; 
-	color: white;
-	background-repeat: repeat;
-}
-
-.travel-timeline {
-	border-width: 2px;
-	border-color: white;
-	border-style: solid;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	height: 150px;
-	line-height: 250%;
-	font-size: 13px;
-	margin-bottom: 10px;
-	padding :20px;
-}
-.reply-timeline{
-	border-width: 2px;
-	border-color: white;
-	border-style: solid;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	height: 150px;
-	line-height: 250%;
-	font-size: 13px;
-	margin-bottom: 10px;
-	padding :20px;
-}
-.replylist-timeline {
-	padding :20px;
-	border-width: 2px;
-	border-color: white;
-	border-style: solid;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	height: 150px;
-	line-height: 200%;
-
-	margin-bottom: 40px;
-}
-
-#img-reply-src {
-	height: 50px;
-	width: 50px;
-}
-
-.reply-timeline textarea {
-	float: left;
-	margin-left: 35px;
-	width: 300px;
-	opacity: 0.6;
-}
-
-.btn-timeline {
-	float: left;
-	margin-left: 350px;
-}
-.container-timeline .row{
-	width: 700px;
-} */
