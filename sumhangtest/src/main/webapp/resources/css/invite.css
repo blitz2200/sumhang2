@@ -4,8 +4,14 @@
 	font-family:nanomgothic;
 	min-height:600px;
 }
+
+.invitePush #inviteUserRefresh{
+	height:30px;
+	width:30px;
+}
 /* 제목 */
 .invitePush #inviteTitle{
+	margin-left:20%;
 	margin-top:4%;
 	text-align:center;
 	font-family:nanomgothicBold;
@@ -17,7 +23,8 @@
 	
 	margin-top:5%;
 	padding-top:3%;
-	border-top:2px solid #FFBB33; 
+	padding-bottom:3%;
+	border-top:1px solid #FFBB33; 
 	border-width:100%;
 	
 }
@@ -78,8 +85,11 @@
 
 /* 초대유저 닉네임 */
 .invitePush #inviteUserNick{
+	font-family:nanomgothic;
+	color:#777;
 	text-align:center;
-	padding:20px;
+	padding-top:4%;
+
 }
 
 /*  .invitePush .ul{	  
