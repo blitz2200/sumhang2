@@ -28,7 +28,7 @@
 					 </p> 
 					<img class="cal" src="{{serverAddress}}resources/images/icons/weddingday32.png"> 
 					
-					<span>
+					<span class="tripDetailSchedule">
 						{{trip.travel_start}}~ {{trip.travel_end}} </span>
 				</div>
 				<div class="col-xs-5">
@@ -52,9 +52,9 @@
 		      
 		
 	<!-- 여행 사진 선택 -->
-			<div id=editTripPhotoSpace>
+			<div id=editTripPhotoSpace class="form-group">
 				<div id="editTripPhotoImg">
-					<img style="height: 200px;" src="resources/images/picture-attachment-128.png" id="editPhotoUpdate" data-ng-Click="goEditTripDetailPhoto()">				
+					<img style="height: 200px; width:100%;" src="resources/images/picture-attachment-128.png" id="editPhotoUpdate" data-ng-Click="goEditTripDetailPhoto()">				
 				</div>				<!-- editTripPhotoImg End	 -->	
 				
 				<div id="editTripPhotoText">
@@ -64,7 +64,8 @@
 			
 				
 		<!--여행지-->
-			<div class="form-group" data-ng-class="{ 'has-error' : editTripForm.tripDestinationInput.$invalid && submitted}" id="editDestinationGroup">
+		
+			<div class="form-group row"  id="editDestinationGroup" data-ng-class="{ 'has-error' : editTripForm.tripDestinationInput.$invalid && submitted}">
 				<label for="tripDestination" class="col-xs-3 control-label" id="editDestinationLabel">
 					<img src="{{serverAddress}}resources/images/airplane-7-24.png" id="modifyMemberUserName">
 				</label>
@@ -76,9 +77,9 @@
 	
 			
 		<!-- 여행제목-->
-			<div class="form-group " data-ng-class="{ 'has-error' : editTripForm.tripTitleInput.$invalid && submitted}" id="editTitleGroup">
+			<div class="form-group " id="editTitleGroup" data-ng-class="{ 'has-error' : editTripForm.tripTitleInput.$invalid && submitted}" >
 				<label for="tripTitle" class="col-xs-3 control-label" id="tripTitleLabel">
-					<img src="{{serverAddress}}resources/images/airplane-7-24.png" id="modifyMemberUserName">
+					<img src="{{serverAddress}}resources/images/baggage-24.png" id="modifyMemberUserName">
 				</label>	
 				<div class="col-xs" id="tripTitleInputGroup">
 					<input type="text" class="form-control" id="tripTitleInput" name="tripTitleInput" data-ng-model="editTrip.title"
@@ -90,11 +91,11 @@
 		<!-- 여행기간 -->
 		
 		
-		<div class="form-group" data-ng-class="{ 'has-error' : (editTripForm.datepicker3.$invalid || editTripForm.datepicker4.$invalid ) && submitted}" id="editScheduleGroup">
+		<div class="form-group" id="editScheduleGroup" data-ng-class="{ 'has-error' : (editTripForm.datepicker3.$invalid || editTripForm.datepicker4.$invalid ) && submitted}" >
 		<!-- 출발일 -->
 				<div id="editTripScheduleLeft">
 					<label for="datepicker2" class="col-xs-3 control-label" id="tripPeriodLabel">
-						<img src="{{serverAddress}}resources/images/airplane-7-24.png" id="modifyMemberUserName">
+						<img src="{{serverAddress}}resources/images/planner-24.png" id="modifyMemberUserName">
 					</label>
 					<div class="col-xs" id="editStartDate" name="sta">
 						<input type="text" class="form-control" id="datepicker7" name="datepicker3" data-ng-model="editTrip.travelStart"
@@ -115,8 +116,8 @@
 		</div>			<!-- seditScheduleGroup" End -->
 			
 	<!-- 모집인원-->
-				<div class="form-group" data-ng-class="{ 'has-error' : addTripForm.tripNumberInputEditTrip.$invalid && submitted}" id="countAddTrip">
-					<label for="addTripNumber" class="col-xs-2 control-label" id="tripNumberLabel-editTrip">
+				<div  class="form-group" id="countEditTrip" data-ng-class="{ 'has-error' : editTripForm.tripNumberInputEditTrip.$invalid && submitted}" >
+					<label for="editTripNumber" class="col-xs-2 control-label" id="tripNumberLabel-editTrip">
 						<img src="{{serverAddress}}resources/images/conference-ccc-24.png" id="modifyMemberUserName">
 					</label>
 					<div class="col-xs" id="tripNumberInput-editTripSpace">
@@ -127,12 +128,12 @@
 			
 	
 		<!-- 세부내용 -->
-			<div class="form-group" id="contextEditTripSpace">
-				<label for="tripContext" class="col-xs-3 control-label" id="tripContextLabel">
-					<img src="{{serverAddress}}resources/images/text-justify-24.png" id="modifyMemberUserName">
+			<div class="form-group " id="contextEditTripSpace">
+				<label for="tripContext" class="col-xs-3 control-label" id="editTripContextLabel">
+					<img src="{{serverAddress}}resources/images/text-justify-24.png">
 				</label>
 				<div class="col-xs" id="eidtContextTextSpace">
-					<textarea class="form-control" rows="3" id="tripContextText" 
+					<textarea class="form-control" rows="3" id="editTripContextText" 
 					data-ng-value="trip.TRAVEL_DESCRIPTION" data-ng-model="editTrip.travelDescription" > 
 					</textarea>
 				</div>			<!-- eidtContextTextSpace End -->
@@ -141,9 +142,9 @@
 	
 	
 	<!-- 여행올리기 -->
-			<div class="form-group">
+			<div class="form-group" id="editDetailSubButton">
 				<div class="col-xs-offset-2">
-					<button type="submit" class="btn btn-warning btn-xs btn-block"   id="updateTrip">여행 수정하기</button>
+					<button type="submit" class="btn btn-warning btn-xs btn-block"   id="updateEditTrip">여행 수정하기</button>
 				</div>
 			</div>
 			
