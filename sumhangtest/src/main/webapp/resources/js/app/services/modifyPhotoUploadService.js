@@ -19,8 +19,7 @@ app.service('modifyPhotoUploadService', ['$http',function ($http) {
 	 	var options = new FileUploadOptions();
 		  
 		  options.fileKey = "modifyUserPhoto";
-		  options.fileName = modifyUserPhotoMultipartFile
-		  					 substr(modifyUserPhotoMultipartFile.lastIndexOf('/') + 1);
+		  options.fileName = modifyUserPhotoMultipartFile.substr(modifyUserPhotoMultipartFile.lastIndexOf('/') + 1);
 		  	
 		  alert('최종 업로드할  수정 여행 파일:'+options.fileName);
 		  
