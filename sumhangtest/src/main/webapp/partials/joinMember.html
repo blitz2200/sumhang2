@@ -8,11 +8,11 @@
 
 				<!-- 제목 -->
 				<span id="joinPageHeader">
-					SUMHANG
+					<img src='resources/images/Header-Logo.png' class="Header-Logo">
 				</span>
 				
 				<!-- 오른쪽 아이콘 -->
-				<img id="joinHeaderRight" src="{{serverAddress}}resources/images/arrow-28-32.png">
+			<!-- 	<img id="joinHeaderRight" src="{{serverAddress}}resources/images/arrow-28-32.png"> -->
 		</div>			<!-- header-tripDetail End -->
 	<!-- -------------------------------------------------------- -->	
 
@@ -22,13 +22,13 @@
 		<div id="join-8">
 				<div id="joinMemberPhotoImg">
 			<!-- 사진 나오는 곳 -->		
-					<img id="cameraAfterImg" src="" >
+					<img class="cameraAfterImg" data-ng-src="{{imageData}}" >
 			<!-- 사진 찍기 -->				
 					<img class="cameraImg" data-ng-click="capturePhoto()"
-					data-ng-src="{{serverAddress}}resources/images/compact-camera-32.png" id="takeAPictureIMG">
+					data-ng-src="{{serverAddress}}resources/images/compact-camera-org-32.png" id="takeAPictureIMG">
 			<!-- 갤러리 -->
 					<img class="galleryImg" data-ng-click="galleryPhoto()"
-					data-ng-src="{{serverAddress}}resources/images/gallery-32.png">
+					data-ng-src="{{serverAddress}}resources/images/gallery-32-org.png">
 				</div>			<!-- joinMemberPhotoImg End -->
 		</div>	<!-- join-8 End -->
 
@@ -39,26 +39,21 @@
 						<img src="{{serverAddress}}resources/images/contacts-24.png" id="joinUserName">
 					</label>
 					<div class="col-xs" id="userNameJoinInputSpace">
-						<input type="text" class="form-control" id="userNa->meJoinInput" name="userNameJoinInput"
+						<input type="text" class="form-control" id="userNameJoinInput" name="userNameJoinInput"
 						placeholder="이름" data-ng-model="newMember.name" required>
 					</div>		<!-- serNameJoinInputSpace End -->
 				</div> 			<!-- userNameJoin End -->
 				
 			<!-- ID 입력-->
-				<div class="form-group" id="userNameJoin" data-ng-class="{ 'has-error' : joinMember.userIdJoinInput.$invalid && submitted || joinMember.isDuplicate}"  >
+				<div class="form-group" data-ng-class="{ 'has-error' : joinMember.userIdJoinInput.$invalid && submitted || joinMember.isDuplicate}"  id="userNameJoin">
 					<label for="userIdJoin" class="col-xs-2  control-label" id="userIdJoinLabel">
 						<img src="{{serverAddress}}resources/images/adobe-id-24.png" id="joinUserName">
 					</label>
 					<div class="col-xs" id="userIdJoinInputSpace">
-						<input type="text" class="form-control" id="userIdJoinInput" data-ng-keyup="duplicateChecking(newMember.id)" name="userIdJoinInput" 	
+						<input type="text" class="form-control" id="userIdJoinInput" name="userIdJoinInput" 	data-ng-keyup="duplicateChecking(newMember.id)"
 						placeholder="ID" data-ng-model="newMember.id" data-ng-minlength="2" data-ng-maxlength="16" required>
-				<!-- 아이디 중복 체크 -->
-					<span class="label label-info"	data-ng-show="joinMember.idDuplicate" id="idDup">아이디 중복</span> 
-						<span class="label label-warning" data-ng-show="joinMember.userIdJoinInput.$error.minlength"
-						id="idShort">너무 2자 이상</span> 
-						<span class="label label-warning" data-ng-show="joinMember.userIdJoinInput.$error.maxlength" 
-						id="idLong">너무 Long	</span>
-					<!-- <span class="label label-info" data-ng-show="joinMember.isDuplicate" id="idDup">
+				<!-- 아이디 중복 체크 -->	
+					<span class="label label-info" data-ng-show="joinMember.isDuplicate" id="idDup">
 					아이디 중복
 					</span> 
 					<span class="label label-warning" data-ng-show="joinMember.userIdJoinInput.$error.minlength" id="idShort">
@@ -66,22 +61,18 @@
 					</span>
 					<span class="label label-warning" data-ng-show="joinMember.userIdJoinInput.$error.maxlength" id="idLong">
 					Long
-					</span> -->
+					</span>
 					</div>		<!-- userIdJoinInputSpace End -->
 				</div> 			<!-- userNameJoin End -->
 				
 			<!-- 닉네임-->
-				<div class="form-group" id="userNickJoin"
-				 data-ng-class="{ 'has-error' : joinMember.userNickJoinInput.$invalid && submitted ||joinMember.nickDuplicate }" >
+				<div class="form-group" data-ng-class="{ 'has-error' : joinMember.userNickJoinInput.$invalid && submitted}" id="userNickJoin">
 					<label for="userNickJoin" class="col-xs-2  control-label" id="userNickJoinLabel">
 						<img src="{{serverAddress}}resources/images/star-4-24.png" id="joinUserNick">
 					</label>
 					<div class="col-xs" id="userNickJoinInputSpace">
 						<input type="text" class="form-control" id="userNickJoinInput" name="userNickJoinInput"
-						placeholder="닉네임" data-ng-blur="nickDuplicateChecking(newMember.nick)"
-						data-ng-model="newMember.nick" required>
-						<!-- 닉네임 중복 체크 -->
-						<span class="label label-info" data-ng-show="joinMember.nickDuplicate"> 닉네임 중복</span>
+						placeholder="닉네임" data-ng-model="newMember.nick" required>
 					</div>		<!-- userNickJoinLabel End -->
 				</div> 			<!-- userNickJoin End -->
 			
