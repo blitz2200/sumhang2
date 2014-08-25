@@ -23,7 +23,7 @@
 			<div id="modifyPhoto">
 				<div id="modifyMemberPhotoSpace">
 			<!-- 사진 나오는 곳 -->		
-					<img src="{{serverAddress}}resources/images/{{userInfo.sPhoto}}" id="modifyMemberUserPhoto" data-ng-click="goModifyUserPhoto()">	
+					<img src="{{serverAddress}}resources/images/{{userInfo.sPhoto}}" id="modifyMemberUserPhoto">	
 							<label id="'userIdModifyLabel">
 							ID
 							</label><br/>		
@@ -31,10 +31,10 @@
 							{{userInfo.id}}
 							</p>
 			<!-- 사진 찍기 -->				
-					<img class="cameraImg" data-ng-click="capturePhoto()"
+					<img class="cameraImg" data-ng-click="goModifyUserPhoto()"
 					data-ng-src="{{serverAddress}}resources/images/compact-camera-org-32.png" id="modifyTakeAPicture">
 			<!-- 갤러리 -->
-					<img class="galleryImgModify" data-ng-click="galleryPhoto()"
+					<img class="galleryImgModify" data-ng-click="goModifyGalleryPhoto()"
 					data-ng-src="{{serverAddress}}resources/images/gallery-32-org.png">
 				</div>			<!-- modifyMemberPhotoSpace End -->
 			</div>			<!-- modifyPhoto End -->
