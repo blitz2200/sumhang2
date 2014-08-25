@@ -130,7 +130,7 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 			userPhotoService.uploadPhoto(sa,userPhotoMultipartFile);	
 		}else{
 			user.photo="defaultUserPhoto.png"
-			user.sPhoto='s_'+"defaultUserPhoto.png"
+			user.sPhoto='s_defaultUserPhoto.png'
 			alert("디폴트파일이름"+JSON.stringify(user.photo));
 			
 		}
