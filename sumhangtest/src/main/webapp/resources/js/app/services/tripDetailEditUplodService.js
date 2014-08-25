@@ -19,7 +19,7 @@ app.service('tripDetailEditUplodService', ['$http',function ($http) {
 	 	var options = new FileUploadOptions();
 		  
 		  options.fileKey = "editTripGalleryPhoto";
-		  options.fileName = editTripDetailGalleryMultipartFile
+		  options.fileName = editTripDetailGalleryMultipartFile.
 		  					 substr(editTripDetailGalleryMultipartFile.lastIndexOf('/') + 1);
 		  	
 		  alert('최종 업로드할  수정 여행 파일:'+options.fileName);
