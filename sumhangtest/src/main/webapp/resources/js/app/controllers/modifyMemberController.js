@@ -47,10 +47,10 @@ app.controller('ModifyMemberController', ['$scope', 'userFactory', 'globalFactor
 	  
 	  
 	  //갤러리에서 사진 가져오기
-	  $scope.modifyGalleryPhoto=function(){
+	  $scope.gomodifyGalleryPhoto=function(){
 		  modifyMemberGallery();
 	  }
-	  function modifyMemberGallery(){
+	  function ModifyMemberGallery(){
 		  Camera.getPicture(function(galleryImage) {	
 			  var documentGalleryImage=document.getElementById("modifyMemberUserPhoto");
 		      	  documentGalleryImage.src=galleryImage;
