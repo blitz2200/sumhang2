@@ -4,14 +4,14 @@
 	<!-- 헤더-->
 		<div class="header-modifyMember">
 			<!-- 왼쪽패널 -->
-					<img id="leftSideIcon" src="{{serverAddress}}resources/images/backspace-32.png" data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
+					<img id="leftSideIcon" src="{{serverAddress}}resources/images/leftSide.png" data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
 							data-ps-auto-close="true">	
 								
 				<!-- 제목 -->		
-					<span id="modifyMemberTitle"><a href="#/main"><img src='resources/images/Header-Logo.png' class="Header-Logo"> </a></span> 
-					
-				<!-- 오른쪽패널 -->				
-					<img src="{{serverAddress}}resources/images/save-32.png" data-ng-click="goMain()" id="modifyMemberSaveBtn" >
+					<span id="modifyMemberTitle">
+						<a href="#/main"><img src='resources/images/Header-Logo.png' class="Header-Logo"> </a>
+					</span> 
+								
 		</div>				<!-- header-modifyMember End -->
 	
 	
@@ -20,7 +20,9 @@
 			<form data-ng-submit="modifyUserInfo()" id="formModifyMemberSpace" name="modifyMemberForm" class="form-horizontal" data-ng-model="userInfo" novalidate>
 			
 			<!-- 프로필  -->
+			<div id="modifyPhoto">
 				<div id="modifyMemberPhotoSpace">
+			<!-- 사진 나오는 곳 -->		
 					<img src="{{serverAddress}}resources/images/{{userInfo.sPhoto}}" id="modifyMemberUserPhoto" data-ng-click="goModifyUserPhoto()">	
 							<label id="'userIdModifyLabel">
 							ID
@@ -28,7 +30,16 @@
 							<p id="userIdModifyMember22">
 							{{userInfo.id}}
 							</p>
-				</div>				<!-- modifyMemberPhotoSpace End -->
+			<!-- 사진 찍기 -->				
+					<img class="cameraImg" data-ng-click="capturePhoto()"
+					data-ng-src="{{serverAddress}}resources/images/compact-camera-org-32.png" id="modifyTakeAPicture">
+			<!-- 갤러리 -->
+					<img class="galleryImgModify" data-ng-click="galleryPhoto()"
+					data-ng-src="{{serverAddress}}resources/images/gallery-32-org.png">
+				</div>			<!-- modifyMemberPhotoSpace End -->
+			</div>			<!-- modifyPhoto End -->
+				
+				
 			
 			<!-- 이름-->
 				<div class="form-group" id="userNameModify">
@@ -96,43 +107,39 @@
 						{{userInfo.gender}}
 					</div>		<!-- userEmailGenderInputSpace End -->
 				</div> 			<!-- form-group End -->
-				<button type="submit">수정하기</button>
+				<button type="submit" class="btn btn-warning btn-block" id="modifyMemberBtn">수정하기</button>
 			<!-- 빈공간-->
 				<div class="form-group" id="modifyMemberBottom">
 				
 				</div> 			<!-- form-group End -->
 
 		</form>		<!-- 프로필 수정 리스트 End -->
-			<!-- 셋팅 닫기 아이콘  -->
-	<div id="leftPanel">
-		<img src="{{serverAddress}}resources/images/x-mark-4-24.png"
-			id="leftPanel-close" href="#"> <br />
-
-		<!-- settings icons -->
-		<div class=systemSettings1>
-			<img src="{{serverAddress}}resources/images/reviewer-48.png"
-				data-ng-click="goModifyMember()" id="userInfo"><br />
-			<!-- userInfo -->
-			<img src="{{serverAddress}}resources/images/handshake.png"
-				data-ng-click="inviteRequest()" id="acceptance"><br />
-			<!-- acceptance -->
-			<img src="{{serverAddress}}resources/images/info.png"
-				data-ng-click="goVersionInfo()" id="sysinfo"><br />
-			<!-- info -->
-			<img src="{{serverAddress}}resources/images/settings.png"
-				data-ng-click="goSettings()" id="settings"><br />
-			<!-- settings -->
-		</div>
-
-		<div class=systemSettings2>
-			<button class="btn btn-warning" data-ng-click="logout()"
-				id="logoutBtn">Logout</button>
-		</div>
-		<!-- logout End -->
-	</div>
-	<!-- systemSettings2 End -->
-
-<!--좌측 패널아이콘 끝-->		
+	
 	</div>			<!-- modifyMemberView End -->
 </div>			<!-- modifyMemberView End -->
+
+<!-- 왼쪽패널 -->
+			<!-- 셋팅 닫기 아이콘  -->
+			<div id="leftPanel">
+				<img src="{{serverAddress}}resources/images/x-mark-4-24.png" id="leftPanel-close" href="#"> <br />
+		
+				<!-- settings icons -->
+				<div class=systemSettings1>
+					<img src="{{serverAddress}}resources/images/reviewer-48.png"  data-ng-click="goModifyMember()" id="userInfo"><br/>
+					<!-- userInfo -->
+					<img src="{{serverAddress}}resources/images/handshake.png"  data-ng-click="inviteRequest()" id="acceptance" ><br/>
+					<!-- acceptance -->
+					<img src="{{serverAddress}}resources/images/info.png"  data-ng-click="goVersionInfo()" id="sysinfo"><br/>
+					<!-- info -->
+					<img src="{{serverAddress}}resources/images/settings.png"  data-ng-click="goSettings()" id="settings"><br/>
+					<!-- settings -->
+				</div>
+		
+				<div class=systemSettings2>
+					<button class="btn btn-warning" data-ng-click="logout()"id="logoutBtn">
+						Logout
+					</button>		
+				</div>	<!-- logout End -->
+			</div> <!-- systemSettings2 End -->
+			</div>	<!--좌측 패널아이콘 끝-->
 

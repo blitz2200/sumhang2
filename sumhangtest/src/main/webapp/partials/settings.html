@@ -12,7 +12,9 @@
 							data-ps-auto-close="true">	
 								
 				<!-- 제목 -->		
-					<span id="settingsTitle"><a href="#/main"><img src='resources/images/Header-Logo.png' class="Header-Logo"> </a></span> 
+					<span id="settingsTitle">
+						<a href="#/main"><img src='resources/images/Header-Logo.png' class="Header-Logo"> </a>
+					</span> 
 					
 				<!-- 오른쪽패널 -->				
 					<img src="{{serverAddress}}resources/images/home.png" data-ng-click="goMain()" id="rightSideIcon" >
@@ -49,29 +51,17 @@
 						<span id="settings-InviteBtnSwitch">switch</span>
        				</div>				<!--listviewInviteBtn-Settings End -->
        			</li>
-       			
-       			<!-- 공백 2-->
-       			<li id="space-settings2">
+       			<!-- 공백 1-->
+       			<li id="space-settings">
        			</li>
-       			
+  
+        			
        		<!-- 회원탈퇴버튼 -->
        			<li id="leaveBtn-settings">
        				<button type="button" class="btn btn-warning btn-xs" data-ng-click="leave()" id="leaveBtn">회원탈퇴</button>			
        			</li>
 		</ul>
-		<!-- 스위치 버튼 -->
-<!-- <div id="sdd">
-<form>
-    <label for="flip-checkbox-1">Flip toggle switch checkbox:</label>
-    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1">
-</form>
-</div> -->
-	
-		<!-- 회원탈퇴 버튼 -->
-<!-- 			<div id="leaveBtn-settings"> -->
-				<!-- <button type="button" class="btn btn-warning btn-xs" data-ng-click="leave()" id="leaveBtn">회원탈퇴</button>			 -->
-		<!-- 	</div> -->
-		
+			
 	</div>			<!-- container-tripManager End -->
 </div>			<!--tripManagerView End -->
 
