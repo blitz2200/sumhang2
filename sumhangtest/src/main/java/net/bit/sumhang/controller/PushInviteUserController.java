@@ -35,15 +35,16 @@ public class PushInviteUserController {
 		//session에서 UserVO가져오기
 		
 		UserVO userVO;
+		String SumJangNick=null;
 		
 		if(session.getAttribute("user")!=null){				
 			userVO=(UserVO)session.getAttribute("user");
-			System.out.println("userVO임:"+userVO);			
-		}	
-		UserVO inviteUserVO = new UserVO();
+			System.out.println("userVO임:"+userVO);		
+			 SumJangNick=userVO.getNick();
+		}			
 		
-		Gson gson = new Gson();
-		
+		UserVO inviteUserVO = new UserVO();		
+		Gson gson = new Gson();		
 		inviteUserVO=gson.fromJson(userNo, UserVO.class);
 		System.out.println("초대할 유저 객체"+inviteUserVO);
 
@@ -55,18 +56,19 @@ public class PushInviteUserController {
 		//디비에서 꺼낸 포시보낼 유저 닉네임
 		String pushUserNick=map.get("NICK");
 		String pushUserRegId=map.get("REGISTID");
-		String pushInvteMessage="님이 초대하셨습니다. 여행을 떠나요~~~~~♡";
-		InvitePushUser(pushUserNick, pushUserRegId, pushInvteMessage);
+		String pushInvteMessage=SumJangNick+"님이  "+pushUserNick+
+								"님을 초대하셨습니다. 여행을 떠나요~~~~~♡";
+		InvitePushUser( pushUserRegId, pushInvteMessage);
 		
 		
 		return "";
 	}
 	
-		private void InvitePushUser(String nick, String registId, String pushMessage){
+		private void InvitePushUser(String registId, String pushMessage){
 			Sender sender = new Sender("AIzaSyBzr8ZxqRDmP_P7WuN5ffp3U-4cUcEoDHU");
 			
 			Message message = new Message.Builder()
-										.addData("message", nick+pushMessage)
+										.addData("message",pushMessage)
 										.timeToLive(10)
 										.build();
 			
