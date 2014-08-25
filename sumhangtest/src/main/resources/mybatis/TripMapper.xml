@@ -79,12 +79,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 타임라인 리스트 가져오기 -->
 	<select id="getTimelineList" parameterType="String" resultType="Map">
-		SELECT u.USER_SPHOTO, u.NICK, tl.TIMELINE_NO, tl.TIMELINE_PHO, tl.TIMELINE_DESCRIPTION, tl.TIMELINE_LIKE, ucount.JOINCOUNT
+		SELECT u.USER_SPHOTO, u.NICK, tl.TIMELINE_NO, tl.TIMELINE_PHO,tl.TIMELINE_SPHOTO, tl.TIMELINE_DESCRIPTION, tl.TIMELINE_LIKE, ucount.JOINCOUNT
 		FROM USER u, TIMELINE tl, (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
 										FROM USER_STATUS
 										GROUP BY TBOARD_NO ) ucount
 		WHERE u.USER_NO = tl.USER_NO AND ucount.TBOARD_NO = tl.TBOARD_NO AND tl.TBOARD_NO = #{value}
 	</select>
+	
+	<!-- 타임라인 입력 -->
+	<insert id="timeLineWrite" parameterType="Map">
+	insert into TIMELINE (tboard_no, user_no,timeline_pho,
+				timeline_sphoto,timeline_description)
+			values(	#{tboardNo:NUMERIC},
+				#{userNo:NUMERIC},
+				#{timeLinePhoto},
+				#{timeLineSphoto},
+				#{timeLineDesc}
+				)
+	</insert>
 	
 	<!-- 타임라인 리플 입력 -->
 	<insert id="timelineReply" parameterType="Map">
