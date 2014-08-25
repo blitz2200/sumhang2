@@ -1,85 +1,102 @@
-/*fonts*/
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
-/* 배경 색깔 */
-.modifyMemberView {
+/* 회원수정 배경 */
+.modifyMemberView{
 	background-color: #f6f6f6;
+	min-height: 800px;
 }
+
+/* //////////// 헤더 관련///////////////////////////////////////////////////////////////////////////////////////// */
 
 /* 헤더 */
 .header-modifyMember{
-		height: 50px;
-		background: #ffbb33;
+	background-color: #ffbb33;
+	height: 52px;
 }
 
-/* 뒤로가기 */
-#header-modifyMemberBack{
-	font-family: 'Nanum Gothic Coding', monospace;
-	color: white;
+/* 헤더 왼쪽 아이콘 */
+#joinSideIcon{
+	margin-left: 10px;
+	float: left;
 }
 
 /* 헤더 제목 */
-.header-modifyMember #modifyMemberTitle{
-		font-family: 'Nanum Gothic Coding', monospace;
-		left: 40%;
-		position: absolute;
-		text-align:center;
-		font-size: 30px;
-		color: white;	
+#modifyMemberTitle{
+	font-family:nanomgothicBold;
+	left: 33%;
+	position: absolute;
+	font-size: 30px;
+	color: white;
 }
 
-/* 저장하기 */
+/* 헤더 오른쪽 */
 #modifyMemberSaveBtn{
-	margin-top: 8px;
 	position: absolute;
 	left: 90%;
 }
 
-/* 회원 사진 위치*/
-#modifyMemberPhotoSpace{
-	margin-top: 10px;
-	margin-bottom: 20px;
-	text-align: center;
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* //////////// 프로필  사진 관련///////////////////////////////////////////////////////////////////////////////////////// */
+/* 사진찍기 아이콘 */
+ #modifyTakeAPicture{
+	margin-top:-70px;
+	left: 75%;
+	position: absolute;
+	width: 32px;
+	height: 32px;
+} 
+
+/* 업데이트 사진 */
+#modifyMemberUserPhoto{
+	width: 100px;
+	height: 100px;	
+	margin-top: 15px;
+	margin-left:15px;
+	margin-bottom: 15px;
+	background-image: url(../images/guest-64.png);
+	background-color:red;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-color:  #ffbb33;
+
 }
 
-/* 회원사진 */
-#modifyMemberPhotoSpace #modifyMemberUserPhoto{
-	width: 100px;
-	height: 100px;
-	border-radius: 10px;	
-	float: left;
-	margin-left: 12px;
-	margin-right: 12px;
+/* 갤러리 사진 */
+ .galleryImgModify{
+	margin-top:-20px;	
+	position: absolute;
+	left: 75%;
+	width: 32px;
+	height: 32px;
+}
+ 
+/* 아이디 라벨 */
+#modifyMemberPhotoSpace label{
+	margin-left: 130px;
+	margin-top: -90px;
+	font-family:nanomgothic;
+	color: #ffbb33;
+	font-weight: bold;
 }
 
 /* 아이디 */
-#modifyMemberPhotoSpace label{
-	font-family: 'Nanum Gothic Coding', monospace;
-	float: left;
-	margin-top: 32px;
-	font-size: 14px;
-	color: #ffbb33;
-}
-
 #modifyMemberPhotoSpace p{
-	font-family: 'Nanum Gothic Coding', monospace;
-	float: left;
-	margin-top: 31px;
-	margin-left: -15px;
+	font-family:nanomgothic;
+	margin-left: 130px;
+	margin-top: -20px;
 }
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 
-/* 리스트뷰  이름*/
-#formModifyMemberSpace #userNameModifyInput{
-	font-family: 'Nanum Gothic Coding', monospace;
-	width: 75%;
-	border: none;
-	margin-left: -30px;
-	margin-right:0;
-	height: 43px;
-}
-
-/* 이름 입력 공간 */
+/* //////////// 프로필  입력 폼 관련///////////////////////////////////////////////////////////////////////////////////////// */
+ 
+ #userIdModifyLabel{
+ margin-left: 120px;
+ }
+ 
+/* 폼 상단 줄 */
 #userNameModify{
 	border-top-color: #ffbb33;
 	border-top-width: 1px;
@@ -87,46 +104,78 @@
 	border-bottom-color: #ffbb33;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
-	background-color: white;
-	
-}
-
-/* 리스트뷰  이름 라벨*/
-#formModifyMemberSpace{
-		margin-top: 90px;
-}
-
-/* 회원 수정 정보 입력란 */
-#userPasswordModifyInput, #userPasswordReModifyInput, #userNickNameModifyInput, #userBirthModifyInput, #userGenderModifyInput {
-	font-family: 'Nanum Gothic Coding', monospace;
-	margin-left: -30px;
-	border: none;
-	width: 75%;
 	height: 43px;
-
+	margin-top: 45px;
+	background-color: white;
 }
 
-/* 회원수정 라벨 */
-#userPasswordModify, #userPasswordReModify, #userNickNameModify, #userBirthModify, #userGenderModify{
-	font-family: 'Nanum Gothic Coding', monospace;
-	text-weight: bold;
+/* 이름 입력란*/
+#userNameModifyInputSpace{
+	font-family:nanomgothic;
+	margin-top: 10px;
+}
+
+/* 성별 입력란  */
+#userGenderModifyInputSpace{
+	font-family:nanomgothic;
+	margin-top: 10px;
 	border-bottom-color: #ffbb33;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
+	height: 32px;
+	background-color: white;	
+	}
+	
+/* 성별 입력 공간 */
+#userGenderModify{
 	background-color: white;
+}
+	
+/* 프로필 폼 라벨 */
+#userNameModifyLabel, #userNickNameModifyLabel, #userPasswordModifyLabel, #userPasswordReModifyLabel, 
+#userBirthModifyLabel, #userGenderModifyLabel{
+	text-align: left;
+	width: 70px;
+	margin-left: 10px;
+}
+
+/* 프로필 폼 입력란 */
+#userNickNameModifyInput, #userPasswordModifyInput, #userPasswordReModifyInput, #userBirthModifyInput{
+	font-family:nanomgothic;
+	width: 75%;
+	border: none;
+	margin-left: -10px;
+	margin-right:0;
+	height: 43px;
+	vertical-align: middle;
+}
+
+/* 프로필 폼 입력 공간 */
+ #userPasswordModify, #userPasswordReModify, #userBirthModify{
+	border-bottom-color: #ffbb33;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	background-color: white;	
+	margin-bottom: 0px;
+}
+
+#userNickNameModify{
+	border-bottom-color: #ffbb33;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	background-color: white;	
+	margin-bottom: 0px;
 	margin-top: -15px;
 }
 
-/* 회원정보수정 라벨  위치*/
-#formModifyMemberSpace label {
-	text-align: left;
-	margin-right: 5px;
-	width: 70px;
+/* 수정하기 버튼 */
+#modifyMemberBtn{
+	font-family:nanomgothic;
+	margin-top: 15px;
 }
 
-/* 회원정보수정 아래 바탕 */
-#modifyMemberBottom{
-	width:100%;
-	height:300px;
-	background-color: #f6f6f6;
-}
+
+
+
+
+

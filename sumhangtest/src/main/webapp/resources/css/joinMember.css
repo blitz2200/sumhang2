@@ -3,6 +3,7 @@
 /* 회원가입 배경 */
 .joinMember{
 	background-color: #f6f6f6;
+	min-height: 800px;
 }
 
 /* //////////// 헤더 관련///////////////////////////////////////////////////////////////////////////////////////// */
@@ -29,10 +30,10 @@
 }
 
 /* 헤더 오른쪽 */
-#joinHeaderRight{
+/* #joinHeaderRight{
 	position: absolute;
 	left: 90%;
-}
+} */
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -41,13 +42,11 @@
 /* 사진찍기 아이콘 */
 #takeAPictureIMG{
 	margin-top:65px;
-	margin-left:-15px;
+	left: 75%;
 	position: absolute;
 	width: 32px;
 	height: 32px;
 }
-
-
 
 /* 업데이트 사진 */
 .cameraAfterImg{
@@ -60,15 +59,19 @@
 	background-repeat: no-repeat;
 	background-position: bottom;
 	background-color:  #ffbb33;
+	position: absolute;
+	left: 35%;
+	border-radius:8px;
 }
 
 /* 갤러리 사진 */
-.galleryImg{
-	margin-top:80px;	
-	margin-left:-17px;
+ .galleryImg{
+	margin-top:115px;	
+	position: absolute;
+	left: 75%;
 	width: 32px;
 	height: 32px;
-}
+} 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 
@@ -84,14 +87,23 @@ margin-top: 10px;
 	border-top-color: #ffbb33;
 	border-top-width: 1px;
 	border-top-style: solid;
+	margin-top: 170px;
 }
 
 /* 프로필 폼 라벨 */
-#userNameJoinLabel, #userIdJoinLabel, #userNickJoinLabel, #userPswdJoinLabel, #userPswdCheckLabel, #userPswdCheckLabel,
+#userIdJoinLabel, #userNickJoinLabel, #userPswdJoinLabel, #userPswdCheckLabel, #userPswdCheckLabel,
 #userBirthJoinLabel, #userGenderJoinLabel, #userPushChoiceLabel, #userInviteChoiceLabel{
 	text-align: left;
 	width: 70px;
 	margin-left: 10px;
+}
+
+/* 이름 라벨 */
+#userNameJoinLabel{
+	text-align: left;
+	width: 70px;
+	margin-left: 10px;
+	margin-top: 170px;
 }
 
 /* 프로필 폼 입력란 */
