@@ -3,9 +3,9 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams',
                                       'globalFactory','Camera',
                                       'timeLineUploadService','timeLineAddFactory',
                                       function ($scope, $route, $routeParams, 
-                                    		  tripDetailFactory, timeLineFactory,
-                                    		  globalFactory,Camera,
-                                    		  timeLineUploadService,timeLineAddFactory) {
+                                    		    tripDetailFactory, timeLineFactory,
+                                    		    globalFactory,Camera,
+                                    		    timeLineUploadService,timeLineAddFactory) {
 
 
 	
@@ -48,7 +48,7 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams',
 	var timeLinePhotoFile=null;
 			//유저사진 하드에 저장할 변수 (갤러리나 카메라 둘중하나) 
 	var timeLinePhotoMultipartFile;
-	
+		
 	$scope.timeLineCapturePhoto=function(){
 		timeLineCamera();
 	}
@@ -59,8 +59,8 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams',
 			      documentCameraImage.src=cameraImage;
 	            $scope.$apply(function() {
 	                alert('카메라 사진 경로:'+cameraImage);
-	                userPhotoFile = cameraImage.substr(cameraImage.lastIndexOf('/') + 1)+".jpg";
-	                userPhotoMultipartFile=cameraImage;
+	                timeLinePhotoFile = cameraImage.substr(cameraImage.lastIndexOf('/') + 1)+".jpg";
+	                timeLinePhotoMultipartFile=cameraImage;
 	                alert('디비에 넣을 사진 이름 '+timeLinePhotoFile);
 	                alert('서버에 저장할 파일 경로'+timeLinePhotoMultipartFile);
 	            });
@@ -132,12 +132,13 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams',
 					
 					alert("사진 파일 추가후 업로드"+JSON.stringify(timeLine));				
 					//파일객체 서비스에 전송
-					timeLineUploadService.timeLineuploadPhoto(sa,timeLineMultipartFile);	
+					timeLineUploadService.timeLineUploadPhoto(sa,timeLinePhotoMultipartFile);	
 				}else{
 					timeLine.timeLinePhoto="defaultTimeLinePhoto.png";
 					timeLine.timeLineSphoto='s_defaultTimeLinePhoto.png';				
 				}				
-					timeLineAddFactory.timeLineAdd(sa,timeLine,travelNo)
+			   
+				timeLineAddFactory.timeLineAdd(sa,timeLine,travelNo)
 					.success(function(){
 						$scope.timeLineReplyList = true;
 						$scope.writeTimeLine=false;
