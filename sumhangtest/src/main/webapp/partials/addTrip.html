@@ -4,14 +4,15 @@
 	<!-- 헤더-->
 		<div class="header-addTrip">
 			<!-- 왼쪽패널 -->
-					<img id="leftSideIcon" src="resources/images/backspace-32.png" data-pageslide="left" href="#leftPanel" data-ps-speed="0.5"
-							data-ps-auto-close="true">	
+					<img id="leftSideIcon" src="{{serverAddress}}resources/images/arrow-92-32.png" data-ng-click="goBackPageAddTrip()">	
 								
 				<!-- 제목 -->		
-					<span id="addTripTitle">SUM행</span> 
+					<span id="addTripTitle">
+						<a href="#/main"><img src='resources/images/Header-Logo.png' class="Header-Logo"> </a>
+					</span> 
 					
 				<!-- 오른쪽패널 -->				
-					<img src="resources/images/save-32.png" data-ng-click="goMain()" id="addTripSaveBtn" >
+					<!-- <img src="resources/images/save-32.png" data-ng-click="goMain()" id="addTripSaveBtn" > -->
 		</div>				<!-- header-modifyMember End -->
 		
 	<!-- 여행 정보 올리기 폼 -->
@@ -117,9 +118,10 @@
 				
 			<!-- 여행올리기 -->
 			<div class="form-group">
-				<div class="col-xs-offset-2">
-					<button type="submit" class="btn btn-warning btn-xs btn-block"
-						id="updateTrip">여행 올리기</button>
+				<div class="col-xs-offset-2" id="updateAddTripBtn">
+					<button type="submit" class="btn btn-warning btn-xs btn-block" id="updateTrip">
+					여행 올리기
+					</button>
 				</div>
 			</div>		
 		</form>		<!-- 여행 정보 올리기  End -->			
