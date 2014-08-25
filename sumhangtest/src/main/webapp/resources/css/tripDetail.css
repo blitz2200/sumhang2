@@ -24,7 +24,9 @@
 	padding-bottom:40px;
 	font-family:nanomgothic;
 	font-size:13px;
-	background-color: white; 	 
+	background-color: white; 	
+	color:#777;
+	
 }
 
 /* .tripDetail .title {
@@ -61,6 +63,8 @@
 .tripDetail .mainPosition{
 	position:relative;
 }
+
+/* 디테일 페이지 메인 사진 */
 .tripDetail .mainImg  {
 
 	 margin: 1em; 	
@@ -89,7 +93,7 @@
 	color : white;
 	font-size : 15px;
 	background-color: #FFBB33;
-	width:100%;
+	width:80%;
 	padding-left :25%;
 	margin-bottom:10%;
 	margin-top:3%;
@@ -128,7 +132,11 @@
 	margin-right: 5px;
 }
 
-
+/* 여행 스케쥴 */
+.tripDetail .tripDetailSchedule{
+	color:#777;
+	font-family:nanomgothic;
+}
 /* 메인상세페이지 상세내용 */
 .tripDetail .desc {
 	border-top: 2px solid;
@@ -137,13 +145,15 @@
 	font-size: 15px;
 	padding-top:4%;
 	padding-bottom:4%;
+	color:#777;
+	font-family:nanomgothic;
 }
 
 /*메인 상세 페이지 수정 삭제*/
 .tripDetail .addBtn{
-	border-bottom:2px solid;
+	/* border-bottom:2px solid;
 	border-color:#FFBB33;
-	width:100%;
+	width:100%; */
 	padding-bottom:5%;
 }
 
@@ -157,6 +167,13 @@
 .tripDetail .deleteTrip{
 	margin-left: 10%;
 	width:35%;
+}
+
+/* 리플 시작 위에 선 긋기 */
+.tripDetail .tripDetailReplyList{
+	border-top:2px solid;
+	border-color:#FFBB33;
+	width:95%;
 }
 
 
@@ -200,9 +217,13 @@
 	margin-left:10px;
 }
 
+
+/* 리플 유저닉네임 */
 .tripDetail .reNick{
 	margin-left:20px;
 	width:20%;
+	color:#777;
+	font-family:nanomgothic;
 }
 
 
@@ -238,6 +259,8 @@
 	position: relative;
 	background: #FFFFFF;
 	border: 4px solid #f5b216;
+	color:#777;
+	font-family:nanomgothic;
 }
 .arrow_box:after, .arrow_box:before {
 	right: 100%;
@@ -293,6 +316,7 @@
 	background: url('../images/TK.jpg');
 	background-size: cover;
 	opacity:0.8;
+	
 }
 
 /* 여행사진 올리기 이미지 */
@@ -317,7 +341,7 @@
 
 
 /* 폼 라벨 */
-.tripDetail #tripTitleLabel, #editDestinationLabel,#tripNumberLabel-editTrip, #tripPeriodLabel, #editScheduleEndLabel, #tripContextLabel{
+.tripDetail #tripTitleLabel, #editDestinationLabel,#tripNumberLabel-editTrip, #tripPeriodLabel, #editScheduleEndLabel, #editTripContextLabel{
 	text-align: left;
 	width: 70px;
 	margin-left: 15px;
@@ -325,23 +349,27 @@
 }
 
 /* 세부내용 라벨 */
- .tripDetail #tripContextLabel{
+/*  .tripDetail #editTripContextLabel{
  	text-align: left;
 	width: 70px;
 	margin-left: 15px;
 	margin-top: 10px;
- }
+ } */
  
 /* 리스트뷰 상단 줄 */
 .tripDetail #editTitleGroup{
 	border-top-color: #ffbb33;
 	border-top-width: 1px;
 	border-top-style: solid;
+	border-bottom-color: #ffbb33;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
 	margin-top: 20px;
+	margin-right:20px;
 }
 
 /* 리스트뷰 입력란  */
-.tripDetail #tripTitleInput, #editDestinationText #tripNumberInput-editTrip{
+.tripDetail #tripTitleInput, #editDestinationText, #tripNumberInput-editTrip{
 	font-family:nanomgothic;
 	width: 75%;
 	border: none;
@@ -349,26 +377,63 @@
 	height: 43px;
 	vertical-align: middle;
 }
+/* 세부내용입력 */
+.tripDetail #editTripContextText{
+	font-family: 'Nanum Gothic Coding', monospace;
+	width: 75%;
+	border: none;
+	margin-left: -30px;
+	margin-right:0;
+	height: 43px;
+	vertical-align: middle;
+}
 
 /* 리스트 뷰 입력 공간 */
-.tripDetail #tripTitleInputGroup, #contextEditTripSpace, #editScheduleGroup{
+.tripDetail  #editScheduleGroup{
 	border-bottom-color: #ffbb33;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
+	margin-right:20px;
 	background-color: white;	
 	margin-bottom: 0px;
 }
+.tripDetail #editScheduleGroup{
+	margin-top:-15px;
+}
+
+/* .tripDetail #editDestinationGroup{
+	margin-top:10px;
+} */
 
 /* 여행지 입력 공간 */
 .tripDetail #editDestinationGroup{
+/* 	border-bottom-color: #ffbb33;
+	border-bottom-width: 1px;
+	border-bottom-style: solid; */
+	background-color: white;	
+	margin-bottom: -15px;
+	/* margin-top: -15px; */
+}
+
+/* 모집인원 아래 여백없애기 */
+.tripDetail #countEditTrip{
+	margin-bottom:-5px;
+}
+
+/* .tripDetail #tripNumberInput-editTrip{
+	margin
+} */
+
+/* 수정페이지 세부내역 */
+.tripDetail #contextEditTripSpace{
+	margin-right:20px;
+	border-top-color: #ffbb33;
+	border-top-width: 1px;
+	border-top-style: solid;
 	border-bottom-color: #ffbb33;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
-	background-color: white;	
-	margin-bottom: 0px;
-	margin-top: -15px;
 }
-
 /* 여행 출발일  */
 .tripDetail #datepicker7{
 	float: left;	
@@ -393,10 +458,13 @@
 }
 
 /* 여행 수정하기 버튼 */
-.tripDetail #updateTrip{
+.tripDetail #updateEditTrip{
 	font-family:nanomgothic;
 	padding: 5px;
-	width: 93%;
-	margin-left: 17px;
-	
+	width: 88%;
+	margin-left: 17px	
 }
+
+/* .tripDetail #editDetailButton{
+	margin-right:20px;
+} */
