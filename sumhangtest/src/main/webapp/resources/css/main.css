@@ -315,15 +315,16 @@ border: none;
 #hostUserName {
 	 
     float: left;
-    font-size: 1em;
+    font-size: 20px;
     width: 50.01%;
     height: auto;
     text-align: left;
-    font-weight: normal;
+    color:gray;
     line-height: 1em;
     margin-left: 2%;
     margin-top: 60px;
     min-height: 28px;
+    font-weight:bold;
 }
 
 #attendingTrips {
@@ -333,7 +334,7 @@ border: none;
 
 #attendingView{
 	width:85%;
-	margin-left:10;
+	margin-left:10px;
 	
 }
 
@@ -369,6 +370,8 @@ border: none;
     right:8px;
 }
 
+  
+	
 /* 강퇴&초대 버튼 */
 .tripActionBtn{
  

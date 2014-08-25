@@ -1,3 +1,8 @@
+ 
+
+
+
+
 
 .header-tripDetail {
 	background-color: #FFBB33;
@@ -95,6 +100,8 @@
 
 .tripDetail .nick{
 	margin-left:26%;
+	 
+	
 }
 
 
@@ -103,7 +110,10 @@
 	background-color:#FFBB33;
 	color: white;
 	font-weight:400;
+	
 }
+
+
 
 /* 여행참가 버튼 */
 .tripDetail .addTrip {
@@ -294,6 +304,7 @@
 .tripDetail #editTripPhotoSpace #editTripPhotoText{
 	font-family:nanomgothic;
 	text-align: center;
+	color:#615f5f;
 }
 
 /* 사진을 올려주세요 */
@@ -369,6 +380,7 @@
 	border-right-color: #ffbb33;
 	border-right-width: 1px;
 	border-right-style: solid;
+	color:#615f5f;
 }
 
 /* 도착일 입력란 */

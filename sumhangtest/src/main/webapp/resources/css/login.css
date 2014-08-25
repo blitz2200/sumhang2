@@ -1,14 +1,14 @@
-div.login.view.ng-scope{
-	 
+div.login.view {
+	maring:auto; 
 	
 	
 }
 
 div.titleLogo{
-	margin-top:10%;
+	margin-top:5%;
 	margin-bottom:0;
 	background-color:rgb(255, 187, 51);
-	padding-bottom:30%;
+	padding-bottom:5%;
 	width:100%;	
 	padding:0;
 	text-align:center;
@@ -17,15 +17,16 @@ div.titleLogo{
 }
  
 .titleLogo{
-	width:60%;
-	margin-top:10%;
-	margin-bottom:5%;
+	 
+	width:70%;
+	margin-top:5%;
+	 
 	
 }
  div#box{
   
  	
- 	padding-top:1.5%;
+ 	padding-top:4%;
  	padding-bottom:1.5%;
  	padding-left:1.5%;
  	padding-right:1.5%;
