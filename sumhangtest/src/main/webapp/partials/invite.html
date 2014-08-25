@@ -2,8 +2,14 @@
 <div class="invitePush view">
 	<div class="header-tripDetail"> SUMHANG </div>
  </br></br>
-  	  <div id="inviteTitle">
- 		<p>썸행  추천 유저</p>
+  	  <div class="row" id="inviteTitle">
+  	  	<div class="col-xs-9">
+ 			<span>썸행  추천 유저</span>
+ 		</div>
+ 		<div class="col-xs-3">
+ 			<img id="inviteUserRefresh" data-ng-src="resources/images/icons/refresh-64.png"
+ 				 data-ng-click="inviteUserRefresh()">
+ 		</div>	 
  	  </div>	
 	
 	  <div id="inviteUserList" >
@@ -21,11 +27,11 @@
 	  				<!-- 	<div clss="col-xs-3">
 	  						{{inviteTrip.GENDER}}
 	  					</div> -->
-	  					<div id="inviteUserNick" class="col-xs-5">
+	  					<div id="inviteUserNick" class="col-xs-4">
 		  					{{inviteTrip.nick}}  
 		  				</div>
-		  				<div class="colxs-5">
-		  					<img id="inviteUserIcon" data-ng-src="resources/images/icons/add-user-64.png" data-ng-click="inviteUser(inviteTrip.USER_NO)">
+		  				<div class="colxs-4">
+		  					<img id="inviteUserIcon" data-ng-src="resources/images/icons/add-user-64.png" data-ng-click="goInviteUser(inviteTrip.USER_NO,inviteTrip.nick)">
 		  			 	</div>
 	  				</div>
 	  			  	
