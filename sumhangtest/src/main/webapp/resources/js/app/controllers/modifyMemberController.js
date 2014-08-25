@@ -43,11 +43,11 @@ app.controller('ModifyMemberController', ['$scope', 'userFactory', 'globalFactor
 	        });
 	  }
 	 
-	
+
 	  
 	  
 	  //갤러리에서 사진 가져오기
-	  $scope.gomodifyGalleryPhoto=function(){
+	  $scope.goModifyGalleryPhoto=function(){
 		  modifyMemberGallery();
 	  }
 	  function ModifyMemberGallery(){
