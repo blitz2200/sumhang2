@@ -1,13 +1,10 @@
 /*fonts*/
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
-/* 페이지 테두리 */
-/* .tripManagerView .container-tripManager{
-	border-width: 6px;
-	border-style: solid;
-	border-color: #e6bb46;
-	border-radius: 8px;
-} */
+.tripManagerView{
+	min-height: 800px;
+	background-color: #f6f6f6;
+}
 
 /* 헤더 */
 #imageWrapper-tripManager{
