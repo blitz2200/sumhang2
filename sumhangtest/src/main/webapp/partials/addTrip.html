@@ -1,4 +1,4 @@
-<div class="addTripView">
+<div class="addTrip View">
 	<div class=" container-addTripView">
 
 	<!-- 헤더-->
@@ -29,10 +29,9 @@
 	<!-- 여행 사진 선택 -->
 		<div id=addTripPhotoSpace>
 			<div id="addTripPhotoImg">
-				<img src="resources/images/picture-attachment-128.png" id="tripFileUpdate" data-ng-click="goGalleryPhoto()">	
+				<img style="height: 200px;" src="resources/images/picture-attachment-128.png" id="tripFileUpdate" data-ng-click="goGalleryPhoto()">	
 			
 			</div>				
-				<img data-ng-src="{{addTripImage}}">
 			<div id="addTripPhotoText">
 				<h5 id="addTripPhotoUpload">사진을 올려주세요.</h5>
 			</div>
@@ -60,9 +59,7 @@
 				</div>			<!-- tripTitleLabel End -->
 				</div>		<!-- tripTitleAddTripSpace End -->
 			
-			<!-- 여행기간 -->
 				<div class="form-group" data-ng-class="{ 'has-error' : (addTripForm.datepicker3.$invalid || addTripForm.datepicker4.$invalid ) && submitted}" id="scheduleAddTripSpace">
-		<!-- 출발일 -->
 					<div id="addTripScheduleLeft">
 						<label for="datepicker2" class="col-xs-2 control-label" id="scheduleAddTrip">
 							<img src="{{serverAddress}}resources/images/planner-24.png" id="modifyMemberUserName">
@@ -71,7 +68,7 @@
 							<input type="text" class="form-control" id="datepicker3" name="datepicker3" placeholder="출발" data-ng-model="newTrip.travelStart" required>
 						</div>			<!--tripscheduletSpace End -->
 					</div>		<!-- addTripScheduleLeft End -->
-			<!-- 도착일 -->			
+					
 				<div id="addTripScheduleRight">
 					<label for="datepicker2" class="col-xs-2 control-label" id="scheduleEndAddTrip">
 						<img src="{{serverAddress}}resources/images/planner-24.png" id="modifyMemberUserName">
