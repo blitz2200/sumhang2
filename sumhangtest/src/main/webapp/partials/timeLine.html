@@ -60,43 +60,58 @@
 					</div> <!-- row End -->
 			</div><!--  timeLineInfo End -->
 			
-		<!-- 사용자 업데이트 타임라인 리스트 -->	
+		<!-- 사용자 업데이트 타임라인 리스트 -->
+		<div class="timeLineReplyList" data-ng-show="timeLineReplyList">	
 			<ul data-theme="none" data-role="listview" id="listViewTimeLine">				
 				<li class="replylist-timeline" data-ng-repeat="timeline in timelines">
 					<div class="row">					
 			<!-- 타임라인 유저사진 -->
 							<div class="timeLineUserInfo">
-								<img data-ng-src="{{serverAddress}}resources/images/sman1.png"  id="timeLineUserPhoto"/>
+								<img data-ng-src="{{serverAddress}}resources/images/userPhotoFile/{{timeline.USER_SPHOTO}}" 
+								  id="timeLineUserPhoto"/>
 			<!-- 타임라인 유저 아이디 -->
 								<span id="timeLineUserID">{{timeline.NICK}}</span>
+								<!-- 타임라인 사진 -->
+								<img data-ng-src="{{serverAddress}}resources/images/timeLinePhotoFile/{{timeline.TIMELINE_SPHOTO}}"  
+								id="timeLinePhoto"/>
 							</div><br/><br/>						
 			<!-- 타임라인 내용 -->	
 						<div class="col-xs-12" id="timeLineText">
 							{{timeline.TIMELINE_DESCRIPTION}}
 						</div>
-						{{TIMELINE_PHO}}<br/>
+						<!-- <img data-ng-src="{{serverAddress}}resources/images/timeLinePhotoFile/{{timeline.TIMELINE_SPHOTO}}<br/> -->
 						
 						좋아요:{{timeline.TIMELINE_LIKE}}
 			<!-- 타임라인 버튼 들 -->
 						<div id="timeLineBtns">
-							<button type="button" class="btn btn-warning btn-xs" data-ng-click="" id="timeLineLikeBtn">좋아요 {{timeline.TIMELINE_LIKE}}</button>					
-							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" data-ng-click="goWriteReply(timeline.TIMELINE_NO)">댓글</button>				
+							<button type="button" class="btn btn-warning btn-xs" data-ng-click="" 
+							id="timeLineLikeBtn"> 좋아요 {{timeline.TIMELINE_LIKE}}</button>					
+							<button type="button" class="btn btn-warning btn-xs"  id="timeLineBtnReply" 
+							data-ng-click="goWriteReply(timeline.TIMELINE_NO)">댓글</button>				
 						</div>			<!-- timeLineBtns End -->
 					</div>	<!-- row End -->
 				</li>
-				
+			</ul>
+		</div>
 			<!-- 타임라인 작성란 -->
-				<div class="col-xs"  id="writeTimelineText">
-					<textarea class="form-control" rows="7" id="timelineContextText" placeholder="멤버들에게 전할 소식을 남기세요."></textarea>		
+				<div class="col-xs"  id="writeTimelineText" data-ng-show="writeTimeLine">
+					<form id="writeTimeLineForm" name="writeTimeLineForm" data-ng-submit="addTimeLineRequest()"
+					  class=form-horizontal" data-ng-model="timeLine" novalidate>
+					  	<div class="form-group" data-ng-class="{ 'has-error' : writeTimeLineForm.timelineContextText.$invalid && submitted}">
+								<textarea class="form-control" rows="7" id="timelineContextText" name="timelineContextText"
+									  placeholder="멤버들에게 전할 소식을 남기세요." data-ng-model="timeLine.timeLineDesc"></textarea>		
+						</div>	
 						<!-- 타임라인 하단 버튼들 -->
 							<div class="timeLineActionBtns">
 							<!-- 사진 찍기 -->				
-								<img src="cameraImgTimeline"  data-ng-src="{{serverAddress}}resources/images/compact-camera-org-32.png" id="takeAPhotoTimeline">
+								<img src="cameraImgTimeline"  data-ng-src="{{serverAddress}}resources/images/compact-camera-org-32.png"
+								    data-ng-click="timeLineCapturePhoto() id="takeAPhotoTimeline">
 							<!-- 갤러리 -->
-								<img src="galleryImgTimeline" 
+								<img src="galleryImgTimeline" data-ng-click="timeLineGalleryPhoto()"
 								data-ng-src="{{serverAddress}}resources/images/gallery-32-org.png"  id="galleryPhoTimeline">
 							<!-- 입력 -->
-								<button type="button" class="btn btn-warning" id="updateTimelineBtn">입력</button>		
+								<button type="submmit" class="btn btn-warning" id="updateTimelineBtn" data-ng-click>
+								입력</button>		
 							</div>		<!-- timeLineActionBtns End		 -->	
 							<!-- <div class="timeLineActionBtns">
 							</div> -->
@@ -104,6 +119,7 @@
 						<p id="showingTimelinePhoto">사진</p>
 							<div class="timeLineActionBtns2">
 								<div id="showTimelinePho">
+									<img style="height: 200px;" src="" id="documentTimeLine">	
 								</div>
 							</div>
 								
@@ -115,10 +131,10 @@
 	
 							
 <!-- 쓰기 아이콘 -->
-				<!-- <div id="writeTimelineList">
-					<img src="{{serverAddress}}resources/images/yellow-document-plus-icon.png"  id="writeTimeLine" data-ng-click="addTimeLine()">
-				</div>			 -->
-			
+				 <div id="writeTimelineList">
+					<img src="{{serverAddress}}resources/images/yellow-document-plus-icon.png"  id="writeTimeLine" 
+					data-ng-click="goAddTimeLine()">
+				</div>			 
 
 		</div>	<!-- listViewTimeLinePage End -->
 			
