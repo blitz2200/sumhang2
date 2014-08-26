@@ -10,7 +10,7 @@ app.controller('LoginController', ['$scope','userFactory','globalFactory',
     		
     		console.log(data);
 			if(data == ""){
-				alert('아이디와 비밀번호를 확인해 주세요');
+				console.log('아이디와 비밀번호를 확인해 주세요');
 				$scope.location.path('/login');
 			}else{
 				$scope.location.path('/main');
