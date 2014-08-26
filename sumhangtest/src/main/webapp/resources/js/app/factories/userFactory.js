@@ -66,7 +66,7 @@ app.factory('userFactory', ['$http', function($http) {
     //세션유져가져오기
     userFactory.getSessionUser = function (){
     	return $http({
-			'url' : 'http://192.168.0.88:8080/getSessionUser.ajax',
+			'url' : 'http://192.168.0.72:8080/getSessionUser.ajax',
 			'method' : 'POST',
 			'headers': {'Content-Type' : 'application/json; charset=utf-8'}        	   		
 		}).success(function (data) {
