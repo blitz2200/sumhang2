@@ -3,10 +3,10 @@
 //main페이지에서 tboard_no를 a링크에 넣어서 보냄  
 //app.js파일에  when주소뒤에 :스코프이름 으로 넘긴걸 받음 
 //콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
-app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFactory','Camera',
+app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tripDetailFactory','Camera',
                                         'tripService', 'modalService', 'globalFactory',
                                         'tripDetailEditUplodService',
-                                        function ($scope,$routeParams, tripDetailFactory,Camera,
+                                        function ($scope,$timeout,$routeParams, tripDetailFactory,Camera,
                                         		  tripService, modalService, globalFactory,
                                         		  tripDetailEditUplodService) {
 	
@@ -165,21 +165,18 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 			console.log('여행상세게시판 수정 내용  :'+JSON.stringify(trip));
 			//여행수정 객체 서비스에 전송
 			tripDetailFactory.editTripDetail(sa,trip,travelNo)
-			.success(function(){
+			.then($timeout(function(){
 				tripDetail(travelNo)
 	    		$scope.mainTripDetail=true;
 	    		$scope.editPage=false;
 	    		$scope.writeUserButton=true;
 	    		$scope.inputRe=true;
 	    		$scope.tripDetailReplyList=true;
-			}).error(function(error){
-				console.log('tripDetailReply 콘트롤러 실패');
-			})
-    		
+			}),4000);
     		//완료후 메인페이지 리스트 뿌려주기
     			
     		}else{
-    			console.log('양식을 입력하세요');
+    			alert('양식을 입력하세요');
     		}		
 	}
 			
@@ -359,10 +356,7 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 				console.log('메인상세 리플 수정 콘트롤러 완료')
 				tripDetailListReply(travelNo);
 				$scope.inputRe=true;
-				$scope.editRe=false;
-						
-			}).error(function(error){
-				console.log('메인상세 리플 수정 콘트롤러 실패')
+				$scope.editRe=false;						
 			})
 		}
 	
