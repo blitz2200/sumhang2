@@ -1,8 +1,6 @@
-/*fonts*/
-
 
 /* 페이지 전체 */
-.addTripView{
+.addTrip {
 	background-color: #f6f6f6;
 	min-height: 800px;
 }
@@ -40,7 +38,7 @@
 /* //////////// 사진 올리기 관련///////////////////////////////////////////////////////////////////////////////////////// */
 /* 여행사진 라벨 */
 .addTrip #addTripPhotoLabelSpace #addTripPhotoLabel{
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothic;
 	color: #ffbb33;
 	font-weight: bold;
 	margin-left: 15px;
@@ -70,13 +68,13 @@
 
 /* 여행 사진 올리기 텍스트 */
 .addTrip #addTripPhotoSpace #addTripPhotoText{
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothic;
 	text-align: center;
 }
 
 /* 사진을 올려주세요 */
 .addTrip #addTripPhotoSpace #addTripPhotoText #addTripPhotoUpload{
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothic;
 	color:orange;
 	background-color: white;
 }	
@@ -104,7 +102,7 @@ margin-left: -5px;
 
 /* 리스트뷰 입력란  */
 .addTrip #addTripForm #tripDestinationInput, #tripTitleInput, #tripNumberInput-addTrip, #tripTagInput{
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothic;
 	width: 75%;
 	border: none;
 	margin-left: -30px;
@@ -116,7 +114,7 @@ margin-left: -5px;
 /* 출발일 입력란 */
 .addTrip #datepicker3{
 	float: left;	
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothic;
 	border: none;
 	height: 43px;
 	width: 35%;
@@ -128,10 +126,10 @@ margin-left: -5px;
 
 /* 도착일 입력란 */
 .addTrip #datepicker4{
-	font-family: 'Nanum Gothic Coding', monospace;
+	font-family:nanomgothic;
 	border: none;
 	height: 43px;
-	width: 35%;
+	width: 32%;
 	margin-left: -30px;
 
 }
@@ -139,7 +137,6 @@ margin-left: -5px;
 
 /* 리스트뷰 세부 내용 란 */
 .addTrip #tripContextText{
-	font-family: 'Nanum Gothic Coding', monospace;
 	width: 75%;
 	border: none;
 	margin-left: -30px;
@@ -173,4 +170,14 @@ margin-left: -5px;
 /* 세부내용 입력란 */
 .addTrip #tripContextText{
 	padding-top: 20px;
+}
+
+/* 여행 올리기 버튼 */
+#updateAddTripBtn{
+	font-family:nanomgothic;
+	margin-top: 15px;
+}
+
+#updateTrip{
+	padding: 5px;
 }
