@@ -1,5 +1,7 @@
 
-<div class="header-tripDetail"> SUMHANG </div>
+<div class="header-tripDetail"> 
+	<a href="#/main"><img src='resources/images/Header-Logo.png' class="Header-Logo"> </a>
+</div>
 
 
 	<div class="tripDetail view">
@@ -57,9 +59,9 @@
 					<img style="height: 200px; width:100%;" src="resources/images/picture-attachment-128.png" id="editPhotoUpdate" data-ng-Click="goEditTripDetailPhoto()">				
 				</div>				<!-- editTripPhotoImg End	 -->	
 				
-				<div id="editTripPhotoText">
+				<!-- <div id="editTripPhotoText">
 					<h5 id="editTripPhotoUpload">사진을 올려주세요.</h5>
-				</div>
+				</div> -->
 			</div>			<!-- editTripPhotoSpace End -->
 			
 				
@@ -156,7 +158,7 @@
 		<div class="row addBtn">
 			<!-- 읽는사람용 버튼 -->
 			<div class="readUserButton" data-ng-show="readUserButton">
-				<button type="button" class="addTrip btn btn-warning" 
+				<button type="button" class="btn btn-warning" id="signUpTripBtn"
 				data-ng-click="goEnterTrip(trip.PUSH)">참가신청</button>
 			</div>
 			<!-- 글작성한 사람용 버튼 -->
