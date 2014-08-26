@@ -67,8 +67,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원정보 수정 -->
 	<update id="updateUserInfo" parameterType='user'>
-		update USER set PASSWD=#{password}, NICK=#{nick}, BIRTH=#{birth},
-		USER_PHOTO=#{photo}, PUSH=#{push}, INVITE=#{invite}, SIGNOUT=#{signOut}
+		update USER set PASSWD=#{password}, NICK=#{nick}, BIRTH=#{birth}, 
+		USER_PHOTO=#{photo},USER_SPHOTO=#{sPhoto}, PUSH=#{push}, INVITE=#{invite}, SIGNOUT=#{signOut}
 		where USER_NO=#{userNo}
 	</update>
 	
