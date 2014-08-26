@@ -1,5 +1,7 @@
-app.controller('AddTripController', ['$scope',  'tripService','globalFactory','Camera','tripUploadService', 
-                                     function ($scope, tripService,globalFactory,Camera,tripUploadService) {
+app.controller('AddTripController', ['$scope','$timeout',  'tripService','globalFactory',
+                                     'Camera','tripUploadService',
+                                     function ($scope,$timeout, tripService,
+                                    		 globalFactory,Camera,tripUploadService) {
 	
 	var sa=globalFactory.serverAddress;
 	$scope.serverAddress=sa;
@@ -21,11 +23,11 @@ app.controller('AddTripController', ['$scope',  'tripService','globalFactory','C
             		  photo_split=galleryImage.split("%3A");
             		  galleryImage="content://media/external/images/media/"+photo_split[1];
             	}
-                alert('갤러리 사진 경로:'+galleryImage);
+            	console.log('갤러리 사진 경로:'+galleryImage);
                 tripGalleryFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
                 tripGalleryMultipartFile=galleryImage;
-                alert('디비에 넣을 사진 이름 '+ tripGalleryFile);
-                alert('서버에 저장할 파일 경로'+tripGalleryMultipartFil);	                
+                console.log('디비에 넣을 사진 이름 '+ tripGalleryFile);
+                console.log('서버에 저장할 파일 경로'+tripGalleryMultipartFil);	                
             });
         }, function(error) {
             $scope.$apply(function() {
@@ -71,16 +73,17 @@ app.controller('AddTripController', ['$scope',  'tripService','globalFactory','C
 		}else{
 			trip.travelPho='defaultTripPhoto.png';
 			trip.travelSphoto='s_DefaultTripPhoto.png'
-			alert("디폴트파일이름"+JSON.stringify(trip.travelPho));
+			console.log("디폴트파일이름"+JSON.stringify(trip.travelPho));
 			
 		}
 		
-		alert('여행 등록 내용  :'+JSON.stringify(trip));
+			console.log('여행 등록 내용  :'+JSON.stringify(trip));
 		//여행객체 서비스에 전송
 		tripService.addTrip(sa,trip);
-		$scope.location.path('/main');  
+		$timeout(function(){
+			$scope.location.path('/main')},5000);  
 		}else{
-			alert('양식을 입력하세요');
+			console.log('양식을 입력하세요');
 		}
     	
     }

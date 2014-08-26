@@ -50,11 +50,11 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 			  var documentCameraImage=document.getElementById("cameraAfterImg");
 			      documentCameraImage.src=cameraImage;
 	            $scope.$apply(function() {
-	                alert('카메라 사진 경로:'+cameraImage);
+	            	console.log('카메라 사진 경로:'+cameraImage);
 	                userPhotoFile = cameraImage.substr(cameraImage.lastIndexOf('/') + 1)+".jpg";
 	                userPhotoMultipartFile=cameraImage;
-	                alert('디비에 넣을 사진 이름 '+userPhotoFile);
-	                alert('서버에 저장할 파일 경로'+userPhotoMultipartFile);
+	                console.log('디비에 넣을 사진 이름 '+userPhotoFile);
+	                console.log('서버에 저장할 파일 경로'+userPhotoMultipartFile);
 	            });
 	        }, function(error) {
 	            $scope.$apply(function() {
@@ -84,11 +84,11 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
           		  galleryImage="content://media/external/images/media/"+photo_split[1];
 				}
 	            $scope.$apply(function() {
-	                alert('갤러리 사진 경로:'+galleryImage);
+	            	console.log('갤러리 사진 경로:'+galleryImage);
 	                userPhotoFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
 	                userPhotoMultipartFile=galleryImage;
-	                alert('디비에 넣을 사진 이름 '+userPhotoFile);
-	                alert('서버에 저장할 파일 경로'+userPhotoMultipartFile);
+	                console.log('디비에 넣을 사진 이름 '+userPhotoFile);
+	                console.log('서버에 저장할 파일 경로'+userPhotoMultipartFile);
 	               	                
 	            });
 	        }, function(error) {
@@ -124,20 +124,20 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 			user.photo=userPhotoFile;
 			user.sPhoto='s_'+userPhotoFile;
 			
-			alert("사진 파일 추가후 업로드"+JSON.stringify(user));
+			console.log("사진 파일 추가후 업로드"+JSON.stringify(user));
 			
 			//파일객체 서비스에 전송
 			userPhotoService.uploadPhoto(sa,userPhotoMultipartFile);	
 		}else{
 			user.photo="defaultUserPhoto.png"
 			user.sPhoto='s_defaultUserPhoto.png'
-			alert("디폴트파일이름"+JSON.stringify(user.photo));
+			console.log("디폴트파일이름"+JSON.stringify(user.photo));
 			
 		}
 		
-		alert('레지스트리 아이디'+joinUseRegid);
+		console.log('레지스트리 아이디'+joinUseRegid);
 		user.regId=joinUseRegid;
-		alert('regid추가후 회원입력 객체 : '+JSON.stringify(user));
+		console.log('regid추가후 회원입력 객체 : '+JSON.stringify(user));
 		//유저객체 서비스에 전송
 		userService.addUser(sa,user);
 		
@@ -145,7 +145,7 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 		
 		$scope.location.path('/login'); 
 			}else{
-				alert('양식을 확인해 주세요');
+				console.log('양식을 확인해 주세요');
 				$scope.newMember.password='';
 				$scope.newMember.password1='';
 				

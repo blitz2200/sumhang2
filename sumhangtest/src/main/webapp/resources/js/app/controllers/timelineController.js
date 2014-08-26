@@ -1,8 +1,8 @@
-app.controller('TimeLineController', ['$scope', '$route','$routeParams',
+app.controller('TimeLineController', ['$scope','$timeout', '$route','$routeParams',
                                       'tripDetailFactory','timeLineFactory',
                                       'globalFactory','Camera',
                                       'timeLineUploadService','timeLineAddFactory',
-                                      function ($scope, $route, $routeParams, 
+                                      function ($scope,$timeout, $route, $routeParams, 
                                     		    tripDetailFactory, timeLineFactory,
                                     		    globalFactory,Camera,
                                     		    timeLineUploadService,timeLineAddFactory) {
@@ -58,11 +58,11 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams',
 			  var documentCameraImage=document.getElementById("documentTimeLine");
 			      documentCameraImage.src=cameraImage;
 	            $scope.$apply(function() {
-	                alert('카메라 사진 경로:'+cameraImage);
+	            	console.log('카메라 사진 경로:'+cameraImage);
 	                timeLinePhotoFile = cameraImage.substr(cameraImage.lastIndexOf('/') + 1)+".jpg";
 	                timeLinePhotoMultipartFile=cameraImage;
-	                alert('디비에 넣을 사진 이름 '+timeLinePhotoFile);
-	                alert('서버에 저장할 파일 경로'+timeLinePhotoMultipartFile);
+	                console.log('디비에 넣을 사진 이름 '+timeLinePhotoFile);
+	                console.log('서버에 저장할 파일 경로'+timeLinePhotoMultipartFile);
 	            });
 	        }, function(error) {
 	            $scope.$apply(function() {
@@ -90,11 +90,11 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams',
           		  galleryImage="content://media/external/images/media/"+photo_split[1];
 				}
 	            $scope.$apply(function() {
-	                alert('갤러리 사진 경로:'+galleryImage);
+	            	console.log('갤러리 사진 경로:'+galleryImage);
 	                timeLinePhotoFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
 	                timeLinePhotoMultipartFile=galleryImage;
-	                alert('디비에 넣을 사진 이름 '+timeLinePhotoFile);
-	                alert('서버에 저장할 파일 경로'+timeLinePhotoMultipartFile);
+	                console.log('디비에 넣을 사진 이름 '+timeLinePhotoFile);
+	                console.log('서버에 저장할 파일 경로'+timeLinePhotoMultipartFile);
 	               	                
 	            });
 	        }, function(error) {
@@ -122,15 +122,15 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams',
 			$scope.submitted = true;
 			if($scope.writeTimeLineForm.timelineContextText.$valid){
 			
-				alert('타임라인 글쓰기 시작')
+				console.log('타임라인 글쓰기 시작')
 				var timeLine=$scope.timeLine;
-				alert('타임라인 객체 내용:' + JSON.stringify(timeLine));
+				console.log('타임라인 객체 내용:' + JSON.stringify(timeLine));
 				if (timeLinePhotoFile != null) {				
 					//회원가입 객체에 파일이름 추가 
 					timeLine.timeLinePhoto=timeLinePhotoFile;
 					timeLine.timeLineSphoto='s_'+timeLinePhotoFile;
 					
-					alert("사진 파일 추가후 업로드"+JSON.stringify(timeLine));				
+					console.log("사진 파일 추가후 업로드"+JSON.stringify(timeLine));				
 					//파일객체 서비스에 전송
 					timeLineUploadService.timeLineUploadPhoto(sa,timeLinePhotoMultipartFile);	
 				}else{
@@ -139,14 +139,16 @@ app.controller('TimeLineController', ['$scope', '$route','$routeParams',
 				}				
 			   
 				timeLineAddFactory.timeLineAdd(sa,timeLine,travelNo)
-					.success(function(){
+					.then($timeout(function(){		
+						getTimelineList(travelNo)
 						$scope.timeLineReplyList = true;
 						$scope.writeTimeLine=false;
-					}).error(function(error){
-						alert('타임라인 입력 콘트롤러 실패');
+						
+					},3000)).error(function(error){
+						console.log('타임라인 입력 콘트롤러 실패');
 					})
 			}else{
-				alert('내용을 입력하세요');
+				console.log('내용을 입력하세요');
 			}
 		}
 		

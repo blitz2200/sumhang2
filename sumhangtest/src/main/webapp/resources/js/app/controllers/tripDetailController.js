@@ -104,11 +104,11 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
       		  galleryImage="content://media/external/images/media/"+photo_split[1];
 			}
             $scope.$apply(function() {
-                alert('갤러리 사진 경로:'+galleryImage);
+            	console.log('갤러리 사진 경로:'+galleryImage);
                 editTripDetailGalleryFile=galleryImage.substr(galleryImage.lastIndexOf('/') + 1)+".jpg";
                 editTripDetailGalleryMultipartFile=galleryImage;
-                alert('디비에 넣을 사진 이름 '+editTripDetailGalleryFile);
-                alert('서버에 저장할 파일 경로'+editTripDetailGalleryMultipartFile);                
+                console.log('디비에 넣을 사진 이름 '+editTripDetailGalleryFile);
+                console.log('서버에 저장할 파일 경로'+editTripDetailGalleryMultipartFile);                
             });
         }, function(error) {
             $scope.$apply(function() {
@@ -136,13 +136,13 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
     		$scope.editTripForm.tripDestinationInput.$valid	&& 
     		$scope.editTripForm.datepicker3.$valid && 
     		$scope.editTripForm.datepicker4.$valid ){
-        	alert("여행세부게시판수정 시작...");
+    		console.log("여행세부게시판수정 시작...");
         	
         	var trip =$scope.editTrip;
         	console.log ('수정할 여행세부게시판 내용: '+JSON.stringify(trip));
         	
     		if (editTripDetailGalleryFile  != null) {
-	    		alert('업로드 파일은 :' + editTripDetailGalleryFile);
+    			console.log('업로드 파일은 :' + editTripDetailGalleryFile);
 	        	
 	    				    			
 	    			//여행등록 객체에 파일이름 추가 
@@ -158,7 +158,7 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 	    		}else{
 	    			trip.travelPho='defaultTripPhoto.png';
 	    			trip.travelSphoto='s_DefaultTripPhoto.png'
-	    			alert("디폴트파일이름"+JSON.stringify(trip.travelPho));
+	    				console.log("디폴트파일이름"+JSON.stringify(trip.travelPho));
 	    			 
 	    		}
 	    		
@@ -245,16 +245,16 @@ app.controller('TripDetailController', ['$scope','$routeParams', 'tripDetailFact
 	  };
 	
 	  function pushEnterTrip(push){
-		    alert('여행참가하기 버튼 클릭'+push);
-		    alert('방장이 푸쉬를 원합니까???   '+push);
+		  console.log('여행참가하기 버튼 클릭'+push);
+		  console.log('방장이 푸쉬를 원합니까???   '+push);
 		    if(push=='no'){
-		      alert('방장은 푸쉬 거부 상태 입니다.')
+	    	console.log('방장은 푸쉬 거부 상태 입니다.')
 		    }else{
 		      tripDetailFactory.pushEnterTrip(sa,travelNo)
 		      .success(function(){
-		        alert('여행참가하기 푸시 성공');
+	    	  console.log('여행참가하기 푸시 성공');
 		      }).error(function(error){
-		        alert('여행참가하기 푸시 실패');
+	    	  console.log('여행참가하기 푸시 실패');
 		      })
 		    }
 		  }
