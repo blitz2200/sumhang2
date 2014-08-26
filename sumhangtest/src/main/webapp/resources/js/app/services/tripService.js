@@ -8,9 +8,9 @@ app.service('tripService', ['$http',function ($http) {
     		data : trip,
     		headers : {'Content-Type':'application/json; charset=utf-8'},    		
     	}).success(function(){
-    		alert("여행 정보 입력 성공")
+    		console.log("여행 정보 입력 성공")
     	}).error(function(){
-    		alert("여행 정보 입력 실패")
+    		console.log("여행 정보 입력 실패")
     	})
     }
   

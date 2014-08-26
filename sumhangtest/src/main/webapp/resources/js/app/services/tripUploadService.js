@@ -10,7 +10,7 @@ app.service('tripUploadService',['$http',function($http){
 		  }
 	
 		 var fail = function (error) {
-			    alert("An error has occurred: Code = " + error.code);
+			 console.log("An error has occurred: Code = " + error.code);
 			    console.log("upload error source " + error.source);
 			    console.log("upload error target " + error.target);
 		 }
@@ -20,7 +20,7 @@ app.service('tripUploadService',['$http',function($http){
 		  options.fileKey = "tripGalleryPhoto";
 		  options.fileName = tripGalleryPhoto.substr(tripGalleryPhoto.lastIndexOf('/') + 1);
 		  	
-		  alert('최종 업로드할 여행 파일:'+options.fileName);
+		  console.log('최종 업로드할 여행 파일:'+options.fileName);
 		  
 		  var ft = new FileTransfer();
 		  ft.upload(tripGalleryPhoto, encodeURI(sa+"tripGalleryPhoto.ajax"), win, fail, options);		

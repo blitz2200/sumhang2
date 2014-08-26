@@ -2,7 +2,7 @@ app.service('userPhotoService',['$http',function($http){
 	
 
 	this.uploadPhoto=function(sa,userPhoto){
-		alert('유저사진 업로드 팩토리 시작');
+		console.log('유저사진 업로드 팩토리 시작');
 	
 		  var win = function (r) {
 			    console.log("Code = " + r.responseCode);
@@ -11,7 +11,7 @@ app.service('userPhotoService',['$http',function($http){
 		  }
 	
 		 var fail = function (error) {
-			    alert("An error has occurred: Code = " + error.code);
+			 console.log("An error has occurred: Code = " + error.code);
 			    console.log("upload error source " + error.source);
 			    console.log("upload error target " + error.target);
 		 }
@@ -21,7 +21,7 @@ app.service('userPhotoService',['$http',function($http){
 		  options.fileKey = "userPhoto";
 		  options.fileName = userPhoto.substr(userPhoto.lastIndexOf('/') + 1);
 		  	
-		  alert(options.fileName);
+		  console.log(options.fileName);
 		  
 		  var ft = new FileTransfer();
 		  ft.upload(userPhoto, encodeURI(sa+"userPhoto.ajax"), win, fail, options);		
