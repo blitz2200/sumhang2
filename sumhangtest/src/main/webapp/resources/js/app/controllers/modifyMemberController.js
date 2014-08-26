@@ -1,6 +1,6 @@
-app.controller('ModifyMemberController', ['$scope', 'userFactory','mainFactory', 'globalFactory',
+app.controller('ModifyMemberController', ['$scope','$timeout', 'mainFactory', 'userFactory', 'globalFactory',
                                           'Camera','modifyPhotoUploadService',
-                                          function ($scope,userFactory,mainFactory,globalFactory,
+                                          function ($scope,$timeout,mainFactory,userFactory, globalFactory,
                                         		  Camera,modifyPhotoUploadService) {
 
 	var sa = globalFactory.serverAddress;
@@ -50,7 +50,7 @@ app.controller('ModifyMemberController', ['$scope', 'userFactory','mainFactory',
 	  $scope.goModifyGalleryPhoto=function(){
 		  modifyMemberGallery();
 	  }
-	  function ModifyMemberGallery(){
+	  function modifyMemberGallery(){
 		  Camera.getPicture(function(galleryImage) {	
 			  var documentGalleryImage=document.getElementById("modifyMemberUserPhoto");
 		      	  documentGalleryImage.src=galleryImage;
@@ -96,7 +96,7 @@ app.controller('ModifyMemberController', ['$scope', 'userFactory','mainFactory',
 			if(modifyUserPhotoFile!=null){
 				$scope.modifiedUserInfo.photo=modifyUserPhotoFile;
 				$scope.modifiedUserInfo.sPhoto='s_'+modifyUserPhotoFile;
-				alert('사진 파일 추가후 수정할 객체:'+$scope.modifiedUserInfo);
+				alert('사진 파일 추가후 수정할 객체:'+JSON.stringify($scope.modifiedUserInfo));
 				modifyPhotoUploadService.modifyUploadPhoto(sa,modifyUserPhotoMultipartFile);
 			}else{
 				$scope.modifiedUserInfo.photo="defaultUserPhoto.png";
@@ -107,7 +107,7 @@ app.controller('ModifyMemberController', ['$scope', 'userFactory','mainFactory',
 			userFactory.updateUserInfo(sa,$scope.modifiedUserInfo)
 			.success(function (){
 				console.log("회원정보 수정 성공");
-				$scope.location.path('main');
+				$timeout(function(){$scope.location.path('main')},4300);
 			}).error(function(){
 				console.log("회원정보 수정 실패");
 			});
