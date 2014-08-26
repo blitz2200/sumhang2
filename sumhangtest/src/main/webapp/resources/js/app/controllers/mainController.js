@@ -53,7 +53,7 @@ app.controller('MainController',['$scope','$timeout', '$route','mainFactory','gl
 	
 	$scope.kickOutTripUser = function (userNo){
 		console.log(userNo);
-		mainFactory.kickOutTripUser($scope.userTripSelected.TBOARD_NO,userNo)
+		mainFactory.kickOutTripUser(globalFactory.serverAddress, $scope.userTripSelected.TBOARD_NO,userNo)
 		.success(function(){
     		console.log('kickOutTripUser 성공');
     		$scope.getTripUsers();
