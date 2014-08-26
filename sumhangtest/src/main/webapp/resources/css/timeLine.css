@@ -96,15 +96,6 @@
 	float: right;
 	margin-bottom: 2px;
 }
-
-/* 댓글 크기 */
-/* #listViewTimeLinePage #timeLineInfo #timeLineListDestination #timeLineMembers{
-	font-family: 'Nanum Gothic Coding', monospace;
-	float: right;
-	margin-right: 15px;
-	font-size: 8px;
-}
- */
 	
 /* 유저 업데이트 타임라인 */
 #listViewTimeLine .replylist-timeline{
@@ -119,17 +110,38 @@
 }
 
 /* 타임라인 작성자 정보 */
-.row .timeLineUserInfo {
-	font-family:nanomgothicBold;
+
+/* 유저 사진 */
+#timeLineUserPhoto{
+	width: 50px;
+	height: 50px;
 	float: left;
 	margin-left: 15px;
 }
 
-/* 타임라인 글씨체 */
+/* 유저아이디 */
+#timeLineUserID{
+	font-family:nanomgothicBold;
+	float: left;
+	margin-left: -10px;
+	width: 70px;
+	margin-top: 10px;
+}
+
+/* 타임라인 사진 */
+#timeLinePhoto{
+	height: 150px;
+	width: 98%;
+	margin-top: 30px;
+/* 	background-color: red; */
+}
+
+/* 타임라인 리스트 */
 .row #timeLineText{
 	font-family:nanomgothic;
 	text-align:left;
 	padding: 20px;
+	margin-top: -30px;
 }
 
 /* 타임라인 버튼 위치 */
@@ -156,32 +168,34 @@
 #timelineContextText{
 	font-family:nanomgothic;
 	margin-top: 20px;
-	margin-left: -18px;
 	padding: 10px;
+	width: 92%;
+	margin-left: 15px;
 }
 
 /* 타임라인 버튼 그룹 */
 .timeLineActionBtns{
-	width:99%;
+	width:92%;
 	height: 40px;
-	background-color: white;
-	margin-left: -17px;
+	background-color:white;
+	margin-left: 15px;
 }
 
 /* 사진 보이는 곳 */
 .timeLineActionBtns2{
-	width:99%;
+	width: 92%;
+	margin-left: 15px;
 	height: 70px;
 	background-color: white;
-	margin-left: -17px;
 	padding: 5px;
 }
 
 /* 사진 라벨 */
 #showingTimelinePhoto{
 	font-family:nanomgothicExtraBold;
-	margin-left: -10px;
+	margin-left: 15px;
 	margin-top: 5px;
+
 }
 
 
@@ -211,8 +225,10 @@
 #showTimelinePho{
 	height: 60px;
 	width: 60px;
-	background-color: red;
+	background: url('../images/instagram-5-48.png');
+	background-repeat:no-repeat;
 	margin-left: 10px;
+	vertical-align: middle;
 }
 
 /* 타임라인 쓰기 고정 */
