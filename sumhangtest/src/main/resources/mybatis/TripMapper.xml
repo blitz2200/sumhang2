@@ -84,6 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 										FROM USER_STATUS
 										GROUP BY TBOARD_NO ) ucount
 		WHERE u.USER_NO = tl.USER_NO AND ucount.TBOARD_NO = tl.TBOARD_NO AND tl.TBOARD_NO = #{value}
+		ORDER BY TIMELINE_NO DESC
 	</select>
 	
 	<!-- 타임라인 입력 -->
