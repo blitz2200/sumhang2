@@ -134,7 +134,7 @@ public class UserController {
 	
 	//유저정보 업데이트
 		@RequestMapping(value = "/updateUserInfo", method = RequestMethod.POST)
-		public @ResponseBody String updateUserInfo(@RequestBody String userInfo){
+		public @ResponseBody String updateUserInfo(HttpSession session, @RequestBody String userInfo){
 			
 				
 				System.out.println("넘어온 유저 데이타는?"+userInfo);
@@ -147,8 +147,9 @@ public class UserController {
 				
 											
 				//DB에 자료 넣기
-				System.out.println("디비에 넣을 유저 데이타는?"+userVO);			
+				System.out.println("디비에 넣을 유저 데이타는?"+userVO);	
 				sqlSession.update("userControlMapper.updateUserInfo", userVO);
+				session.setAttribute("user", sqlSession.selectOne("userControlMapper.getUserbyUserNo",userVO.getUserNo()));
 				return "success";
 		}
 	
