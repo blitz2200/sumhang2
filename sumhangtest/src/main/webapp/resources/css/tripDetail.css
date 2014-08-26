@@ -120,7 +120,7 @@
 
 
 /* 여행참가 버튼 */
-.tripDetail .addTrip {
+.tripDetail #signUpTripBtn {
 	margin-left:70%;
 }
 
