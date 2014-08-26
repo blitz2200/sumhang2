@@ -8,9 +8,9 @@ app.factory('timeLineAddFactory',['$http', function($http){
 			'method' : 'POST',
 			'data' : timeLine
 		}).success(function(){
-			alert('타임라인 글쓰기 팩토리 성공')
+			console.log('타임라인 글쓰기 팩토리 성공')
 		}).error(function(){
-			alert('타임랑니 글쓰기 팩토리 실패')
+			console.log('타임랑니 글쓰기 팩토리 실패')
 		})
 	};
 	
