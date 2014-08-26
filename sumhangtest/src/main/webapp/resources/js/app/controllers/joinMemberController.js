@@ -145,7 +145,7 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 		
 		$scope.location.path('/login'); 
 			}else{
-				console.log('양식을 확인해 주세요');
+				alert('양식을 확인해 주세요');
 				$scope.newMember.password='';
 				$scope.newMember.password1='';
 				
