@@ -83,11 +83,13 @@
 
 /* 헤더 왼쪽 아이콘 */
 #imageWrapper #leftSideIcon {
-	margin-left: 10px;
-	margin-top: 10px;
+	 
 	position: absolute;
 	width: 30px;
 	height: 30px;
+	 margin-top:4px; 
+	 margin-left:0;
+	
 }
 
 /* 헤더 오른쪽 아이콘 */
@@ -455,5 +457,13 @@ border: none;
 	height:20px;
 	float:right;
 	margin-right:5%;
+}
+
+
+
+.left-panell{
+	 margin-top:4px; 
+	 margin-left:0;
+	
 }
  
