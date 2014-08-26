@@ -1,6 +1,6 @@
-app.controller('ModifyMemberController', ['$scope', 'userFactory', 'globalFactory',
+app.controller('ModifyMemberController', ['$scope', 'userFactory','mainFactory', 'globalFactory',
                                           'Camera','modifyPhotoUploadService',
-                                          function ($scope,userFactory, globalFactory,
+                                          function ($scope,userFactory,mainFactory,globalFactory,
                                         		  Camera,modifyPhotoUploadService) {
 
 	var sa = globalFactory.serverAddress;
@@ -50,7 +50,7 @@ app.controller('ModifyMemberController', ['$scope', 'userFactory', 'globalFactor
 	  $scope.goModifyGalleryPhoto=function(){
 		  modifyMemberGallery();
 	  }
-	  function modifyMemberGallery(){
+	  function ModifyMemberGallery(){
 		  Camera.getPicture(function(galleryImage) {	
 			  var documentGalleryImage=document.getElementById("modifyMemberUserPhoto");
 		      	  documentGalleryImage.src=galleryImage;
@@ -96,7 +96,7 @@ app.controller('ModifyMemberController', ['$scope', 'userFactory', 'globalFactor
 			if(modifyUserPhotoFile!=null){
 				$scope.modifiedUserInfo.photo=modifyUserPhotoFile;
 				$scope.modifiedUserInfo.sPhoto='s_'+modifyUserPhotoFile;
-				alert('사진 파일 추가후 수정할 객체:'+JSON.stringify($scope.modifiedUserInfo));
+				alert('사진 파일 추가후 수정할 객체:'+$scope.modifiedUserInfo);
 				modifyPhotoUploadService.modifyUploadPhoto(sa,modifyUserPhotoMultipartFile);
 			}else{
 				$scope.modifiedUserInfo.photo="defaultUserPhoto.png";
@@ -124,7 +124,7 @@ app.controller('ModifyMemberController', ['$scope', 'userFactory', 'globalFactor
 			console.log('getUserdata'+JSON.stringify(data));
 			suser=data
 			$scope.userInfo=data;
-			$scope.modifiedUserInfo.id = $scope.userInfo.name;
+			$scope.modifiedUserInfo.userNo = $scope.userInfo.userNo;
 			$scope.modifiedUserInfo.name = $scope.userInfo.name;			
 			$scope.modifiedUserInfo.nick = $scope.userInfo.nick;
 			$scope.modifiedUserInfo.birth = $scope.userInfo.birth;
@@ -154,7 +154,7 @@ app.controller('ModifyMemberController', ['$scope', 'userFactory', 'globalFactor
 	
 	 /*로그아웃*/
 	$scope.logout=function(){		
-		mainFactory.logout(globalFactory.serverAdress).success(function (){
+		mainFactory.logout(sa).success(function (){
 			$scope.location.path('login');
 		});
 	}
