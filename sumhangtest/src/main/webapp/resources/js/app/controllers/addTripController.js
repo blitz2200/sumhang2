@@ -83,7 +83,7 @@ app.controller('AddTripController', ['$scope','$timeout',  'tripService','global
 		$timeout(function(){
 			$scope.location.path('/main')},5000);  
 		}else{
-			console.log('양식을 입력하세요');
+			alert('양식을 입력하세요');
 		}
     	
     }
