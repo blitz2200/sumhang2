@@ -6,7 +6,7 @@ app.factory('mainFactory',['$http', function($http){
 	mainFactory.tripList = function(pageNum){
 		console.log('pageNum'+pageNum);
 		return $http({			
-			'url' :"http://192.168.0.88:8080/main.ajax",
+			'url' :"http://192.168.0.72:8080/main.ajax",
 			'method' : 'POST',
 			   'data' : pageNum+''
 		}).success(function(data){
@@ -20,7 +20,7 @@ app.factory('mainFactory',['$http', function($http){
 	
 	mainFactory.getUserTrip = function(){
 		return $http({
-			'url' :"http://192.168.0.88:8080/getUserTrip.ajax",
+			'url' :"http://192.168.0.72:8080/getUserTrip.ajax",
 			'method' : 'GET'
 		}).success(function(data){
 			//db에서 자료 가져오기 성공하면 찍어보기 
@@ -46,10 +46,10 @@ app.factory('mainFactory',['$http', function($http){
 		});
 	}
 	
-	mainFactory.kickOutTripUser = function(tBoardNo,userNo){
+	mainFactory.kickOutTripUser = function(sa,tBoardNo,userNo){
 		console.log('factory:userNo : '+userNo);
 		return $http({
-			'url' :"kickOutTripUser.ajax",
+			'url' :sa+"kickOutTripUser.ajax",
 			'method' : 'POST',
 			'data' : {'tBoardNo': tBoardNo+'' ,
     			'userNo' : userNo +'' }
