@@ -168,6 +168,16 @@
 	margin-top: -15px;
 }
 
+/* 닉네임 중복 체크 */
+#modifyIdDup{
+		font-family:nanomgothic;
+		margin-top:-37px;
+		margin-right:20px;
+		float: right;
+		padding: 10px;
+		font-size: 13px;
+}
+
 /* 수정하기 버튼 */
 #modifyMemberBtn{
 	font-family:nanomgothic;
