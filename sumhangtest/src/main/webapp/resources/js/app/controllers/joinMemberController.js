@@ -4,6 +4,10 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 	var sa = globalFactory.serverAddress;
 	$scope.serverAddress=globalFactory.serverAddress;
 	
+	$scope.goBack = function (){
+		window.history.back();
+	}
+	
 	$scope.idDuplicateChecking = function (userId){
 		console.log('controllerUserId:'+userId);
 		userFactory.idDuplicateCheck(sa, userId)
