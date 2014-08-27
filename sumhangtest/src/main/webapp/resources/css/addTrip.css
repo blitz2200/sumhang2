@@ -67,17 +67,17 @@
 }
 
 /* 여행 사진 올리기 텍스트 */
-.addTrip #addTripPhotoSpace #addTripPhotoText{
+/* .addTrip #addTripPhotoSpace #addTripPhotoText{
 	font-family:nanomgothic;
 	text-align: center;
 }
-
+ */
 /* 사진을 올려주세요 */
-.addTrip #addTripPhotoSpace #addTripPhotoText #addTripPhotoUpload{
+/* .addTrip #addTripPhotoSpace #addTripPhotoText #addTripPhotoUpload{
 	font-family:nanomgothic;
 	color:orange;
 	background-color: white;
-}	
+}	 */
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 /* //////////// 리스트뷰 관련///////////////////////////////////////////////////////////////////////////////////////// */
