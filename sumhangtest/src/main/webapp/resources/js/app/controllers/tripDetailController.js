@@ -5,10 +5,10 @@
 //콘트롤러에서  $routeParams를 사용 이것을 받아서 사용 가능  
 app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tripDetailFactory','Camera',
                                         'tripService', 'modalService', 'globalFactory',
-                                        'tripDetailEditUplodService',
+                                        'tripDetailEditUplodService','usSpinnerService',
                                         function ($scope,$timeout,$routeParams, tripDetailFactory,Camera,
-                                        		  tripService, modalService, globalFactory,
-                                        		  tripDetailEditUplodService) {
+                                        		  tripService, modalService, globalFactory,tripDetailEditUplodService
+                                        		  ,usSpinnerService) {
 	
 	
 	//넘어온 tboard_no,tripDetailReply값  변수에 저장
@@ -28,9 +28,9 @@ app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tri
 	
 	//tripDetail 페이지 시작 
 	function tripDetail(travelNo){
+		/*usSpinnerService.spin('spinner-1');*/
 		console.log('tripDetail 시작');			
-		console.log('넘어온 tboardNo는:'+travelNo);		
-		
+		console.log('넘어온 tboardNo는:'+travelNo);			
 		tripDetailFactory.tripDetail(sa,travelNo)
 		.success(function(data){
 			if(data.USER_NO == data.wuser_no){
@@ -126,11 +126,13 @@ app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tri
 	
 	
 	
-	$scope.goEditTripRequest=function(){	
+	$scope.goEditTripRequest=function(){			
+		usSpinnerService.spin('spinner-1');
 		editTripRequest(travelNo)
+		
 	};
 	
-	function editTripRequest(travelNo){
+	function editTripRequest(travelNo){	
 		
 		$scope.submitted = true;    	
     	if( $scope.editTripForm.tripTitleInput.$valid && 
@@ -142,7 +144,7 @@ app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tri
         	var trip =$scope.editTrip;
         	console.log ('수정할 여행세부게시판 내용: '+JSON.stringify(trip));
         	
-    		if (editTripDetailGalleryFile  != null) {
+    		if (editTripDetailGalleryFile != null) {
     			console.log('업로드 파일은 :' + editTripDetailGalleryFile);
 	        	
 	    				    			
@@ -158,7 +160,7 @@ app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tri
 	    			
 	    		}else{
 	    			trip.travelPho='defaultTripPhoto.png';
-	    			trip.travelSphoto='s_DefaultTripPhoto.png'
+	    			trip.travelSphoto='s_defaultTripPhoto.png'
 	    				console.log("디폴트파일이름"+JSON.stringify(trip.travelPho));
 	    			 
 	    		}
@@ -172,7 +174,8 @@ app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tri
 	    		$scope.editPage=false;
 	    		$scope.writeUserButton=true;
 	    		$scope.inputRe=true;
-	    		$scope.tripDetailReplyList=true;},4300);
+	    		$scope.tripDetailReplyList=true;
+	    		usSpinnerService.stop('spinner-1');},4300);
 			})
     		//완료후 메인페이지 리스트 뿌려주기
     			
