@@ -23,8 +23,7 @@ app.controller('IntroController', ['$scope','userFactory', 'usSpinnerService', '
 	}
 		
 	
-	
-	
+
 	
 	function loginCheck(){
 		usSpinnerService.spin('spinner-1');
