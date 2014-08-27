@@ -1,7 +1,7 @@
 app.controller('AddTripController', ['$scope','$timeout',  'tripService','globalFactory',
-                                     'Camera','tripUploadService',
-                                     function ($scope,$timeout, tripService,
-                                    		 globalFactory,Camera,tripUploadService) {
+                                     'Camera','tripUploadService','usSpinnerService',
+                                     function ($scope,$timeout, tripService,globalFactory,
+                                    		   Camera,tripUploadService,usSpinnerService) {
 	
 	var sa=globalFactory.serverAddress;
 	$scope.serverAddress=sa;
@@ -11,7 +11,7 @@ app.controller('AddTripController', ['$scope','$timeout',  'tripService','global
 	var tripGalleryMultipartFile;
 	//여행 등록하기 갤러리 아이콘 선택시 실행됨 
 	$scope.goGalleryPhoto=function(){
-		addTripGallery();
+		addTripGallery();		
 	}
 	
 	function addTripGallery(){
@@ -43,45 +43,38 @@ app.controller('AddTripController', ['$scope','$timeout',  'tripService','global
 	//여행 등록하기 
 	
     $scope.addTripRequest = function () {
+    	usSpinnerService.spin('spinner-1');
     	$scope.submitted = true;    	
     	
     	if( $scope.addTripForm.tripTitleInput.$valid && $scope.addTripForm.tripDestinationInput.$valid
     		&& $scope.addTripForm.datepicker3.$valid && $scope.addTripForm.datepicker4.$valid
     		&& $scope.addTripForm.tripNumberInputAddTrip.$valid ){
     	
-    	
-    	console.log("여행참가신청 시작...");
-    	
-    	var trip =$scope.newTrip;		
-		
-		
+    	console.log("여행참가신청 시작...");    	
+    	var trip =$scope.newTrip;			
     	
 			if ( tripGalleryFile != null) {
-		console.log('업로드 파일은 :' + tripGalleryFile);		
-			
+		console.log('업로드 파일은 :' + tripGalleryFile);				
 			//여행등록 객체에 파일이름 추가 
 			trip.travelPho=tripGalleryFile;
 			trip.travelSphoto="s_"+tripGalleryFile;
 			
 			console.log("사진 파일 추가후 업로드"+JSON.stringify(trip));
-				
-				//파일객체 서비스에 전송
-		
-			
+								//파일객체 서비스에 전송			
 			tripUploadService.addTripGalleryFile(sa,tripGalleryMultipartFile);
 			
 		}else{
 			trip.travelPho='defaultTripPhoto.png';
 			trip.travelSphoto='s_DefaultTripPhoto.png'
 			console.log("디폴트파일이름"+JSON.stringify(trip.travelPho));
-			
-		}
-		
+		}		
 			console.log('여행 등록 내용  :'+JSON.stringify(trip));
 		//여행객체 서비스에 전송
-		tripService.addTrip(sa,trip);
+			
+		tripService.addTrip(sa,trip);		
 		$timeout(function(){
-			$scope.location.path('/main')},5000);  
+			$scope.location.path('/main')},5000);
+		usSpinnerService.stop('spinner-1');
 		}else{
 			alert('양식을 입력하세요');
 		}
