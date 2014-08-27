@@ -1,5 +1,5 @@
-app.controller('MainController',['$scope','$timeout', '$route','mainFactory','globalFactory',
-                                 function ($scope, $timeout, $route, mainFactory, globalFactory) {
+app.controller('MainController',['$scope','$timeout', '$route','usSpinnerService','mainFactory','globalFactory',
+                                 function ($scope, $timeout, $route, usSpinnerService, mainFactory, globalFactory) {
 
 	//메인컨트롤러 실행시 메인 함수가 실행한다. 메인함수가 하는역활 디비에서 메인 화면에 뿌려줄 자료 가져와서 
 	//메인 html파일과 연결 시킴 
@@ -11,24 +11,24 @@ app.controller('MainController',['$scope','$timeout', '$route','mainFactory','gl
 	$scope.trips = $route.current.locals.trips; //resolve에 있는 변수를 scope에 넘겨준다.
 	$scope.userTrips = $route.current.locals.userTrips; //resolve에 있는 변수를 scope에 넘겨준다.
 	$scope.sessionUser = $route.current.locals.sessionUser; //resolve에 있는 변수를 scope에 넘겨준다
-	$scope.userTripSelected = $scope.userTrips[0];
-	
+	$scope.userTripSelected = $scope.userTrips[0];	
 	//리스트 동적로딩
 	var pageNum;	
 	var isWorking = 0;
 	pageNum=1;	
-	$scope.loadMore = function(){
-		
+	$scope.loadMore = function(){		
+		usSpinnerService.spin('spinner-1');		
 		if(isWorking==0){
 			isWorking=1;
 		console.log('loadmore invoked....')
 		mainFactory.tripList(pageNum)
-		.then(function(data){
+		.then(function(response){
 			pageNum += 1;
 			console.log('pageNum++ :'+pageNum);			
-			for(var i=0;i<data.data.length;i++){
-				$scope.trips.push(data.data[i]);
-			}			
+			for(var i=0;i<response.data.length;i++){
+				$scope.trips.push(response.data[i]);
+			}
+			usSpinnerService.stop('spinner-1');
 		});
 		$timeout(function(){
 			isWorking=0
@@ -63,8 +63,7 @@ app.controller('MainController',['$scope','$timeout', '$route','mainFactory','gl
     	});		
 	}
 	
-	$scope.goInvite = function (){
-	
+	$scope.goInvite = function (){	
 		$scope.location.path('invite');
 	}
 
