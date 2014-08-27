@@ -9,7 +9,7 @@
 });
 
 
-var app = angular.module('sumhangApp', ['ngRoute','sumhangCordova','pageslide-directive','ui.bootstrap', 'infinite-scroll']);
+var app = angular.module('sumhangApp', ['ngRoute','sumhangCordova','pageslide-directive','ui.bootstrap', 'infinite-scroll','angularSpinner']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
@@ -45,8 +45,10 @@ app.config(function ($routeProvider) {
                 controller: 'MainController',
                 templateUrl: 'partials/main.html',
                 resolve: {//브라우저가 뿌려줄 데이터를 먼저 db에서 가져와 변수로 저장하고 변수에 저장된후에 값들과 함께 template에 뿌려준다.
-                	trips :function(mainFactory){
+                	trips :function(mainFactory, usSpinnerService){
+                		usSpinnerService.spin('spinner-1');
                 		return mainFactory.tripList().then(function (response){
+                			usSpinnerService.stop('spinner-1');
                 			return response.data;
                 		});
                 	},
