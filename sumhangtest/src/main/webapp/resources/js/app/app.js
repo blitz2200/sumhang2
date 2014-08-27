@@ -105,18 +105,13 @@ app.config(function ($routeProvider) {
             })
         .when('/invite',
             {
-                controller: 'inviteController',
+                controller: 'InviteController',
                 templateUrl: 'partials/invite.html'
             })
            .when('/timeLineReply',
             {
                 controller: 'timeLineReplyController',
                 templateUrl: 'partials/timeLineReply.html'
-            })
-            .when('/addTimeline',
-            {
-                controller: 'addTimelineController',
-                templateUrl: 'partials/addTimeline.html'
             })
         .otherwise({ redirectTo: '/intro' });
 });
