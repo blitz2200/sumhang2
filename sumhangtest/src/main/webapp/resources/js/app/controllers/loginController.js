@@ -9,7 +9,7 @@ app.controller('LoginController', ['$scope','userFactory','usSpinnerService','gl
     	.then(function(response){
     		usSpinnerService.stop('spinner-1');
     		console.log(response);
-			if(response == ""){
+			if(response.data == ""){
 				alert('아이디와 비밀번호를 확인해 주세요');
 				$scope.location.path('/login');
 			}else{
