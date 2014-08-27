@@ -165,14 +165,14 @@ app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tri
 			console.log('여행상세게시판 수정 내용  :'+JSON.stringify(trip));
 			//여행수정 객체 서비스에 전송
 			tripDetailFactory.editTripDetail(sa,trip,travelNo)
-			.then($timeout(function(){
+			.success(function(){$timeout(function(){
 				tripDetail(travelNo)
 	    		$scope.mainTripDetail=true;
 	    		$scope.editPage=false;
 	    		$scope.writeUserButton=true;
 	    		$scope.inputRe=true;
-	    		$scope.tripDetailReplyList=true;
-			}),4000);
+	    		$scope.tripDetailReplyList=true;},4300);
+			})
     		//완료후 메인페이지 리스트 뿌려주기
     			
     		}else{
