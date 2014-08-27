@@ -62,6 +62,15 @@ app.factory('tripDetailFactory',['$http', function($http){
 			console.log('여행 참가하기 버튼 클릭 방장한테 푸시 날리기 실패 ')
 		})
 	}
+	
+	//좋아요버튼 클릭
+	tripDetailFactory.insertFavorite = function(sa,travelNo){
+		return $http({
+			'url' : sa+"insertFavorite.ajax",
+			'method' : 'POST',
+			'data': {'travelNo':travelNo}
+		})
+	}
 
 
 	
