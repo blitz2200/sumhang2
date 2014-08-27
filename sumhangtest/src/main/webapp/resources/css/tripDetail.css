@@ -117,9 +117,7 @@
 	
 }
 
-.tripDetail .favorite {
-	float:right;
-}
+
 
 
 /* 여행참가 버튼 */
@@ -493,7 +491,7 @@
 } */
 
 /* 좋아요 버튼 */
-#tripDetailCheckLike{
+.tripDetail #tripDetailCheckLike{
 	margin-bottom: 10px;
 	margin-top: -20px;
 	margin-left: 42%;
