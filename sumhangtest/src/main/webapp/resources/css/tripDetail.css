@@ -117,6 +117,9 @@
 	
 }
 
+.tripDetail .favorite {
+	float:right;
+}
 
 
 /* 여행참가 버튼 */
