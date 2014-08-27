@@ -41,16 +41,23 @@
 						<!-- 모집인원 --> <img
 						data-ng-src="{{serverAddress}}resources/images/heart.png"
 						class="favoImg visible" /> <!-- 좋아요 아이콘 --> <span
-						class="favoriteCount visible" id="mainLikeNum">{{trip.likenum}}</span>
+						class="favoriteCount visible" id="mainLikeNum">{{trip.TRAVEL_FAVORITE}}</span>
 						<!-- 좋아요 카운트 -->
 					</span>
+					
+				
+				
 				<div class="col-xs-5">
 					<img class="userPho"
 						data-ng-src="{{serverAddress}}resources/images/userPhotoFile/{{trip.user_sphoto}}">
 					<p class="nick">
 						썸 장  <span class="username">{{trip.nick}}</span>  님
 					</p>
+					<button type="button" class="favorite btn btn-warning" 
+				        data-ng-click="insertFavorite()">좋아요</button>
 				</div>
+				
+				
 			</div>
 	
 			<div class="row desc">
@@ -139,7 +146,6 @@
 					</div>			<!-- tripNumberInput-addTripSpace End -->
 				</div>			<!-- tripNumberLabel-addTrip End -->
 			
-	
 		<!-- 세부내용 -->
 			<div class="form-group " id="contextEditTripSpace">
 				<label for="tripContext" class="col-xs-3 control-label" id="editTripContextLabel">
