@@ -129,6 +129,7 @@ app.controller('ModifyMemberController', ['$scope','$timeout', 'mainFactory', 'u
 			$scope.modifiedUserInfo.nick = $scope.userInfo.nick;
 			$scope.modifiedUserInfo.birth = $scope.userInfo.birth;
 			$scope.modifiedUserInfo.photo = $scope.userInfo.photo;
+			$scope.modifiedUserInfo.sPhoto = $scope.userInfo.sPhoto;
 			$scope.modifiedUserInfo.push = $scope.userInfo.push;
 			$scope.modifiedUserInfo.invite = $scope.userInfo.invite;
 		}).error(function(){
