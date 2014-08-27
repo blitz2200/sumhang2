@@ -79,6 +79,7 @@ app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tri
 		$scope.editTrip.title=$scope.trip.title;
 		$scope.editTrip.travelStart=$scope.trip.travel_start;
 		$scope.editTrip.travelEnd=$scope.trip.travel_end;
+		$scope.editTrip.travelUserCount=$scope.trip.TRAVEL_USER_COUNT;
 		$scope.editTrip.travelDescription=$scope.trip.TRAVEL_DESCRIPTION;
 	}
 	
@@ -217,6 +218,16 @@ app.controller('TripDetailController', ['$scope','$timeout','$routeParams', 'tri
 		})
 		
 	}
+	
+	//좋아요 버튼클릭
+	$scope.insertFavorite = function (){
+		
+		tripDetailFactory.insertFavorite(sa,travelNo).then(function(response){
+			console.log('response'+JSON.stringify(response));
+			$scope.trip.TRAVEL_FAVORITE=response.data
+		});
+	}
+	
 	
 	
 	//여행참가하기 버튼 클릭 방장한테 푸쉬 날리기
