@@ -28,10 +28,10 @@
 					 <p class="detailTitle"> 
 						{{trip.title}}
 					 </p> 
-					<img class="cal" src="{{serverAddress}}resources/images/icons/weddingday32.png"> 
+					<!-- <img class="cal" src="{{serverAddress}}resources/images/icons/weddingday32.png">  -->
 					
 					<span class="tripDetailSchedule">
-						{{trip.travel_start}}~ {{trip.travel_end}} </span>
+						{{trip.travel_start}}~{{trip.travel_end}} </span>
 				</div>
 				<div class="col-xs-5">
 					<img class="userPho"
@@ -198,13 +198,13 @@
 	
 <div class=wraper-footer-tripDetail>
 		<div class="row inputReply" data-ng-show="inputRe">
-			<div class="col-xs-7">
-				<input type="text" class="textbox" placeholder="덧글을 입력하세요"
+			<div class="col-xs-10">
+				<input type="text" class="textbox" placeholder="댓글을 입력하세요"
 					data-ng-model="tripDetailReply">
 			</div>
-			<div class="col-xs-2">
+			<div class="col-xs-2" id="writeTripDetailBtn">
 				<button type="button" class="btn btn-warning replybtn"
-					data-ng-click="goTripDetailReply()">댓글 입력</button>
+					data-ng-click="goTripDetailReply()">입력</button>
 			</div>
 		</div>
 		
