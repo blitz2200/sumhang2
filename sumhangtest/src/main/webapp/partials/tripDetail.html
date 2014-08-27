@@ -28,11 +28,22 @@
 					 <p class="detailTitle"> 
 						{{trip.title}}
 					 </p> 
-					<!-- <img class="cal" src="{{serverAddress}}resources/images/icons/weddingday32.png">  -->
+					<img class="cal" src="{{serverAddress}}resources/images/icons/weddingday32.png"> 
 					
 					<span class="tripDetailSchedule">
-						{{trip.travel_start}}~{{trip.travel_end}} </span>
+						{{trip.travel_start}}~ {{trip.travel_end}} </span>					
 				</div>
+				<!-- 아이콘들 -->
+					<span id="tripParticipants"> <img
+						data-ng-src="{{serverAddress}}resources/images/wishMember.png"
+						class="groupImg visible" /> <!-- 모집인원아이콘 --> <span
+						class="groupCount visible" id="mainTripMember">{{trip.TRAVEL_USER_COUNT}}</span>
+						<!-- 모집인원 --> <img
+						data-ng-src="{{serverAddress}}resources/images/heart.png"
+						class="favoImg visible" /> <!-- 좋아요 아이콘 --> <span
+						class="favoriteCount visible" id="mainLikeNum">{{trip.likenum}}</span>
+						<!-- 좋아요 카운트 -->
+					</span>
 				<div class="col-xs-5">
 					<img class="userPho"
 						data-ng-src="{{serverAddress}}resources/images/userPhotoFile/{{trip.user_sphoto}}">
@@ -59,9 +70,9 @@
 					<img style="height: 200px; width:100%;" src="resources/images/picture-attachment-128.png" id="editPhotoUpdate" data-ng-Click="goEditTripDetailPhoto()">				
 				</div>				<!-- editTripPhotoImg End	 -->	
 				
-				<!-- <div id="editTripPhotoText">
+				<div id="editTripPhotoText">
 					<h5 id="editTripPhotoUpload">사진을 올려주세요.</h5>
-				</div> -->
+				</div>
 			</div>			<!-- editTripPhotoSpace End -->
 			
 				
@@ -124,7 +135,7 @@
 					</label>
 					<div class="col-xs" id="tripNumberInput-editTripSpace">
 						<input type="number" class="form-control" min="1" max="20" id="tripNumberInput-editTrip" name="tripNumberInputEditTrip"
-						data-ng-model="editTrip.travelUserCount"  value="{{trip.TRAVEL_USER_COUNT} }" required>
+						data-ng-model="editTrip.travelUserCount"  value="{{trip.TRAVEL_USER_COUNT}}" required>
 					</div>			<!-- tripNumberInput-addTripSpace End -->
 				</div>			<!-- tripNumberLabel-addTrip End -->
 			
