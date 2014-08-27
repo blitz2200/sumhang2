@@ -1,5 +1,7 @@
-app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	'globalFactory', 'Camera', 'userPhotoService',
-                                        function($scope, userService, userFactory, globalFactory, Camera, userPhotoService) {
+app.controller('JoinMemberController', ['$scope','$timeout', 'userService', 'userFactory',	'globalFactory', 
+                                        'Camera', 'userPhotoService','usSpinnerService',
+                                        function($scope,$timeout, userService, userFactory, globalFactory,
+                                        		 Camera, userPhotoService,usSpinnerService) {
 			
 	var sa = globalFactory.serverAddress;
 	$scope.serverAddress=globalFactory.serverAddress;
@@ -108,6 +110,7 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 	  }
 			
 	  $scope.addMemberRequest = function(){
+		  usSpinnerService.spin('spinner-1');
 		  	 $scope.submitted = true;	 
 			if( $scope.joinMember.userIdJoinInput.$valid 
 				&& $scope.joinMember.userPswdJoinInput.$valid																			
@@ -144,10 +147,9 @@ app.controller('JoinMemberController', ['$scope', 'userService', 'userFactory',	
 		console.log('regid추가후 회원입력 객체 : '+JSON.stringify(user));
 		//유저객체 서비스에 전송
 		userService.addUser(sa,user);
-		
-		
-		
-		$scope.location.path('/login'); 
+		$timeout(function(){
+		$scope.location.path('/login');
+		usSpinnerService.stop('spinner-1');},4000);
 			}else{
 				alert('양식을 확인해 주세요');
 				$scope.newMember.password='';
