@@ -133,7 +133,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="tripDetail" parameterType="trip" resultType="Map">
 		select t.travel, t.TBOARD_NO, t.USER_NO, u.user_sphoto, u.nick,u.PUSH,t.title,
 			 t.travel_start, t.travel_end, t.TRAVEL_DESCRIPTION,t.TRAVEL_USER_COUNT,
-			 t.TRAVEL_PHO, t.TRAVEL_FAVORITE, ucount.JOINCOUNT
+			 t.TRAVEL_PHO, t.TRAVEL_FAVORITE, ucount.JOINCOUNT,t.TRAVEL_SPHOTO
 			 from TBOARD t, USER u, (SELECT TBOARD_NO, COUNT(*) JOINCOUNT
 										FROM USER_STATUS
 										GROUP BY TBOARD_NO ) ucount
