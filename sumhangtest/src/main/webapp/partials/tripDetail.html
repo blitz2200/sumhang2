@@ -28,10 +28,10 @@
 					 <p class="detailTitle"> 
 						{{trip.title}}
 					 </p> 
-					<img class="cal" src="{{serverAddress}}resources/images/icons/weddingday32.png"> 
+					<!-- <img class="cal" src="{{serverAddress}}resources/images/icons/weddingday32.png">  -->
 					
 					<span class="tripDetailSchedule">
-						{{trip.travel_start}}~ {{trip.travel_end}} </span>					
+						{{trip.travel_start}}~{{trip.travel_end}} </span>
 				</div>
 				<!-- 아이콘들 -->
 					<span id="tripParticipants"> <img
@@ -53,8 +53,10 @@
 					<p class="nick">
 						썸 장  <span class="username">{{trip.nick}}</span>  님
 					</p>
-					<button type="button" class="favorite btn btn-warning" 
-				        data-ng-click="insertFavorite()">좋아요</button>
+				</div>
+					<button type="button" class="favorite btn btn-warning" data-ng-click="insertFavorite()" id="tripDetailCheckLike">
+						<img id="inBtnLike"src="{{serverAddress}}resources/images/heart-24-24.png">
+					</button>
 				</div>
 				
 				
@@ -77,9 +79,9 @@
 					<img style="height: 200px; width:100%;" src="resources/images/picture-attachment-128.png" id="editPhotoUpdate" data-ng-Click="goEditTripDetailPhoto()">				
 				</div>				<!-- editTripPhotoImg End	 -->	
 				
-				<div id="editTripPhotoText">
+				<!-- <div id="editTripPhotoText">
 					<h5 id="editTripPhotoUpload">사진을 올려주세요.</h5>
-				</div>
+				</div> -->
 			</div>			<!-- editTripPhotoSpace End -->
 			
 				
