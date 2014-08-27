@@ -267,6 +267,14 @@ border: none;
 
 }
 
+.spinner {
+	bottom:50%;
+	z-index:999;
+	position:fixed;
+	left: 50%;
+
+}
+
 .container-mainPage{
 	background:#d8d7d7;
 }
