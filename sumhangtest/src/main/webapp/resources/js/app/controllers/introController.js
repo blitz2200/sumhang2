@@ -1,5 +1,5 @@
-app.controller('IntroController', ['$scope','userFactory','globalFactory', 
-                                   function ($scope, userFactory,globalFactory) {
+app.controller('IntroController', ['$scope','userFactory', 'usSpinnerService', 'globalFactory', 
+                                   function ($scope, userFactory, usSpinnerService, globalFactory) {
 	
 	var sa =globalFactory.serverAddress
 	
@@ -27,18 +27,16 @@ app.controller('IntroController', ['$scope','userFactory','globalFactory',
 	
 	
 	function loginCheck(){
+		usSpinnerService.spin('spinner-1');
 		userFactory.loginCheck(globalFactory.serverAddress)
-		.success(function(data){ 
-			
-			console.log(data.isLogged);
-			if(data.isLogged){
+		.then(function(response){ 
+			usSpinnerService.spin('spinner-1');
+			console.log(response.isLogged);
+			if(response.isLogged){
 				$scope.location.path('/main');
 			}else{
 				$scope.location.path('/login');
-			}
-			
-		}).error(function (error){
-		
+			}			
 		});
 	}
 	
