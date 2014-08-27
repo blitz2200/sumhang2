@@ -93,6 +93,13 @@
 	margin-top:3%;
 }
 
+/* 아이콘 카운트 위치 */
+.tripDetail #tripParticipants{
+	display:block;
+	height:35px;
+	margin-top: 6px;
+}
+
 
 /* 유저닉네임  */
 .tripDetail .nick{
