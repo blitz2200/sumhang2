@@ -273,8 +273,7 @@ public class TripDetailController {
 		Message message = new Message.Builder()
 									.addData("message", t)
 									.timeToLive(10)
-									.build();
-		
+									.build();		
 		Result result;
 		System.out.println(message);
 		try {
@@ -284,11 +283,27 @@ public class TripDetailController {
 		} catch (IOException e) { // TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		
-
 		return "푸쉬 성공";
-
 	}
+	
+	// 좋아요 입력
+	@RequestMapping(value = "/insertFavorite", method = RequestMethod.POST)
+	public @ResponseBody String insertFavorite(@RequestBody String travelNo) {
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		//JSON형식 GSON사용하여 스트링으로 바꾸기 
+		Gson gson = new Gson();
+		map = gson.fromJson(travelNo, Map.class);
+		int favoCount;
+
+		sqlSession.update("tripControlMapper.insertFavorite", Integer.parseInt(map.get("travelNo")));
+		
+		favoCount = sqlSession.selectOne("tripControlMapper.selectFavorite", Integer.parseInt(map.get("travelNo")));
+		
+		return Integer.toString(favoCount);
+	}
+	
+	
 
 }
