@@ -15,19 +15,6 @@
 	
 } 
 
-/* 페이지 가로 크기 */
-
-.Hader-Logo{
-	margin-top:10px;
-	margin-bottom:5px;
-}
-
-/* #listviewMainPage ul{
-	max-height: 800px;
-    overflow: auto;
-    list-style-type: none;
-} */
-
 #listviewMainPage li{
 	background-color:white;
 }
@@ -40,16 +27,16 @@
 	
 }
 
-.under-line{
+#listviewMainPage .under-line{
 	background:#ffbb33;
 	height:3px;
 	width:80%;
 	position:relative;
 	left:10px;
 }
+
 /* 서치바디자인 */
-.ui-filterable .ui-input-search{
-	 
+#listviewMainPage .ui-filterable .ui-input-search{	 
  	background-color: white;
 	text-align: center;
 	text-color: black;			
@@ -71,29 +58,26 @@
 }
 
 /* 헤더 고정 */
-#imageWrapper{
+#mainPage #imageWrapper{
 	z-index:999;
 	position:fixed;
 	height: 52px;
 	width: 100%;
 	background: #ffbb33;
-	margin-top:-10px;
-	 
+	margin-top:-10px;	 
 }
 
 /* 헤더 왼쪽 아이콘 */
-#imageWrapper #leftSideIcon {
-	 
+#mainPage #imageWrapper #leftSideIcon {	 
+	margin-left: 10px;
+	margin-top: 10px;
 	position: absolute;
 	width: 30px;
 	height: 30px;
-	 margin-top:4px; 
-	 margin-left:0;
-	
 }
 
 /* 헤더 오른쪽 아이콘 */
-#imageWrapper #rightSideIcon {
+#mainPage #imageWrapper #rightSideIcon {
 	margin-top: 7px;
 	position: absolute;
 	width: 30px;
@@ -157,24 +141,7 @@
 	margin-left: 10px;
 }
 
-/* 아이콘 카운트 위치 */
-.iconsBack #mainIcons #participants{
-	height:35px;
-	float: right;
-	background-color: #e9e9e9;	
-	border-radius: 6px;
-	padding-left: 2px;
-	padding-top: 5px;
-	margin-bottom: -10px;
-}
 
-/* 참가자, 아이콘 위치 */
-.iconsBack #mainIcons{
-	/* background-color: #e9e9e9; */
-	background-color:#f6f6f6;
-	border-radius: 8px;
-	margin-top: 5px;
-}
 
 /* 리스트 배경색,탑 */
 #listviewMainPage{
@@ -190,9 +157,26 @@
 	margin-right:15px;
 	border-radius: 8px;
 }
+/* 아이콘 카운트 위치 */
+.icons #participants{
+	height:34px;
+	float: right;
+	background-color: #e9e9e9;	
+	border-radius: 6px;
+	padding-left: 2px;
+	padding-top: 5px;
+	margin-bottom: 0;
+}
+
+/* 참가자, 아이콘 위치 */
+.icons{	
+	background-color:#f6f6f6;
+	border-radius: 8px;
+	margin-top: 5px;
+}
 
 /* 아이콘이미지 */
-.iconsBack .icons img{
+.icons img{
 	width:30px;
 	height:30px;
 	border-radius: 8px;
@@ -202,7 +186,7 @@
 }
 
 /* 얼굴이미지  1*/
-.iconsBack .icons #face1{
+.icons #face1{
 	border-radius: 8px;
 	margin-left: 3px;
 	margin-top: 2px;
@@ -210,27 +194,20 @@
 }
 
 /* 얼굴이미지2 */
-.iconsBack .icons #face2{
+.icons #face2{
 margin-bottom: 2px;
 margin-top: 0;
 	}
 	
 /* 얼굴이미지3 */
-.iconsBack .icons #face3{
+.icons #face3{
 margin-bottom: 2px;
 margin-top: 0;
 border: none;
 }
 	
-
-/* 좋아요 숫자 */
-#participants #mainLikeNum{
-	margin-right: 10px;
-	font-family:nanomgothicBold;
-}
-
 /* 아이콘 크기 */
-.iconsBack .icons #participants img{
+.icons #participants img{
 	width:13px;
 	height:13px;
 	background-color: #e9e9e9; 
@@ -238,7 +215,7 @@ border: none;
 }
 
 /* 모집인원 숫자 */
-.iconsBack #participants #mainTripMember{
+.icons #participants #mainTripMember{
 	font-size: 15px;
 	color:orange;	
 	margin-top: 0;
@@ -247,7 +224,7 @@ border: none;
 }
 
 /* 좋아요 숫자 */
-.iconsBack #participants #mainLikeNum{
+.icons #participants #mainLikeNum{
 	font-size: 15px;
 	color:orange;
 	margin-top: 0;
