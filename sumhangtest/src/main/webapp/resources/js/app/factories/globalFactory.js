@@ -1,5 +1,5 @@
 app.factory('globalFactory',function(){
   return {
-       serverAddress : 'http://192.168.0.85:8080/'
+       serverAddress : 'http://54.64.175.40/'
     };
 });
